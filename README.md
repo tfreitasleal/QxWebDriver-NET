@@ -1,5 +1,7 @@
 # QxWebDriver-NET
 
+For the moment this project is just a place holder as THE SOURCES DON'T BUILD.
+
 THIS FILE WAS ADAPTED FROM qxwebdriver-java AND IS A WORK IN PROGRESS.
 
 WebDriver testing support for qooxdoo desktop and mobile applications.
