@@ -1,7 +1,7 @@
 QxWebDriver-NET Licensing Information
 =====================================
 
-qxwebdriver-java may be used under the terms of either the
+QxWebDriver-NET may be used under the terms of either the
 
   * GNU Lesser General Public License (LGPL)
     http://www.gnu.org/licenses/lgpl.html
@@ -11,7 +11,7 @@ or the
   * Eclipse Public License (EPL)
     http://www.eclipse.org/org/documents/epl-v10.php
 
-As a recipient of qxwebdriver-java, you may choose which license to receive the 
+As a recipient of QxWebDriver-NET, you may choose which license to receive the 
 code under. Certain files or entire directories may not be covered by this 
 dual license, but are subject to licenses compatible to both LGPL and EPL.
 License exceptions are explicitly declared in all relevant files or in a 
