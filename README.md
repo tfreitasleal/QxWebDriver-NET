@@ -1,8 +1,10 @@
 # QxWebDriver-NET
 
-THIS WAS COPIED FROM qxwebdriver-java AND IS A WORK IN PROGRESS
+THIS FILE WAS ADAPTED FROM qxwebdriver-java AND IS A WORK IN PROGRESS.
 
 WebDriver testing support for qooxdoo desktop and mobile applications.
+
+QxWebDriver-NET is a port of [qxwebdriver-java](https://github.com/qooxdoo/qxwebdriver-java) to C#.
 
 The goal of this project is to provide an API that facilitates writing [WebDriver](http://seleniumhq.org/docs/03_webdriver.html)-based interaction tests for [qx.Desktop](http://manual.qooxdoo.org/current/pages/desktop.html) and [qx.Mobile](http://manual.qooxdoo.org/current/pages/mobile.html) applications by abstracting away the implementation details of qooxdoo widgets. Here's a quick example:
 
@@ -31,7 +33,7 @@ Clone the repo, then run
 
 This will run the included example tests against the [Widget Browser](http://demo.qooxdoo.org/current/widgetbrowser/) using Firefox, so you must have Firefox installed and a working internet connection.
 
-## IWidget Interfaces
+## Widget Interfaces
 
 QxWebDriver provides a set of widget classes similar to WebDriver's support classes, each of which implements _Qooxdoo.WebDriver.UI.IWidget_ or one or more of the interfaces inheriting from it, such as _ITouchable_, _ISelectable_ or _IScrollable_. These interfaces allow complex actions to be performed by relatively few API calls.
 
@@ -96,7 +98,7 @@ The [Getting Started](https://github.com/qooxdoo/qxwebdriver-java/wiki/Getting-S
 
 ## Extending QxWebDriver
 
-_FindWidget_ uses a _IWidgetFactory_ to determine which IWidget class to instantiate. An alternative class implementing _IWidgetFactory_ and probably extending _DefaultWidgetFactory_ can be passed to the _QxWebDriver_ constructor to support custom widgets.
+_FindWidget_ uses a _IWidgetFactory_ to determine which widget class to instantiate. An alternative class implementing _IWidgetFactory_ and probably extending _DefaultWidgetFactory_ can be passed to the _QxWebDriver_ constructor to support custom widgets.
 
 ## Browser Support
 
@@ -104,7 +106,7 @@ In theory, QxWebDriver should work with any WebDriver that implements _IJavascri
 
 ## Project Status
 
-QxWebDriver is still experimental. The API is subject to change without notice, not all of qooxdoo's built-in widgets are supported and there is much still to be optimized. Don't let that stop you from playing with it, giving us feedback on the [issues tab](https://github.com/tfreitasleal/QxWebDriver-NET/issues) and sending pull requests. Thanks!
+QxWebDriver-NET is still experimental, just like qxwebdriver-java. The API is subject to change without notice, not all of qooxdoo's built-in widgets are supported and there is much still to be optimized. Don't let that stop you from playing with it, giving us feedback on the [issues tab](https://github.com/tfreitasleal/QxWebDriver-NET/issues) and sending pull requests. Thanks!
 
 ### Still To Come
 
