@@ -31,10 +31,6 @@ var getPropertyValue = function() {
   }
   if (result instanceof qx.core.Object) {
     result = result.toString();
-  }  
-  // Convert LocalizedStrings and other BaseString subclass instances to string 
-  if (qx.type.BaseString && result instanceof qx.type.BaseString) {
-    result = result.toString();
   }
   return result;
 };

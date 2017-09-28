@@ -44,9 +44,9 @@ return (function(args) {
     this.qxhParts = locator.split('/');
     this.findOnlySeeable = findOnlySeeable;
     if (this.findOnlySeeable) {
-      console.Log("Qxh searching for seeable widgets only.");
+      console.log("Qxh searching for seeable widgets only.");
     } else {
-      console.Log("Qxh searching for seeable and non-seeable widgets.");
+      console.log("Qxh searching for seeable and non-seeable widgets.");
     }
     this.root = this.getRoot(rootElement);
     //this._iframeQxObject = null;
@@ -57,7 +57,7 @@ return (function(args) {
   Qxh.NTHCHILD = /^child\[-?\d+\]$/i;
   Qxh.ATTRIB = /^\[.*\]$/;
 
-  Qxh.prototype.FindElement = function() {
+  Qxh.prototype.findElement = function() {
     resultObject = this.searchQxObjectByQxHierarchy(this.root, this.qxhParts);
 
     if (resultObject) {
@@ -92,7 +92,7 @@ return (function(args) {
       throw new Error("Unable to find application for argument '" + rootArg + "!'");
     }
 
-    console.Log("Qxh starting with root " + root.toString());
+    console.log("Qxh starting with root " + root.toString());
     return root;
   };
 
@@ -135,7 +135,7 @@ return (function(args) {
      /* If the node is one of the qooxdoo Iframes (html or ui.embed) containing
       * another qooxdoo application, try to retrieve its root widget */
     if ( node.classname && (node.classname.indexOf("Iframe") + 6 == node.classname.length) && node.getWindow) {
-      console.Log("getQxNodeDescendants: using getWindow() to retrieve descendants");
+      console.log("getQxNodeDescendants: using getWindow() to retrieve descendants");
       try {
         /* store a reference to the iframe's qx object. This is used by
            Selenium.getQxWidgetByLocator */
@@ -149,7 +149,7 @@ return (function(args) {
     else {
       /* check external widget children (built with w.add()) */
       if (node.getChildren) {
-        console.Log("getQxNodeDescendants: using getChildren() to retrieve descendants of " + node);
+        console.log("getQxNodeDescendants: using getChildren() to retrieve descendants of " + node);
         /* Workaround for qx bug #3161 */
         try {
           c = node.getChildren();
@@ -165,7 +165,7 @@ return (function(args) {
       /* check TreeFolder items: Only neccessary for qooxdoo versions < 0.8.3 */
       else {
         if (node.getItems) {
-          console.Log("getQxNodeDescendants: using getItems() to retrieve descendants");
+          console.log("getQxNodeDescendants: using getItems() to retrieve descendants");
           c = node.getItems();
           for (var j=0; j<c.length; j++) {
             descArr.push(c[j]);
@@ -174,13 +174,13 @@ return (function(args) {
       }
 
       if (node.getMenu) {
-        console.Log("Getting child menu");
+        console.log("Getting child menu");
         descArr.push(node.getMenu());
       }
 
       /* check internal children (e.g. child controls) */
       if (node._getChildren) {
-        console.Log("getQxNodeDescendants: using _getChildren() to retrieve descendants of " + node);
+        console.log("getQxNodeDescendants: using _getChildren() to retrieve descendants of " + node);
         c = node._getChildren();
         for (var k=0; k<c.length; k++) {
           descArr.push(c[k]);
@@ -189,7 +189,7 @@ return (function(args) {
 
       /* use JS object members */
       if (!(node.getChildren || node._getChildren)) {
-        console.Log("getQxNodeDescendants: using JS properties to retrieve descendants");
+        console.log("getQxNodeDescendants: using JS properties to retrieve descendants");
         for (var m in node) {
           var objMember = node[m];
           if (!objMember || typeof objMember !== "object" ||
@@ -213,7 +213,7 @@ return (function(args) {
           curr = curr.wrappedJSObject;
         }
         if (!curr.isSeeable) {
-          console.Log(curr.classname + "has no method isSeeable");
+          console.log(curr.classname + "has no method isSeeable");
           if (!this.arrayContainsObject(descArr1, curr)) {
             descArr1.push(curr);
           }
@@ -227,7 +227,7 @@ return (function(args) {
       }
     }
 
-    console.Log("getQxNodeDescendants: returning for node immediate children: "+descArr1.length);
+    console.log("getQxNodeDescendants: returning for node immediate children: "+descArr1.length);
     return descArr1;
   };
 
@@ -248,13 +248,13 @@ return (function(args) {
     var step = path[0];
     var npath = path.slice(1);
 
-    console.Log("Qxh Locator: Inspecting current step: " + step);
+    console.log("Qxh Locator: Inspecting current step: " + step);
 
     /* get a suitable element from the current step, dispatching on step type */
     if (step == '*')                 /* this is like '//' in XPath */
     {
       /* this means we have to recursively look for rest of path among descendants
-         console.Log("Qxh Locator: ... identified as wildcard (*) step"); */
+         console.log("Qxh Locator: ... identified as wildcard (*) step"); */
       var res = null;
 
       /* first check if current element matches already */
@@ -268,7 +268,7 @@ return (function(args) {
         /* there is something to match against */
         try
         {
-          console.Log("Qxh Locator: recursing with root: "+root+", path: "+npath.join('/'));
+          console.log("Qxh Locator: recursing with root: "+root+", path: "+npath.join('/'));
           res = this.searchQxObjectByQxHierarchy(root, npath);
         }
         catch (e)
@@ -296,7 +296,7 @@ return (function(args) {
       {
         try
         {
-          console.Log("Qxh Locator: recursing with root: "+childs[i]+", path: "+path.join('/'));
+          console.log("Qxh Locator: recursing with root: "+childs[i]+", path: "+path.join('/'));
           if (this.arrayContainsObject(this.seenNodes, childs[i])) {
             continue;
           }
@@ -323,7 +323,7 @@ return (function(args) {
          all recursion is already done, so we can terminate here */
       if (res === null)
       {
-        var e = new Error("Qxh Locator: Error resolving Qxh path");
+        var e = new Error("Qxh Locator: Error resolving qxh path");
         e.a = [ step ]; /* since we lost the e from deeper recursions just report current */
         throw e;
       }
@@ -337,25 +337,25 @@ return (function(args) {
     {
       if (step.indexOf('.') == -1)  /* 'foo' format */
       {
-        console.Log("Qxh Locator: ... identified as general identifier");
+        console.log("Qxh Locator: ... identified as general identifier");
         el = this.getQxElementFromStep1(root, step);
       }
       else
       {  /* 'qx....' format */
-        console.Log("Qxh Locator: ... identified as qooxdoo class name");
+        console.log("Qxh Locator: ... identified as qooxdoo class name");
         el = this.getQxElementFromStep2(root, step);
       }
     }
 
     else if (step.match(Qxh.NTHCHILD))  /* 'child[n]' format */
     {
-      console.Log("Qxh Locator: ... identified as indexed child");
+      console.log("Qxh Locator: ... identified as indexed child");
       el = this.getQxElementFromStep3(root, step);
     }
 
     else if (step.match(Qxh.ATTRIB))  /* '[@..=...]' format */
     {
-      console.Log("Qxh Locator: ... identified as attribute specifier");
+      console.log("Qxh Locator: ... identified as attribute specifier");
       el = this.getQxElementFromStep4(root, step);
     }
 
@@ -367,21 +367,21 @@ return (function(args) {
     /* check result */
     if (el === null)
     {
-      var ex = new Error("Qxh Locator: Error resolving Qxh path");
+      var ex = new Error("Qxh Locator: Error resolving qxh path");
       ex.a = [ step ];
       throw ex;
     }
 
     /* recurse */
     if (npath.length === 0) {
-      console.Log("Qxh Locator: Terminating search, found match; last step :"+step+", element: "+el);
+      console.log("Qxh Locator: Terminating search, found match; last step :"+step+", element: "+el);
       return el;
     }
     else
     {
       /* basically we tail recurse, but catch exceptions */
       try {
-        console.Log("Qxh Locator: found step (" + step + "), moving on to (" +
+        console.log("Qxh Locator: found step (" + step + "), moving on to (" +
                   npath[0] + ")" );
         res = this.searchQxObjectByQxHierarchy(el, npath);
       }
@@ -391,7 +391,7 @@ return (function(args) {
         {
           /* prepend the current step */
           e.a.unshift(step);
-          console.Log("Qxh Locator: ... nothing found in this branch; going up");
+          console.log("Qxh Locator: ... nothing found in this branch; going up");
           throw e;
         }
         else
@@ -407,25 +407,25 @@ return (function(args) {
 
   Qxh.prototype.getQxElementFromStep1 = function(root, step) {
     // find an object member of root with name 'step'
-    console.Log("Qxh Locator: in getQxElementFromStep1");
+    console.log("Qxh Locator: in getQxElementFromStep1");
     var member;
 
     for (member in root)
     {
       if (member == step) {
-        console.Log("Qxh Locator: getQxElementFromStep1 returning object");
+        console.log("Qxh Locator: getQxElementFromStep1 returning object");
         return root[member];
       }
     }
 
-    console.Log("Qxh Locator: getQxElementFromStep1 returning null");
+    console.log("Qxh Locator: getQxElementFromStep1 returning null");
     return null;
   };
 
 
   Qxh.prototype.getQxElementFromStep2 = function(root, qxclass) {
     // find a child of root with qooxdoo type 'qxclass'
-    console.Log("Qxh Locator: in getQxElementFromStep2");
+    console.log("Qxh Locator: in getQxElementFromStep2");
     var childs;
     var curr;
 
@@ -442,7 +442,7 @@ return (function(args) {
       if (!curr.classname) {
         continue;
       }
-      console.Log("Qxh Locator: Comparing found child " + curr.classname + " to wanted class " + qxclass);
+      console.log("Qxh Locator: Comparing found child " + curr.classname + " to wanted class " + qxclass);
       try {
         if (curr instanceof myClass) {
           return curr;
@@ -458,7 +458,7 @@ return (function(args) {
 
   Qxh.prototype.getQxElementFromStep3 = function(root, childspec) {
     // find a child of root by index
-    console.Log("Qxh Locator: in getQxElementFromStep3");
+    console.log("Qxh Locator: in getQxElementFromStep3");
     var childs;
     var idx;
     var m;
@@ -494,7 +494,7 @@ return (function(args) {
 
   Qxh.prototype.getQxElementFromStep4 = function(root, attribspec) {
     // find a child of root by attribute
-    console.Log("Qxh Locator: in getQxElementFromStep4");
+    console.log("Qxh Locator: in getQxElementFromStep4");
     var childs;
     var attrib;
     var attval;
@@ -507,7 +507,7 @@ return (function(args) {
 
     if ((m instanceof Array) && m.length > 1)
     {
-      console.Log("Qxh Locator: getQxElementFromStep4: parsed spec into: "+m);
+      console.log("Qxh Locator: getQxElementFromStep4: parsed spec into: "+m);
       attrib = m[1];
       if (m.length > 2 && m[2]!=null && m[2] != "")
       {
@@ -557,7 +557,7 @@ return (function(args) {
         {
           var currval = actobj.get(attrib);
           if (currval) {
-            console.Log("Qxh Locator: Attribute Step: Checking for qooxdoo property ('" + attrib + "' is: " + currval + ")");
+            console.log("Qxh Locator: Attribute Step: Checking for qooxdoo property ('" + attrib + "' is: " + currval + ")");
             if (typeof currval !== "string") {
               if (currval.translate) {
                 currval = currval.translate().toString();
@@ -576,7 +576,7 @@ return (function(args) {
       // check for userData using special key:value syntax
       if (attrib.indexOf("userData") === 0 && attval.indexOf(":") > 0 ) {
         var keyval = attval.split(":");
-        console.Log("Qxh Locator: Attribute Step: Checking for userData field " + keyval[0] + " with value " + keyval[1]);
+        console.log("Qxh Locator: Attribute Step: Checking for userData field " + keyval[0] + " with value " + keyval[1]);
 
         currval = actobj.getUserData(keyval[0]);
 
@@ -589,12 +589,12 @@ return (function(args) {
       // then, check normal JS attribs
       if ((attrib in actobj) && ((String(actobj[attrib])).match(rattval)))
       {
-        console.Log("Qxh Locator: Attribute Step: Checking for JS object property");
+        console.log("Qxh Locator: Attribute Step: Checking for JS object property");
         return actobj;
       }
       else
       {
-        console.Log("Qxh Locator: Attribute Step: No match for current child");
+        console.log("Qxh Locator: Attribute Step: No match for current child");
       }
     }
 
@@ -630,8 +630,8 @@ return (function(args) {
   var locator = args[0];
   var findOnlySeeable = typeof args[1] == "undefined" ? true : args[1];
   var rootElement = args[2] ? args[2] : "qx.ui.root.Application";
-  var Qxh = new Qxh(locator, findOnlySeeable, rootElement);
-  return Qxh.FindElement();
+  var qxh = new Qxh(locator, findOnlySeeable, rootElement);
+  return qxh.findElement();
 
 })(arguments);
 };

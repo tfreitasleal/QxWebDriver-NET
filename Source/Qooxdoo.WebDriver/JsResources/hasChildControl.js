@@ -20,5 +20,5 @@
 
 var hasChildControl = function() {
   var widget = qx.ui.core.Widget.getWidgetByElement(arguments[0]);
-  return widget.HasChildControl(arguments[1]);
+  return widget.hasChildControl(arguments[1]);
 };
