@@ -4,7 +4,6 @@
 using By = Qooxdoo.WebDriver.By;
 using WebDriver = OpenQA.Selenium.IWebDriver;
 using WebElement = OpenQA.Selenium.IWebElement;
-using ExpectedCondition = OpenQA.Selenium.Support.UI.ExpectedCondition;
 using WebDriverWait = OpenQA.Selenium.Support.UI.WebDriverWait;
 
 namespace Qooxdoo.WebDriverDemo.DesktopShowcase
@@ -13,20 +12,20 @@ namespace Qooxdoo.WebDriverDemo.DesktopShowcase
     public class Table : DesktopShowcase
     {
 
-        public By tableLocator = By.Qxh("qx.ui.container.Stack/qx.ui.container.Composite/qx.ui.window.Desktop/qx.ui.window.Window/qx.ui.Table.Table");
+        public By tableLocator = By.Qxh("qx.ui.container.Stack/qx.ui.container.Composite/qx.ui.window.Desktop/qx.ui.window.Window/qx.ui.table.Table");
 //JAVA TO C# CONVERTER NOTE: Fields cannot have the same name as methods:
         public Qooxdoo.WebDriver.UI.Table.Table table_Renamed = null;
 
 //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 //ORIGINAL LINE: @Before public void setUp() throws Exception
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-        public virtual void setUp()
+        public virtual void SetUp()
         {
             SelectPage("Table");
-            table_Renamed = getTable();
+            table_Renamed = GetTable();
         }
 
-        public virtual Qooxdoo.WebDriver.UI.Table.Table getTable()
+        public virtual Qooxdoo.WebDriver.UI.Table.Table GetTable()
         {
             WebElement tableEl = Root.FindElement(tableLocator);
             Qooxdoo.WebDriver.UI.Table.Table table = (Qooxdoo.WebDriver.UI.Table.Table) driver.GetWidgetForElement(tableEl);
@@ -58,7 +57,7 @@ namespace Qooxdoo.WebDriverDemo.DesktopShowcase
             }
         }
 
-        public virtual void waitUntilTableDataLoaded()
+        public virtual void WaitUntilTableDataLoaded()
         {
             (new WebDriverWait(driver, 20, 250)).Until(tableDataLoaded());
         }
@@ -69,7 +68,7 @@ namespace Qooxdoo.WebDriverDemo.DesktopShowcase
         public virtual void table()
         {
             Assert.True(table_Renamed.Displayed);
-            waitUntilTableDataLoaded();
+            WaitUntilTableDataLoaded();
         }
     }
 

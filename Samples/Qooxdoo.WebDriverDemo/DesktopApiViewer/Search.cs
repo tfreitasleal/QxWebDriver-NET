@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Threading;
+using Assert = NUnit.Framework.Assert;
+//using Test = NUnit.Framework.Test;
+using By = Qooxdoo.WebDriver.By;
+using Widget = Qooxdoo.WebDriver.UI.IWidget;
+using Table = Qooxdoo.WebDriver.UI.Table.Table;
 
 namespace Qooxdoo.WebDriverDemo.DesktopApiViewer
 {
-
-    using Assert = NUnit.Framework.Assert;
-    //using Test = NUnit.Framework.Test;
-    using By = Qooxdoo.WebDriver.By;
-    using Widget = Qooxdoo.WebDriver.UI.IWidget;
-    using Table = Qooxdoo.WebDriver.UI.Table.Table;
 
     public class Search : DesktopApiViewer
     {
@@ -20,7 +19,7 @@ namespace Qooxdoo.WebDriverDemo.DesktopApiViewer
         {
             SelectView("Search");
 
-            string tablePath = "*/apiviewer.ui.SearchView/*/qx.ui.Table.Table";
+            string tablePath = "*/apiviewer.ui.SearchView/*/qx.ui.table.Table";
             Table table = (Table) driver.FindWidget(By.Qxh(tablePath));
             long? initialRowCount = (long?) table.RowCount;
             Assert.Equals(Convert.ToDouble(0), Convert.ToDouble(initialRowCount));

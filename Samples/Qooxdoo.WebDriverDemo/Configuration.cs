@@ -1,16 +1,16 @@
 ﻿using System;
+using SelendroidDriver = io.selendroid.SelendroidDriver;
+
+using QxWebDriver = Qooxdoo.WebDriver.QxWebDriver;
+using Platform = OpenQA.Selenium.Platform;
+using WebDriver = OpenQA.Selenium.IWebDriver;
+using ChromeDriver = OpenQA.Selenium.Chrome.ChromeDriver;
+using FirefoxDriver = OpenQA.Selenium.Firefox.FirefoxDriver;
+using DesiredCapabilities = OpenQA.Selenium.Remote.DesiredCapabilities;
+using RemoteWebDriver = OpenQA.Selenium.Remote.RemoteWebDriver;
 
 namespace Qooxdoo.WebDriverDemo
 {
-    using SelendroidDriver = io.selendroid.SelendroidDriver;
-
-    using QxWebDriver = Qooxdoo.WebDriver.QxWebDriver;
-    using Platform = OpenQA.Selenium.Platform;
-    using WebDriver = OpenQA.Selenium.IWebDriver;
-    using ChromeDriver = OpenQA.Selenium.Chrome.ChromeDriver;
-    using FirefoxDriver = OpenQA.Selenium.Firefox.FirefoxDriver;
-    using DesiredCapabilities = OpenQA.Selenium.Remote.DesiredCapabilities;
-    using RemoteWebDriver = OpenQA.Selenium.Remote.RemoteWebDriver;
 
     public class Configuration
     {

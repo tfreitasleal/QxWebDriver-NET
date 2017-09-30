@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
-using Qooxdoo.WebDriver:
+using Qooxdoo.WebDriver;
 using Assert = NUnit.Framework.Assert;
 //using BeforeClass = NUnit.Framework.BeforeClass;
 //using Test = NUnit.Framework.Test;

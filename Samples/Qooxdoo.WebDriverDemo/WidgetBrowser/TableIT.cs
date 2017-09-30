@@ -1,20 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Assert = NUnit.Framework.Assert;
+//using Before = NUnit.Framework.Before;
+//using BeforeClass = NUnit.Framework.BeforeClass;
+//using Test = NUnit.Framework.Test;
+using By = Qooxdoo.WebDriver.By;
+using Selectable = Qooxdoo.WebDriver.UI.ISelectable;
+using Widget = Qooxdoo.WebDriver.UI.IWidget;
+using Table = Qooxdoo.WebDriver.UI.Table.Table;
+using Keys = OpenQA.Selenium.Keys;
+using WebElement = OpenQA.Selenium.IWebElement;
+using Actions = OpenQA.Selenium.Interactions.Actions;
 
 namespace Qooxdoo.WebDriverDemo.widgetbrowser
 {
-
-    using Assert = NUnit.Framework.Assert;
-    //using Before = NUnit.Framework.Before;
-    //using BeforeClass = NUnit.Framework.BeforeClass;
-    //using Test = NUnit.Framework.Test;
-    using By = Qooxdoo.WebDriver.By;
-    using Selectable = Qooxdoo.WebDriver.UI.ISelectable;
-    using Widget = Qooxdoo.WebDriver.UI.IWidget;
-    using Table = Qooxdoo.WebDriver.UI.Table.Table;
-    using Keys = OpenQA.Selenium.Keys;
-    using WebElement = OpenQA.Selenium.IWebElement;
-    using Actions = OpenQA.Selenium.Interactions.Actions;
 
     public class TableIT : WidgetBrowser
     {
@@ -34,7 +33,7 @@ namespace Qooxdoo.WebDriverDemo.widgetbrowser
 //ORIGINAL LINE: @Before public void setUp()
         public virtual void setUp()
         {
-            table = (Table) tabPage.FindWidget(By.Qxh("*/qx.ui.Table.Table"));
+            table = (Table) tabPage.FindWidget(By.Qxh("*/qx.ui.table.Table"));
         }
 
         protected internal virtual bool Ie

@@ -1,14 +1,14 @@
-﻿namespace Qooxdoo.WebDriverDemo.DesktopApiViewer
-{
+﻿using Assert = NUnit.Framework.Assert;
+//using Before = NUnit.Framework.Before;
+//using BeforeClass = NUnit.Framework.BeforeClass;
+//using Test = NUnit.Framework.Test;
+using By = Qooxdoo.WebDriver.By;
+using Widget = Qooxdoo.WebDriver.UI.IWidget;
+using NoSuchElementException = OpenQA.Selenium.NoSuchElementException;
+using WebElement = OpenQA.Selenium.IWebElement;
 
-    using Assert = NUnit.Framework.Assert;
-    //using Before = NUnit.Framework.Before;
-    //using BeforeClass = NUnit.Framework.BeforeClass;
-    //using Test = NUnit.Framework.Test;
-    using By = Qooxdoo.WebDriver.By;
-    using Widget = Qooxdoo.WebDriver.UI.IWidget;
-    using NoSuchElementException = OpenQA.Selenium.NoSuchElementException;
-    using WebElement = OpenQA.Selenium.IWebElement;
+namespace Qooxdoo.WebDriverDemo.DesktopApiViewer
+{
 
     public class ClassViewer : DesktopApiViewer
     {
@@ -41,14 +41,14 @@
             string hashAfter = (string) driver.ExecuteScript("return location.hash;");
             Assert.Equals("#qx.ui.core.Widget~capture", hashAfter);
 
-            string subClass = "qx.ui.Basic.Atom";
+            string subClass = "qx.ui.basic.Atom";
             WebElement subClassLink = driver.FindElement(OpenQA.Selenium.By.XPath("//a[text()='" + subClass + "']"));
             subClassLink.Click();
 
             Widget tabButton = driver.FindWidget(By.Qxh(tabButtonPath));
             Assert.Equals(subClass, tabButton.GetPropertyValue("label"));
             hashAfter = (string) driver.ExecuteScript("return location.hash;");
-            Assert.Equals("#qx.ui.Basic.Atom", hashAfter);
+            Assert.Equals("#qx.ui.basic.Atom", hashAfter);
         }
 
 //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:

@@ -31,7 +31,7 @@ namespace Qooxdoo.WebDriverDemo.DemoBrowser.Table
 //ORIGINAL LINE: @Before public void setUp()
         public virtual void SetUp()
         {
-            table = (Table) driver.FindWidget(By.Qxh("*/qx.ui.Table.Table"));
+            table = (Table) driver.FindWidget(By.Qxh("*/qx.ui.table.Table"));
         }
 
 //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:

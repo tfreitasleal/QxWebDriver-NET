@@ -1,12 +1,12 @@
-﻿namespace Qooxdoo.WebDriverDemo.DesktopApiViewer
-{
+﻿using Assert = NUnit.Framework.Assert;
+//using BeforeClass = NUnit.Framework.BeforeClass;
+using By = Qooxdoo.WebDriver.By;
+using IWidget = Qooxdoo.WebDriver.UI.IWidget;
+using Table = Qooxdoo.WebDriver.UI.Table.Table;
+using WebElement = OpenQA.Selenium.IWebElement;
 
-    using Assert = NUnit.Framework.Assert;
-    //using BeforeClass = NUnit.Framework.BeforeClass;
-    using By = Qooxdoo.WebDriver.By;
-    using IWidget = Qooxdoo.WebDriver.UI.IWidget;
-    using Table = Qooxdoo.WebDriver.UI.Table.Table;
-    using WebElement = OpenQA.Selenium.IWebElement;
+namespace Qooxdoo.WebDriverDemo.DesktopApiViewer
+{
 
     public abstract class DesktopApiViewer : IntegrationTest
     {
@@ -47,7 +47,7 @@
         {
             SelectView("Search");
             TypeInSearch(className);
-            string tablePath = "*/apiviewer.ui.SearchView/*/qx.ui.Table.Table";
+            string tablePath = "*/apiviewer.ui.SearchView/*/qx.ui.table.Table";
             Table table = (Table) driver.FindWidget(By.Qxh(tablePath));
             WebElement row = table.ScrollToRow(0);
             row.Click();

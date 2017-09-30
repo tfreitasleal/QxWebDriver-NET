@@ -20,7 +20,7 @@ namespace Qooxdoo.WebDriverDemo.DesktopApiViewer
         public static void setUpBeforeClass()
         {
             DesktopApiViewer.setUpBeforeClass();
-            string className = "qx.ui.Table.Pane.Scroller";
+            string className = "qx.ui.table.pane.Scroller";
             SelectClass(className);
         }
 
