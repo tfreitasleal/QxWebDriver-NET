@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using AbstractScrollArea = Qooxdoo.WebDriver.UI.Core.Scroll.AbstractScrollArea;
-using WebElement = OpenQA.Selenium.IWebElement;
-
-/* ************************************************************************
+﻿/*************************************************************************
 
    qxwebdriver-java
 
@@ -19,13 +15,16 @@ using WebElement = OpenQA.Selenium.IWebElement;
    Authors:
  * Daniel Wagner (danielwagner)
 
- ************************************************************************ */
+ *************************************************************************/
+
+using System.Collections.Generic;
+using OpenQA.Selenium;
 
 namespace Qooxdoo.WebDriver.UI.Table.Pane
 {
-    public class Scroller : Core.Scroll.AbstractScrollArea, IScrollable
+    public class Scroller : Core.Scroll.AbstractScrollArea
     {
-        public Scroller(WebElement element, QxWebDriver webDriver) : base(element, webDriver)
+        public Scroller(IWebElement element, QxWebDriver webDriver) : base(element, webDriver)
         {
         }
 
@@ -41,11 +40,9 @@ namespace Qooxdoo.WebDriver.UI.Table.Pane
             {
                 return (long?) JsRunner.RunScript("getTableScrollerMaximum", contentElement);
             }
-            else
-            {
-                // TODO
-                return new long?(0);
-            }
+
+            // TODO
+            return new long?(0);
         }
 
         public override long? GetScrollPosition(string direction)
@@ -60,17 +57,15 @@ namespace Qooxdoo.WebDriver.UI.Table.Pane
             {
                 return (long?) JsRunner.RunScript("getTableRowHeight", contentElement);
             }
-            else
-            {
-                // TODO
-                return new long?(0);
-            }
+
+            // TODO
+            return new long?(0);
         }
 
-        public virtual WebElement GetVisibleRow(int? index)
+        public virtual IWebElement GetVisibleRow(int? index)
         {
             IWidget pane = GetChildControl("pane");
-            IList<WebElement> rows = pane.ContentElement.FindElements(OpenQA.Selenium.By.XPath("div/div"));
+            IList<IWebElement> rows = pane.ContentElement.FindElements(OpenQA.Selenium.By.XPath("div/div"));
             if (index <= rows.Count)
             {
                 return rows[index.Value];
@@ -78,7 +73,7 @@ namespace Qooxdoo.WebDriver.UI.Table.Pane
             return null;
         }
 
-        public virtual WebElement ScrollToRow(int? rowIndex)
+        public virtual IWebElement ScrollToRow(int? rowIndex)
         {
             long? firstVisibleRow = FirstVisibleRow;
             long? visibleRowCount = VisibleRowCount;

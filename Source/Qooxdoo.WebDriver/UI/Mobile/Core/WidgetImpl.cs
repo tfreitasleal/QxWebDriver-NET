@@ -1,20 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Drawing;
-using System.Threading;
-using OpenQA.Selenium;
-using Actions = OpenQA.Selenium.Interactions.Actions;
-using Coordinates = OpenQA.Selenium.Interactions.Internal.ICoordinates;
-using HasInputDevices = OpenQA.Selenium.IHasInputDevices;
-using HasTouchScreen = OpenQA.Selenium.IHasTouchScreen;
-using InterruptedException = System.Threading.ThreadInterruptedException;
-using Locatable = OpenQA.Selenium.ILocatable;
-using Mouse = OpenQA.Selenium.IMouse;
-using Point = System.Drawing.Point;
-using TouchActions = OpenQA.Selenium.Interactions.TouchActions;
-using WebDriver = OpenQA.Selenium.IWebDriver;
-using WebElement = OpenQA.Selenium.IWebElement;
-
-/* ************************************************************************
+﻿/*************************************************************************
 
    qxwebdriver-java
 
@@ -31,13 +15,21 @@ using WebElement = OpenQA.Selenium.IWebElement;
    Authors:
      * Daniel Wagner (danielwagner)
 
-************************************************************************ */
+*************************************************************************/
+
+using System.Collections.Generic;
+using System.Drawing;
+using System.Threading;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
+using OpenQA.Selenium.Interactions.Internal;
+using InterruptedException = System.Threading.ThreadInterruptedException;
 
 namespace Qooxdoo.WebDriver.UI.Mobile.Core
 {
     public class WidgetImpl : UI.Core.WidgetImpl, ITouchable
     {
-        public WidgetImpl(WebElement element, QxWebDriver webDriver) : base(element, webDriver)
+        public WidgetImpl(IWebElement element, QxWebDriver webDriver) : base(element, webDriver)
         {
             // workaround for https://github.com/selendroid/selendroid/issues/337
             contentElement = element;
@@ -52,10 +44,8 @@ namespace Qooxdoo.WebDriver.UI.Mobile.Core
                     string script = "return arguments[0].offsetWidth > 0 || arguments[0].offsetHeight > 0";
                     return ((bool?) JsExecutor.ExecuteScript(script, contentElement)).Value;
                 }
-                else
-                {
-                    return false;
-                }
+
+                return false;
             }
         }
 
@@ -64,9 +54,9 @@ namespace Qooxdoo.WebDriver.UI.Mobile.Core
             Tap(Driver.WebDriver, contentElement);
         }
 
-        public static void Tap(IWebDriver driver, WebElement element)
+        public static void Tap(IWebDriver driver, IWebElement element)
         {
-            if (driver is HasTouchScreen)
+            if (driver is IHasTouchScreen)
             {
                 TouchActions tap = (new TouchActions(driver)).SingleTap(element);
                 tap.Perform();
@@ -82,9 +72,9 @@ namespace Qooxdoo.WebDriver.UI.Mobile.Core
             Longtap(Driver.WebDriver, contentElement);
         }
 
-        public static void Longtap(IWebDriver driver, WebElement element)
+        public static void Longtap(IWebDriver driver, IWebElement element)
         {
-            if (driver is HasTouchScreen)
+            if (driver is IHasTouchScreen)
             {
                 TouchActions longtap = new TouchActions(driver);
                 Point center = GetCenter(element);
@@ -102,9 +92,9 @@ namespace Qooxdoo.WebDriver.UI.Mobile.Core
             }
             else
             {
-                Locatable locatable = (Locatable) element;
-                Coordinates coords = locatable.Coordinates;
-                Mouse mouse = ((HasInputDevices) driver).Mouse;
+                ILocatable locatable = (ILocatable) element;
+                ICoordinates coords = locatable.Coordinates;
+                IMouse mouse = ((IHasInputDevices) driver).Mouse;
                 mouse.MouseDown(coords);
                 try
                 {
@@ -117,7 +107,7 @@ namespace Qooxdoo.WebDriver.UI.Mobile.Core
             }
         }
 
-        protected internal static Point GetCenter(WebElement element)
+        protected internal static Point GetCenter(IWebElement element)
         {
             Size size = element.Size;
             int halfWidth = size.Width / 2;
@@ -136,9 +126,9 @@ namespace Qooxdoo.WebDriver.UI.Mobile.Core
             Track(Driver.WebDriver, contentElement, x, y, step);
         }
 
-        public static void Track(IWebDriver driver, WebElement element, int x, int y, int step)
+        public static void Track(IWebDriver driver, IWebElement element, int x, int y, int step)
         {
-            if (driver is HasTouchScreen)
+            if (driver is IHasTouchScreen)
             {
                 if (step == 0)
                 {
@@ -221,8 +211,8 @@ namespace Qooxdoo.WebDriver.UI.Mobile.Core
 
         public virtual void ScrollTo(int x, int y)
         {
-            string script = "qx.ui.mobile.Core.Widget.getWidgetById(arguments[0].id).ScrollTo(" + x + ", " + y + ")";
-            IList<WebElement> scrollContainers = Driver.FindElements(By.CssSelector(".Scroll"));
+            string script = "qx.ui.mobile.core.Widget.getWidgetById(arguments[0].id).scrollTo(" + x + ", " + y + ")";
+            IList<IWebElement> scrollContainers = Driver.FindElements(By.CssSelector(".Scroll"));
 
             using (var itr = scrollContainers.GetEnumerator())
             {

@@ -1,19 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using Qooxdoo.WebDriver.Resources;
-using Qooxdoo.WebDriver.UI;
-using JavaScriptExecutor = OpenQA.Selenium.IJavaScriptExecutor;
-using LogEntry = Qooxdoo.WebDriver.Log.LogEntry;
-using Options = OpenQA.Selenium.IOptions;
-using WebDriver = OpenQA.Selenium.IWebDriver;
-using WebElement = OpenQA.Selenium.IWebElement;
-using Navigation = OpenQA.Selenium.INavigation;
-using TargetLocator = OpenQA.Selenium.ITargetLocator;
-
-/* ************************************************************************
+﻿/*************************************************************************
 
    qxwebdriver-java
 
@@ -30,7 +15,15 @@ using TargetLocator = OpenQA.Selenium.ITargetLocator;
    Authors:
      * Daniel Wagner (danielwagner)
 
-************************************************************************ */
+*************************************************************************/
+
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using Qooxdoo.WebDriver.Resources;
+using Qooxdoo.WebDriver.UI;
 
 namespace Qooxdoo.WebDriver
 {
@@ -40,12 +33,18 @@ namespace Qooxdoo.WebDriver
     /// Note that the WebDriver used <strong>must</strong> implement the
     /// <seealso cref="OpenQA.Selenium.IJavaScriptExecutor"/> interface.
     /// </summary>
-    public class QxWebDriver : IWebDriver, JavaScriptExecutor
+    public class QxWebDriver : IWebDriver, IJavaScriptExecutor
     {
+        private readonly IWebDriver _driver;
+        private readonly IWidgetFactory _widgetFactory;
+
+        public IJavaScriptExecutor JsExecutor;
+        public JavaScriptRunner JsRunner;
+
         public QxWebDriver(IWebDriver webdriver)
         {
             _driver = webdriver;
-            JsExecutor = (JavaScriptExecutor) _driver;
+            JsExecutor = (IJavaScriptExecutor) _driver;
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
             _widgetFactory = new DefaultWidgetFactory(this);
         }
@@ -53,86 +52,56 @@ namespace Qooxdoo.WebDriver
         public QxWebDriver(IWebDriver webdriver, IWidgetFactory widgetFactory)
         {
             _driver = webdriver;
-            JsExecutor = (JavaScriptExecutor) _driver;
+            JsExecutor = (IJavaScriptExecutor) _driver;
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
         }
 
-        /*/// <summary>
+        /// <summary>
         /// A condition that waits until the qooxdoo application in the browser is
-        /// ready (<code>qx.Core.Init.getApplication()</code> returns anything truthy).
+        /// ready (<code>qx.core.Init.getApplication()</code> returns anything truthy).
         /// </summary>
-        public virtual ExpectedCondition<bool?> QxAppIsReady()
+        public Func<IWebDriver, bool> QxAppIsReady()
         {
-            return new ExpectedConditionAnonymousInnerClass(this);
-        }
-
-        private class ExpectedConditionAnonymousInnerClass : ExpectedCondition<bool?>
-        {
-            private readonly QxWebDriver outerInstance;
-
-            public ExpectedConditionAnonymousInnerClass(QxWebDriver outerInstance)
-            {
-                this.outerInstance = outerInstance;
-            }
-
-            public bool? Apply(WebDriver driver)
+            return driver =>
             {
                 object result = null;
                 string script = JavaScript.Instance.GetValue("isApplicationReady");
                 try
                 {
-                    result = outerInstance.JsExecutor.ExecuteScript(script);
+                    result = JsExecutor.ExecuteScript(script);
                 }
-                catch (WebDriverException)
+                catch (WebDriverException e)
                 {
                 }
-                bool? isReady = (bool?) result;
+                var isReady = (bool) result;
                 return isReady;
-            }
-
-            public string ToString()
-            {
-                return "qooxdoo application is ready.";
-            }
-        }*/
+            };
+        }
 
         /// <summary>
         /// A condition that waits until the qooxdoo application in the browser is
-        /// ready (<code>qx.Core.Init.getApplication()</code> returns anything truthy).
+        /// ready (<code>qx.core.Init.getApplication()</code> returns anything truthy).
         /// </summary>
-        /*public ExpectedCondition<Boolean> QxAppIsReady()
-        {
+        /*public ExpectedCondition<Boolean> qxAppIsReady() {
             return new ExpectedCondition<Boolean>() {
-                    @Override
-
-                    public Boolean apply(WebDriver driver)
-                    {
+                @Override
+                public Boolean apply(WebDriver driver) {
                     Object result = null;
-                    String script = JavaScript.Instance.GetValue("isApplicationReady");
-                    try
-                    {
-                    result = JsExecutor.ExecuteScript(script);
+                    String script = JavaScript.INSTANCE.getValue("isApplicationReady");
+                    try {
+                        result = jsExecutor.executeScript(script);
+                    } catch(org.openqa.selenium.WebDriverException e) {
+                    }
+                    Boolean isReady = (Boolean) result;
+                    return isReady;
                 }
-                catch (org.openqa.selenium.WebDriverException e)
-            {
 
-            }
-            Boolean isReady = (Boolean)result;
-            return isReady;
-            }
-
-            @Override
-            public String toString()
-            {
-                return "qooxdoo application is ready.";
-            }
+                @Override
+                public String toString() {
+                    return "qooxdoo application is ready.";
+                }
             };
         }*/
-
-        public JavaScriptExecutor JsExecutor;
-        public JavaScriptRunner JsRunner;
-        private readonly IWebDriver _driver;
-        private readonly IWidgetFactory _widgetFactory;
 
         /// <summary>
         /// Returns the original WebDriver instance
@@ -150,12 +119,10 @@ namespace Qooxdoo.WebDriver
         /// <returns> The first matching element on the current page </returns>
         /// <exception cref="NoSuchElementException"> If no matching widget was found before the timeout elapsed </exception>
         /// <seealso cref="By"/>
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-        //ORIGINAL LINE: protected Qooxdoo.WebDriver.UI.IWidget FindWidget(OpenQA.Selenium.By by, long timeoutInSeconds) throws OpenQA.Selenium.NoSuchElementException
         protected internal virtual IWidget FindWidget(OpenQA.Selenium.By by, long timeoutInSeconds)
         {
             WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(timeoutInSeconds));
-            WebElement element;
+            IWebElement element;
             try
             {
                 element = wait.Until(ExpectedConditions.ElementExists(by));
@@ -196,10 +163,10 @@ namespace Qooxdoo.WebDriver
         /// <summary>
         /// Returns an instance of <seealso cref="IWidget"/> or one of its subclasses that
         /// represents the qooxdoo widget containing the given element. </summary>
-        /// <param name="element"> A WebElement representing a DOM element that is part of a
+        /// <param name="element"> A IWebElement representing a DOM element that is part of a
         /// qooxdoo widget </param>
         /// <returns> Widget object </returns>
-        public virtual IWidget GetWidgetForElement(WebElement element)
+        public virtual IWidget GetWidgetForElement(IWebElement element)
         {
             return _widgetFactory.GetWidgetForElement(element);
         }
@@ -277,12 +244,12 @@ namespace Qooxdoo.WebDriver
             _driver.Close();
         }
 
-        public WebElement FindElement(OpenQA.Selenium.By arg0)
+        public IWebElement FindElement(OpenQA.Selenium.By arg0)
         {
             return _driver.FindElement(arg0);
         }
 
-        public ReadOnlyCollection<WebElement> FindElements(OpenQA.Selenium.By arg0)
+        public ReadOnlyCollection<IWebElement> FindElements(OpenQA.Selenium.By arg0)
         {
             return _driver.FindElements(arg0);
         }
@@ -299,13 +266,11 @@ namespace Qooxdoo.WebDriver
         }
 
         /// <summary>
-        /// Wait until qx.Core.Init.getApplication() returns something truthy.
+        /// Wait until qx.core.Init.getApplication() returns something truthy.
         /// </summary>
         public virtual void WaitForQxApplication()
         {
-            //new WebDriverWait(_driver, TimeSpan.FromSeconds(30)).Until(QxAppIsReady());
-
-            // todo: fix it properly
+            new WebDriverWait(_driver, TimeSpan.FromSeconds(30)).Until(QxAppIsReady());
         }
 
         /// <summary>
@@ -338,12 +303,12 @@ namespace Qooxdoo.WebDriver
             get { return _driver.WindowHandles; }
         }
 
-        public Options Manage()
+        public IOptions Manage()
         {
             return _driver.Manage();
         }
 
-        public Navigation Navigate()
+        public INavigation Navigate()
         {
             return _driver.Navigate();
         }
@@ -353,7 +318,7 @@ namespace Qooxdoo.WebDriver
             _driver.Quit();
         }
 
-        public TargetLocator SwitchTo()
+        public ITargetLocator SwitchTo()
         {
             return _driver.SwitchTo();
         }

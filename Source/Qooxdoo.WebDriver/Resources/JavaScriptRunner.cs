@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using JavaScriptExecutor = OpenQA.Selenium.IJavaScriptExecutor;
-
-/* ************************************************************************
+﻿/*************************************************************************
 
    qxwebdriver-java
 
@@ -18,19 +15,22 @@ using JavaScriptExecutor = OpenQA.Selenium.IJavaScriptExecutor;
    Authors:
      * Daniel Wagner (danielwagner)
 
-************************************************************************ */
+*************************************************************************/
+
+using System.Collections.Generic;
+using OpenQA.Selenium;
 
 namespace Qooxdoo.WebDriver.Resources
 {
     public class JavaScriptRunner
     {
-        public JavaScriptRunner(JavaScriptExecutor jsExecutor)
+        public JavaScriptRunner(IJavaScriptExecutor jsExecutor)
         {
-            exec = jsExecutor;
-            exec.ExecuteScript(Namespace + " = {};");
+            Exec = jsExecutor;
+            Exec.ExecuteScript(Namespace + " = {};");
         }
 
-        protected internal JavaScriptExecutor exec;
+        protected internal IJavaScriptExecutor Exec;
 
         internal static string Namespace = "qxwebdriver";
 
@@ -45,7 +45,7 @@ namespace Qooxdoo.WebDriver.Resources
 
             string fqFunctionName = Namespace + "." + scriptId;
             string call = "return " + fqFunctionName + ".apply(this, arguments);";
-            return exec.ExecuteScript(call, args);
+            return Exec.ExecuteScript(call, args);
         }
 
         public virtual void DefineFunction(string scriptId)
@@ -53,10 +53,8 @@ namespace Qooxdoo.WebDriver.Resources
             string fqFunctionName = Namespace + "." + scriptId;
             string function = "function() {" + JavaScript.Instance.GetValue(scriptId) + "}";
             string script = fqFunctionName + " = " + function;
-            exec.ExecuteScript(script);
+            Exec.ExecuteScript(script);
             CreatedFunctions.Add(scriptId);
         }
-
     }
-
 }

@@ -1,6 +1,4 @@
-﻿using WebElement = OpenQA.Selenium.IWebElement;
-
-/* ************************************************************************
+﻿/*************************************************************************
 
    qxwebdriver-java
 
@@ -17,15 +15,15 @@
    Authors:
      * Daniel Wagner (danielwagner)
 
-************************************************************************ */
+*************************************************************************/
+
+using OpenQA.Selenium;
 
 namespace Qooxdoo.WebDriver.UI.Form
 {
-
     public class VirtualComboBox : ComboBox
     {
-
-        public VirtualComboBox(WebElement element, QxWebDriver webDriver) : base(element, webDriver)
+        public VirtualComboBox(IWebElement element, QxWebDriver webDriver) : base(element, webDriver)
         {
         }
 
@@ -41,7 +39,5 @@ namespace Qooxdoo.WebDriver.UI.Form
                 return list;
             }
         }
-
     }
-
 }

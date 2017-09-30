@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Qooxdoo.WebDriver.UI.Core.Scroll;
-using WebElement = OpenQA.Selenium.IWebElement;
-
-/* ************************************************************************
+﻿/*************************************************************************
 
    qxwebdriver-java
 
@@ -20,7 +15,12 @@ using WebElement = OpenQA.Selenium.IWebElement;
    Authors:
      * Daniel Wagner (danielwagner)
 
-************************************************************************ */
+*************************************************************************/
+
+using System;
+using System.Collections.Generic;
+using OpenQA.Selenium;
+using Qooxdoo.WebDriver.UI.Core.Scroll;
 
 namespace Qooxdoo.WebDriver.UI.Menu
 {
@@ -32,7 +32,7 @@ namespace Qooxdoo.WebDriver.UI.Menu
     {
         //TODO: Nested menus
 
-        public Menu(WebElement element, QxWebDriver webDriver) : base(element, webDriver)
+        public Menu(IWebElement element, QxWebDriver webDriver) : base(element, webDriver)
         {
         }
 
@@ -51,15 +51,12 @@ namespace Qooxdoo.WebDriver.UI.Menu
             bool? hasSlideBar = HasChildControl("slidebar");
             if (hasSlideBar.Value)
             {
-                Console.Error.WriteLine("Menu item selection by index is currently " +
-                                        "only supported for non-scrolling menus!");
+                Console.Error.WriteLine("Menu item selection by index is currently only supported for non-scrolling menus!");
                 return null;
             }
-            else
-            {
-                IList<IWidget> children = Children;
-                return children[index.Value];
-            }
+
+            IList<IWidget> children = Children;
+            return children[index.Value];
         }
 
         public IWidget GetSelectableItem(string label)
@@ -71,10 +68,8 @@ namespace Qooxdoo.WebDriver.UI.Menu
                 ScrollTo("y", 0);
                 return ScrollToChild("y", itemLocator);
             }
-            else
-            {
-                return FindWidget(itemLocator);
-            }
+
+            return FindWidget(itemLocator);
         }
 
         public virtual ScrollPane ScrollPane

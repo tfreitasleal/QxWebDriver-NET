@@ -1,7 +1,4 @@
-﻿using Qooxdoo.WebDriver.UI.Core;
-using WebElement = OpenQA.Selenium.IWebElement;
-
-/* ************************************************************************
+﻿/*************************************************************************
 
    qxwebdriver-java
 
@@ -18,13 +15,16 @@ using WebElement = OpenQA.Selenium.IWebElement;
    Authors:
      * Daniel Wagner (danielwagner)
 
-************************************************************************ */
+*************************************************************************/
+
+using OpenQA.Selenium;
+using Qooxdoo.WebDriver.UI.Core;
 
 namespace Qooxdoo.WebDriver.UI.Basic
 {
     public class Label : WidgetImpl
     {
-        public Label(WebElement element, QxWebDriver webDriver) : base(element, webDriver)
+        public Label(IWebElement element, QxWebDriver webDriver) : base(element, webDriver)
         {
         }
 
@@ -35,7 +35,7 @@ namespace Qooxdoo.WebDriver.UI.Basic
         {
             get
             {
-                return (string) ExecuteJavascript("return qx.ui.Core.Widget.getWidgetByElement(arguments[0]).getValue().toString()");
+                return (string) ExecuteJavascript("return qx.ui.core.Widget.getWidgetByElement(arguments[0]).getValue().toString()");
             }
         }
     }

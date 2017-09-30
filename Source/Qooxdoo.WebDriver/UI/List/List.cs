@@ -1,7 +1,4 @@
-﻿using System;
-using WebElement = OpenQA.Selenium.IWebElement;
-
-/* ************************************************************************
+﻿/*************************************************************************
 
    qxwebdriver-java
 
@@ -18,26 +15,26 @@ using WebElement = OpenQA.Selenium.IWebElement;
    Authors:
      * Daniel Wagner (danielwagner)
 
-************************************************************************ */
+*************************************************************************/
+
+using System;
+using OpenQA.Selenium;
 
 namespace Qooxdoo.WebDriver.UI.List
 {
     /// <summary>
-    /// Represents a <a href="http://demo.qooxdoo.org/current/apiviewer/#qx.ui.List.List">List</a>
+    /// Represents a <a href="http://demo.qooxdoo.org/current/apiviewer/#qx.ui.list.List">List</a>
     /// widget
     /// </summary>
-    public class List : Form.List, IScrollable, ISelectable
+    public class List : Form.List, ISelectable
     {
-
-        public List(WebElement element, QxWebDriver webDriver) : base(element, webDriver)
+        public List(IWebElement element, QxWebDriver webDriver) : base(element, webDriver)
         {
         }
 
         public new virtual IWidget GetSelectableItem(int? index)
         {
-            throw new Exception("GetSelectableItem(Integer index) is not implemented for qx.ui.List.List, use GetSelectableItem(String label) instead.");
+            throw new Exception("GetSelectableItem(Integer index) is not implemented for qx.ui.list.List, use GetSelectableItem(String label) instead.");
         }
-
     }
-
 }

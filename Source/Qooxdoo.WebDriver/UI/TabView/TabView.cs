@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using Qooxdoo.WebDriver.UI.Core;
-using WebElement = OpenQA.Selenium.IWebElement;
-
-/* ************************************************************************
+﻿/*************************************************************************
 
    qxwebdriver-java
 
@@ -20,17 +15,22 @@ using WebElement = OpenQA.Selenium.IWebElement;
    Authors:
      * Daniel Wagner (danielwagner)
 
-************************************************************************ */
+*************************************************************************/
+
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using OpenQA.Selenium;
+using Qooxdoo.WebDriver.UI.Core;
 
 namespace Qooxdoo.WebDriver.UI.TabView
 {
     /// <summary>
-    /// Represents a <a href="http://demo.qooxdoo.org/current/apiviewer/#qx.ui.TabView.TabView">TabView</a>
+    /// Represents a <a href="http://demo.qooxdoo.org/current/apiviewer/#qx.ui.tabview.TabView">TabView</a>
     /// widget
     /// </summary>
     public class TabView : WidgetImpl, ISelectable
     {
-        public TabView(WebElement element, QxWebDriver webDriver) : base(element, webDriver)
+        public TabView(IWebElement element, QxWebDriver webDriver) : base(element, webDriver)
         {
         }
 
@@ -58,10 +58,8 @@ namespace Qooxdoo.WebDriver.UI.TabView
                 {
                     button = iter.Current;
                     string buttonLabel = (string) button.GetPropertyValue("label");
-                    //if (buttonLabel.matches(regex))
                     if (Regex.IsMatch(buttonLabel, regex))
                     {
-                        //return button;
                         break;
                     }
                 }

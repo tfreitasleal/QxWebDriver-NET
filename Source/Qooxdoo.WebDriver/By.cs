@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
-using Qooxdoo.WebDriver.Resources;
-using JavaScriptExecutor = OpenQA.Selenium.IJavaScriptExecutor;
-using SearchContext = OpenQA.Selenium.ISearchContext;
-using WebElement = OpenQA.Selenium.IWebElement;
-
-/* ************************************************************************
+﻿/*************************************************************************
 
    qxwebdriver-java
 
@@ -24,19 +15,24 @@ using WebElement = OpenQA.Selenium.IWebElement;
    Authors:
      * Daniel Wagner (danielwagner)
 
-************************************************************************ */
+*************************************************************************/
+
+using System;
+using System.Collections.Generic;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Remote;
+using Qooxdoo.WebDriver.Resources;
+
 namespace Qooxdoo.WebDriver
 {
-
     public class By : OpenQA.Selenium.By
     {
-
-        public new virtual WebElement FindElement(SearchContext context)
+        public new virtual IWebElement FindElement(ISearchContext context)
         {
             return null;
         }
 
-        public new virtual IList<WebElement> FindElements(SearchContext context)
+        public new virtual IList<IWebElement> FindElements(ISearchContext context)
         {
             return null;
         }
@@ -50,13 +46,11 @@ namespace Qooxdoo.WebDriver
         /// </summary>
         /// <param name="locator"> Locator specification </param>
         /// <returns> By.ByQxh </returns>
-//JAVA TO C# CONVERTER WARNING: 'final' parameters are not available in .NET:
-//ORIGINAL LINE: public static By Qxh(final String locator)
         public static By Qxh(string locator)
         {
-            if (string.ReferenceEquals(locator, null))
+            if (ReferenceEquals(locator, null))
             {
-                throw new System.ArgumentException("Can't find elements without a locator string.");
+                throw new ArgumentException("Can't find elements without a locator string.");
             }
 
             return new ByQxh(locator, true);
@@ -70,13 +64,11 @@ namespace Qooxdoo.WebDriver
         /// <param name="onlySeeable"> <code>false</code> if invisible widgets should be
         /// traversed. Note that this can considerably increase execution time. </param>
         /// <returns> configured ByQxh instance </returns>
-//JAVA TO C# CONVERTER WARNING: 'final' parameters are not available in .NET:
-//ORIGINAL LINE: public static By Qxh(final String locator, final Nullable<bool> onlySeeable)
         public static By Qxh(string locator, bool? onlySeeable)
         {
-            if (string.ReferenceEquals(locator, null))
+            if (ReferenceEquals(locator, null))
             {
-                throw new System.ArgumentException("Can't find elements without a locator string.");
+                throw new ArgumentException("Can't find elements without a locator string.");
             }
             return new ByQxh(locator, onlySeeable);
         }
@@ -87,17 +79,16 @@ namespace Qooxdoo.WebDriver
         /// </summary>
         public class ByQxh : By
         {
-
             internal readonly string Locator;
             internal bool? OnlySeeable;
 
             public ByQxh(string locator, bool? onlySeeable)
             {
-                this.Locator = locator;
-                this.OnlySeeable = onlySeeable;
+                Locator = locator;
+                OnlySeeable = onlySeeable;
             }
 
-            public override IList<WebElement> FindElements(SearchContext context)
+            public override IList<IWebElement> FindElements(ISearchContext context)
             {
                 //TODO: findByQxh only returns the first match
                 throw new Exception("ByQxh.FindElements is not yet implemented.");
@@ -105,26 +96,26 @@ namespace Qooxdoo.WebDriver
 
             /// <summary>
             /// Searches for elements by traversing the qooxdoo application's widget
-            /// hierarchy using the current SearchContext as the root node.
+            /// hierarchy using the current ISearchContext as the root node.
             /// See the <a href="TODO">Qxh locator manual page</a> for details.
             /// </summary>
-            public override WebElement FindElement(SearchContext context)
+            public override IWebElement FindElement(ISearchContext context)
             {
-                JavaScriptExecutor jsExecutor;
+                IJavaScriptExecutor jsExecutor;
 
                 RemoteWebElement contextElement = null;
 
                 if (context is RemoteWebElement)
                 {
                     contextElement = (RemoteWebElement) context;
-                    jsExecutor = (JavaScriptExecutor) contextElement.WrappedDriver;
+                    jsExecutor = (IJavaScriptExecutor) contextElement.WrappedDriver;
                 }
                 else
                 {
-                     jsExecutor = (JavaScriptExecutor) context;
+                    jsExecutor = (IJavaScriptExecutor) context;
                 }
 
-                string script = JavaScript.Instance.GetValue("Qxh");
+                string script = JavaScript.Instance.GetValue("qxh");
 
                 try
                 {
@@ -138,7 +129,8 @@ namespace Qooxdoo.WebDriver
                     {
                         try
                         {
-                            result = jsExecutor.ExecuteScript(script, Locator, OnlySeeable, (WebElement) contextElement);
+                            result = jsExecutor.ExecuteScript(script, Locator, OnlySeeable,
+                                (IWebElement) contextElement);
                         }
                         //todo: catch (com.opera.Core.systems.scope.exceptions.ScopeException)
                         catch (Exception)
@@ -147,12 +139,10 @@ namespace Qooxdoo.WebDriver
                             // with an OperaWebElement as argument
                             return null;
                         }
-
                     }
-                    return (WebElement) result;
-
+                    return (IWebElement) result;
                 }
-                catch (OpenQA.Selenium.WebDriverException e)
+                catch (WebDriverException e)
                 {
                     string msg = e.Message;
                     if (msg.Contains("Error resolving Qxh path") || msg.Contains("JavaScript error"))
@@ -160,7 +150,8 @@ namespace Qooxdoo.WebDriver
                         // IEDriver doesn't include the original JS exception's message :(
                         return null;
                     }
-                    else if (msg.Contains("Illegal path step"))
+
+                    if (msg.Contains("Illegal path step"))
                     {
                         string reason = "Invalid Qxh selector " + Locator;
                         throw new InvalidSelectorException(reason, e);
@@ -179,5 +170,4 @@ namespace Qooxdoo.WebDriver
             }
         }
     }
-
 }

@@ -1,7 +1,4 @@
-﻿using Qooxdoo.WebDriver.UI.Core.Scroll;
-using WebElement = OpenQA.Selenium.IWebElement;
-
-/* ************************************************************************
+﻿/*************************************************************************
 
    qxwebdriver-java
 
@@ -18,26 +15,27 @@ using WebElement = OpenQA.Selenium.IWebElement;
    Authors:
      * Daniel Wagner (danielwagner)
 
-************************************************************************ */
+*************************************************************************/
+
+using OpenQA.Selenium;
+using Qooxdoo.WebDriver.UI.Core.Scroll;
 
 namespace Qooxdoo.WebDriver.UI.Form
 {
-
     /// <summary>
     /// Represents a <a href="http://demo.qooxdoo.org/current/apiviewer/#qx.ui.form.List">List</a>
     /// widget
     /// </summary>
     public class List : AbstractScrollArea, ISelectable
     {
-
-        public List(WebElement element, QxWebDriver webDriver) : base(element, webDriver)
+        public List(IWebElement element, QxWebDriver webDriver) : base(element, webDriver)
         {
         }
 
         public virtual IWidget GetSelectableItem(int? index)
         {
             object result = JsRunner.RunScript("getItemFromSelectables", contentElement, index);
-            WebElement element = (WebElement) result;
+            IWebElement element = (IWebElement) result;
             return Driver.GetWidgetForElement(element);
         }
 
@@ -60,5 +58,4 @@ namespace Qooxdoo.WebDriver.UI.Form
             item.Click();
         }
     }
-
 }

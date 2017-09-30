@@ -1,7 +1,4 @@
-﻿using Qooxdoo.WebDriver.UI.Core;
-using WebElement = OpenQA.Selenium.IWebElement;
-
-/* ************************************************************************
+﻿/*************************************************************************
 
    qxwebdriver-java
 
@@ -18,24 +15,25 @@ using WebElement = OpenQA.Selenium.IWebElement;
    Authors:
      * Daniel Wagner (danielwagner)
 
-************************************************************************ */
+*************************************************************************/
+
+using OpenQA.Selenium;
+using Qooxdoo.WebDriver.UI.Core;
 
 namespace Qooxdoo.WebDriver.UI.Form
 {
-
     /// <summary>
     /// Represents a <a href="http://demo.qooxdoo.org/current/apiviewer/#qx.ui.form.SelectBox">SelectBox</a>
     /// widget
     /// </summary>
     public class SelectBox : WidgetImpl, ISelectable
     {
-
-        public SelectBox(WebElement element, QxWebDriver driver) : base(element, driver)
-        {
-        }
-
         protected internal IWidget button = null;
         protected internal ISelectable list = null;
+
+        public SelectBox(IWebElement element, QxWebDriver driver) : base(element, driver)
+        {
+        }
 
         public virtual IWidget GetSelectableItem(int? index)
         {
@@ -82,7 +80,5 @@ namespace Qooxdoo.WebDriver.UI.Form
                 return list;
             }
         }
-
     }
-
 }

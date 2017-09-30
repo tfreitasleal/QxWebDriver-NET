@@ -1,6 +1,6 @@
 # QxWebDriver-NET
 
-For the moment this project is just a place holder as THE SOURCES DON'T BUILD.
+The Sources build but the Samples don't build.
 
 THIS FILE WAS ADAPTED FROM qxwebdriver-java AND IS A WORK IN PROGRESS.
 

@@ -2,7 +2,7 @@
 {
     /// <summary>
     /// This interface represents qx.Mobile widgets with selectable child items, e.g.
-    /// qx.ui.mobile.List.List. For qx.Desktop widgets, please use
+    /// qx.ui.mobile.list.List. For qx.Desktop widgets, please use
     /// Qooxdoo.WebDriver.UI.ISelectable instead.
     ///
     /// </summary>

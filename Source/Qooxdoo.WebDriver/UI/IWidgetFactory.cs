@@ -1,6 +1,4 @@
-﻿using WebElement = OpenQA.Selenium.IWebElement;
-
-/* ************************************************************************
+﻿/*************************************************************************
 
    qxwebdriver-java
 
@@ -17,12 +15,14 @@
    Authors:
      * Daniel Wagner (danielwagner)
 
-************************************************************************ */
+*************************************************************************/
+
+using OpenQA.Selenium;
 
 namespace Qooxdoo.WebDriver.UI
 {
     public interface IWidgetFactory
     {
-        IWidget GetWidgetForElement(WebElement element);
+        IWidget GetWidgetForElement(IWebElement element);
     }
 }

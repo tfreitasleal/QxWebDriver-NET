@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using JSONArray = org.json.simple.JSONArray;
-using JSONObject = org.json.simple.JSONObject;
-using JSONParser = org.json.simple.parser.JSONParser;
-using ParseException = org.json.simple.parser.ParseException;
-using WidgetImpl = Qooxdoo.WebDriver.UI.Core.WidgetImpl;
-using Scroller = Qooxdoo.WebDriver.UI.Table.Pane.Scroller;
-using WebElement = OpenQA.Selenium.IWebElement;
-
-/* ************************************************************************
+﻿/*************************************************************************
 
    qxwebdriver-java
 
@@ -26,14 +15,24 @@ using WebElement = OpenQA.Selenium.IWebElement;
    Authors:
  * Daniel Wagner (danielwagner)
 
- ************************************************************************ */
+ *************************************************************************/
+
+using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using OpenQA.Selenium;
+
+/*using JSONArray = org.json.simple.JSONArray;
+using JSONObject = org.json.simple.JSONObject;
+using JSONParser = org.json.simple.parser.JSONParser;
+using ParseException = org.json.simple.parser.ParseException;*/
 
 namespace Qooxdoo.WebDriver.UI.Table
 {
     public class Table : Core.WidgetImpl, IScrollable
     {
-
-        public Table(WebElement element, QxWebDriver webDriver) : base(element, webDriver)
+        public Table(IWebElement element, QxWebDriver webDriver) : base(element, webDriver)
         {
         }
 
@@ -41,16 +40,17 @@ namespace Qooxdoo.WebDriver.UI.Table
         {
             get
             {
-                IList<WebElement> children = HeaderCells;
+                IList<IWebElement> children = HeaderCells;
 
                 IList<string> labels = new List<string>();
 
-                using (IEnumerator<WebElement> itr = children.GetEnumerator())
+                using (IEnumerator<IWebElement> itr = children.GetEnumerator())
                 {
                     while (itr.MoveNext())
                     {
-                        WebElement child = itr.Current;
-                        WebElement label = child.FindElement(OpenQA.Selenium.By.XPath("div[not(contains(@style, 'background-image'))]"));
+                        IWebElement child = itr.Current;
+                        IWebElement label =
+                            child.FindElement(OpenQA.Selenium.By.XPath("div[not(contains(@style, 'background-image'))]"));
                         IWidget labelWidget = Driver.GetWidgetForElement(label);
                         labels.Add((string) labelWidget.GetPropertyValue("value"));
                         //labels.add(label.getText());
@@ -61,12 +61,13 @@ namespace Qooxdoo.WebDriver.UI.Table
             }
         }
 
-        protected internal virtual IList<WebElement> HeaderCells
+        protected internal virtual IList<IWebElement> HeaderCells
         {
             get
             {
-                IWidget header = FindWidget(By.Qxh("*/qx.ui.Table.Pane.Header"));
-                IList<WebElement> cells = header.ContentElement.FindElements(OpenQA.Selenium.By.XPath("div[starts-with(@class, 'qx-table-header-cell')]"));
+                IWidget header = FindWidget(By.Qxh("*/qx.ui.table.pane.Header"));
+                IList<IWebElement> cells =
+                    header.ContentElement.FindElements(OpenQA.Selenium.By.XPath("div[starts-with(@class, 'qx-table-header-cell')]"));
 
                 return cells;
             }
@@ -74,17 +75,16 @@ namespace Qooxdoo.WebDriver.UI.Table
 
         public virtual IWidget GetHeaderCell(string label)
         {
-            IList<WebElement> children = HeaderCells;
+            IList<IWebElement> children = HeaderCells;
             IWidget widget = null;
 
-            using (IEnumerator<WebElement> itr = children.GetEnumerator())
+            using (IEnumerator<IWebElement> itr = children.GetEnumerator())
             {
                 while (itr.MoveNext())
                 {
-                    WebElement child = itr.Current;
+                    IWebElement child = itr.Current;
                     if (label.Equals(child.Text))
                     {
-                        //return Driver.GetWidgetForElement(child);
                         widget = Driver.GetWidgetForElement(child);
                         break;
                     }
@@ -96,21 +96,20 @@ namespace Qooxdoo.WebDriver.UI.Table
 
         public virtual IWidget GetHeaderCell(int index)
         {
-            IList<WebElement> children = HeaderCells;
+            IList<IWebElement> children = HeaderCells;
             IWidget widget = null;
 
             int i = -1;
-            using (IEnumerator<WebElement> itr = children.GetEnumerator())
+            using (IEnumerator<IWebElement> itr = children.GetEnumerator())
             {
                 while (itr.MoveNext())
                 {
                     i++;
-                    WebElement child = itr.Current;
+                    IWebElement child = itr.Current;
                     if (i == index)
                     {
-                        //return Driver.GetWidgetForElement(child);
                         widget = Driver.GetWidgetForElement(child);
-                        break;;
+                        break;
                     }
                 }
             }
@@ -123,17 +122,15 @@ namespace Qooxdoo.WebDriver.UI.Table
             get
             {
                 IWidget scroller = Scroller;
-                WebElement button = scroller.ContentElement.FindElement(OpenQA.Selenium.By.XPath("div/div[contains(@class, 'qx-table-header-column-button')]"));
+                IWebElement button = scroller.ContentElement.FindElement(
+                    OpenQA.Selenium.By.XPath("div/div[contains(@class, 'qx-table-header-column-button')]"));
                 return Driver.GetWidgetForElement(button);
             }
         }
 
         public virtual Pane.Scroller Scroller
         {
-            get
-            {
-                return (Pane.Scroller) FindWidget(By.Qxh("*/qx.ui.Table.Pane.Scroller"));
-            }
+            get { return (Pane.Scroller) FindWidget(By.Qxh("*/qx.ui.table.pane.Scroller")); }
         }
 
         public void ScrollTo(string direction, int? position)
@@ -156,12 +153,12 @@ namespace Qooxdoo.WebDriver.UI.Table
             return Scroller.GetScrollPosition(direction);
         }
 
-        public virtual WebElement ScrollToRow(int? rowIndex)
+        public virtual IWebElement ScrollToRow(int? rowIndex)
         {
             return Scroller.ScrollToRow(rowIndex);
         }
 
-        public virtual WebElement GetCellByText(string text)
+        public virtual IWebElement GetCellByText(string text)
         {
             string cellPath = "//div[contains(@class, 'qooxdoo-table-cell') and text()='" + text + "']";
             ScrollToChild("y", OpenQA.Selenium.By.XPath(cellPath));
@@ -179,10 +176,10 @@ namespace Qooxdoo.WebDriver.UI.Table
             return GetCellElement(rowIdx, colIdx).Text;
         }
 
-        public virtual WebElement GetCellElement(long rowIdx, long colIdx)
+        public virtual IWebElement GetCellElement(long rowIdx, long colIdx)
         {
             string cellPath;
-            if (Classname.Equals("qx.ui.Treevirtual.TreeVirtual"))
+            if (Classname.Equals("qx.ui.treevirtual.TreeVirtual"))
             {
                 //
                 // Hierarchy:
@@ -206,16 +203,19 @@ namespace Qooxdoo.WebDriver.UI.Table
                 //System.out.println(this.getPropertyValueAsJson("metaColumnCounts"));
                 if (colIdx == 0)
                 {
-                    cellPath = "./div[1]/div[1]/div[2]//div[contains(@class, 'qooxdoo-table-cell')]/" + "parent::div[count(preceding-sibling::div) = " + (rowIdx) + "]/" + "div";
+                    cellPath = "./div[1]/div[1]/div[2]//div[contains(@class, 'qooxdoo-table-cell')]/" +
+                               "parent::div[count(preceding-sibling::div) = " + (rowIdx) + "]/" + "div";
                 }
                 else
                 {
-                    cellPath = "./div[1]/div[2]/div[2]//div[contains(@class, 'qooxdoo-table-cell')]/" + "parent::div[count(preceding-sibling::div) = " + (rowIdx) + "]/" + "div[position() = " + (colIdx) + "]";
+                    cellPath = "./div[1]/div[2]/div[2]//div[contains(@class, 'qooxdoo-table-cell')]/" +
+                               "parent::div[count(preceding-sibling::div) = " + (rowIdx) + "]/" + "div[position() = " + (colIdx) + "]";
                 }
             }
             else
             {
-                cellPath = ".//div[contains(@class, 'qooxdoo-table-cell')]/" + "parent::div[count(preceding-sibling::div) = " + (rowIdx) + "]/" + "div[position() = " + (colIdx + 1) + "]";
+                cellPath = ".//div[contains(@class, 'qooxdoo-table-cell')]/" +
+                           "parent::div[count(preceding-sibling::div) = " + (rowIdx) + "]/" + "div[position() = " + (colIdx + 1) + "]";
             }
             return FindElement(OpenQA.Selenium.By.XPath(cellPath));
         }
@@ -230,7 +230,7 @@ namespace Qooxdoo.WebDriver.UI.Table
         public virtual long GetRowIndexForCellText(long colIdx, string text)
         {
             string cellPath;
-            if (Classname.Equals("qx.ui.Treevirtual.TreeVirtual"))
+            if (Classname.Equals("qx.ui.treevirtual.TreeVirtual"))
             {
                 // Hierarchy:
                 // * TreeVirtual div (content element)
@@ -264,7 +264,7 @@ namespace Qooxdoo.WebDriver.UI.Table
             {
                 cellPath = ".//div[contains(@class, 'qooxdoo-table-cell') and position() = " + (colIdx + 1) + "]";
             }
-            IList<WebElement> els = FindElements(OpenQA.Selenium.By.XPath(cellPath));
+            IList<IWebElement> els = FindElements(OpenQA.Selenium.By.XPath(cellPath));
 
             for (int rowIdx = 0; rowIdx < els.Count; rowIdx++)
             {
@@ -287,7 +287,7 @@ namespace Qooxdoo.WebDriver.UI.Table
         public virtual IList<long?> GetRowIndexesForCellText(long colIdx, string text)
         {
             string cellPath;
-            if (Classname.Equals("qx.ui.Treevirtual.TreeVirtual"))
+            if (Classname.Equals("qx.ui.treevirtual.TreeVirtual"))
             {
                 // Hierarchy:
                 // * TreeVirtual div (content element)
@@ -321,7 +321,7 @@ namespace Qooxdoo.WebDriver.UI.Table
             {
                 cellPath = ".//div[contains(@class, 'qooxdoo-table-cell') and position() = " + (colIdx + 1) + "]";
             }
-            IList<WebElement> els = FindElements(OpenQA.Selenium.By.XPath(cellPath));
+            IList<IWebElement> els = FindElements(OpenQA.Selenium.By.XPath(cellPath));
             IList<long?> rowIdxs = new List<long?>();
             for (int rowIdx = 0; rowIdx < els.Count; rowIdx++)
             {
@@ -334,21 +334,39 @@ namespace Qooxdoo.WebDriver.UI.Table
             return rowIdxs;
         }
 
-        public virtual IList<Hashtable> SelectedRanges
+        public virtual IList<Dictionary<string, long?>> SelectedRanges
         {
             get
             {
                 string json = (string) JsRunner.RunScript("getTableSelectedRanges", contentElement);
-                JSONParser parser = new JSONParser();
-                IList<Hashtable> ranges = null;
+                //JSONParser parser = new JSONParser();
+                IList<Dictionary<string, long?>> ranges = null;
 
                 object obj;
                 try
                 {
+                    ranges = new List<Dictionary<string, long?>>();
+
+                    JArray jArray = JArray.Parse(json);
+                    using (IEnumerator<JToken> itr = jArray.GetEnumerator())
+                    {
+                        while (itr.MoveNext())
+                        {
+                            var rangeMap = itr.Current;
+                            var range = new Dictionary<string, long?>();
+                            if (rangeMap != null)
+                            {
+                                range["minIndex"] = (long?) rangeMap["minIndex"];
+                                range["maxIndex"] = (long?) rangeMap["maxIndex"];
+                                ranges.Add(range);
+                            }
+                        }
+                    }
+
+                    // Java converted code
+                    /*JObject jObject = JObject.Parse(json);
                     obj = parser.parse(json);
                     JSONArray array = (JSONArray) obj;
-                    ranges = new List<Hashtable>();
-
                     using (IEnumerator<JSONObject> itr = array.GetEnumerator())
                     {
                         while (itr.MoveNext())
@@ -359,9 +377,10 @@ namespace Qooxdoo.WebDriver.UI.Table
                             range["maxIndex"] = (long?) rangeMap.get("maxIndex");
                             ranges.Add(range);
                         }
-                    }
+                    }*/
                 }
-                catch (ParseException e)
+                //catch (ParseException e)
+                catch (JsonException e)
                 {
                     // TODO Auto-generated catch block
                     Console.WriteLine(e.ToString());
@@ -376,7 +395,8 @@ namespace Qooxdoo.WebDriver.UI.Table
         {
             get
             {
-                IWidget focusIndicator = Scroller.FindWidget(By.Qxh("qx.ui.Table.Pane.Clipper/qx.ui.Table.Pane.FocusIndicator"));
+                IWidget focusIndicator =
+                    Scroller.FindWidget(By.Qxh("qx.ui.table.pane.Clipper/qx.ui.table.pane.FocusIndicator"));
                 IWidget editor = focusIndicator.FindWidget(By.Qxh("child[0]"));
                 if (editor.Classname.Equals("qx.ui.container.Composite"))
                 {
@@ -423,5 +443,4 @@ namespace Qooxdoo.WebDriver.UI.Table
             long? result = (long?) JsRunner.RunScript("setTreeNodeOpened", contentElement, rowIdx, opened);
         }
     }
-
 }

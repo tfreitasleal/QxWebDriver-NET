@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using WebElement = OpenQA.Selenium.IWebElement;
-
-/* ************************************************************************
+﻿/*************************************************************************
 
    qxwebdriver-java
 
@@ -18,7 +15,10 @@ using WebElement = OpenQA.Selenium.IWebElement;
    Authors:
      * Daniel Wagner (danielwagner)
 
-************************************************************************ */
+*************************************************************************/
+
+using System.Collections.Generic;
+using OpenQA.Selenium;
 
 namespace Qooxdoo.WebDriver.UI
 {
@@ -29,11 +29,11 @@ namespace Qooxdoo.WebDriver.UI
     /// text field.
     ///
     /// For more advanced interactions on composite widgets such as qx.ui.formComboBox
-    /// or qx.ui.Tree.Tree, see the other interfaces in this namespace.
+    /// or qx.ui.tree.Tree, see the other interfaces in this namespace.
     /// </summary>
     /// <seealso cref="IScrollable"/>
     /// <seealso cref="ISelectable"/>
-    public interface IWidget : WebElement
+    public interface IWidget : IWebElement
     {
         /// <summary>
         /// This widget's qooxdoo object registry ID
@@ -46,9 +46,9 @@ namespace Qooxdoo.WebDriver.UI
         string Classname { get; }
 
         /// <summary>
-        /// The WebElement representing this widget's content element
+        /// The IWebElement representing this widget's content element
         /// </summary>
-        WebElement ContentElement { get; }
+        IWebElement ContentElement { get; }
 
         /// <summary>
         /// Returns a <seealso cref="IWidget"/> representing a child control of this widget.
@@ -82,7 +82,7 @@ namespace Qooxdoo.WebDriver.UI
         /// Returns the value of a qooxdoo property on this widget, serialized in JSON
         /// format.
         /// <strong>NOTE:</strong> Never use this for property values that are instances
-        /// of qx.Core.Object. Circular references in qooxoo's OO system will lead to
+        /// of qx.core.Object. Circular references in qooxoo's OO system will lead to
         /// JavaScript errors.
         /// </summary>
         string GetPropertyValueAsJson(string propertyName);
@@ -91,14 +91,14 @@ namespace Qooxdoo.WebDriver.UI
         /// Returns the value of a qooxdoo property on this widget. See the <seealso cref="OpenQA.Selenium.IJavaScriptExecutor"/>
         /// documentation for details on how JavaScript types are represented.
         /// <strong>NOTE:</strong> Never use this for property values that are instances
-        /// of qx.Core.Object. Circular references in qooxoo's OO system will lead to
+        /// of qx.core.Object. Circular references in qooxoo's OO system will lead to
         /// JavaScript errors.
         /// </summary>
         object GetPropertyValue(string propertyName);
 
         /// <summary>
         /// Returns a List of <seealso cref="IWidget"/>s representing the value of a widget list property,
-        /// e.g. <a href="http://demo.qooxdoo.org/current/apiviewer/#qx.ui.Core.MMultiSelectionHandling~getSelection">MMultiSelectionHandling.getSelection</a>
+        /// e.g. <a href="http://demo.qooxdoo.org/current/apiviewer/#qx.ui.core.MMultiSelectionHandling~getSelection">MMultiSelectionHandling.getSelection</a>
         /// </summary>
         IList<IWidget> GetWidgetListFromProperty(string propertyName);
 
@@ -111,7 +111,7 @@ namespace Qooxdoo.WebDriver.UI
 
         /// <summary>
         /// Returns a list of <seealso cref="IWidget"/> objects representing this widget's children
-        /// as defined using <a href="http://demo.qooxdoo.org/current/apiviewer/#qx.ui.Core.MChildrenHandling~add!method_public">parent.add(child);</a> in the application code.
+        /// as defined using <a href="http://demo.qooxdoo.org/current/apiviewer/#qx.ui.core.MChildrenHandling~add!method_public">parent.add(child);</a> in the application code.
         /// </summary>
         IList<IWidget> Children { get; }
 
@@ -130,15 +130,11 @@ namespace Qooxdoo.WebDriver.UI
         /// Drag over this widget to another widget
         ///
         /// </summary>
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-//ORIGINAL LINE: public void dragOver(Widget target) throws InterruptedException;
         void DragOver(IWidget target);
 
         /// <summary>
         /// Drag and drop this widget onto another widget
         /// </summary>
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-//ORIGINAL LINE: public void drop(Widget target) throws InterruptedException;
         void Drop(IWidget target);
     }
 }

@@ -1,10 +1,4 @@
-﻿using System;
-using OpenQA.Selenium.Firefox;
-using Qooxdoo.WebDriver.UI;
-using Alert = OpenQA.Selenium.IAlert;
-using Widget = Qooxdoo.WebDriver.UI.IWidget;
-
-/* ************************************************************************
+﻿/*************************************************************************
 
    qxwebdriver-java
 
@@ -21,16 +15,19 @@ using Widget = Qooxdoo.WebDriver.UI.IWidget;
    Authors:
      * Daniel Wagner (danielwagner)
 
-************************************************************************ */
+*************************************************************************/
+
+using System;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Firefox;
+using Qooxdoo.WebDriver.UI;
 
 namespace Qooxdoo.WebDriver.Examples
 {
     public class HelloWorld
     {
-
         /// <summary>
         /// A simple demo test for a qx.Desktop skeleton application.
-        ///
         /// </summary>
         public static void Main(string[] args)
         {
@@ -45,13 +42,11 @@ namespace Qooxdoo.WebDriver.Examples
             IWidget button = driver.FindWidget(by);
             button.Click();
 
-            Alert alert = driver.SwitchTo().Alert();
+            IAlert alert = driver.SwitchTo().Alert();
             Console.WriteLine("qooxdoo says: " + alert.Text);
             alert.Accept();
 
             driver.Close();
         }
-
     }
-
 }

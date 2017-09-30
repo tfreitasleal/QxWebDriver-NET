@@ -1,6 +1,4 @@
-﻿using WebElement = OpenQA.Selenium.IWebElement;
-
-/* ************************************************************************
+﻿/*************************************************************************
 
    qxwebdriver-java
 
@@ -17,13 +15,15 @@
    Authors:
      * Daniel Wagner (danielwagner)
 
-************************************************************************ */
+*************************************************************************/
+
+using OpenQA.Selenium;
 
 namespace Qooxdoo.WebDriver.UI.Tree.Core
 {
     public class AbstractItem : UI.Core.WidgetImpl
     {
-        public AbstractItem(WebElement element, QxWebDriver webDriver) : base(element, webDriver)
+        public AbstractItem(IWebElement element, QxWebDriver webDriver) : base(element, webDriver)
         {
         }
 
@@ -32,7 +32,7 @@ namespace Qooxdoo.WebDriver.UI.Tree.Core
             get { return ((bool?) GetPropertyValue("open")).Value; }
         }
 
-        public virtual void clickOpenCloseButton()
+        public virtual void ClickOpenCloseButton()
         {
             IWidget button = GetChildControl("open");
             if (button != null)

@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using List = Qooxdoo.WebDriver.UI.Form.List;
-using WebElement = OpenQA.Selenium.IWebElement;
-
-/* ************************************************************************
+﻿/*************************************************************************
 
    qxwebdriver-java
 
@@ -19,13 +15,15 @@ using WebElement = OpenQA.Selenium.IWebElement;
    Authors:
      * Daniel Wagner (danielwagner)
 
-************************************************************************ */
+*************************************************************************/
+
+using OpenQA.Selenium;
 
 namespace Qooxdoo.WebDriver.UI.Tree
 {
     public class Tree : Form.List
     {
-        public Tree(WebElement element, QxWebDriver webDriver) : base(element, webDriver)
+        public Tree(IWebElement element, QxWebDriver webDriver) : base(element, webDriver)
         {
         }
     }

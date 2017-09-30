@@ -1,9 +1,4 @@
-﻿using System;
-using System.Drawing;
-using OpenQA.Selenium;
-using WebElement = OpenQA.Selenium.IWebElement;
-
-/* ************************************************************************
+﻿/*************************************************************************
 
    qxwebdriver-java
 
@@ -20,17 +15,21 @@ using WebElement = OpenQA.Selenium.IWebElement;
    Authors:
      * Daniel Wagner (danielwagner)
 
-************************************************************************ */
+*************************************************************************/
+
+using System;
+using System.Drawing;
+using OpenQA.Selenium;
 
 namespace Qooxdoo.WebDriver.UI.Core.Scroll
 {
     /// <summary>
-    /// Represents a <a href="http://demo.qooxdoo.org/current/apiviewer/#qx.ui.Core.Scroll.AbstractScrollArea">ScrollArea</a>
+    /// Represents a <a href="http://demo.qooxdoo.org/current/apiviewer/#qx.ui.core.Scroll.AbstractScrollArea">ScrollArea</a>
     /// widget
     /// </summary>
     public class AbstractScrollArea : WidgetImpl, IScrollable
     {
-        public AbstractScrollArea(WebElement element, QxWebDriver webDriver) : base(element, webDriver)
+        public AbstractScrollArea(IWebElement element, QxWebDriver webDriver) : base(element, webDriver)
         {
         }
 
@@ -117,7 +116,7 @@ namespace Qooxdoo.WebDriver.UI.Core.Scroll
         public virtual IWidget ScrollToChild(string direction, OpenQA.Selenium.By locator)
         {
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(100);
-            WebElement target = null;
+            IWebElement target = null;
             try
             {
                 target = contentElement.FindElement(locator);
@@ -166,7 +165,7 @@ namespace Qooxdoo.WebDriver.UI.Core.Scroll
             return null;
         }
 
-        public virtual bool? IsChildInView(WebElement child)
+        public virtual bool? IsChildInView(IWebElement child)
         {
             Point paneLocation = contentElement.Location;
             int paneTop = paneLocation.Y;

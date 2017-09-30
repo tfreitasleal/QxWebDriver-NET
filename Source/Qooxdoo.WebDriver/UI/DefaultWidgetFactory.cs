@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using WebElement = OpenQA.Selenium.IWebElement;
-
-/* ************************************************************************
+﻿/*************************************************************************
 
    qxwebdriver-java
 
@@ -21,7 +15,12 @@ using WebElement = OpenQA.Selenium.IWebElement;
    Authors:
      * Daniel Wagner (danielwagner)
 
-************************************************************************ */
+*************************************************************************/
+
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+using OpenQA.Selenium;
 
 namespace Qooxdoo.WebDriver.UI
 {
@@ -35,13 +34,13 @@ namespace Qooxdoo.WebDriver.UI
 
         protected internal QxWebDriver Driver;
         private readonly string _packageName;
-        private readonly Dictionary<WebElement, IWidget> _elements = new Dictionary<WebElement, IWidget>();
+        private readonly Dictionary<IWebElement, IWidget> _elements = new Dictionary<IWebElement, IWidget>();
 
         /// <summary>
         /// Returns a list of qooxdoo interfaces implemented by the widget containing
         /// the given element.
         /// </summary>
-        public virtual IList<string> GetWidgetInterfaces(WebElement element)
+        public virtual IList<string> GetWidgetInterfaces(IWebElement element)
         {
             return (IList<string>) Driver.JsRunner.RunScript("getInterfaces", element);
         }
@@ -50,7 +49,7 @@ namespace Qooxdoo.WebDriver.UI
         /// Returns the inheritance hierarchy of the widget containing the given
         /// element.
         /// </summary>
-        public virtual IList<string> GetWidgetInheritance(WebElement element)
+        public virtual IList<string> GetWidgetInheritance(IWebElement element)
         {
             return (IList<string>) Driver.JsRunner.RunScript("getInheritance", element);
         }
@@ -58,10 +57,10 @@ namespace Qooxdoo.WebDriver.UI
         /// <summary>
         /// Returns an instance of <seealso cref="IWidget"/> or one of its subclasses that
         /// represents the qooxdoo widget containing the given element. </summary>
-        /// <param name="element"> A WebElement representing a DOM element that is part of a
+        /// <param name="element"> A IWebElement representing a DOM element that is part of a
         /// qooxdoo widget </param>
         /// <returns> Widget object </returns>
-        public virtual IWidget GetWidgetForElement(WebElement element)
+        public virtual IWidget GetWidgetForElement(IWebElement element)
         {
             if (_elements.ContainsKey(element))
             {
@@ -73,14 +72,14 @@ namespace Qooxdoo.WebDriver.UI
 
             ((List<string>) classes).AddRange(interfaces);
 
-            if (classes.Remove("qx.ui.Core.Widget"))
+            if (classes.Remove("qx.ui.core.Widget"))
             {
-                classes.Add("qx.ui.Core.WidgetImpl");
+                classes.Add("qx.ui.core.WidgetImpl");
             }
 
-            if (classes.Remove("qx.ui.mobile.Core.Widget"))
+            if (classes.Remove("qx.ui.mobile.core.Widget"))
             {
-                classes.Add("qx.ui.mobile.Core.WidgetImpl");
+                classes.Add("qx.ui.mobile.core.WidgetImpl");
             }
 
             IWidget widget = null;

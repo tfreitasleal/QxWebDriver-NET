@@ -1,6 +1,4 @@
-﻿using WebElement = OpenQA.Selenium.IWebElement;
-
-/* ************************************************************************
+﻿/*************************************************************************
 
    qxwebdriver-java
 
@@ -17,15 +15,15 @@
    Authors:
      * Daniel Wagner (danielwagner)
 
-************************************************************************ */
+*************************************************************************/
+
+using OpenQA.Selenium;
 
 namespace Qooxdoo.WebDriver.UI.Form
 {
-
     public class MenuButton : SelectBox, ISelectable
     {
-
-        public MenuButton(WebElement element, QxWebDriver driver) : base(element, driver)
+        public MenuButton(IWebElement element, QxWebDriver driver) : base(element, driver)
         {
         }
 
@@ -43,12 +41,7 @@ namespace Qooxdoo.WebDriver.UI.Form
 
         protected internal override IWidget Button
         {
-            get
-            {
-                return this;
-            }
+            get { return this; }
         }
-
     }
-
 }

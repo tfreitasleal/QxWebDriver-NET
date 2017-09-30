@@ -1,21 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Drawing;
-using System.Threading;
-using OpenQA.Selenium.Interactions;
-using OpenQA.Selenium.Support.UI;
-using Qooxdoo.WebDriver.Resources;
-using Coordinates = OpenQA.Selenium.Interactions.Internal.ICoordinates;
-using HasInputDevices = OpenQA.Selenium.IHasInputDevices;
-using JavaScriptExecutor = OpenQA.Selenium.IJavaScriptExecutor;
-using Locatable = OpenQA.Selenium.ILocatable;
-using Mouse = OpenQA.Selenium.IMouse;
-//using OutputType = OpenQA.Selenium.OutputType;
-using WebDriver = OpenQA.Selenium.IWebDriver;
-using WebElement = OpenQA.Selenium.IWebElement;
-
-/* ************************************************************************
+﻿/*************************************************************************
 
    qxwebdriver-java
 
@@ -32,33 +15,44 @@ using WebElement = OpenQA.Selenium.IWebElement;
    Authors:
      * Daniel Wagner (danielwagner)
 
-************************************************************************ */
+*************************************************************************/
+
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Drawing;
+using System.Threading;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
+using OpenQA.Selenium.Interactions.Internal;
+using OpenQA.Selenium.Support.UI;
+using Qooxdoo.WebDriver.Resources;
 
 namespace Qooxdoo.WebDriver.UI.Core
 {
     public class WidgetImpl : IWidget
     {
-        public WidgetImpl(WebElement element, QxWebDriver webDriver)
+        private string _qxHash = null;
+
+        private string _classname = null;
+
+        protected internal IWebElement contentElement;
+
+        protected internal QxWebDriver Driver;
+
+        protected internal IJavaScriptExecutor JsExecutor;
+
+        protected internal JavaScriptRunner JsRunner;
+
+        public WidgetImpl(IWebElement element, QxWebDriver webDriver)
         {
             Driver = webDriver;
 
             JsExecutor = Driver.JsExecutor;
             JsRunner = Driver.JsRunner;
 
-            contentElement = (WebElement) JsRunner.RunScript("getContentElement", element);
+            contentElement = (IWebElement) JsRunner.RunScript("getContentElement", element);
         }
-
-        private string _qxHash = null;
-
-        private string _classname = null;
-
-        protected internal WebElement contentElement;
-
-        protected internal QxWebDriver Driver;
-
-        protected internal JavaScriptExecutor JsExecutor;
-
-        protected internal JavaScriptRunner JsRunner;
 
         public virtual string QxHash
         {
@@ -84,7 +78,7 @@ namespace Qooxdoo.WebDriver.UI.Core
             }
         }
 
-        public virtual WebElement ContentElement
+        public virtual IWebElement ContentElement
         {
             get { return contentElement; }
         }
@@ -98,13 +92,13 @@ namespace Qooxdoo.WebDriver.UI.Core
 
         public virtual void DragOver(IWidget target)
         {
-            Mouse mouse = ((HasInputDevices) Driver.WebDriver).Mouse;
-            Locatable root = (Locatable) Driver.FindElement(By.TagName("body"));
-            //cast WebElement to Locatable
-            Locatable sourceL = (Locatable) contentElement;
-            Locatable targetL = (Locatable) target.ContentElement;
+            IMouse mouse = ((IHasInputDevices) Driver.WebDriver).Mouse;
+            ILocatable root = (ILocatable) Driver.FindElement(By.TagName("body"));
+            //cast IWebElement to ILocatable
+            ILocatable sourceL = (ILocatable) contentElement;
+            ILocatable targetL = (ILocatable) target.ContentElement;
 
-            Coordinates coord = root.Coordinates;
+            ICoordinates coord = root.Coordinates;
             mouse.MouseDown(sourceL.Coordinates);
 
             //get source position (center,center)
@@ -171,10 +165,10 @@ namespace Qooxdoo.WebDriver.UI.Core
 
         public virtual void Drop(IWidget target)
         {
-            Mouse mouse = ((HasInputDevices) Driver.WebDriver).Mouse;
+            IMouse mouse = ((IHasInputDevices) Driver.WebDriver).Mouse;
             DragOver(target);
 
-            Locatable targetL = (Locatable) target.ContentElement;
+            ILocatable targetL = (ILocatable) target.ContentElement;
             mouse.MouseUp(targetL.Coordinates);
         }
 
@@ -194,81 +188,50 @@ namespace Qooxdoo.WebDriver.UI.Core
         public IWidget WaitForChildControl(String childControlId, int? timeoutInSeconds)
         {
             WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(timeoutInSeconds.GetValueOrDefault(5)));
-            //return wait.Until(ChildControlIsVisible(childControlId));
-
-            // todo: fix it properly
-
-            return null;
+            return wait.Until<IWidget>(ChildControlIsVisible(childControlId));
         }
 
-        /*/// <summary>
+        /// <summary>
         /// A condition that waits until a child control has been rendered, then returns it.
         /// </summary>
-//JAVA TO C# CONVERTER WARNING: 'final' parameters are not available in .NET:
-//ORIGINAL LINE: public OpenQA.Selenium.Support.UI.ExpectedCondition<Qooxdoo.WebDriver.UI.IWidget> ChildControlIsVisible(final String childControlId)
-        public virtual ExpectedCondition<IWidget> ChildControlIsVisible(string childControlId)
+        public Func<IWebDriver, IWidget> ChildControlIsVisible(string childControlId)
         {
-            return new ExpectedConditionAnonymousInnerClass(this, childControlId);
-        }
-
-        private class ExpectedConditionAnonymousInnerClass : ExpectedCondition<IWidget>
-        {
-            private readonly WidgetImpl _outerInstance;
-
-            private string _childControlId;
-
-            public ExpectedConditionAnonymousInnerClass(WidgetImpl outerInstance, string childControlId)
+            return driver =>
             {
-                this._outerInstance = outerInstance;
-                this._childControlId = childControlId;
-            }
-
-            public IWidget Apply(WebDriver webDriver)
-            {
-                IWidget childControl = _outerInstance.GetChildControl(_childControlId);
+                var childControl = GetChildControl(childControlId);
                 if (childControl != null && childControl.Displayed)
                 {
                     return childControl;
                 }
                 return null;
-            }
-
-            public string ToString()
-            {
-                return "Child control is visible.";
-            }
-        }*/
+            };
+        }
 
         /// <summary>
         /// A condition that waits until a child control has been rendered, then returns it.
         /// </summary>
-        /*public ExpectedCondition<IWidget> ChildControlIsVisible(string childControlId)
-        {
-            return new ExpectedCondition<IWidget>() {
+        /*public ExpectedCondition<org.oneandone.qxwebdriver.ui.Widget> childControlIsVisible(final String childControlId) {
+            return new ExpectedCondition<org.oneandone.qxwebdriver.ui.Widget>() {
                 @Override
+                public org.oneandone.qxwebdriver.ui.Widget apply(WebDriver webDriver) {
+                    org.oneandone.qxwebdriver.ui.Widget childControl = getChildControl(childControlId);
+                    if (childControl != null && childControl.isDisplayed()) {
+                        return childControl;
+                    }
+                    return null;
+                }
 
-                public IWidget Apply(WebDriver webDriver)
-                {
-                IWidget childControl = GetChildControl(childControlId);
-                if (childControl != null && childControl.IsDisplayed())
-                {
-                return childControl;
-            }
-            return null;
-            }
-
-            @Override
-            public String toString()
-            {
-                return "Child control is visible.";
-            }
+                @Override
+                public String toString() {
+                    return "Child control is visible.";
+                }
             };
         }*/
 
         public virtual IWidget GetChildControl(string childControlId)
         {
             object result = JsRunner.RunScript("getChildControl", contentElement, childControlId);
-            WebElement element = (WebElement) result;
+            IWebElement element = (IWebElement) result;
             if (element == null)
             {
                 return null;
@@ -287,7 +250,7 @@ namespace Qooxdoo.WebDriver.UI.Core
             get
             {
                 object result = JsRunner.RunScript("getLayoutParent", contentElement);
-                WebElement element = (WebElement) result;
+                IWebElement element = (IWebElement) result;
                 if (element == null)
                 {
                     return null;
@@ -313,10 +276,10 @@ namespace Qooxdoo.WebDriver.UI.Core
             return result;
         }
 
-        private WebElement GetElementFromProperty(string propertyName)
+        private IWebElement GetElementFromProperty(string propertyName)
         {
             object result = JsRunner.RunScript("getElementFromProperty", contentElement, propertyName);
-            return (WebElement) result;
+            return (IWebElement) result;
         }
 
         /// <summary>
@@ -336,15 +299,15 @@ namespace Qooxdoo.WebDriver.UI.Core
         /// </summary>
         public virtual IList<IWidget> GetWidgetListFromProperty(string propertyName)
         {
-            IList<WebElement> elements =
-                (IList<WebElement>) JsRunner.RunScript("getElementsFromProperty", contentElement, propertyName);
+            IList<IWebElement> elements =
+                (IList<IWebElement>) JsRunner.RunScript("getElementsFromProperty", contentElement, propertyName);
             IList<IWidget> widgets = new List<IWidget>();
 
-            using (IEnumerator<WebElement> elemIter = elements.GetEnumerator())
+            using (IEnumerator<IWebElement> elemIter = elements.GetEnumerator())
             {
                 while (elemIter.MoveNext())
                 {
-                    WebElement element = elemIter.Current;
+                    IWebElement element = elemIter.Current;
                     IWidget widget = Driver.GetWidgetForElement(element);
                     widgets.Add(widget);
                 }
@@ -353,12 +316,12 @@ namespace Qooxdoo.WebDriver.UI.Core
             return widgets;
         }
 
-        private IList<WebElement> ChildrenElements
+        private IList<IWebElement> ChildrenElements
         {
             get
             {
                 object result = JsRunner.RunScript("getChildrenElements", contentElement);
-                IList<WebElement> children = (IList<WebElement>) result;
+                IList<IWebElement> children = (IList<IWebElement>) result;
                 return children;
             }
         }
@@ -367,14 +330,14 @@ namespace Qooxdoo.WebDriver.UI.Core
         {
             get
             {
-                IList<WebElement> childrenElements = ChildrenElements;
+                IList<IWebElement> childrenElements = ChildrenElements;
                 IList<IWidget> children = new List<IWidget>();
 
-                using (IEnumerator<WebElement> iter = childrenElements.GetEnumerator())
+                using (IEnumerator<IWebElement> iter = childrenElements.GetEnumerator())
                 {
                     while (iter.MoveNext())
                     {
-                        WebElement child = iter.Current;
+                        IWebElement child = iter.Current;
                         children.Add(Driver.GetWidgetForElement(child));
                     }
                 }
@@ -386,68 +349,32 @@ namespace Qooxdoo.WebDriver.UI.Core
         /// <summary>
         /// A condition that checks if an element is rendered.
         /// </summary>
-        //JAVA TO C# CONVERTER WARNING: 'final' parameters are not available in .NET:
-        //ORIGINAL LINE: public OpenQA.Selenium.Support.UI.ExpectedCondition<OpenQA.Selenium.IWebElement> IsRendered(final OpenQA.Selenium.IWebElement contentElement, final OpenQA.Selenium.By by)
-        /*public virtual ExpectedCondition<WebElement> IsRendered(WebElement contentElement, OpenQA.Selenium.By by)
+        public Func<IWebDriver, IWebElement> IsRendered(IWebElement element, OpenQA.Selenium.By by)
         {
-            return new ExpectedConditionAnonymousInnerClass2(this, contentElement, by);
+            return (driver) => { return element.FindElement(by); };
         }
-
-        private class ExpectedConditionAnonymousInnerClass2 : ExpectedCondition<WebElement>
-        {
-            private readonly WidgetImpl outerInstance;
-
-            private WebElement contentElement;
-            private OpenQA.Selenium.By by;
-
-            public ExpectedConditionAnonymousInnerClass2(WidgetImpl outerInstance, WebElement contentElement,
-                OpenQA.Selenium.By by)
-            {
-                this.outerInstance = outerInstance;
-                this.contentElement = contentElement;
-                this.by = by;
-            }
-
-            public WebElement Apply(WebDriver driver)
-            {
-                return contentElement.FindElement(by);
-            }
-
-            public string ToString()
-            {
-                return "element is rendered.";
-            }
-        }*/
 
         /// <summary>
         /// A condition that checks if an element is rendered.
         /// </summary>
-        /*public ExpectedCondition<WebElement> IsRendered(WebElement contentElement, OpenQA.Selenium.By by)
-        {
+        /*public ExpectedCondition<WebElement> isRendered(final WebElement contentElement, final By by) {
             return new ExpectedCondition<WebElement>() {
                 @Override
+                public WebElement apply(WebDriver driver) {
+                    return contentElement.findElement(by);
+                }
 
-                public WebElement apply(WebDriver driver)
-                {
-                return contentElement.findElement(by);
-            }
-
-            @Override
-            public String toString()
-            {
-                return "element is rendered.";
-            }
+                @Override
+                public String toString() {
+                    return "element is rendered.";
+                }
             };
         }*/
 
-        public virtual WebElement FindElement(OpenQA.Selenium.By by)
+        public virtual IWebElement FindElement(OpenQA.Selenium.By by)
         {
             WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(5));
-            //return wait.Until(IsRendered(contentElement, by));
-
-            // todo: fix it properly
-
-            return null;
+            return wait.Until(IsRendered(contentElement, by));
         }
 
         /// <summary>
@@ -456,7 +383,7 @@ namespace Qooxdoo.WebDriver.UI.Core
         /// </summary>
         public virtual IWidget FindWidget(OpenQA.Selenium.By by)
         {
-            WebElement element = FindElement(by);
+            IWebElement element = FindElement(by);
             return Driver.GetWidgetForElement(element);
         }
 
@@ -508,20 +435,21 @@ namespace Qooxdoo.WebDriver.UI.Core
             get { return contentElement.Text; }
         }
 
-        public ReadOnlyCollection<WebElement> FindElements(OpenQA.Selenium.By by)
+        public ReadOnlyCollection<IWebElement> FindElements(OpenQA.Selenium.By by)
         {
             return contentElement.FindElements(by);
         }
 
         /// <summary>
         /// Determines if the widget is visible by querying the qooxdoo property
-        /// <a href="http://demo.qooxdoo.org/current/apiviewer/#qx.UI.core.IWidget~isSeeable!method_public">seeable</a>.
+        /// <a href="http://demo.qooxdoo.org/current/apiviewer/#qx.ui.core.IWidget~isSeeable!method_public">seeable</a>.
         /// </summary>
         public virtual bool Displayed
         {
             get
             {
-                return ((bool?) ExecuteJavascript("return qx.ui.Core.Widget.getWidgetByElement(arguments[0]).isSeeable()")).Value;
+                return ((bool?) ExecuteJavascript(
+                    "return qx.ui.core.Widget.getWidgetByElement(arguments[0]).isSeeable()")).Value;
             }
         }
 

@@ -1,6 +1,4 @@
-﻿using WebElement = OpenQA.Selenium.IWebElement;
-
-/* ************************************************************************
+﻿/*************************************************************************
 
    qxwebdriver-java
 
@@ -17,15 +15,15 @@
    Authors:
      * Daniel Wagner (danielwagner)
 
-************************************************************************ */
+*************************************************************************/
+
+using OpenQA.Selenium;
 
 namespace Qooxdoo.WebDriver.UI.Core.Scroll
 {
-
     public class ScrollPane : AbstractScrollArea
     {
-
-        public ScrollPane(WebElement element, QxWebDriver webDriver) : base(element, webDriver)
+        public ScrollPane(IWebElement element, QxWebDriver webDriver) : base(element, webDriver)
         {
         }
 
@@ -50,5 +48,4 @@ namespace Qooxdoo.WebDriver.UI.Core.Scroll
             return (long) 10;
         }
     }
-
 }

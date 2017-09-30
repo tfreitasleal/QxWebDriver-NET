@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using List = Qooxdoo.WebDriver.UI.List.List;
-using WebElement = OpenQA.Selenium.IWebElement;
-
-/* ************************************************************************
+﻿/*************************************************************************
 
    qxwebdriver-java
 
@@ -19,13 +15,15 @@ using WebElement = OpenQA.Selenium.IWebElement;
    Authors:
      * Daniel Wagner (danielwagner)
 
-************************************************************************ */
+*************************************************************************/
+
+using OpenQA.Selenium;
 
 namespace Qooxdoo.WebDriver.UI.Tree
 {
     public class VirtualTree : List.List
     {
-        public VirtualTree(WebElement element, QxWebDriver webDriver) : base(element, webDriver)
+        public VirtualTree(IWebElement element, QxWebDriver webDriver) : base(element, webDriver)
         {
         }
     }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+
 /*using JSONArray = org.json.simple.JSONArray;
 using JSONObject = org.json.simple.JSONObject;
 using JSONParser = org.json.simple.parser.JSONParser;
@@ -12,6 +14,7 @@ namespace Qooxdoo.WebDriver.Log
     {
         public LogEntry(string json)
         {
+            // Java converted code
             //JSONParser parser = new JSONParser();
 
             try
@@ -29,6 +32,7 @@ namespace Qooxdoo.WebDriver.Log
                     }
                 }
 
+                // Java converted code
                 /*object obj = parser.parse(json);
                 JSONObject jsonEntry = (JSONObject) obj;
                 clazz = (string) jsonEntry.get("clazz");
@@ -44,7 +48,8 @@ namespace Qooxdoo.WebDriver.Log
                     }
                 }*/
             }
-            catch (Exception e)
+            //catch (ParseException e)
+            catch (JsonException e)
             {
                 // TODO Auto-generated catch block
                 Console.WriteLine(e.ToString());
@@ -59,7 +64,7 @@ namespace Qooxdoo.WebDriver.Log
 
         public override string ToString()
         {
-            if (string.ReferenceEquals(clazz, null))
+            if (ReferenceEquals(clazz, null))
             {
                 return time + " " + level + ": " + items;
             }

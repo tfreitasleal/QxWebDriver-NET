@@ -1,6 +1,4 @@
-﻿using WebElement = OpenQA.Selenium.IWebElement;
-
-/* ************************************************************************
+﻿/*************************************************************************
 
    qxwebdriver-java
 
@@ -17,13 +15,15 @@
    Authors:
      * Daniel Wagner (danielwagner)
 
-************************************************************************ */
+*************************************************************************/
+
+using OpenQA.Selenium;
 
 namespace Qooxdoo.WebDriver.UI.Form
 {
     public class BooleanForm : Core.WidgetImpl
     {
-        public BooleanForm(WebElement element, QxWebDriver webDriver) : base(element, webDriver)
+        public BooleanForm(IWebElement element, QxWebDriver webDriver) : base(element, webDriver)
         {
         }
 

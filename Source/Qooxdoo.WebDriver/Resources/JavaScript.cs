@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-
-/* ************************************************************************
+﻿/*************************************************************************
 
    qxwebdriver-java
 
@@ -19,11 +15,16 @@ using System.IO;
    Authors:
      * Daniel Wagner (danielwagner)
 
-************************************************************************ */
+*************************************************************************/
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Qooxdoo.WebDriver.Resources
 {
-    public sealed class JavaScript
+    public class JavaScript
     {
         public static readonly JavaScript Instance = new JavaScript("INSTANCE", InnerEnum.Instance);
 
@@ -50,6 +51,7 @@ namespace Qooxdoo.WebDriver.Resources
             _ordinalValue = _nextOrdinal++;
             _innerEnumValue = innerEnum;
         }
+
         internal Dictionary<string, string> Resources = new Dictionary<string, string>();
         protected internal string Suffix = "-min";
         protected internal string FileExtension = ".js";
@@ -76,28 +78,38 @@ namespace Qooxdoo.WebDriver.Resources
         protected internal void AddResourceFromPath(string resourceId, string resourcePath)
         {
             string resource = ReadResource(resourcePath);
-            resource = manipulateResource(resource);
+            resource = ManipulateResource(resource);
             Resources[resourceId] = resource;
         }
 
         protected internal string GetResourcePath(string resourceId)
         {
-            resourceId = "javascript." + resourceId;
-            resourceId = "/" + resourceId.Replace(".", "/") + Suffix + FileExtension;
+            //resourceId = GetBaseresourcePath() + resourceId + Suffix + FileExtension;
+            resourceId = GetBaseresourcePath() + resourceId + FileExtension;
             return resourceId;
+        }
+
+        private string GetBaseresourcePath()
+        {
+            //<defaultNamespace>.<folderName>.<fileName>
+
+            var path = GetType().Namespace;
+            path = path.Substring(0, path.LastIndexOf('.'));
+            path += ".JsResources.";
+            return path;
         }
 
         protected internal string ReadResource(string resourcePath)
         {
-            System.IO.Stream @in = this.GetType().getResourceAsStream(resourcePath);
-            System.IO.StreamReader br = new System.IO.StreamReader(@in);
+            Stream @in = GetType().Assembly.GetManifestResourceStream(resourcePath);
+            StreamReader br = new StreamReader(@in);
 
             string text = "";
             string line;
 
             try
             {
-                while (!string.ReferenceEquals((line = br.ReadLine()), null))
+                while (!ReferenceEquals((line = br.ReadLine()), null))
                 {
                     text += line;
                 }
@@ -111,14 +123,22 @@ namespace Qooxdoo.WebDriver.Resources
             return text;
         }
 
-        protected internal string manipulateResource(string resource)
+        protected internal string ManipulateResource(string resource)
         {
-            Pattern pattern = Pattern.compile("function\\(\\)\\{(.*?)\\};$", Pattern.MULTILINE);
+            Regex pattern = new Regex("function\\(\\)\\{(.*?)\\};$", RegexOptions.Compiled | RegexOptions.Multiline);
+
+            if (pattern.IsMatch(resource))
+            {
+                resource = pattern.Match(resource).Groups[1].Value;
+            }
+
+            // Java converted code
+            /*Pattern pattern = Pattern.compile("function\\(\\)\\{(.*?)\\};$", Pattern.MULTILINE);
             Matcher matcher = pattern.matcher(resource);
             if (matcher.find())
             {
                 resource = matcher.group(1);
-            }
+            }*/
 
             return resource;
         }
@@ -145,15 +165,14 @@ namespace Qooxdoo.WebDriver.Resources
 
         public static JavaScript ValueOf(string name)
         {
-            foreach (JavaScript enumInstance in JavaScript.Values())
+            foreach (JavaScript enumInstance in Values())
             {
                 if (enumInstance._nameValue == name)
                 {
                     return enumInstance;
                 }
             }
-            throw new System.ArgumentException(name);
+            throw new ArgumentException(name);
         }
     }
-
 }
