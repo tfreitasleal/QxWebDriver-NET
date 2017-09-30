@@ -113,8 +113,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="JsResources\getTestClasses.js" />
-    <Content Include="JsResources\getTestPackages.js" />
+    <EmbeddedResource Include="JsResources\getTestClasses.js" />
+    <EmbeddedResource Include="JsResources\getTestPackages.js" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Source\Qooxdoo.WebDriver\Qooxdoo.WebDriver.csproj">
