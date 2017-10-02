@@ -1,4 +1,4 @@
-﻿namespace Qooxdoo.WebDriver.UI.mobile
+﻿namespace Qooxdoo.WebDriver.UI.Mobile
 {
     /// <summary>
     /// This interface represents qx.Mobile widgets with selectable child items, e.g.
