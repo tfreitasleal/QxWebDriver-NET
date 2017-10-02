@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Threading;
 using NUnit.Framework;
 using Qooxdoo.WebDriver.UI;
@@ -53,9 +54,13 @@ namespace Qooxdoo.WebDriverDemo.WidgetBrowser
             textArea.SendKeys(text);
             string value = (string) textArea.GetPropertyValue("value");
 
-            Pattern regex = Pattern.compile("Hello.*?TextArea", Pattern.DOTALL);
-            Matcher regexMatcher = regex.matcher(value);
-            Assert.True(regexMatcher.matches());
+            // Java converted code
+            // Pattern regex = Pattern.compile("Hello.*?TextArea", Pattern.DOTALL);
+            // Matcher regexMatcher = regex.matcher(value);
+            // Assert.True(regexMatcher.matches());
+
+            Regex pattern = new Regex("Hello.*?TextArea", RegexOptions.Compiled | RegexOptions.Singleline);
+            Assert.True(pattern.IsMatch(value));
         }
 
         //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
@@ -120,8 +125,13 @@ namespace Qooxdoo.WebDriverDemo.WidgetBrowser
             list.GetChildControl("next-month-button").Click();
             list.FindWidget(By.Qxh("*/[@value=^12$]")).Click();
 
-            string value = (string) dateField.GetPropertyValueAsJson("value");
-            Assert.True(value.matches("\"?\\d{4}-\\d{2}-\\d{2}.*"));
+            string value = dateField.GetPropertyValueAsJson("value");
+
+            // Java converted code
+            //Assert.True(value.matches("\"?\\d{4}-\\d{2}-\\d{2}.*"));
+
+            Regex pattern = new Regex("\"?\\d{4}-\\d{2}-\\d{2}.*", RegexOptions.Compiled);
+            Assert.True(pattern.IsMatch(value));
         }
 
         //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:

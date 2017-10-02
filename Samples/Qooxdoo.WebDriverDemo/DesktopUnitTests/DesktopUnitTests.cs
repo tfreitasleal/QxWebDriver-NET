@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
@@ -155,13 +155,36 @@ namespace Qooxdoo.WebDriverDemo.DesktopUnitTests
         {
             Console.WriteLine("Retrieving package results.");
             string results = (string) Driver.ExecuteScript(getTestResults);
-            JSONParser parser = new JSONParser();
-            object obj;
+
+            // Java converted code
+            // JSONParser parser = new JSONParser();
+            // object obj;
             try
             {
-                obj = parser.parse(results);
+                JObject jObject = JObject.Parse(results);
+                foreach (KeyValuePair<string, JToken> keyValuePair in jObject)
+                {
+                    string testName = keyValuePair.Key;
+                    JObject testResult = (JObject) keyValuePair.Value;
+                    string state = (string) testResult.GetValue("state");
+                    if (state.Equals("error") || state.Equals("failure"))
+                    {
+                        failCount++;
+                        Console.Error.WriteLine(state.ToUpper() + " " + testName);
+                        JArray messages = (JArray) testResult.GetValue("messages");
+                        foreach (JToken jToken in messages)
+                        {
+                            string message = jToken.ToString();
+                            Console.Error.WriteLine(message);
+                        }
+                        Console.Error.WriteLine();
+                    }
+                }
+
+                // Java converted code
+                /*obj = parser.parse(results);
                 JSONObject jsonEntry = (JSONObject) obj;
-                ISet set = jsonEntry.Keys;
+                ReadOnlyCollection<string> set = jsonEntry.Keys;
                 IEnumerator itr = set.GetEnumerator();
                 while (itr.MoveNext())
                 {
@@ -181,9 +204,10 @@ namespace Qooxdoo.WebDriverDemo.DesktopUnitTests
                         }
                         Console.Error.WriteLine();
                     }
-                }
+                }*/
             }
-            catch (ParseException e)
+            //catch (ParseException e)
+            catch (Exception e)
             {
                 Console.Error.WriteLine("Unable to parse JSON test results " + results);
                 Console.WriteLine(e.ToString());

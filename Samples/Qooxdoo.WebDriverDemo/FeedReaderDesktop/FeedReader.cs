@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -135,7 +136,10 @@ namespace Qooxdoo.WebDriverDemo.FeedReaderDesktop
 
         public virtual string EscapeJsRegEx(string str)
         {
-            string result = str.ReplaceAll("([()\\[{*+.$^\\|?])", "\\\\$1");
+            // Java converted code
+            // string result = str.ReplaceAll("([()\\[{*+.$^\\|?])", "\\\\$1");
+
+            var result = Regex.Replace(str, "([()\\[{*+.$^\\|?])", "\\\\$1");
             return result;
         }
 
