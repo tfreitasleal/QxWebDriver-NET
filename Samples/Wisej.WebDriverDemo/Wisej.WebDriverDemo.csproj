@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1EE99BF3-5DB9-48C6-A6D0-36408CEC5A38}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Wisej.WebDriverDemo</RootNamespace>
+    <AssemblyName>Wisej.WebDriverDemo</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.8.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.8.1\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebDriver, Version=3.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.WebDriver.3.6.0\lib\net45\WebDriver.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebDriver.Support, Version=3.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.Support.3.6.0\lib\net45\WebDriver.Support.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configuration.cs" />
+    <Compile Include="DateTimeHelperClass.cs" />
+    <Compile Include="DemoBrowser\Table\TableCellEditor.cs" />
+    <Compile Include="DesktopApiViewer\ClassItems.cs" />
+    <Compile Include="DesktopApiViewer\ClassViewer.cs" />
+    <Compile Include="DesktopApiViewer\DesktopApiViewer.cs" />
+    <Compile Include="DesktopApiViewer\Search.cs" />
+    <Compile Include="DesktopApiViewer\Tabs.cs" />
+    <Compile Include="DesktopApiViewer\Tree.cs" />
+    <Compile Include="DesktopShowcase\DataBinding.cs" />
+    <Compile Include="DesktopShowcase\DesktopShowcase.cs" />
+    <Compile Include="DesktopShowcase\DragDrop.cs" />
+    <Compile Include="DesktopShowcase\Form.cs" />
+    <Compile Include="DesktopShowcase\Languages.cs" />
+    <Compile Include="StringHelperClass.cs" />
+    <Compile Include="DesktopShowcase\Table.cs" />
+    <Compile Include="DesktopShowcase\Theming.cs" />
+    <Compile Include="DesktopShowcase\Tree.cs" />
+    <Compile Include="DesktopShowcase\VirtualList.cs" />
+    <Compile Include="DesktopTestRunner\Runner.cs" />
+    <Compile Include="DesktopUnitTests\DesktopUnitTests.cs" />
+    <Compile Include="FeedReaderDesktop\FeedReader.cs" />
+    <Compile Include="IntegrationTest.cs" />
+    <Compile Include="MobileShowcase\BasicWidgets.cs" />
+    <Compile Include="MobileShowcase\Carousel.cs" />
+    <Compile Include="MobileShowcase\DataBinding.cs" />
+    <Compile Include="MobileShowcase\DialogWidgets.cs" />
+    <Compile Include="MobileShowcase\Drawer.cs" />
+    <Compile Include="MobileShowcase\Events.cs" />
+    <Compile Include="MobileShowcase\FormElements.cs" />
+    <Compile Include="MobileShowcase\List.cs" />
+    <Compile Include="MobileShowcase\MobileShowcase.cs" />
+    <Compile Include="MobileShowcase\TabBar.cs" />
+    <Compile Include="MobileShowcase\Toolbar.cs" />
+    <Compile Include="OnFailed.cs" />
+    <Compile Include="Playground\PlaygroundIT.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="HashMapHelperClass.cs" />
+    <Compile Include="SystemProperties.cs" />
+    <Compile Include="WebsiteApiViewer\WebsiteApiViewer.cs" />
+    <Compile Include="WebsiteUnitTests\WebsiteUnitTests.cs" />
+    <Compile Include="WebsiteWidgetBrowser\Accordion.cs" />
+    <Compile Include="WebsiteWidgetBrowser\Button.cs" />
+    <Compile Include="WebsiteWidgetBrowser\Calendar.cs" />
+    <Compile Include="WebsiteWidgetBrowser\DatePicker.cs" />
+    <Compile Include="WebsiteWidgetBrowser\Rating.cs" />
+    <Compile Include="WebsiteWidgetBrowser\Slider.cs" />
+    <Compile Include="WebsiteWidgetBrowser\Tabs.cs" />
+    <Compile Include="WebsiteWidgetBrowser\WebsiteWidgetBrowser.cs" />
+    <Compile Include="WidgetBrowser\FormIT.cs" />
+    <Compile Include="WidgetBrowser\ListIT.cs" />
+    <Compile Include="WidgetBrowser\MiscIT.cs" />
+    <Compile Include="WidgetBrowser\TableIT.cs" />
+    <Compile Include="WidgetBrowser\ToolbarMenuIT.cs" />
+    <Compile Include="WidgetBrowser\TreeIT.cs" />
+    <Compile Include="WidgetBrowser\WidgetBrowser.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="JsResources\getTestClasses.js" />
+    <EmbeddedResource Include="JsResources\getTestPackages.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Source\Wisej.WebDriver\Wisej.WebDriver.csproj">
+      <Project>{e6be1e5d-58c1-4ad7-b1cb-3f9831a24949}</Project>
+      <Name>Wisej.WebDriver</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
