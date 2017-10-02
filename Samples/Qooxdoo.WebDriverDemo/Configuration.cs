@@ -1,10 +1,10 @@
 ﻿using System;
-using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Remote;
 using Qooxdoo.WebDriver;
+
 //using SelendroidDriver = io.selendroid.SelendroidDriver;
 
 namespace Qooxdoo.WebDriverDemo
@@ -55,7 +55,7 @@ namespace Qooxdoo.WebDriverDemo
             return capabilities;
         }
 
-        protected internal static Platform GetPlatform(string platformName)
+        /*protected internal static Platform GetPlatform(string platformName)
         {
             Platform platform = null;
             if (platformName.Equals("linux"))
@@ -92,7 +92,7 @@ namespace Qooxdoo.WebDriverDemo
             }
 
             return platform;
-        }
+        }*/
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public static OpenQA.Selenium.IWebDriver getWebDriver() throws Exception
@@ -125,9 +125,10 @@ namespace Qooxdoo.WebDriverDemo
                 else
                 {
                     DesiredCapabilities browser = GetCapabilities(browserName);
-                    if (!string.ReferenceEquals(browserVersion, null))
+                    if (!string.IsNullOrWhiteSpace(browserVersion))
                     {
-                        browser.Version = browserVersion;
+                        browser.SetCapability(CapabilityType.Version, browserVersion);
+                        //browser.Version = browserVersion;
                     }
                     browser.Platform = Platform.CurrentPlatform;
                     //browser.Platform = GetPlatform(platformName);
