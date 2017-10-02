@@ -1,6 +1,6 @@
 # QxWebDriver-NET
 
-The Sources build but the Samples don't build.
+The Sources and Samples build but need testing. An "how to" document is also needed.
 
 THIS FILE WAS ADAPTED FROM qxwebdriver-java AND IS A WORK IN PROGRESS.
 
