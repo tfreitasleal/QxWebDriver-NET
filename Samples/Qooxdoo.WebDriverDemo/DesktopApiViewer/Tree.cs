@@ -1,23 +1,21 @@
-﻿namespace Qooxdoo.WebDriverDemo.DesktopApiViewer
+﻿using NUnit.Framework;
+using Qooxdoo.WebDriver;
+using Qooxdoo.WebDriver.UI;
+using Qooxdoo.WebDriver.UI.Tree.Core;
+
+namespace Qooxdoo.WebDriverDemo.DesktopApiViewer
 {
-
-    using Assert = NUnit.Framework.Assert;
-    //using Test = NUnit.Framework.Test;
-    using By = Qooxdoo.WebDriver.By;
-    using Selectable = Qooxdoo.WebDriver.UI.ISelectable;
-    using Widget = Qooxdoo.WebDriver.UI.IWidget;
-    using AbstractItem = Qooxdoo.WebDriver.UI.Tree.Core.AbstractItem;
-
+    [TestFixture]
     public class Tree : DesktopApiViewer
     {
-
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void tree()
-        public virtual void tree()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void tree()
+        [Test]
+        public virtual void TestTree()
         {
             SelectView("Content");
 
-            Selectable tree = (Selectable) driver.FindWidget(By.Qxh("*/apiviewer.ui.PackageTree"));
+            ISelectable tree = (ISelectable) Driver.FindWidget(By.Qxh("*/apiviewer.ui.PackageTree"));
             Assert.True(tree.Displayed);
 
             string item1Label = "bom";
@@ -34,13 +32,11 @@
             AbstractItem item3 = (AbstractItem) tree.GetSelectableItem(item3Label);
             item3.Click();
 
-            Widget tabButton = driver.FindWidget(By.Qxh(tabButtonPath));
+            IWidget tabButton = Driver.FindWidget(By.Qxh(TabButtonPath));
             Assert.Equals("qx.bom.element.Dimension", tabButton.GetPropertyValue("label"));
 
-            string hash = (string) driver.ExecuteScript("return location.hash");
+            string hash = (string) Driver.ExecuteScript("return location.hash");
             Assert.Equals("#qx.bom.element.Dimension", hash);
-
         }
     }
-
 }

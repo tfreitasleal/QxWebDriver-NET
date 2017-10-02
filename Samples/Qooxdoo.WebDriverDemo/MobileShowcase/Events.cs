@@ -1,23 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
-using Assert = NUnit.Framework.Assert;
-//using Before = NUnit.Framework.Before;
-//using BeforeClass = NUnit.Framework.BeforeClass;
-//using Test = NUnit.Framework.Test;
+using NUnit.Framework;
+using OpenQA.Selenium;
 using WidgetImpl = Qooxdoo.WebDriver.UI.Mobile.Core.WidgetImpl;
-using HasTouchScreen = OpenQA.Selenium.IHasTouchScreen;
 
 namespace Qooxdoo.WebDriverDemo.MobileShowcase
 {
+    [TestFixture]
     public class Events : Mobileshowcase
     {
-
         protected internal static string GetEvents = "return [].map.call(qxWeb('.pointers .event'), function(el) { return el.innerHTML })";
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @BeforeClass public static void SetUpBeforeClass() throws Exception
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
+        [OneTimeSetUp]
         public new static void SetUpBeforeClass()
         {
             Mobileshowcase.SetUpBeforeClass();
@@ -27,28 +22,30 @@ namespace Qooxdoo.WebDriverDemo.MobileShowcase
             VerifyTitle("Events");
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Before public void init() throws InterruptedException
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Before public void init() throws InterruptedException
+        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
+        [SetUp]
         public virtual void Init()
         {
             Thread.Sleep(250);
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void swipe() throws InterruptedException
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void swipe() throws InterruptedException
+        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
+        [Test]
         public virtual void Swipe()
         {
-            if (!(driver.WebDriver is HasTouchScreen))
+            if (!(Driver.WebDriver is IHasTouchScreen))
             {
                 return;
             }
 
-            WidgetImpl area = (WidgetImpl) driver.FindWidget(OpenQA.Selenium.By.XPath("//div[contains(@class, 'container-touch-area')]"));
+            WidgetImpl area = (WidgetImpl) Driver.FindWidget(By.XPath("//div[contains(@class, 'container-touch-area')]"));
             area.Track(500, 0, 25);
             Thread.Sleep(500);
-            IList<string> eventNames = (IList<string>) driver.ExecuteScript(GetEvents);
+            IList<string> eventNames = (IList<string>) Driver.ExecuteScript(GetEvents);
             if (eventNames.Count != 4)
             {
                 LogEvents("swipe", eventNames);
@@ -60,15 +57,16 @@ namespace Qooxdoo.WebDriverDemo.MobileShowcase
             Assert.Equals("swipe", eventNames[3]);
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void tap() throws InterruptedException
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void tap() throws InterruptedException
+        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
+        [Test]
         public virtual void Tap()
         {
-            WidgetImpl area = (WidgetImpl) driver.FindWidget(OpenQA.Selenium.By.XPath("//div[contains(@class, 'container-touch-area')]"));
+            WidgetImpl area = (WidgetImpl) Driver.FindWidget(By.XPath("//div[contains(@class, 'container-touch-area')]"));
             area.Tap();
             Thread.Sleep(500);
-            IList<string> eventNames = (IList<string>) driver.ExecuteScript(GetEvents);
+            IList<string> eventNames = (IList<string>) Driver.ExecuteScript(GetEvents);
             if (eventNames.Count != 3)
             {
                 LogEvents("tap", eventNames);
@@ -79,15 +77,16 @@ namespace Qooxdoo.WebDriverDemo.MobileShowcase
             Assert.Equals("tap", eventNames[2]);
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void longtap() throws InterruptedException
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void longtap() throws InterruptedException
+        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
+        [Test]
         public virtual void Longtap()
         {
-            WidgetImpl area = (WidgetImpl) driver.FindWidget(OpenQA.Selenium.By.XPath("//div[contains(@class, 'container-touch-area')]"));
+            WidgetImpl area = (WidgetImpl) Driver.FindWidget(By.XPath("//div[contains(@class, 'container-touch-area')]"));
             area.Longtap();
             Thread.Sleep(500);
-            IList<string> eventNames = (IList<string>) driver.ExecuteScript(GetEvents);
+            IList<string> eventNames = (IList<string>) Driver.ExecuteScript(GetEvents);
 
             if (eventNames.Count != 4)
             {
@@ -109,7 +108,5 @@ namespace Qooxdoo.WebDriverDemo.MobileShowcase
                 Console.Error.WriteLine(itr.Current);
             }
         }
-
     }
-
 }

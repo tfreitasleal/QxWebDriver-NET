@@ -1,33 +1,35 @@
 ﻿using System;
+using System.IO;
+using NUnit.Framework.Interfaces;
+using OpenQA.Selenium;
+using TakesScreenshot = OpenQA.Selenium.Screenshot;
+
+/*using TestWatcher = NUnit.Framework.Rules.TestWatcher;
+using Description = NUnit.Framework.Runner.Description;*/
 
 namespace Qooxdoo.WebDriverDemo
 {
-    using TestWatcher = NUnit.Framework.rules.TestWatcher;
-    using Description = NUnit.Framework.runner.Description;
-    using TakesScreenshot = OpenQA.Selenium.TakesScreenshot;
-
-    public class OnFailed : TestWatcher
+    public class OnFailed : ITestListener
     {
-
         /// <summary>
         /// Takes a screenshot if a test fails.
         /// </summary>
-        protected internal override void failed(Exception e, Description description)
+        //private void Failed(Exception e, string description)
+        private void Failed(string description)
         {
-            string autName = System.getProperty("org.qooxdoo.demo.autname");
-            string browserName = System.getProperty("org.qooxdoo.demo.browsername");
-            string browserVersion = System.getProperty("org.qooxdoo.demo.browserversion");
-            string platformName = System.getProperty("org.qooxdoo.demo.platform");
+            string autName = SystemProperties.GetProperty("org.qooxdoo.demo.autname");
+            string browserName = SystemProperties.GetProperty("org.qooxdoo.demo.browsername");
+            string browserVersion = SystemProperties.GetProperty("org.qooxdoo.demo.browserversion");
+            string platformName = Platform.CurrentPlatform.PlatformType.ToString().ToLowerInvariant();
             long now = DateTimeHelperClass.CurrentUnixTimeMillis();
-            string fileName = now.ToString() + " " + autName + " " + browserName + " " + browserVersion + " " + platformName + ".png";
-            string tempDir = System.getProperty("java.io.tmpdir");
+            string fileName = now + " " + autName + " " + browserName + " " + browserVersion + " " + platformName + ".png";
+            string tempDir = SystemProperties.GetProperty("java.io.tmpdir");
             string path = tempDir + "/" + fileName;
-
-            File scrFile = ((TakesScreenshot)IntegrationTest.driver.WebDriver).getScreenshotAs(OutputType.FILE);
+            ((TakesScreenshot) IntegrationTest.Driver.WebDriver).SaveAsFile(fileName);
 
             try
             {
-                FileUtils.copyFile(scrFile, new File(path));
+                File.Copy(fileName, path, true);
             }
             catch (IOException e1)
             {
@@ -36,6 +38,25 @@ namespace Qooxdoo.WebDriverDemo
                 Console.Write(e1.StackTrace);
             }
             Console.WriteLine("Saved screenshot as " + path);
+        }
+
+        public void TestStarted(ITest test)
+        {
+            //throw new NotImplementedException();
+        }
+
+        public void TestFinished(ITestResult result)
+        {
+            if (result.FailCount == 0)
+                return;
+
+            var description = string.Format("Test: {0}\r\n{1}\r\n{2}", result.Test.FullName, result.Name, result.Message);
+            Failed((description));
+        }
+
+        public void TestOutput(TestOutput output)
+        {
+            //throw new NotImplementedException();
         }
     }
 }

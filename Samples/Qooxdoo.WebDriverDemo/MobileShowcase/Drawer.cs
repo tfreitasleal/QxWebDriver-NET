@@ -1,20 +1,13 @@
 ﻿using System.Threading;
+using NUnit.Framework;
+using Qooxdoo.WebDriver.UI;
 
 namespace Qooxdoo.WebDriverDemo.MobileShowcase
 {
-
-    using Assert = NUnit.Framework.Assert;
-    //using BeforeClass = NUnit.Framework.BeforeClass;
-    //using Test = NUnit.Framework.Test;
-    using By = Qooxdoo.WebDriver.By;
-    using Touchable = Qooxdoo.WebDriver.UI.ITouchable;
-
+    [TestFixture]
     public class Drawer : Mobileshowcase
     {
-
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @BeforeClass public static void setUpBeforeClass() throws Exception
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
+        [OneTimeSetUp]
         public new static void SetUpBeforeClass()
         {
             Mobileshowcase.SetUpBeforeClass();
@@ -22,23 +15,25 @@ namespace Qooxdoo.WebDriverDemo.MobileShowcase
             VerifyTitle("Drawer");
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void drawer() throws InterruptedException
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-        public Drawer()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void drawer() throws InterruptedException
+        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
+        [Test]
+        public void TestDrawer()
         {
-            string[] drawers = new string[] {"top", "right", "bottom", "left"};
+            string[] drawers = {"top", "right", "bottom", "left"};
             foreach (string drawer in drawers)
             {
-                Touchable drawerButton = (Touchable) driver.FindWidget(OpenQA.Selenium.By.XPath("//div[text() = 'Open " + drawer + " drawer']/ancestor::div[contains(@class, 'button')]"));
+                ITouchable drawerButton = (ITouchable) Driver.FindWidget(OpenQA.Selenium.By.XPath(
+                    "//div[text() = 'Open " + drawer + " drawer']/ancestor::div[contains(@class, 'button')]"));
                 drawerButton.Tap();
                 Thread.Sleep(1000);
-                Touchable closeButton = (Touchable) driver.FindWidget(OpenQA.Selenium.By.XPath("//label[text() = 'This is the " + drawer + " drawer.']/parent::div/div[contains(@class, 'button')]"));
+                ITouchable closeButton = (ITouchable) Driver.FindWidget(OpenQA.Selenium.By.XPath(
+                    "//label[text() = 'This is the " + drawer + " drawer.']/parent::div/div[contains(@class, 'button')]"));
                 closeButton.Tap();
                 Thread.Sleep(1500);
                 Assert.False(closeButton.Displayed);
             }
         }
     }
-
 }

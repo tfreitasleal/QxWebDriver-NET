@@ -1,47 +1,36 @@
 ﻿using NUnit.Framework;
+using Qooxdoo.WebDriver.UI;
+using By = Qooxdoo.WebDriver.By;
 
-namespace Qooxdoo.WebDriverDemo.widgetbrowser
+namespace Qooxdoo.WebDriverDemo.WidgetBrowser
 {
-
-//JAVA TO C# CONVERTER TODO TASK: This Java 'import static' statement cannot be converted to C#:
-//    import static NUnit.Framework.Assert.IsNotNull;
-//JAVA TO C# CONVERTER TODO TASK: This Java 'import static' statement cannot be converted to C#:
-//    import static NUnit.Framework.Assert.IsNull;
-
-    //using BeforeClass = NUnit.Framework.BeforeClass;
-    //using Test = NUnit.Framework.Test;
-    using By = Qooxdoo.WebDriver.By;
-    using Selectable = Qooxdoo.WebDriver.UI.ISelectable;
-    using Widget = Qooxdoo.WebDriver.UI.IWidget;
-
+    [TestFixture]
     public class MiscIT : WidgetBrowser
     {
-
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @BeforeClass public static void setUpBeforeClass() throws Exception
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-        public static void SetUpBeforeClass()
+        [OneTimeSetUp]
+        public new static void SetUpBeforeClass()
         {
-            WidgetBrowser.setUpBeforeClass();
-            selectTab("Misc");
+            WidgetBrowser.SetUpBeforeClass();
+            SelectTab("Misc");
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void dragDrop()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void dragDrop()
+        [Test]
         public virtual void DragDrop()
         {
             By parentLocator = By.Qxh("*/[@classname=widgetbrowser.pages.Misc]/qx.ui.container.Composite/child[9]");
-            Widget parentContainer = tabPage.FindWidget(parentLocator);
+            IWidget parentContainer = tabPage.FindWidget(parentLocator);
 
             By sourceLocator = By.Qxh("child[0]");
-            Selectable dragFrom = (Selectable) parentContainer.FindWidget(sourceLocator);
+            ISelectable dragFrom = (ISelectable) parentContainer.FindWidget(sourceLocator);
 
             By targetLocator = By.Qxh("child[1]");
-            Selectable dragTo = (Selectable) parentContainer.FindWidget(targetLocator);
+            ISelectable dragTo = (ISelectable) parentContainer.FindWidget(targetLocator);
 
             // get an item from the source list
             string label = "Item 4";
-            Widget item = dragFrom.GetSelectableItem(label);
+            IWidget item = dragFrom.GetSelectableItem(label);
 
             // drag the item to the target list
             item.DragToWidget(dragTo);
@@ -53,5 +42,4 @@ namespace Qooxdoo.WebDriverDemo.widgetbrowser
             Assert.IsNotNull(dragTo.GetSelectableItem(label));
         }
     }
-
 }

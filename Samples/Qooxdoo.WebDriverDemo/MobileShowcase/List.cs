@@ -1,23 +1,16 @@
 ﻿using System.Threading;
-using Qooxdoo.WebDriver;
-using Qooxdoo.WebDriver.UI.mobile;
-using Assert = NUnit.Framework.Assert;
-//using BeforeClass = NUnit.Framework.BeforeClass;
-//using Test = NUnit.Framework.Test;
-using Touchable = Qooxdoo.WebDriver.UI.ITouchable;
-using WidgetImpl = Qooxdoo.WebDriver.UI.Mobile.Core.WidgetImpl;
-using StaleElementReferenceException = OpenQA.Selenium.StaleElementReferenceException;
-using WebElement = OpenQA.Selenium.IWebElement;
-using HasTouchScreen = OpenQA.Selenium.IHasTouchScreen;
+using NUnit.Framework;
+using OpenQA.Selenium;
+using Qooxdoo.WebDriver.UI;
+using Qooxdoo.WebDriver.UI.Mobile.Core;
+using ISelectable = Qooxdoo.WebDriver.UI.Mobile.ISelectable;
 
 namespace Qooxdoo.WebDriverDemo.MobileShowcase
 {
+    [TestFixture]
     public class List : Mobileshowcase
     {
-
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @BeforeClass public static void setUpBeforeClass() throws Exception
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
+        [OneTimeSetUp]
         public new static void SetUpBeforeClass()
         {
             Mobileshowcase.SetUpBeforeClass();
@@ -26,16 +19,19 @@ namespace Qooxdoo.WebDriverDemo.MobileShowcase
             VerifyTitle(title);
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void SelectItem()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void SelectItem()
+        [Test]
         public virtual void SelectItem()
         {
-            ISelectable list = (ISelectable) driver.FindWidget(OpenQA.Selenium.By.XPath("//div[contains(@class, 'master-detail-detail')]/descendant::ul[contains(@class, 'list')]"));
+            ISelectable list = (ISelectable) Driver.FindWidget(By.XPath(
+                "//div[contains(@class, 'master-detail-detail')]/descendant::ul[contains(@class, 'list')]"));
             list.SelectItem("Item #3");
 
-            WebElement selected = driver.FindElement(OpenQA.Selenium.By.XPath("//div[text() = 'You selected Item #3']"));
+            IWebElement selected = Driver.FindElement(By.XPath("//div[text() = 'You selected Item #3']"));
             Assert.True(selected.Displayed);
-            Touchable ok = (Touchable) driver.FindWidget(OpenQA.Selenium.By.XPath("//div[text() = 'You selected Item #3']/ancestor::div[contains(@class, 'popup-content')]/descendant::div[contains(@class, 'dialog-button')]"));
+            ITouchable ok = (ITouchable) Driver.FindWidget(By.XPath(
+                "//div[text() = 'You selected Item #3']/ancestor::div[contains(@class, 'popup-content')]/descendant::div[contains(@class, 'dialog-button')]"));
             ok.Tap();
             try
             {
@@ -47,17 +43,18 @@ namespace Qooxdoo.WebDriverDemo.MobileShowcase
             }
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void removeItem() throws InterruptedException
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void removeItem() throws InterruptedException
+        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
+        [Test]
         public virtual void RemoveItem()
         {
-            if (!(driver.WebDriver is HasTouchScreen))
+            if (!(Driver.WebDriver is IHasTouchScreen))
             {
                 return;
             }
-            WebElement item = driver.FindElement(OpenQA.Selenium.By.XPath("//div[text() = 'Item #6']"));
-            WidgetImpl.Track(driver.WebDriver, item, 700, 0, 10);
+            IWebElement item = Driver.FindElement(By.XPath("//div[text() = 'Item #6']"));
+            WidgetImpl.Track(Driver.WebDriver, item, 700, 0, 10);
             Thread.Sleep(1000);
             try
             {
@@ -69,5 +66,4 @@ namespace Qooxdoo.WebDriverDemo.MobileShowcase
             }
         }
     }
-
 }

@@ -1,21 +1,14 @@
 ﻿using System.Threading;
+using NUnit.Framework;
+using OpenQA.Selenium;
+using Qooxdoo.WebDriver.UI;
 
 namespace Qooxdoo.WebDriverDemo.MobileShowcase
 {
-
-    using Assert = NUnit.Framework.Assert;
-    //using BeforeClass = NUnit.Framework.BeforeClass;
-    //using Test = NUnit.Framework.Test;
-    using By = Qooxdoo.WebDriver.By;
-    using Touchable = Qooxdoo.WebDriver.UI.ITouchable;
-    using WebElement = OpenQA.Selenium.IWebElement;
-
+    [TestFixture]
     public class TabBar : Mobileshowcase
     {
-
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @BeforeClass public static void setUpBeforeClass() throws Exception
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
+        [OneTimeSetUp]
         public new static void SetUpBeforeClass()
         {
             Mobileshowcase.SetUpBeforeClass();
@@ -23,21 +16,23 @@ namespace Qooxdoo.WebDriverDemo.MobileShowcase
             VerifyTitle("Tabs");
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void tabBar() throws InterruptedException
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-        public TabBar()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void tabBar() throws InterruptedException
+        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
+        [Test]
+        public void TestTabBar()
         {
-            string[] tabs = new string[] {"Desktop", "Server", "Mobile", "Website"};
+            string[] tabs = {"Desktop", "Server", "Mobile", "Website"};
             foreach (string tab in tabs)
             {
-                Touchable tabButton = (Touchable) driver.FindWidget(OpenQA.Selenium.By.XPath("//div[text() = '" + tab + "']/ancestor::div[contains(@class, 'tabButton')]"));
+                ITouchable tabButton = (ITouchable) Driver.FindWidget(
+                    By.XPath("//div[text() = '" + tab + "']/ancestor::div[contains(@class, 'tabButton')]"));
                 tabButton.Tap();
                 Thread.Sleep(500);
-                WebElement tabContent = driver.FindElement(OpenQA.Selenium.By.XPath("//b[text() = 'qx." + tab + "']/ancestor::div[contains(@class, 'content')]"));
+                IWebElement tabContent = Driver.FindElement(
+                        By.XPath("//b[text() = 'qx." + tab + "']/ancestor::div[contains(@class, 'content')]"));
                 Assert.True(tabContent.Displayed);
             }
         }
     }
-
 }

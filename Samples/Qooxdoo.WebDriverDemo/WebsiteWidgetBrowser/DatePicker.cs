@@ -1,47 +1,44 @@
-﻿using Qooxdoo.WebDriver;
-using Assert = NUnit.Framework.Assert;
-//using BeforeClass = NUnit.Framework.BeforeClass;
-//using Test = NUnit.Framework.Test;
-using WebElement = OpenQA.Selenium.IWebElement;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
+using By = Qooxdoo.WebDriver.By;
 
-namespace Qooxdoo.WebDriverDemo.websitewidgetbrowser
+namespace Qooxdoo.WebDriverDemo.WebsiteWidgetBrowser
 {
+    [TestFixture]
     public class DatePicker : WebsiteWidgetBrowser
     {
-
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @BeforeClass public static void setUpBeforeClass() throws Exception
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-        public static void SetUpBeforeClass()
+        [OneTimeSetUp]
+        public new static void SetUpBeforeClass()
         {
-            WebsiteWidgetBrowser.setUpBeforeClass();
-            selectTab("Date Picker");
+            WebsiteWidgetBrowser.SetUpBeforeClass();
+            SelectTab("Date Picker");
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void openClose()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void openClose()
+        [Test]
         public virtual void OpenClose()
         {
             string calendarPath = "//div[contains(@class, 'qx-calendar')]";
-            WebElement picker = webDriver.FindElement(By.Id("datepicker-default"));
+            IWebElement picker = webDriver.FindElement(By.Id("datepicker-default"));
             string valueBefore = picker.GetAttribute("value");
 
-            WebElement calendar = webDriver.FindElement(OpenQA.Selenium.By.XPath(calendarPath));
+            IWebElement calendar = webDriver.FindElement(OpenQA.Selenium.By.XPath(calendarPath));
             Assert.False(calendar.Displayed);
             picker.Click();
 
             Assert.True(calendar.Displayed);
 
-            WebElement header = webDriver.FindElement(OpenQA.Selenium.By.XPath("//h1"));
+            IWebElement header = webDriver.FindElement(OpenQA.Selenium.By.XPath("//h1"));
             header.Click();
             Assert.False(calendar.Displayed);
 
             picker.Click();
-            WebElement nextMonth = calendar.FindElement(OpenQA.Selenium.By.XPath("descendant::button[@class='qx-calendar-next']"));
+            IWebElement nextMonth = calendar.FindElement(OpenQA.Selenium.By.XPath("descendant::button[@class='qx-calendar-next']"));
             nextMonth.Click();
             Assert.True(calendar.Displayed);
 
-            WebElement day = calendar.FindElement(OpenQA.Selenium.By.XPath("descendant::button[text()='4']"));
+            IWebElement day = calendar.FindElement(OpenQA.Selenium.By.XPath("descendant::button[text()='4']"));
             day.Click();
             Assert.False(calendar.Displayed);
 
@@ -49,5 +46,4 @@ namespace Qooxdoo.WebDriverDemo.websitewidgetbrowser
             Assert.AreNotEqual(valueBefore, valueAfter);
         }
     }
-
 }

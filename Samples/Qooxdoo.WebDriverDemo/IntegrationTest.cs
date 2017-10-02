@@ -1,36 +1,34 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using QxWebDriver = Qooxdoo.WebDriver.QxWebDriver;
+using NUnit.Framework;
 using LogEntry = Qooxdoo.WebDriver.Log.LogEntry;
+using QxWebDriver = Qooxdoo.WebDriver.QxWebDriver;
 
 namespace Qooxdoo.WebDriverDemo
 {
     public abstract class IntegrationTest
     {
+        public static QxWebDriver Driver;
 
-        public static QxWebDriver driver;
-
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Rule public OnFailed ruleExample = new OnFailed();
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Rule public OnFailed ruleExample = new OnFailed();
+        //[Rule]
         public OnFailed ruleExample = new OnFailed();
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @BeforeClass public static void setUpBeforeClass() throws Exception
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-        public static void setUpBeforeClass()
+        public static void SetUpBeforeClass()
         {
-            driver = Configuration.QxWebDriver;
-            driver.Manage().Window().Maximize();
-            driver.Url = System.getProperty("org.qooxdoo.demo.auturl");
-            driver.RegisterLogAppender();
-            driver.RegisterGlobalErrorHandler();
+            Driver = Configuration.QxWebDriver;
+            Driver.Manage().Window.Maximize();
+            Driver.Url = SystemProperties.GetProperty("org.qooxdoo.demo.auturl");
+            Driver.RegisterLogAppender();
+            Driver.RegisterGlobalErrorHandler();
         }
 
         /// <summary>
         /// Prints the AUT's log messages
         /// </summary>
-        public static void printQxLog(QxWebDriver driver)
+        public static void PrintQxLog(QxWebDriver driver)
         {
             IList<LogEntry> logEntries = driver.LogEvents;
             IEnumerator<LogEntry> logItr = logEntries.GetEnumerator();
@@ -43,9 +41,9 @@ namespace Qooxdoo.WebDriverDemo
         /// <summary>
         /// Prints AUT exceptions
         /// </summary>
-        public static void printQxErrors(QxWebDriver driver)
+        public static void PrintQxErrors(QxWebDriver driver)
         {
-            IList<string> caughtErrors = (IList<string>) driver.CaughtErrors;
+            IList<string> caughtErrors = driver.CaughtErrors;
             IEnumerator exItr = caughtErrors.GetEnumerator();
             while (exItr.MoveNext())
             {
@@ -53,14 +51,11 @@ namespace Qooxdoo.WebDriverDemo
             }
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @AfterClass public static void tearDownAfterClass() throws Exception
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-        public static void tearDownAfterClass()
+        public static void TearDownAfterClass()
         {
-            printQxLog(driver);
-            printQxErrors(driver);
-            driver.quit();
+            PrintQxLog(Driver);
+            PrintQxErrors(Driver);
+            Driver.Quit();
         }
     }
 

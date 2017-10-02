@@ -1,31 +1,28 @@
-﻿using Assert = NUnit.Framework.Assert;
-//using BeforeClass = NUnit.Framework.BeforeClass;
-//using Test = NUnit.Framework.Test;
-using WebElement = OpenQA.Selenium.IWebElement;
-using Qooxdoo.WebDriver;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
+using By = Qooxdoo.WebDriver.By;
 
-namespace Qooxdoo.WebDriverDemo.websitewidgetbrowser
+namespace Qooxdoo.WebDriverDemo.WebsiteWidgetBrowser
 {
+    [TestFixture]
     public class Button : WebsiteWidgetBrowser
     {
-
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @BeforeClass public static void setUpBeforeClass() throws Exception
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-        public static void setUpBeforeClass()
+        [OneTimeSetUp]
+        public new static void SetUpBeforeClass()
         {
-            WebsiteWidgetBrowser.setUpBeforeClass();
-            selectTab("Button");
+            WebsiteWidgetBrowser.SetUpBeforeClass();
+            SelectTab("Button");
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void menuButton()
-        public virtual void menuButton()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void menuButton()
+        [Test]
+        public virtual void MenuButton()
         {
-            WebElement menu = webDriver.FindElement(By.Id("menu"));
+            IWebElement menu = webDriver.FindElement(By.Id("menu"));
             Assert.False(menu.Displayed);
 
-            WebElement menuButton = webDriver.FindElement(By.Id("menu-button"));
+            IWebElement menuButton = webDriver.FindElement(By.Id("menu-button"));
             menuButton.Click();
             Assert.True(menu.Displayed);
 
@@ -35,10 +32,9 @@ namespace Qooxdoo.WebDriverDemo.websitewidgetbrowser
             menuButton.Click();
             Assert.True(menu.Displayed);
 
-            WebElement header = webDriver.FindElement(OpenQA.Selenium.By.XPath("//h1"));
+            IWebElement header = webDriver.FindElement(OpenQA.Selenium.By.XPath("//h1"));
             header.Click();
             Assert.False(menu.Displayed);
         }
     }
-
 }

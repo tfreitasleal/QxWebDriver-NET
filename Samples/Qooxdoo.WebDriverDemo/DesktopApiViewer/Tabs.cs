@@ -1,25 +1,19 @@
-﻿namespace Qooxdoo.WebDriverDemo.DesktopApiViewer
+﻿using System;
+using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
+using Qooxdoo.WebDriver.UI;
+using By = Qooxdoo.WebDriver.By;
+
+namespace Qooxdoo.WebDriverDemo.DesktopApiViewer
 {
-
-    using Assert = NUnit.Framework.Assert;
-    //using BeforeClass = NUnit.Framework.BeforeClass;
-    //using Test = NUnit.Framework.Test;
-    using By = Qooxdoo.WebDriver.By;
-    using Widget = Qooxdoo.WebDriver.UI.IWidget;
-    using Keys = OpenQA.Selenium.Keys;
-    using NoSuchElementException = OpenQA.Selenium.NoSuchElementException;
-    using WebElement = OpenQA.Selenium.IWebElement;
-    using Actions = OpenQA.Selenium.Interactions.Actions;
-
+    [TestFixture]
     public class Tabs : DesktopApiViewer
     {
-
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @BeforeClass public static void setUpBeforeClass() throws Exception
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-        public static void setUpBeforeClass()
+        [OneTimeSetUp]
+        public new static void SetUpBeforeClass()
         {
-            DesktopApiViewer.setUpBeforeClass();
+            DesktopApiViewer.SetUpBeforeClass();
             string className = "qx.ui.form.Button";
             SelectClass(className);
         }
@@ -28,7 +22,11 @@
         {
             get
             {
-                if (System.getProperty("org.qooxdoo.demo.platform").equalsIgnoreCase("windows") && System.getProperty("org.qooxdoo.demo.browsername").equalsIgnoreCase("firefox") && System.getProperty("org.qooxdoo.demo.browserversion").equalsIgnoreCase("stable"))
+                if (Platform.CurrentPlatform.PlatformType == PlatformType.Windows &&
+                    SystemProperties.GetProperty("org.qooxdoo.demo.browsername")
+                        .Equals("firefox", StringComparison.OrdinalIgnoreCase) &&
+                    SystemProperties.GetProperty("org.qooxdoo.demo.browserversion")
+                        .Equals("stable", StringComparison.OrdinalIgnoreCase))
                 {
                     return true;
                 }
@@ -36,41 +34,40 @@
             }
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void tabs()
-        public virtual void tabs()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void tabs()
+        [Test]
+        public virtual void TestTabs()
         {
             if (Firefox)
             {
                 return;
             }
             string newTabClass = "qx.ui.form.MenuButton";
-            WebElement link = driver.FindElement(OpenQA.Selenium.By.XPath("//a[text()='" + newTabClass + "']"));
-            Actions action = new Actions(driver.WebDriver);
-            action.keyDown(Keys.SHIFT);
+            IWebElement link = Driver.FindElement(OpenQA.Selenium.By.XPath("//a[text()='" + newTabClass + "']"));
+            Actions action = new Actions(Driver.WebDriver);
+            action.KeyDown(Keys.Shift);
             action.Click(link);
-            action.keyUp(Keys.SHIFT);
-            action.perform();
+            action.KeyUp(Keys.Shift);
+            action.Perform();
 
             string newTabPath = "*/apiviewer.DetailFrameTabView/*/[@label=" + newTabClass + "]";
-            Widget newTabButton = driver.FindWidget(By.Qxh(newTabPath));
+            IWidget newTabButton = Driver.FindWidget(By.Qxh(newTabPath));
             Assert.True(newTabButton.Displayed);
 
             string closeButtonPath = newTabPath + "/qx.ui.form.Button";
-            Widget closeButton = driver.FindWidget(By.Qxh(closeButtonPath));
+            IWidget closeButton = Driver.FindWidget(By.Qxh(closeButtonPath));
             Assert.True(closeButton.Displayed);
             closeButton.Click();
 
             try
             {
-                driver.FindWidget(By.Qxh(newTabPath));
-                Assert.True("New tab was not closed!", false);
+                Driver.FindWidget(By.Qxh(newTabPath));
+                Assert.True(false, "New tab was not closed!");
             }
             catch (NoSuchElementException)
             {
             }
         }
-
     }
-
 }

@@ -1,31 +1,26 @@
 ﻿using System.Collections.Generic;
-using Qooxdoo.WebDriver;
-using Assert = NUnit.Framework.Assert;
-//using BeforeClass = NUnit.Framework.BeforeClass;
-//using Test = NUnit.Framework.Test;
-using WebElement = OpenQA.Selenium.IWebElement;
+using NUnit.Framework;
+using OpenQA.Selenium;
 
-namespace Qooxdoo.WebDriverDemo.websitewidgetbrowser
+namespace Qooxdoo.WebDriverDemo.WebsiteWidgetBrowser
 {
+    [TestFixture]
     public class Tabs : WebsiteWidgetBrowser
     {
-
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @BeforeClass public static void setUpBeforeClass() throws Exception
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-        public static void setUpBeforeClass()
+        [OneTimeSetUp]
+        public new static void SetUpBeforeClass()
         {
-            WebsiteWidgetBrowser.setUpBeforeClass();
-            selectTab("Tabs");
+            WebsiteWidgetBrowser.SetUpBeforeClass();
+            SelectTab("Tabs");
         }
 
-        protected internal virtual string getActivePageText(WebElement tabs)
+        protected internal virtual string GetActivePageText(IWebElement tabs)
         {
-            IList<WebElement> pages = tabs.FindElements(OpenQA.Selenium.By.XPath("descendant::div[contains(@class, 'qx-tabs-page')]"));
-            IEnumerator<WebElement> itr = pages.GetEnumerator();
+            IList<IWebElement> pages = tabs.FindElements(By.XPath("descendant::div[contains(@class, 'qx-tabs-page')]"));
+            IEnumerator<IWebElement> itr = pages.GetEnumerator();
             while (itr.MoveNext())
             {
-                WebElement page = itr.Current;
+                IWebElement page = itr.Current;
                 if (page.Displayed)
                 {
                     return page.Text;
@@ -34,35 +29,36 @@ namespace Qooxdoo.WebDriverDemo.websitewidgetbrowser
             return null;
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void tabs() throws InterruptedException
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-        public virtual void tabs()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void tabs() throws InterruptedException
+        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
+        [Test]
+        public virtual void SetTabs()
         {
-            IList<WebElement> alignmentRadios = webDriver.FindElements(OpenQA.Selenium.By.XPath("//div[@id = 'tabs-page']/descendant::input[@name = 'tabalign']"));
-            IEnumerator<WebElement> itr = alignmentRadios.GetEnumerator();
+            IList<IWebElement> alignmentRadios =
+                webDriver.FindElements(By.XPath("//div[@id = 'tabs-page']/descendant::input[@name = 'tabalign']"));
+            IEnumerator<IWebElement> itr = alignmentRadios.GetEnumerator();
             while (itr.MoveNext())
             {
-                WebElement radio = itr.Current;
+                IWebElement radio = itr.Current;
                 radio.Click();
-                testTabs();
+                TestTabs();
             }
         }
 
-        protected internal virtual void testTabs()
+        protected internal virtual void TestTabs()
         {
-            WebElement tabs = webDriver.FindElement(OpenQA.Selenium.By.XPath("//div[@id = 'tabs-page']/descendant::div[contains(@class, 'qx-tabs')]"));
-            IList<WebElement> tabButtons = tabs.FindElements(OpenQA.Selenium.By.XPath("descendant::li[contains(@class, 'qx-tabs-button')]/button"));
-            IEnumerator<WebElement> itr = tabButtons.GetEnumerator();
+            IWebElement tabs = webDriver.FindElement(By.XPath("//div[@id = 'tabs-page']/descendant::div[contains(@class, 'qx-tabs')]"));
+            IList<IWebElement> tabButtons = tabs.FindElements(By.XPath("descendant::li[contains(@class, 'qx-tabs-button')]/button"));
+            IEnumerator<IWebElement> itr = tabButtons.GetEnumerator();
             while (itr.MoveNext())
             {
-                WebElement tabButton = itr.Current;
+                IWebElement tabButton = itr.Current;
                 string buttonText = tabButton.Text;
                 tabButton.Click();
-                string activePageText = getActivePageText(tabs);
+                string activePageText = GetActivePageText(tabs);
                 Assert.Equals(buttonText, activePageText);
             }
         }
     }
-
 }

@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="nunit.framework, Version=3.8.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.8.1\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
@@ -55,7 +59,7 @@
   <ItemGroup>
     <Compile Include="Configuration.cs" />
     <Compile Include="DateTimeHelperClass.cs" />
-    <Compile Include="DemoBrowser\table\TableCellEditor.cs" />
+    <Compile Include="DemoBrowser\Table\TableCellEditor.cs" />
     <Compile Include="DesktopApiViewer\ClassItems.cs" />
     <Compile Include="DesktopApiViewer\ClassViewer.cs" />
     <Compile Include="DesktopApiViewer\DesktopApiViewer.cs" />
@@ -63,7 +67,7 @@
     <Compile Include="DesktopApiViewer\Tabs.cs" />
     <Compile Include="DesktopApiViewer\Tree.cs" />
     <Compile Include="DesktopShowcase\DataBinding.cs" />
-    <Compile Include="DesktopShowcase\Desktopshowcase.cs" />
+    <Compile Include="DesktopShowcase\DesktopShowcase.cs" />
     <Compile Include="DesktopShowcase\DragDrop.cs" />
     <Compile Include="DesktopShowcase\Form.cs" />
     <Compile Include="DesktopShowcase\Languages.cs" />
@@ -84,13 +88,14 @@
     <Compile Include="MobileShowcase\Events.cs" />
     <Compile Include="MobileShowcase\FormElements.cs" />
     <Compile Include="MobileShowcase\List.cs" />
-    <Compile Include="MobileShowcase\Mobileshowcase.cs" />
+    <Compile Include="MobileShowcase\MobileShowcase.cs" />
     <Compile Include="MobileShowcase\TabBar.cs" />
     <Compile Include="MobileShowcase\Toolbar.cs" />
     <Compile Include="OnFailed.cs" />
     <Compile Include="Playground\PlaygroundIT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HashMapHelperClass.cs" />
+    <Compile Include="SystemProperties.cs" />
     <Compile Include="WebsiteApiViewer\WebsiteApiViewer.cs" />
     <Compile Include="WebsiteUnitTests\WebsiteUnitTests.cs" />
     <Compile Include="WebsiteWidgetBrowser\Accordion.cs" />

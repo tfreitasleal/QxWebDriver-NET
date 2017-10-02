@@ -1,20 +1,15 @@
 ﻿using System.Threading;
-using Qooxdoo.WebDriver;
-using Assert = NUnit.Framework.Assert;
-//using BeforeClass = NUnit.Framework.BeforeClass;
-//using Test = NUnit.Framework.Test;
-using Touchable = Qooxdoo.WebDriver.UI.ITouchable;
-using WebElement = OpenQA.Selenium.IWebElement;
+using NUnit.Framework;
+using OpenQA.Selenium;
+using Qooxdoo.WebDriver.UI;
 
 namespace Qooxdoo.WebDriverDemo.MobileShowcase
 {
+    [TestFixture]
     public class BasicWidgets : Mobileshowcase
     {
-
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @BeforeClass public static void setUpBeforeClass() throws Exception
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-        public static void setUpBeforeClass()
+        [OneTimeSetUp]
+        public new static void SetUpBeforeClass()
         {
             Mobileshowcase.SetUpBeforeClass();
             string title = "Basic Widgets";
@@ -22,13 +17,15 @@ namespace Qooxdoo.WebDriverDemo.MobileShowcase
             VerifyTitle(title);
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void basicWidgets() throws InterruptedException
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-        public virtual void basicWidgets()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void basicWidgets() throws InterruptedException
+        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
+        [Test]
+        public virtual void TestBasicWidgets()
         {
             // toggle button
-            Touchable toggleButton = (Touchable) driver.FindWidget(OpenQA.Selenium.By.XPath("//div[contains(@class, 'togglebutton') and @data-label-checked='ON']"));
+            ITouchable toggleButton =
+                (ITouchable) Driver.FindWidget(By.XPath("//div[contains(@class, 'togglebutton') and @data-label-checked='ON']"));
             bool? valueBefore = (bool?) toggleButton.GetPropertyValue("value");
             Assert.True(valueBefore);
             Thread.Sleep(250);
@@ -42,12 +39,13 @@ namespace Qooxdoo.WebDriverDemo.MobileShowcase
             Thread.Sleep(500);
 
             // collapsible
-            Touchable collapsibleHeader = (Touchable) driver.FindWidget(OpenQA.Selenium.By.XPath("//div[contains(@class, 'collapsible-header')]"));
-            WebElement collapsibleContent = driver.FindElement(OpenQA.Selenium.By.XPath("//div[contains(@class, 'collapsible-content')]"));
+            ITouchable collapsibleHeader =
+                (ITouchable) Driver.FindWidget(By.XPath("//div[contains(@class, 'collapsible-header')]"));
+            IWebElement collapsibleContent =
+                Driver.FindElement(By.XPath("//div[contains(@class, 'collapsible-content')]"));
             Assert.False(collapsibleContent.Displayed);
             collapsibleHeader.Tap();
             Assert.True(collapsibleContent.Displayed);
         }
     }
-
 }

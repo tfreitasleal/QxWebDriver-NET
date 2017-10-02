@@ -1,60 +1,51 @@
-﻿//using AfterClass = NUnit.Framework.AfterClass;
-using Assert = NUnit.Framework.Assert;
-//using Before = NUnit.Framework.Before;
-//using BeforeClass = NUnit.Framework.BeforeClass;
-//using Test = NUnit.Framework.Test;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
+using Qooxdoo.WebDriver.UI;
+using Qooxdoo.WebDriver.UI.Form;
 using By = Qooxdoo.WebDriver.By;
-using Selectable = Qooxdoo.WebDriver.UI.ISelectable;
-using IBooleanForm = Qooxdoo.WebDriver.UI.Form.IBooleanForm;
-using Table = Qooxdoo.WebDriver.UI.Table.Table;
-using Keys = OpenQA.Selenium.Keys;
-using WebElement = OpenQA.Selenium.IWebElement;
-using Actions = OpenQA.Selenium.Interactions.Actions;
 
 namespace Qooxdoo.WebDriverDemo.DemoBrowser.Table
 {
+    [TestFixture]
     public class TableCellEditor : IntegrationTest
     {
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @BeforeClass public static void setUpBeforeClass() throws Exception
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-        public static void SetUpBeforeClass()
+        [OneTimeSetUp]
+        public new static void SetUpBeforeClass()
         {
-            System.setProperty("org.qooxdoo.demo.auturl",
+            SystemProperties.SetProperty("org.qooxdoo.demo.auturl",
                 "http://demo.qooxdoo.org/current/demobrowser/demo/table/Table_Cell_Editor.html");
-            IntegrationTest.setUpBeforeClass();
+            IntegrationTest.SetUpBeforeClass();
         }
 
-        public Table table;
+        public WebDriver.UI.Table.Table table;
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Before public void setUp()
+        [SetUp]
         public virtual void SetUp()
         {
-            table = (Table) driver.FindWidget(By.Qxh("*/qx.ui.table.Table"));
+            table = (WebDriver.UI.Table.Table) Driver.FindWidget(By.Qxh("*/qx.ui.table.Table"));
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @AfterClass public static void tearDownAfterClass() throws Exception
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-        public static void TearDownAfterClass()
+        [OneTimeTearDown]
+        public new static void TearDownAfterClass()
         {
-            driver.Close();
+            Driver.Close();
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void textField()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void textField()
+        [Test]
         public virtual void TextField()
         {
             string cellXpath = "div[contains(@class, 'qooxdoo-table-cell') and position() = 2]";
             string newText = "hsimpson";
 
-            WebElement row = table.ScrollToRow(0);
-            WebElement userNameCell = row.FindElement(OpenQA.Selenium.By.XPath(cellXpath));
-            Actions builder = new Actions(driver.WebDriver);
+            IWebElement row = table.ScrollToRow(0);
+            IWebElement userNameCell = row.FindElement(OpenQA.Selenium.By.XPath(cellXpath));
+            Actions builder = new Actions(Driver.WebDriver);
             builder.DoubleClick(userNameCell).Perform();
 
-            WebElement editor = table.CellEditor;
+            IWebElement editor = table.CellEditor;
             editor.SendKeys(Keys.Backspace);
             editor.SendKeys(Keys.Backspace);
             editor.SendKeys(Keys.Backspace);
@@ -67,19 +58,20 @@ namespace Qooxdoo.WebDriverDemo.DemoBrowser.Table
             Assert.Equals(newText, userNameCell.Text);
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void comboBox()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void comboBox()
+        [Test]
         public virtual void ComboBox()
         {
             string cellXpath = "div[contains(@class, 'qooxdoo-table-cell') and position() = 2]";
             string newText = "admin";
 
-            WebElement row = table.ScrollToRow(2);
-            WebElement roleCell = row.FindElement(OpenQA.Selenium.By.XPath(cellXpath));
-            Actions builder = new Actions(driver.WebDriver);
+            IWebElement row = table.ScrollToRow(2);
+            IWebElement roleCell = row.FindElement(OpenQA.Selenium.By.XPath(cellXpath));
+            Actions builder = new Actions(Driver.WebDriver);
             builder.DoubleClick(roleCell).Perform();
 
-            Selectable editor = (Selectable) table.CellEditor;
+            ISelectable editor = (ISelectable) table.CellEditor;
             editor.SelectItem("admin");
             editor.SendKeys(Keys.Return);
 
@@ -89,7 +81,7 @@ namespace Qooxdoo.WebDriverDemo.DemoBrowser.Table
 
             newText = "safety inspector";
             builder.DoubleClick(roleCell).Perform();
-            editor = (Selectable) table.CellEditor;
+            editor = (ISelectable) table.CellEditor;
             editor.SendKeys(newText);
             editor.SendKeys(Keys.Return);
             row = table.ScrollToRow(2);
@@ -97,18 +89,19 @@ namespace Qooxdoo.WebDriverDemo.DemoBrowser.Table
             Assert.Equals(newText, roleCell.Text);
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void checkBox()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void checkBox()
+        [Test]
         public virtual void CheckBox()
         {
             string cellXpath = "div[contains(@class, 'qooxdoo-table-cell') and position() = 2]";
 
-            WebElement row = table.ScrollToRow(7);
-            WebElement newsletterCell = row.FindElement(OpenQA.Selenium.By.XPath(cellXpath));
-            Actions builder = new Actions(driver.WebDriver);
+            IWebElement row = table.ScrollToRow(7);
+            IWebElement newsletterCell = row.FindElement(OpenQA.Selenium.By.XPath(cellXpath));
+            Actions builder = new Actions(Driver.WebDriver);
             builder.DoubleClick(newsletterCell).Perform();
 
-            IBooleanForm editor = (IBooleanForm) table.CellEditor;
+            BooleanForm editor = (BooleanForm) table.CellEditor;
             Assert.True(editor.Selected);
             editor.Click();
             Assert.False(editor.Selected);

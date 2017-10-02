@@ -1,34 +1,32 @@
-﻿namespace Qooxdoo.WebDriverDemo.DesktopShowcase
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
+using Qooxdoo.WebDriver.UI;
+
+namespace Qooxdoo.WebDriverDemo.DesktopShowcase
 {
-
-    using Assert = NUnit.Framework.Assert;
-    //using Before = NUnit.Framework.Before;
-    //using Test = NUnit.Framework.Test;
-    using By = Qooxdoo.WebDriver.By;
-    using Widget = Qooxdoo.WebDriver.UI.IWidget;
-    using WebElement = OpenQA.Selenium.IWebElement;
-
+    [TestFixture]
     public class Theming : DesktopShowcase
     {
+        public WebDriver.By calculatorLocator =
+                WebDriver.By.Qxh("qx.ui.container.Stack/qx.ui.container.Composite/qx.ui.window.Desktop/showcase.page.theme.calc.view.Calculator");
 
-        public By calculatorLocator = By.Qxh("qx.ui.container.Stack/qx.ui.container.Composite/qx.ui.window.Desktop/showcase.page.theme.calc.view.Calculator");
-
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Before public void setUp() throws Exception
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-        public virtual void setUp()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Before public void setUp() throws Exception
+        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
+        [SetUp]
+        public virtual void SetUp()
         {
             SelectPage("Theming");
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void theming()
-        public virtual void theming()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void theming()
+        [Test]
+        public virtual void TesTheming()
         {
-            WebElement calcEl = Root.FindElement(calculatorLocator);
-            Widget calc = driver.GetWidgetForElement(calcEl);
+            IWebElement calcEl = Root.FindElement(calculatorLocator);
+            IWidget calc = Driver.GetWidgetForElement(calcEl);
             Assert.True(calc.Displayed);
         }
     }
-
 }

@@ -1,46 +1,41 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using Assert = NUnit.Framework.Assert;
-//using Before = NUnit.Framework.Before;
-//using BeforeClass = NUnit.Framework.BeforeClass;
-//using Test = NUnit.Framework.Test;
+using System.Linq;
+using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
+using Qooxdoo.WebDriver.UI;
+using Qooxdoo.WebDriver.UI.Table;
 using By = Qooxdoo.WebDriver.By;
-using Selectable = Qooxdoo.WebDriver.UI.ISelectable;
-using Widget = Qooxdoo.WebDriver.UI.IWidget;
-using Table = Qooxdoo.WebDriver.UI.Table.Table;
-using Keys = OpenQA.Selenium.Keys;
-using WebElement = OpenQA.Selenium.IWebElement;
-using Actions = OpenQA.Selenium.Interactions.Actions;
 
-namespace Qooxdoo.WebDriverDemo.widgetbrowser
+namespace Qooxdoo.WebDriverDemo.WidgetBrowser
 {
-
+    [TestFixture]
     public class TableIT : WidgetBrowser
     {
-
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @BeforeClass public static void setUpBeforeClass() throws Exception
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-        public static void setUpBeforeClass()
+        [OneTimeSetUp]
+        public new static void SetUpBeforeClass()
         {
-            WidgetBrowser.setUpBeforeClass();
-            selectTab("Table");
+            WidgetBrowser.SetUpBeforeClass();
+            SelectTab("Table");
         }
 
-    public Table table;
+        public Table Table;
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Before public void setUp()
-        public virtual void setUp()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Before public void setUp()
+        [SetUp]
+        public virtual void SetUp()
         {
-            table = (Table) tabPage.FindWidget(By.Qxh("*/qx.ui.table.Table"));
+            Table = (Table) tabPage.FindWidget(By.Qxh("*/qx.ui.table.Table"));
         }
 
         protected internal virtual bool Ie
         {
             get
             {
-                string browser = System.getProperty("org.qooxdoo.demo.browsername");
+                string browser = SystemProperties.GetProperty("org.qooxdoo.demo.browsername");
                 if (browser.Contains("explorer"))
                 {
                     return true;
@@ -54,7 +49,9 @@ namespace Qooxdoo.WebDriverDemo.widgetbrowser
         {
             get
             {
-                if (System.getProperty("org.qooxdoo.demo.platform").equalsIgnoreCase("windows") && System.getProperty("org.qooxdoo.demo.browsername").equalsIgnoreCase("firefox") && System.getProperty("org.qooxdoo.demo.browserversion").equalsIgnoreCase("stable"))
+                if (SystemProperties.GetProperty("org.qooxdoo.demo.platform").Equals("windows", StringComparison.OrdinalIgnoreCase) &&
+                    SystemProperties.GetProperty("org.qooxdoo.demo.browsername").Equals("firefox", StringComparison.OrdinalIgnoreCase) &&
+                    SystemProperties.GetProperty("org.qooxdoo.demo.browserversion").Equals("stable", StringComparison.OrdinalIgnoreCase))
                 {
                     return true;
                 }
@@ -62,8 +59,9 @@ namespace Qooxdoo.WebDriverDemo.widgetbrowser
             }
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void ScrollToRow()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void ScrollToRow()
+        [Test]
         public virtual void ScrollToRow()
         {
             if (Ie)
@@ -71,17 +69,19 @@ namespace Qooxdoo.WebDriverDemo.widgetbrowser
                 return;
             }
             // select rows by index
-            WebElement row = table.ScrollToRow(23);
-            WebElement firstCell = row.FindElement(OpenQA.Selenium.By.XPath("div[contains(@class, 'qooxdoo-table-cell')]"));
+            IWebElement row = Table.ScrollToRow(23);
+            IWebElement firstCell =
+                row.FindElement(OpenQA.Selenium.By.XPath("div[contains(@class, 'qooxdoo-table-cell')]"));
             Assert.Equals("23", firstCell.Text);
 
-            row = table.ScrollToRow(3);
+            row = Table.ScrollToRow(3);
             firstCell = row.FindElement(OpenQA.Selenium.By.XPath("div[contains(@class, 'qooxdoo-table-cell')]"));
             Assert.Equals("3", firstCell.Text);
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void GetCellByText()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void GetCellByText()
+        [Test]
         public virtual void GetCellByText()
         {
             // ctrl-Click doesn't work in FF stable/Win
@@ -90,47 +90,49 @@ namespace Qooxdoo.WebDriverDemo.widgetbrowser
                 return;
             }
             // ctrl-Click two rows and verify the selection ranges
-            Actions builder = new Actions(driver.WebDriver);
-            builder.KeyDown(Keys.Control).Click(table.GetCellByText("26")).Click(table.GetCellByText("32")).keyUp(Keys.Control).perform();
+            Actions builder = new Actions(Driver.WebDriver);
+            builder.KeyDown(Keys.Control).Click(Table.GetCellByText("26")).Click(Table.GetCellByText("32"))
+                .KeyUp(Keys.Control).Perform();
 
-            IList<Hashtable> selectedRanges = table.SelectedRanges;
+            IList<Dictionary<string, long?>> selectedRanges = Table.SelectedRanges;
             Assert.Equals(2, selectedRanges.Count);
 
             Dictionary<string, long?> range0 = selectedRanges[0];
-            Assert.Equals(26, (int)(long) range0["minIndex"]);
-            Assert.Equals(26, (int)(long) range0["maxIndex"]);
+            Assert.Equals(26, (int) (long) range0["minIndex"]);
+            Assert.Equals(26, (int) (long) range0["maxIndex"]);
 
             Dictionary<string, long?> range1 = selectedRanges[1];
-            Assert.Equals(32, (int)(long) range1["minIndex"]);
-            Assert.Equals(32, (int)(long) range1["maxIndex"]);
+            Assert.Equals(32, (int) (long) range1["minIndex"]);
+            Assert.Equals(32, (int) (long) range1["maxIndex"]);
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void editCell() throws InterruptedException
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-        public virtual void editCell()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void editCell() throws InterruptedException
+        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
+        [Test]
+        public virtual void EditCell()
         {
-            string browserName = System.getProperty("org.qooxdoo.demo.browsername");
-            string browserVersion = System.getProperty("org.qooxdoo.demo.browserversion");
+            string browserName = SystemProperties.GetProperty("org.qooxdoo.demo.browsername");
+            string browserVersion = SystemProperties.GetProperty("org.qooxdoo.demo.browserversion");
             bool condition = browserName.Contains("internet") && browserVersion.Equals("8");
-            NUnit.Framework.Assume.assumeTrue(!condition);
+            Assert.IsTrue(!condition);
             string cellXpath = "div[contains(@class, 'qooxdoo-table-cell') and position() = 3]";
             string newText = "Hello WebDriver!";
 
             // Scroll to row #12 and select cell #3
-            WebElement row = table.ScrollToRow(12);
-            WebElement dateCell = row.FindElement(OpenQA.Selenium.By.XPath(cellXpath));
+            IWebElement row = Table.ScrollToRow(12);
+            IWebElement dateCell = row.FindElement(OpenQA.Selenium.By.XPath(cellXpath));
             dateCell.Click();
 
             // Double Click cell #3 to activate edit mode
-            Actions builder = new Actions(driver.WebDriver);
+            Actions builder = new Actions(Driver.WebDriver);
             builder.DoubleClick(dateCell).Perform();
 
-            Widget editor = table.CellEditor;
+            IWidget editor = Table.CellEditor;
             string old = (string) editor.GetPropertyValue("value");
 
             // Clear old content
-            Actions keyBuilder = (new Actions(driver.WebDriver)).SendKeys(Keys.End);
+            Actions keyBuilder = (new Actions(Driver.WebDriver)).SendKeys(Keys.End);
             for (int i = 0; i < old.Length; i++)
             {
                 keyBuilder.SendKeys(Keys.Backspace);
@@ -142,29 +144,31 @@ namespace Qooxdoo.WebDriverDemo.widgetbrowser
             editor.SendKeys(Keys.Return);
 
             // update the cell element and check the new content
-            row = table.ScrollToRow(12);
+            row = Table.ScrollToRow(12);
             dateCell = row.FindElement(OpenQA.Selenium.By.XPath(cellXpath));
             Assert.Equals(newText, dateCell.Text);
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void columnMenu()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void columnMenu()
+        [Test]
         public virtual void ColumnMenu()
         {
             // use the column menu to hide a column
-            IList<string> headerLabels = table.HeaderLabels;
-            Assert.ArrayAreEqual(new string[] {"ID", "A number", "A date", "Boolean"}, headerLabels.ToArray());
+            IList<string> headerLabels = Table.HeaderLabels;
+            Assert.AreEqual(new[] {"ID", "A number", "A date", "Boolean"}, headerLabels.ToArray());
 
-            Selectable colMenuButton = (Selectable) table.ColumnMenuButton;
+            ISelectable colMenuButton = (ISelectable) Table.ColumnMenuButton;
             colMenuButton.SelectItem("A number");
 
-            headerLabels = table.HeaderLabels;
-            Assert.assertArrayEquals(new string[] {"ID", "A date", "Boolean"}, headerLabels.ToArray());
+            headerLabels = Table.HeaderLabels;
+            Assert.AreEqual(new[] {"ID", "A date", "Boolean"}, headerLabels.ToArray());
             colMenuButton.SelectItem("A number");
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void sortByColumn()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void sortByColumn()
+        [Test]
         public virtual void SortByColumn()
         {
             if (Ie)
@@ -172,7 +176,7 @@ namespace Qooxdoo.WebDriverDemo.widgetbrowser
                 return;
             }
             // Click column headers to set the table's sorting order
-            Widget idColumnHeader = table.GetHeaderCell("ID");
+            IWidget idColumnHeader = Table.GetHeaderCell("ID");
             string sortIcon = (string) idColumnHeader.GetPropertyValue("sortIcon");
             Assert.IsNull(sortIcon);
             idColumnHeader.Click();
@@ -184,7 +188,5 @@ namespace Qooxdoo.WebDriverDemo.widgetbrowser
             // back to default sorting
             idColumnHeader.Click();
         }
-
     }
-
 }

@@ -1,35 +1,24 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
 using Qooxdoo.WebDriver;
+using Qooxdoo.WebDriver.UI;
+using Qooxdoo.WebDriver.UI.Tree.Core;
 
-namespace Qooxdoo.WebDriverDemo.widgetbrowser
+namespace Qooxdoo.WebDriverDemo.WidgetBrowser
 {
-
-//JAVA TO C# CONVERTER TODO TASK: This Java 'import static' statement cannot be converted to C#:
-//    import static NUnit.Framework.Assert.Equals;
-
-    //using BeforeClass = NUnit.Framework.BeforeClass;
-    //using Test = NUnit.Framework.Test;
-    using By = Qooxdoo.WebDriver.By;
-    using Selectable = Qooxdoo.WebDriver.UI.ISelectable;
-    using Widget = Qooxdoo.WebDriver.UI.IWidget;
-    using AbstractItem = Qooxdoo.WebDriver.UI.Tree.Core.AbstractItem;
-
+    [TestFixture]
     public class TreeIT : WidgetBrowser
     {
-
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @BeforeClass public static void setUpBeforeClass() throws Exception
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-        public static void SetUpBeforeClass()
+        [OneTimeSetUp]
+        public new static void SetUpBeforeClass()
         {
-            WidgetBrowser.setUpBeforeClass();
-            selectTab("Tree");
+            WidgetBrowser.SetUpBeforeClass();
+            SelectTab("Tree");
         }
 
         protected internal virtual void TreeTestCommon(string treeLocator)
         {
-            Selectable tree = (Selectable) tabPage.FindWidget(By.Qxh(treeLocator));
+            ISelectable tree = (ISelectable) tabPage.FindWidget(By.Qxh(treeLocator));
 
             //By item1Locator = By.Qxh("*/[@label=" + item1LabelExpected + "]");
             //TreeItem item1 = (TreeItem) tree.FindWidget(item1Locator);
@@ -40,19 +29,19 @@ namespace Qooxdoo.WebDriverDemo.widgetbrowser
             item1.Click();
             if (item1.Open)
             {
-                item1.clickOpenCloseButton();
+                item1.ClickOpenCloseButton();
             }
 
             string item2LabelExpected = "Inbox";
             AbstractItem item2 = (AbstractItem) tree.GetSelectableItem(item2LabelExpected);
             if (!item2.Open)
             {
-                item2.clickOpenCloseButton();
+                item2.ClickOpenCloseButton();
             }
 
             string item3LabelExpected = "Trash";
             AbstractItem item3 = (AbstractItem) tree.GetSelectableItem(item3LabelExpected);
-            item3.clickOpenCloseButton();
+            item3.ClickOpenCloseButton();
 
             string item4LabelExpected = "Junk #12";
             tree.SelectItem(item4LabelExpected);
@@ -69,28 +58,28 @@ namespace Qooxdoo.WebDriverDemo.widgetbrowser
             else
             {
                 // The regular Tree's selection is an Array of Widgets
-                IList<Widget> selection = (IList<Widget>) tree.GetWidgetListFromProperty("selection");
+                IList<IWidget> selection = (IList<IWidget>) tree.GetWidgetListFromProperty("selection");
                 Assert.Equals(1, selection.Count);
-                Widget selected = selection[0];
+                IWidget selected = selection[0];
                 string selectedLabel = (string) selected.GetPropertyValue("label");
                 Assert.Equals(item4LabelExpected, selectedLabel);
             }
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void tree()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void tree()
+        [Test]
         public virtual void Tree()
         {
             TreeTestCommon("*/qx.ui.tree.Tree");
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void virtualTree()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void virtualTree()
+        [Test]
         public virtual void VirtualTree()
         {
             TreeTestCommon("*/qx.ui.tree.VirtualTree");
         }
-
     }
-
 }

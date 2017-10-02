@@ -1,86 +1,84 @@
-﻿using Assert = NUnit.Framework.Assert;
-//using Before = NUnit.Framework.Before;
-//using BeforeClass = NUnit.Framework.BeforeClass;
-//using Test = NUnit.Framework.Test;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
+using Qooxdoo.WebDriver.UI;
 using By = Qooxdoo.WebDriver.By;
-using Widget = Qooxdoo.WebDriver.UI.IWidget;
-using NoSuchElementException = OpenQA.Selenium.NoSuchElementException;
-using WebElement = OpenQA.Selenium.IWebElement;
 
 namespace Qooxdoo.WebDriverDemo.DesktopApiViewer
 {
-
+    [TestFixture]
     public class ClassViewer : DesktopApiViewer
     {
-
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @BeforeClass public static void setUpBeforeClass() throws Exception
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-        public static void SetUpBeforeClass()
+        [OneTimeSetUp]
+        public new static void SetUpBeforeClass()
         {
-            DesktopApiViewer.setUpBeforeClass();
+            DesktopApiViewer.SetUpBeforeClass();
             string className = "qx.ui.core.Widget";
             SelectClass(className);
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Before public void setUpBeforeTest()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Before public void setUpBeforeTest()
+        [SetUp]
         public virtual void SetUpBeforeTest()
         {
             string className = "qx.ui.core.Widget";
             SelectClass(className);
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void links()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void links()
+        [Test]
         public virtual void Links()
         {
             string internalTarget = "#capture";
-            WebElement internalLink = driver.FindElement(OpenQA.Selenium.By.XPath("//a[text()='" + internalTarget + "']"));
+            IWebElement internalLink =
+                Driver.FindElement(OpenQA.Selenium.By.XPath("//a[text()='" + internalTarget + "']"));
             internalLink.Click();
-            string hashAfter = (string) driver.ExecuteScript("return location.hash;");
+            string hashAfter = (string) Driver.ExecuteScript("return location.hash;");
             Assert.Equals("#qx.ui.core.Widget~capture", hashAfter);
 
             string subClass = "qx.ui.basic.Atom";
-            WebElement subClassLink = driver.FindElement(OpenQA.Selenium.By.XPath("//a[text()='" + subClass + "']"));
+            IWebElement subClassLink = Driver.FindElement(OpenQA.Selenium.By.XPath("//a[text()='" + subClass + "']"));
             subClassLink.Click();
 
-            Widget tabButton = driver.FindWidget(By.Qxh(tabButtonPath));
+            IWidget tabButton = Driver.FindWidget(By.Qxh(TabButtonPath));
             Assert.Equals(subClass, tabButton.GetPropertyValue("label"));
-            hashAfter = (string) driver.ExecuteScript("return location.hash;");
+            hashAfter = (string) Driver.ExecuteScript("return location.hash;");
             Assert.Equals("#qx.ui.basic.Atom", hashAfter);
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void toggleDetail()
-        public virtual void toggleDetail()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void toggleDetail()
+        [Test]
+        public virtual void ToggleDetail()
         {
-            string detailHeadlinePath = "//div[contains(@class, 'info-panel')]/descendant::div[contains(@class, 'item-detail-headline')]";
+            string detailHeadlinePath =
+                "//div[contains(@class, 'info-panel')]/descendant::div[contains(@class, 'item-detail-headline')]";
             try
             {
-                driver.FindElement(OpenQA.Selenium.By.XPath(detailHeadlinePath));
-                Assert.True("Constructor details should be hidden initially!", false);
+                Driver.FindElement(OpenQA.Selenium.By.XPath(detailHeadlinePath));
+                Assert.True(false, "Constructor details should be hidden initially!");
             }
             catch (NoSuchElementException)
             {
             }
 
-            WebElement constructorDetailToggle = driver.FindElement(OpenQA.Selenium.By.XPath("//div[contains(@class, 'info-panel')]/descendant::td[contains(@class, 'toggle')]/img"));
+            IWebElement constructorDetailToggle =
+                Driver.FindElement(OpenQA.Selenium.By.XPath(
+                    "//div[contains(@class, 'info-panel')]/descendant::td[contains(@class, 'toggle')]/img"));
             constructorDetailToggle.Click();
-            WebElement detailHeadline = driver.FindElement(OpenQA.Selenium.By.XPath(detailHeadlinePath));
+            IWebElement detailHeadline = Driver.FindElement(OpenQA.Selenium.By.XPath(detailHeadlinePath));
             Assert.True(detailHeadline.Displayed);
 
             constructorDetailToggle.Click();
             try
             {
-                detailHeadline = driver.FindElement(OpenQA.Selenium.By.XPath(detailHeadlinePath));
-                Assert.True("Constructor details could not be hidden!", false);
+                detailHeadline = Driver.FindElement(OpenQA.Selenium.By.XPath(detailHeadlinePath));
+                Assert.True(false, "Constructor details could not be hidden!");
             }
             catch (NoSuchElementException)
             {
             }
         }
-
     }
-
 }

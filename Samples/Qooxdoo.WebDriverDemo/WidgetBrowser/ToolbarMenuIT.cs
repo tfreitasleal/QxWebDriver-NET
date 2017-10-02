@@ -1,71 +1,66 @@
-﻿namespace Qooxdoo.WebDriverDemo.widgetbrowser
+﻿using NUnit.Framework;
+using Qooxdoo.WebDriver;
+using Qooxdoo.WebDriver.UI;
+
+namespace Qooxdoo.WebDriverDemo.WidgetBrowser
 {
+    //JAVA TO C# CONVERTER TODO TASK: This Java 'import static' statement cannot be converted to C#:
+    //    import static NUnit.Framework.Assert.False;
 
-//JAVA TO C# CONVERTER TODO TASK: This Java 'import static' statement cannot be converted to C#:
-//    import static NUnit.Framework.Assert.False;
-
-    //using BeforeClass = NUnit.Framework.BeforeClass;
-    //using Test = NUnit.Framework.Test;
-    using By = Qooxdoo.WebDriver.By;
-    using Selectable = Qooxdoo.WebDriver.UI.ISelectable;
-    using Widget = Qooxdoo.WebDriver.UI.IWidget;
-    using Assert = NUnit.Framework.Assert;
-
+    [TestFixture]
     public class ToolbarMenuIT : WidgetBrowser
     {
-
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @BeforeClass public static void setUpBeforeClass() throws Exception
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-        public static void setUpBeforeClass()
+        [OneTimeSetUp]
+        public new static void SetUpBeforeClass()
         {
-            WidgetBrowser.setUpBeforeClass();
-            selectTab("Toolbar.*");
+            WidgetBrowser.SetUpBeforeClass();
+            SelectTab("Toolbar.*");
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void menu()
-        public virtual void menu()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void menu()
+        [Test]
+        public virtual void Menu()
         {
             By menuLocator = By.Qxh("*/qx.ui.menu.Menu");
-            Selectable menu = (Selectable) tabPage.FindWidget(menuLocator);
-            Widget menuRadioButton = menu.GetSelectableItem("Menu RadioButton");
-            bool selectedBefore = (bool?) menuRadioButton.GetPropertyValue("value").Value;
+            ISelectable menu = (ISelectable) tabPage.FindWidget(menuLocator);
+            IWidget menuRadioButton = menu.GetSelectableItem("Menu RadioButton");
+            bool selectedBefore = ((bool?) menuRadioButton.GetPropertyValue("value")).Value;
             menu.SelectItem("Menu RadioButton");
-            bool selectedAfter = (bool?) menuRadioButton.GetPropertyValue("value").Value;
+            bool selectedAfter = ((bool?) menuRadioButton.GetPropertyValue("value")).Value;
             Assert.False(selectedBefore == selectedAfter);
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void splitButton()
-        public virtual void splitButton()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void splitButton()
+        [Test]
+        public virtual void SplitButton()
         {
             By splitButtonLocator = By.Qxh("*/qx.ui.toolbar.SplitButton");
-            Widget tbarSplit = tabPage.FindWidget(splitButtonLocator);
+            IWidget tbarSplit = tabPage.FindWidget(splitButtonLocator);
             tbarSplit.GetChildControl("arrow").Click();
-            Selectable splitMenu = (Selectable) tbarSplit.GetWidgetFromProperty("menu");
+            ISelectable splitMenu = (ISelectable) tbarSplit.GetWidgetFromProperty("menu");
             splitMenu.SelectItem(0);
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void menuButton()
-        public virtual void menuButton()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void menuButton()
+        [Test]
+        public virtual void MenuButton()
         {
             By menuButtonLocator = By.Qxh("*/[@label=MenuButton]");
-            Selectable tbarMenuButton = (Selectable) tabPage.FindWidget(menuButtonLocator);
+            ISelectable tbarMenuButton = (ISelectable) tabPage.FindWidget(menuButtonLocator);
 
             // Must Click the button so the menu is rendered before we can check if
             // the MenuRadioButton is selected
             tbarMenuButton.Click();
-            Selectable buttonMenu = (Selectable) tbarMenuButton.GetWidgetFromProperty("menu");
-            Widget buttonMenuRadioButton = buttonMenu.GetSelectableItem("Menu RadioButton");
-            bool selectedBefore = (bool?) buttonMenuRadioButton.GetPropertyValue("value").Value;
+            ISelectable buttonMenu = (ISelectable) tbarMenuButton.GetWidgetFromProperty("menu");
+            IWidget buttonMenuRadioButton = buttonMenu.GetSelectableItem("Menu RadioButton");
+            bool selectedBefore = ((bool?) buttonMenuRadioButton.GetPropertyValue("value")).Value;
             tbarMenuButton.Click();
             tbarMenuButton.SelectItem("Menu RadioButton");
-            bool selectedAfter = (bool?) buttonMenuRadioButton.GetPropertyValue("value").Value;
+            bool selectedAfter = ((bool?) buttonMenuRadioButton.GetPropertyValue("value")).Value;
             Assert.False(selectedBefore == selectedAfter);
         }
-
     }
-
 }

@@ -1,21 +1,17 @@
 ﻿using System;
-using SelendroidDriver = io.selendroid.SelendroidDriver;
-
-using QxWebDriver = Qooxdoo.WebDriver.QxWebDriver;
-using Platform = OpenQA.Selenium.Platform;
-using WebDriver = OpenQA.Selenium.IWebDriver;
-using ChromeDriver = OpenQA.Selenium.Chrome.ChromeDriver;
-using FirefoxDriver = OpenQA.Selenium.Firefox.FirefoxDriver;
-using DesiredCapabilities = OpenQA.Selenium.Remote.DesiredCapabilities;
-using RemoteWebDriver = OpenQA.Selenium.Remote.RemoteWebDriver;
+using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Remote;
+using Qooxdoo.WebDriver;
+//using SelendroidDriver = io.selendroid.SelendroidDriver;
 
 namespace Qooxdoo.WebDriverDemo
 {
-
     public class Configuration
     {
-
-        protected internal static DesiredCapabilities getCapabilities(string browserName)
+        protected internal static DesiredCapabilities GetCapabilities(string browserName)
         {
             DesiredCapabilities capabilities = null;
 
@@ -59,7 +55,7 @@ namespace Qooxdoo.WebDriverDemo
             return capabilities;
         }
 
-        protected internal static Platform getPlatform(string platformName)
+        protected internal static Platform GetPlatform(string platformName)
         {
             Platform platform = null;
             if (platformName.Equals("linux"))
@@ -100,15 +96,15 @@ namespace Qooxdoo.WebDriverDemo
 
 //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
 //ORIGINAL LINE: public static OpenQA.Selenium.IWebDriver getWebDriver() throws Exception
-        public static WebDriver WebDriver
+        public static IWebDriver WebDriver
         {
             get
             {
-                WebDriver webDriver;
-                string hubUrl = System.getProperty("org.qooxdoo.demo.huburl");
-                string browserName = System.getProperty("org.qooxdoo.demo.browsername", "firefox");
-                string browserVersion = System.getProperty("org.qooxdoo.demo.browserversion");
-                string platformName = System.getProperty("org.qooxdoo.demo.platform", "any");
+                IWebDriver webDriver;
+                string hubUrl = SystemProperties.GetProperty("org.qooxdoo.demo.huburl");
+                string browserName = SystemProperties.GetProperty("org.qooxdoo.demo.browsername", "firefox");
+                string browserVersion = SystemProperties.GetProperty("org.qooxdoo.demo.browserversion");
+                //string platformName = SystemProperties.GetProperty("org.qooxdoo.demo.platform", "any");
 
                 if (string.ReferenceEquals(hubUrl, null))
                 {
@@ -116,11 +112,11 @@ namespace Qooxdoo.WebDriverDemo
                     {
                         webDriver = new ChromeDriver();
                     }
-                    else if (browserName.Equals("android"))
+                    /*else if (browserName.Equals("android"))
                     {
                         DesiredCapabilities caps = SelendroidCapabilities.android();
                         webDriver = new SelendroidDriver(caps);
-                    }
+                    }*/
                     else
                     {
                         webDriver = new FirefoxDriver();
@@ -128,13 +124,14 @@ namespace Qooxdoo.WebDriverDemo
                 }
                 else
                 {
-                    DesiredCapabilities browser = getCapabilities(browserName);
+                    DesiredCapabilities browser = GetCapabilities(browserName);
                     if (!string.ReferenceEquals(browserVersion, null))
                     {
                         browser.Version = browserVersion;
                     }
-                    browser.Platform = getPlatform(platformName);
-                    webDriver = new RemoteWebDriver(new URL(hubUrl), browser);
+                    browser.Platform = Platform.CurrentPlatform;
+                    //browser.Platform = GetPlatform(platformName);
+                    webDriver = new RemoteWebDriver(new Uri(hubUrl), browser);
                 }
                 return webDriver;
             }
@@ -146,11 +143,10 @@ namespace Qooxdoo.WebDriverDemo
         {
             get
             {
-                WebDriver webDriver = WebDriver;
+                IWebDriver webDriver = WebDriver;
                 QxWebDriver qxWebDriver = new QxWebDriver(webDriver);
                 return qxWebDriver;
             }
         }
     }
-
 }

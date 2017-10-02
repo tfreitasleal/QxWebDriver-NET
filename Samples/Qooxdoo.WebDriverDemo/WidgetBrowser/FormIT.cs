@@ -1,67 +1,55 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using NUnit.Framework;
+using Qooxdoo.WebDriver.UI;
+using By = Qooxdoo.WebDriver.By;
 
-namespace Qooxdoo.WebDriverDemo.widgetbrowser
+namespace Qooxdoo.WebDriverDemo.WidgetBrowser
 {
-
-//JAVA TO C# CONVERTER TODO TASK: This Java 'import static' statement cannot be converted to C#:
-//    import static NUnit.Framework.Assert.Equals;
-//JAVA TO C# CONVERTER TODO TASK: This Java 'import static' statement cannot be converted to C#:
-//    import static NUnit.Framework.Assert.False;
-//JAVA TO C# CONVERTER TODO TASK: This Java 'import static' statement cannot be converted to C#:
-//    import static NUnit.Framework.Assert.True;
-
-    using Assert = NUnit.Framework.Assert;
-    //using BeforeClass = NUnit.Framework.BeforeClass;
-    //using Test = NUnit.Framework.Test;
-    using By = Qooxdoo.WebDriver.By;
-    using Selectable = Qooxdoo.WebDriver.UI.ISelectable;
-    using Widget = Qooxdoo.WebDriver.UI.IWidget;
-
+    [TestFixture]
     public class FormIT : WidgetBrowser
     {
-
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @BeforeClass public static void setUpBeforeClass() throws Exception
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-        public static void SetUpBeforeClass()
+        [OneTimeSetUp]
+        public new static void SetUpBeforeClass()
         {
-            WidgetBrowser.setUpBeforeClass();
-            selectTab("Form");
+            WidgetBrowser.SetUpBeforeClass();
+            SelectTab("Form");
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void textField()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void textField()
+        [Test]
         public virtual void TextField()
         {
             string text = "HelloTextField";
             By textFieldLocator = By.Qxh("*/qx.ui.form.TextField");
-            Widget textField = tabPage.FindWidget(textFieldLocator);
+            IWidget textField = tabPage.FindWidget(textFieldLocator);
             textField.SendKeys(text);
             string value = (string) textField.GetPropertyValue("value");
             Assert.Equals(text, value);
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void passwordField()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void passwordField()
+        [Test]
         public virtual void PasswordField()
         {
             string text = "HelloPasswordField";
             By passwordFieldLocator = By.Qxh("*/qx.ui.form.PasswordField");
-            Widget passwordField = tabPage.FindWidget(passwordFieldLocator);
+            IWidget passwordField = tabPage.FindWidget(passwordFieldLocator);
             passwordField.SendKeys(text);
             string value = (string) passwordField.GetPropertyValue("value");
             Assert.Equals(text, value);
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void textArea()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void textArea()
+        [Test]
         public virtual void TextArea()
         {
             string text = "Hello\nTextArea";
             By textAreaLocator = By.Qxh("*/qx.ui.form.TextArea");
-            Widget textArea = tabPage.FindWidget(textAreaLocator);
+            IWidget textArea = tabPage.FindWidget(textAreaLocator);
             textArea.SendKeys(text);
             string value = (string) textArea.GetPropertyValue("value");
 
@@ -70,14 +58,15 @@ namespace Qooxdoo.WebDriverDemo.widgetbrowser
             Assert.True(regexMatcher.matches());
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void comboBox()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void comboBox()
+        [Test]
         public virtual void ComboBox()
         {
             string item = "Item 4";
             By comboBoxLocator = By.Qxh("*/qx.ui.form.ComboBox");
             // The SelectItem clicks the ComboBox, then clicks an item in the popup list
-            Selectable comboBox = (Selectable) tabPage.FindWidget(comboBoxLocator);
+            ISelectable comboBox = (ISelectable) tabPage.FindWidget(comboBoxLocator);
             comboBox.SelectItem(item);
             string value = (string) comboBox.GetPropertyValue("value");
             Assert.Equals(item, value);
@@ -91,15 +80,16 @@ namespace Qooxdoo.WebDriverDemo.widgetbrowser
             Assert.Equals(text, value);
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void virtualComboBox() throws InterruptedException
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void virtualComboBox() throws InterruptedException
+        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
+        [Test]
         public virtual void VirtualComboBox()
         {
             string item = "Item 14";
             By comboBoxLocator = By.Qxh("*/qx.ui.form.VirtualComboBox");
             // The SelectItem clicks the ComboBox, then clicks an item in the popup list
-            Selectable comboBox = (Selectable) tabPage.FindWidget(comboBoxLocator);
+            ISelectable comboBox = (ISelectable) tabPage.FindWidget(comboBoxLocator);
             comboBox.SelectItem(item);
             string value = (string) comboBox.GetPropertyValue("value");
             Assert.Equals(item, value);
@@ -110,21 +100,22 @@ namespace Qooxdoo.WebDriverDemo.widgetbrowser
             comboBox.Clear();
             comboBox.SendKeys(text);
             // The value won't be updated until the box loses focus
-            Widget repeatButton = tabPage.FindWidget(By.Qxh("*/qx.ui.form.RepeatButton"));
+            IWidget repeatButton = tabPage.FindWidget(By.Qxh("*/qx.ui.form.RepeatButton"));
             repeatButton.Click();
             Thread.Sleep(500);
             string typedValue = (string) comboBox.GetPropertyValue("value");
             Assert.Equals(text, typedValue);
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void dateField()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void dateField()
+        [Test]
         public virtual void DateField()
         {
-            Widget dateField = tabPage.FindWidget(By.Qxh("*/qx.ui.form.DateField"));
+            IWidget dateField = tabPage.FindWidget(By.Qxh("*/qx.ui.form.DateField"));
             // No ISelectable implementation for DateField yet, so we use the childControls directly
             dateField.GetChildControl("button").Click();
-            Widget list = dateField.WaitForChildControl("list", 2);
+            IWidget list = dateField.WaitForChildControl("list", 2);
             list.GetChildControl("last-year-button").Click();
             list.GetChildControl("next-month-button").Click();
             list.FindWidget(By.Qxh("*/[@value=^12$]")).Click();
@@ -133,26 +124,28 @@ namespace Qooxdoo.WebDriverDemo.widgetbrowser
             Assert.True(value.matches("\"?\\d{4}-\\d{2}-\\d{2}.*"));
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void selectBox()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void selectBox()
+        [Test]
         public virtual void SelectBox()
         {
             string item = "Item 4";
-            Selectable selectBox = (Selectable) tabPage.FindWidget(By.Qxh("*/qx.ui.form.SelectBox"));
+            ISelectable selectBox = (ISelectable) tabPage.FindWidget(By.Qxh("*/qx.ui.form.SelectBox"));
             selectBox.SelectItem(item);
-            IList<Widget> selection = selectBox.GetWidgetListFromProperty("selection");
+            IList<IWidget> selection = selectBox.GetWidgetListFromProperty("selection");
             Assert.Equals(1, selection.Count);
-            Widget selected = selection[0];
+            IWidget selected = selection[0];
             string selectedLabel = (string) selected.GetPropertyValue("label");
             Assert.Equals(item, selectedLabel);
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void virtualSelectBox()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void virtualSelectBox()
+        [Test]
         public virtual void VirtualSelectBox()
         {
             string item = "Item 19";
-            Selectable vSelectBox = (Selectable) tabPage.FindWidget(By.Qxh("*/qx.ui.form.VirtualSelectBox"));
+            ISelectable vSelectBox = (ISelectable) tabPage.FindWidget(By.Qxh("*/qx.ui.form.VirtualSelectBox"));
             vSelectBox.SelectItem(item);
             IList<string> selection = (IList<string>) vSelectBox.GetPropertyValue("selection");
             Assert.Equals(1, selection.Count);
@@ -160,42 +153,44 @@ namespace Qooxdoo.WebDriverDemo.widgetbrowser
             Assert.Equals(item, selected);
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void list()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void list()
+        [Test]
         public virtual void List()
         {
             string item = "Item 5";
-            Selectable list = (Selectable) tabPage.FindWidget(By.Qxh("*/qx.ui.form.List"));
+            ISelectable list = (ISelectable) tabPage.FindWidget(By.Qxh("*/qx.ui.form.List"));
             list.SelectItem(item);
-            IList<Widget> selection = list.GetWidgetListFromProperty("selection");
+            IList<IWidget> selection = list.GetWidgetListFromProperty("selection");
             Assert.Equals(1, selection.Count);
-            Widget selected = selection[0];
+            IWidget selected = selection[0];
             string selectedLabel = (string) selected.GetPropertyValue("label");
             Assert.Equals(item, selectedLabel);
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void radioButtonGroup()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void radioButtonGroup()
+        [Test]
         public virtual void RadioButtonGroup()
         {
             By by = By.Qxh("*/[@label=RadioButton 2]");
-            Widget radioButton = tabPage.FindWidget(by);
+            IWidget radioButton = tabPage.FindWidget(by);
             radioButton.Click();
             Assert.True(radioButton.Selected);
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void buttons()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void buttons()
+        [Test]
         public virtual void Buttons()
         {
-            Widget toggleButton = tabPage.FindWidget(By.Qxh("*/qx.ui.form.ToggleButton"));
+            IWidget toggleButton = tabPage.FindWidget(By.Qxh("*/qx.ui.form.ToggleButton"));
             Assert.False(toggleButton.Selected);
             toggleButton.Click();
             Assert.True(toggleButton.Selected);
 
-            Selectable menuButton = (Selectable) tabPage.FindWidget(By.Qxh("*/qx.ui.form.MenuButton"));
+            ISelectable menuButton = (ISelectable) tabPage.FindWidget(By.Qxh("*/qx.ui.form.MenuButton"));
             menuButton.SelectItem("Button2");
         }
     }
-
 }

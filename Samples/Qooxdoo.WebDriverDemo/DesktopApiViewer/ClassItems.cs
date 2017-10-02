@@ -1,131 +1,125 @@
 ﻿using System;
-using Assert = NUnit.Framework.Assert;
-//using BeforeClass = NUnit.Framework.BeforeClass;
-//using Test = NUnit.Framework.Test;
+using NUnit.Framework;
+using OpenQA.Selenium;
+using Qooxdoo.WebDriver.UI;
 using By = Qooxdoo.WebDriver.By;
-using Selectable = Qooxdoo.WebDriver.UI.ISelectable;
-using Widget = Qooxdoo.WebDriver.UI.IWidget;
-using NoSuchElementException = OpenQA.Selenium.NoSuchElementException;
-using WebElement = OpenQA.Selenium.IWebElement;
 
 namespace Qooxdoo.WebDriverDemo.DesktopApiViewer
 {
-
+    [TestFixture]
     public class ClassItems : DesktopApiViewer
     {
-
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @BeforeClass public static void setUpBeforeClass() throws Exception
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-        public static void setUpBeforeClass()
+        [OneTimeSetUp]
+        public new static void SetUpBeforeClass()
         {
-            DesktopApiViewer.setUpBeforeClass();
+            DesktopApiViewer.SetUpBeforeClass();
             string className = "qx.ui.table.pane.Scroller";
             SelectClass(className);
         }
 
-        protected internal virtual void testProperties()
+        protected internal virtual void TestProperties()
         {
             string propertiesPath = "*/qx.ui.toolbar.ToolBar/*/[@label=Properties]";
-            Widget propertiesButton = driver.FindWidget(By.Qxh(propertiesPath));
+            IWidget propertiesButton = Driver.FindWidget(By.Qxh(propertiesPath));
             bool propertiesActive = ((bool?) propertiesButton.GetPropertyValue("value")).Value;
             Assert.True(propertiesActive);
             string propertyItemPath = "//div[contains(@class, 'info-panel')]/descendant::span[text()='getLiveResize']";
-            WebElement propertyItem = driver.FindElement(OpenQA.Selenium.By.XPath(propertyItemPath));
+            IWebElement propertyItem = Driver.FindElement(OpenQA.Selenium.By.XPath(propertyItemPath));
             Assert.True(propertyItem.Displayed);
             propertiesButton.Click();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(500);
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(500);
             try
             {
-                propertyItem = driver.FindElement(OpenQA.Selenium.By.XPath(propertyItemPath));
-                Assert.True("Property method was not hidden!", false);
+                propertyItem = Driver.FindElement(OpenQA.Selenium.By.XPath(propertyItemPath));
+                Assert.True(false, "Property method was not hidden!");
             }
             catch (NoSuchElementException)
             {
             }
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
             propertiesButton.Click();
         }
 
-        protected internal virtual void testClassItem(string item, string method)
+        protected internal virtual void TestClassItem(string item, string method)
         {
             string itemPath = "*/qx.ui.toolbar.ToolBar/*/[@label=" + item + "]";
-            Widget itemButton = driver.FindWidget(By.Qxh(itemPath));
+            IWidget itemButton = Driver.FindWidget(By.Qxh(itemPath));
             bool itemActive = ((bool?) itemButton.GetPropertyValue("value")).Value;
             Assert.False(itemActive);
             string methodPath = "//div[contains(@class, 'info-panel')]/descendant::span[text()='" + method + "']";
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(500);
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(500);
             try
             {
-                driver.FindElement(OpenQA.Selenium.By.XPath(methodPath));
-                Assert.True(item + " item " + method + " was not hidden initially!", false);
+                Driver.FindElement(OpenQA.Selenium.By.XPath(methodPath));
+                Assert.True(false, item + " item " + method + " was not hidden initially!");
             }
             catch (NoSuchElementException)
             {
             }
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
             itemButton.Click();
 
-            WebElement methodItem = driver.FindElement(OpenQA.Selenium.By.XPath(methodPath));
+            IWebElement methodItem = Driver.FindElement(OpenQA.Selenium.By.XPath(methodPath));
             Assert.True(methodItem.Displayed);
             itemButton.Click();
 
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(500);
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(500);
             try
             {
-                driver.FindElement(OpenQA.Selenium.By.XPath(methodPath));
-                Assert.True(item + " item " + method + " was not hidden!", false);
+                Driver.FindElement(OpenQA.Selenium.By.XPath(methodPath));
+                Assert.True(false, item + " item " + method + " was not hidden!");
             }
             catch (NoSuchElementException)
             {
             }
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
         }
 
-        protected internal virtual void testIncludes()
+        protected internal virtual void TestIncludes()
         {
-            string inheritedItemPath = "//div[contains(@class, 'info-panel')]/descendant::span[text()='changeTextColor']";
+            string inheritedItemPath =
+                "//div[contains(@class, 'info-panel')]/descendant::span[text()='changeTextColor']";
 
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(500);
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(500);
             try
             {
-                driver.FindElement(OpenQA.Selenium.By.XPath(inheritedItemPath));
-                Assert.True("Inherited method was not hidden!", false);
+                Driver.FindElement(OpenQA.Selenium.By.XPath(inheritedItemPath));
+                Assert.True(false, "Inherited method was not hidden!");
             }
             catch (NoSuchElementException)
             {
             }
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
 
             string includesPath = "*/qx.ui.toolbar.ToolBar/*/[@label=Includes]";
-            Selectable includesButton = (Selectable) driver.FindWidget(By.Qxh(includesPath));
+            ISelectable includesButton = (ISelectable) Driver.FindWidget(By.Qxh(includesPath));
             includesButton.SelectItem("Inherited");
-            WebElement inheritedItem = driver.FindElement(OpenQA.Selenium.By.XPath(inheritedItemPath));
+            IWebElement inheritedItem = Driver.FindElement(OpenQA.Selenium.By.XPath(inheritedItemPath));
             Assert.True(inheritedItem.Displayed);
 
             includesButton.SelectItem("Inherited");
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(500);
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(500);
             try
             {
-                driver.FindElement(OpenQA.Selenium.By.XPath(inheritedItemPath));
-                Assert.True("Inherited method was not hidden!", false);
+                Driver.FindElement(OpenQA.Selenium.By.XPath(inheritedItemPath));
+                Assert.True(false, "Inherited method was not hidden!");
             }
             catch (NoSuchElementException)
             {
             }
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void classItems()
-        public virtual void classItems()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void classItems()
+        [Test]
+        public virtual void ClassItemsTest()
         {
-            testProperties();
-            testIncludes();
-            testClassItem("Protected", "_hideResizeLine");
-            testClassItem("Private", "__isAtEdge");
-            testClassItem("Internal", "getVerticalScrollBarWidth");
+            TestProperties();
+            TestIncludes();
+            TestClassItem("Protected", "_hideResizeLine");
+            TestClassItem("Private", "__isAtEdge");
+            TestClassItem("Internal", "getVerticalScrollBarWidth");
         }
     }
-
 }

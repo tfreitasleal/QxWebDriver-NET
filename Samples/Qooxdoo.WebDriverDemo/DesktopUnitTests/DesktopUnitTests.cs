@@ -1,51 +1,34 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using Qooxdoo.WebDriver;
-using JSONArray = org.json.simple.JSONArray;
+using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using Qooxdoo.WebDriver.Resources;
+using By = Qooxdoo.WebDriver.By;
+
+/*using JSONArray = org.json.simple.JSONArray;
 using JSONObject = org.json.simple.JSONObject;
 using JSONParser = org.json.simple.parser.JSONParser;
-using ParseException = org.json.simple.parser.ParseException;
-//using AfterClass = NUnit.Framework.AfterClass;
-using Assert = NUnit.Framework.Assert;
-//using BeforeClass = NUnit.Framework.BeforeClass;
-//using Test = NUnit.Framework.Test;
-using JavaScript = Qooxdoo.WebDriver.Resources.JavaScript;
-using NoSuchElementException = OpenQA.Selenium.NoSuchElementException;
-using WebDriver = OpenQA.Selenium.IWebDriver;
-using WebElement = OpenQA.Selenium.IWebElement;
-using ExpectedCondition = OpenQA.Selenium.Support.UI.ExpectedCondition;
-using WebDriverWait = OpenQA.Selenium.Support.UI.WebDriverWait;
+using ParseException = org.json.simple.parser.ParseException;*/
 
 namespace Qooxdoo.WebDriverDemo.DesktopUnitTests
 {
+    [TestFixture]
     public class DesktopUnitTests : IntegrationTest
     {
-
         public static string getTestSuiteState = "return qx.core.Init.getApplication().runner.getTestSuiteState();";
-        public static string getTestResults = "return JSON.stringify(qx.core.Init.getApplication().runner.view.getTestResults());";
+
+        public static string getTestResults =
+            "return JSON.stringify(qx.core.Init.getApplication().runner.view.getTestResults());";
 
         public static IList<string> testPackages;
 
         protected internal int? failCount = 0;
 
-//JAVA TO C# CONVERTER WARNING: 'final' parameters are not available in .NET:
-//ORIGINAL LINE: public static OpenQA.Selenium.Support.UI.ExpectedCondition<Nullable<bool>> testSuiteStateIs(final String state)
-        public static ExpectedCondition<bool?> testSuiteStateIs(string state)
+        public static Func<IWebDriver, bool?> TestSuiteStateIs(string state)
         {
-            return new ExpectedConditionAnonymousInnerClass(state);
-        }
-
-        private class ExpectedConditionAnonymousInnerClass : ExpectedCondition<bool?>
-        {
-            private string state;
-
-            public ExpectedConditionAnonymousInnerClass(string state)
-            {
-                this.state = state;
-            }
-
-            public override bool? Apply(WebDriver driver)
+            return driver =>
             {
                 string result = null;
                 try
@@ -53,51 +36,66 @@ namespace Qooxdoo.WebDriverDemo.DesktopUnitTests
                     result = SuiteState;
                     return result.Equals(state);
                 }
-                catch (OpenQA.Selenium.WebDriverException e)
+                catch (WebDriverException e)
                 {
                     Console.Error.WriteLine("Couldn't get test suite state: " + e.ToString());
                     return false;
                 }
-            }
-
-            public override string ToString()
-            {
-                return "Test suite state is '" + state + "'.";
-            }
+            };
         }
+
+        /*public static ExpectedCondition<Boolean> testSuiteStateIs(final String state) {
+            return new ExpectedCondition<Boolean>() {
+                @Override
+                public Boolean apply(WebDriver driver) {
+                    String result = null;
+                    try {
+                        result = getSuiteState();
+                        return result.equals(state);
+                    } catch(org.openqa.selenium.WebDriverException e) {
+                        System.err.println("Couldn't get test suite state: " + e.toString());
+                        return false;
+                    }
+                }
+
+                @Override
+                public String toString() {
+                    return "Test suite state is '" + state + "'.";
+                }
+            };
+        }*/
 
         public static string SuiteState
         {
             get
             {
-                string suiteState = (string) driver.JsExecutor.ExecuteScript(getTestSuiteState);
+                string suiteState = (string) Driver.JsExecutor.ExecuteScript(getTestSuiteState);
                 return suiteState;
             }
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @BeforeClass public static void setUpBeforeClass() throws Exception
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-        public static void SetUpBeforeClass()
+        [OneTimeSetUp]
+        public new static void SetUpBeforeClass()
         {
-            driver = Configuration.QxWebDriver;
-            driver.Url = System.getProperty("org.qooxdoo.demo.auturl");
-            (new WebDriverWait(driver, 30, 250)).Until(testSuiteStateIs("ready"));
+            Driver = Configuration.QxWebDriver;
+            Driver.Url = SystemProperties.GetProperty("org.qooxdoo.demo.auturl");
+            new WebDriverWait(Driver, TimeSpan.FromSeconds(30)).Until(TestSuiteStateIs("ready"));
             string resPath = "/javascript/getTestPackages.js";
             JavaScript.Instance.AddResource("getTestPackages", resPath);
 
             // comma-separated list of test packages to be split up into sub-packages
-            string splitPackages = System.getProperty("org.qooxdoo.demo.unittests.packages.split", "");
+            string splitPackages = SystemProperties.GetProperty("org.qooxdoo.demo.unittests.packages.split", "");
             // comma-separated list of test packages to skip
-            string skipPackages = System.getProperty("org.qooxdoo.demo.unittests.packages.skip", "");
+            string skipPackages = SystemProperties.GetProperty("org.qooxdoo.demo.unittests.packages.skip", "");
 
-            testPackages = (IList<string>) driver.JsRunner.RunScript("getTestPackages", splitPackages, skipPackages);
+            testPackages = (IList<string>) Driver.JsRunner.RunScript("getTestPackages", splitPackages, skipPackages);
             Console.WriteLine("Test packages: " + testPackages);
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void unitTests()
-        public virtual void unitTests()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void unitTests()
+        [Test]
+        public virtual void UnitTests()
         {
             long totalTime = 0;
             IEnumerator<string> itr = testPackages.GetEnumerator();
@@ -105,12 +103,13 @@ namespace Qooxdoo.WebDriverDemo.DesktopUnitTests
             {
                 string nextPackage = itr.Current;
                 DateTime packageStart = DateTime.Now;
-                runPackage(nextPackage);
+                RunPackage(nextPackage);
 
                 DateTime packageEnd = DateTime.Now;
                 long diff = packageEnd.Ticks - packageStart.Ticks;
                 totalTime = totalTime + diff;
-                long seconds = TimeUnit.MILLISECONDS.toSeconds(diff);
+                //long seconds = TimeUnit.MILLISECONDS.toSeconds(diff);
+                var seconds = TimeSpan.FromMilliseconds(diff).TotalSeconds;
                 if (seconds == 1)
                 {
                     Console.WriteLine("Finished in " + diff + " ms.");
@@ -120,42 +119,42 @@ namespace Qooxdoo.WebDriverDemo.DesktopUnitTests
                     Console.WriteLine("Finished in ~" + seconds + " s.");
                 }
 
-                Results;
-                logAutExceptions();
+                GetResults();
+                LogAutExceptions();
             }
-            long seconds = (totalTime / 1000) % 60;
+            long seconds2 = (totalTime / 1000) % 60;
             long minutes = (totalTime / (1000 * 60)) % 60;
-            Console.WriteLine("All test packages completed in " + minutes + "m " + seconds + "s.");
-            Assert.Equals(failCount + " test(s) failed.", Convert.ToDouble(0), Convert.ToDouble(failCount));
+            Console.WriteLine("All test packages completed in " + minutes + "m " + seconds2 + "s.");
+            Assert.AreEqual(Convert.ToDouble(0), Convert.ToDouble(failCount), failCount + " test(s) failed.");
         }
 
-        public virtual void runPackage(string packageName)
+        public virtual void RunPackage(string packageName)
         {
-            string packageUrl = System.getProperty("org.qooxdoo.demo.auturl") + "?testclass=" + packageName;
+            string packageUrl = SystemProperties.GetProperty("org.qooxdoo.demo.auturl") + "?testclass=" + packageName;
             Console.WriteLine("Executing test package " + packageName);
-            driver.get(packageUrl);
-            driver.registerGlobalErrorHandler();
-            (new WebDriverWait(driver, 30, 250)).Until(testSuiteStateIs("ready"));
+            Driver.Url = packageUrl;
+            Driver.RegisterGlobalErrorHandler();
+            new WebDriverWait(Driver, TimeSpan.FromSeconds(30)).Until(TestSuiteStateIs("ready"));
 
             try
             {
-                WebElement runButton = driver.FindElement(By.Id("run"));
+                IWebElement runButton = Driver.FindElement(By.Id("run"));
                 Console.WriteLine("Clicking run button");
                 runButton.Click();
             }
             catch (NoSuchElementException)
             {
                 Console.WriteLine("Calling run()");
-                driver.ExecuteScript("qx.core.Init.getApplication().runner.view.run()");
+                Driver.ExecuteScript("qx.core.Init.getApplication().runner.view.run()");
             }
 
-            (new WebDriverWait(driver, 600, 250)).Until(testSuiteStateIs("finished"));
+            new WebDriverWait(Driver, TimeSpan.FromSeconds(600)).Until(TestSuiteStateIs("finished"));
         }
 
-        public virtual void getResults()
+        public virtual void GetResults()
         {
             Console.WriteLine("Retrieving package results.");
-            string results = (string) driver.ExecuteScript(getTestResults);
+            string results = (string) Driver.ExecuteScript(getTestResults);
             JSONParser parser = new JSONParser();
             object obj;
             try
@@ -192,10 +191,10 @@ namespace Qooxdoo.WebDriverDemo.DesktopUnitTests
             }
         }
 
-        public virtual void logAutExceptions()
+        public virtual void LogAutExceptions()
         {
             // Print AUT exceptions
-            IList<string> caughtErrors = (IList<string>) driver.CaughtErrors;
+            IList<string> caughtErrors = Driver.CaughtErrors;
             IEnumerator<string> exItr = caughtErrors.GetEnumerator();
             while (exItr.MoveNext())
             {
@@ -203,14 +202,10 @@ namespace Qooxdoo.WebDriverDemo.DesktopUnitTests
             }
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @AfterClass public static void tearDownAfterClass() throws Exception
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-        public static void tearDownAfterClass()
+        [OneTimeTearDown]
+        public new static void TearDownAfterClass()
         {
-            driver.quit();
+            Driver.Quit();
         }
-
     }
-
 }

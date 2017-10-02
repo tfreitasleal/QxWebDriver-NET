@@ -1,22 +1,14 @@
 ﻿using System.Threading;
+using NUnit.Framework;
+using OpenQA.Selenium;
+using Qooxdoo.WebDriver.UI;
 
 namespace Qooxdoo.WebDriverDemo.MobileShowcase
 {
-
-    using Assert = NUnit.Framework.Assert;
-    //using BeforeClass = NUnit.Framework.BeforeClass;
-    //using Test = NUnit.Framework.Test;
-    using By = Qooxdoo.WebDriver.By;
-    using Touchable = Qooxdoo.WebDriver.UI.ITouchable;
-    using StaleElementReferenceException = OpenQA.Selenium.StaleElementReferenceException;
-    using WebElement = OpenQA.Selenium.IWebElement;
-
+    [TestFixture]
     public class Toolbar : Mobileshowcase
     {
-
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @BeforeClass public static void setUpBeforeClass() throws Exception
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
+        [OneTimeSetUp]
         public new static void SetUpBeforeClass()
         {
             Mobileshowcase.SetUpBeforeClass();
@@ -24,49 +16,61 @@ namespace Qooxdoo.WebDriverDemo.MobileShowcase
             VerifyTitle("Toolbar");
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void search()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void search()
+        [Test]
         public virtual void Search()
         {
-            Touchable button = (Touchable) driver.FindWidget(OpenQA.Selenium.By.XPath("//div[text() = 'Search']/ancestor::div[contains(@class, 'button')]"));
+            ITouchable button = (ITouchable) Driver.FindWidget(By.XPath(
+                "//div[text() = 'Search']/ancestor::div[contains(@class, 'button')]"));
             button.Tap();
-            Touchable popupButton = (Touchable) driver.FindWidget(OpenQA.Selenium.By.XPath("//div[text() = 'Search']/ancestor::div[contains(@class, 'popup-content')]/descendant::div[contains(@class, 'button')]"));
+            ITouchable popupButton = (ITouchable) Driver.FindWidget(By.XPath(
+                "//div[text() = 'Search']/ancestor::div[contains(@class, 'popup-content')]/descendant::div[contains(@class, 'button')]"));
             popupButton.Tap();
             Assert.False(popupButton.Displayed);
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void back()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void back()
+        [Test]
         public virtual void Back()
         {
-            Touchable button = (Touchable) driver.FindWidget(OpenQA.Selenium.By.XPath("//img[contains(@src, 'arrowleft')]/ancestor::div[contains(@class, 'button')]"));
+            ITouchable button = (ITouchable) Driver.FindWidget(By.XPath(
+                "//img[contains(@src, 'arrowleft')]/ancestor::div[contains(@class, 'button')]"));
             button.Tap();
-            Touchable popupButton = (Touchable) driver.FindWidget(OpenQA.Selenium.By.XPath("//div[text() = 'Are you sure?']/ancestor::div[contains(@class, 'popup-content')]/descendant::div[contains(@class, 'button')]"));
+            ITouchable popupButton = (ITouchable) Driver.FindWidget(By.XPath(
+                "//div[text() = 'Are you sure?']/ancestor::div[contains(@class, 'popup-content')]/descendant::div[contains(@class, 'button')]"));
             popupButton.Tap();
             Assert.False(popupButton.Displayed);
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void camera() throws InterruptedException
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void camera() throws InterruptedException
+        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
+        [Test]
         public virtual void Camera()
         {
-            Touchable button = (Touchable) driver.FindWidget(OpenQA.Selenium.By.XPath("//img[contains(@src, 'camera')]/ancestor::div[contains(@class, 'button')]"));
+            ITouchable button = (ITouchable) Driver.FindWidget(By.XPath(
+                "//img[contains(@src, 'camera')]/ancestor::div[contains(@class, 'button')]"));
             button.Tap();
 
-            WebElement popup = driver.FindElement(OpenQA.Selenium.By.XPath("//div[text() = 'Data connection...']/ancestor::div[contains(@class, 'popup-content')]"));
+            IWebElement popup = Driver.FindElement(By.XPath(
+                "//div[text() = 'Data connection...']/ancestor::div[contains(@class, 'popup-content')]"));
             Assert.True(popup.Displayed);
             Thread.Sleep(5000);
             Assert.False(popup.Displayed);
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void delete()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void delete()
+        [Test]
         public virtual void Delete()
         {
-            Touchable button = (Touchable) driver.FindWidget(OpenQA.Selenium.By.XPath("//div[text() = 'Delete']/ancestor::div[contains(@class, 'button')]"));
+            ITouchable button = (ITouchable) Driver.FindWidget(By.XPath(
+                "//div[text() = 'Delete']/ancestor::div[contains(@class, 'button')]"));
             button.Tap();
-            Touchable popupButton = (Touchable) driver.FindWidget(OpenQA.Selenium.By.XPath("//div[text() = 'Are you sure?']/ancestor::div[contains(@class, 'popup-content')]/descendant::div[contains(@class, 'button')]"));
+            ITouchable popupButton = (ITouchable) Driver.FindWidget(By.XPath(
+                "//div[text() = 'Are you sure?']/ancestor::div[contains(@class, 'popup-content')]/descendant::div[contains(@class, 'button')]"));
             popupButton.Tap();
             try
             {
@@ -78,5 +82,4 @@ namespace Qooxdoo.WebDriverDemo.MobileShowcase
             }
         }
     }
-
 }

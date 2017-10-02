@@ -1,75 +1,74 @@
 ﻿using System.Collections.Generic;
-using Qooxdoo.WebDriver;
-using Assert = NUnit.Framework.Assert;
-//using BeforeClass = NUnit.Framework.BeforeClass;
-//using Test = NUnit.Framework.Test;
-using IJavaScriptExecutor = OpenQA.Selenium.IJavaScriptExecutor;
-using WebElement = OpenQA.Selenium.IWebElement;
+using NUnit.Framework;
+using OpenQA.Selenium;
+using By = OpenQA.Selenium.By;
 
-namespace Qooxdoo.WebDriverDemo.websitewidgetbrowser
+namespace Qooxdoo.WebDriverDemo.WebsiteWidgetBrowser
 {
+    [TestFixture]
     public class Rating : WebsiteWidgetBrowser
     {
-
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @BeforeClass public static void setUpBeforeClass() throws Exception
-//JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
-        public static void setUpBeforeClass()
+        [OneTimeSetUp]
+        public new static void SetUpBeforeClass()
         {
-            WebsiteWidgetBrowser.setUpBeforeClass();
-            selectTab("Rating");
+            WebsiteWidgetBrowser.SetUpBeforeClass();
+            SelectTab("Rating");
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void ratingDefault()
-        public virtual void ratingDefault()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void ratingDefault()
+        [Test]
+        public virtual void RatingDefault()
         {
-            WebElement rating = webDriver.FindElement(By.Id("rating-default"));
-            rating(rating);
+            IWebElement rating = webDriver.FindElement(By.Id("rating-default"));
+            TesteRating(rating);
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void ratingLength()
-        public virtual void ratingLength()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void ratingLength()
+        [Test]
+        public virtual void RatingLength()
         {
-            WebElement rating = webDriver.FindElement(By.Id("rating-length"));
-            rating(rating);
+            IWebElement rating = webDriver.FindElement(By.Id("rating-length"));
+            TesteRating(rating);
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void ratingNote()
-        public virtual void ratingNote()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void ratingNote()
+        [Test]
+        public virtual void RatingNote()
         {
-            WebElement rating = webDriver.FindElement(By.Id("rating-note"));
-            rating(rating);
+            IWebElement rating = webDriver.FindElement(By.Id("rating-note"));
+            TesteRating(rating);
         }
 
-//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
-//ORIGINAL LINE: @Test public void ratingHeart()
-        public virtual void ratingHeart()
+        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
+        //ORIGINAL LINE: @Test public void ratingHeart()
+        [Test]
+        public virtual void RatingHeart()
         {
-            WebElement rating = webDriver.FindElement(OpenQA.Selenium.By.XPath("//div[contains(@class, 'qx-rating-heart')]"));
-            rating(rating);
+            IWebElement rating = webDriver.FindElement(By.XPath("//div[contains(@class, 'qx-rating-heart')]"));
+            TesteRating(rating);
         }
 
-        public virtual void rating(WebElement rating)
+        public virtual void TesteRating(IWebElement rating)
         {
-            IList<WebElement> items = rating.FindElements(OpenQA.Selenium.By.XPath("descendant::*[contains(@class, 'qx-rating-item')]"));
-            WebElement lastItem = items[items.Count - 1];
+            IList<IWebElement> items =
+                rating.FindElements(By.XPath("descendant::*[contains(@class, 'qx-rating-item')]"));
+            IWebElement lastItem = items[items.Count - 1];
             lastItem.Click();
 
             string getValue = "return qxWeb(arguments[0]).getValue();";
             IJavaScriptExecutor exec = (IJavaScriptExecutor) webDriver;
             long? valueMax = (long?) exec.ExecuteScript(getValue, rating);
 
-            Assert.Equals(new long?(items.Count), valueMax);
+            Assert.Equals(items.Count, valueMax);
 
-            WebElement firstItem = items[0];
+            IWebElement firstItem = items[0];
             firstItem.Click();
 
             long? valueMin = (long?) exec.ExecuteScript(getValue, rating);
-            Assert.Equals(new long?(1), valueMin);
+            Assert.Equals(1, valueMin);
         }
     }
-
 }
