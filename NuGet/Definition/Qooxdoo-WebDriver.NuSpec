@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>Qooxdoo-WebDriver</id>
+    <title>qooxdoo adapter for Selenium WebDriver</title>
+    <tags>Selenium SeleniumHQ qooxdoo widgets</tags>
+    <version>1.0.0</version>
+    <authors>Tiago Freitas Leal</authors>
+    <licenseUrl>https://github.com/tfreitasleal/QxWebDriver-NET/blob/master/license.txt</licenseUrl>
+    <projectUrl>https://github.com/tfreitasleal/QxWebDriver-NET</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/tfreitasleal/QxWebDriver-NET/master/Support/Logos/Wisej.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+API that facilitates writing WebDriver-based interaction tests for qx.Desktop and qx.Mobile applications by abstracting away the implementation details of qooxdoo widgets.
+    </description>
+    <summary>
+WebDriver testing support for qooxdoo desktop and mobile applications.
+    </summary>
+    <language>en-US</language>
+    <dependencies>
+      <dependency id="Newtonsoft.Json" version="[10.0.3,)" />
+      <dependency id="Selenium.Support" version="[3.6.0,)" />
+      <dependency id="Selenium.WebDriver" version="[3.6.0,)" />
+    </dependencies>
+  </metadata>
+  <files>
+    <!-- .NET 4.0 Client -->
+    <!--<file src="..\..\Bin\Release\NET4\**\Csla.dll*" target="lib\net40" />
+    <file src="..\..\Bin\Release\NET4\**\Csla.pdb*" target="lib\net40" />
+    <file src="..\..\Bin\Release\NET4\**\Csla.resources.dll*" target="lib\net40" />
+    <file src="..\..\Bin\Release\NET4\**\Csla.resources.pdb*" target="lib\net40" />
+    <file src="..\..\Bin\Release\NET4\**\Csla.xml*" target="lib\net40" />-->
+    <!-- .NET 4.5 Client -->
+    <file src="..\..\Bin\Release\NET45\**\Wisej.WebDriver.dll*" target="lib\net45" />
+    <file src="..\..\Bin\Release\NET45\**\Wisej.WebDriver.pdb*" target="lib\net45" />
+    <!--<file src="..\..\Bin\Release\NET45\**\Csla.resources.dll*" target="lib\net45" />
+    <file src="..\..\Bin\Release\NET45\**\Csla.resources.pdb*" target="lib\net45" />
+    <file src="..\..\Bin\Release\NET45\**\Csla.xml*" target="lib\net45" />-->
+    <!-- .NET 4.6 Client -->
+    <!--<file src="..\..\Bin\Release\NET46\**\Csla.dll*" target="lib\net46" />
+    <file src="..\..\Bin\Release\NET46\**\Csla.pdb*" target="lib\net46" />
+    <file src="..\..\Bin\Release\NET46\**\Csla.resources.dll*" target="lib\net46" />
+    <file src="..\..\Bin\Release\NET46\**\Csla.resources.pdb*" target="lib\net46" />
+    <file src="..\..\Bin\Release\NET46\**\Csla.xml*" target="lib\net46" />-->
+    <!-- Source Files for Symbol Server -->
+    <file src="..\..\Source\**\*.cs" target="src" />
+  </files>
+</package>
