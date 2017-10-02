@@ -23,7 +23,6 @@ using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Interactions.Internal;
-using InterruptedException = System.Threading.ThreadInterruptedException;
 
 namespace Qooxdoo.WebDriver.UI.Mobile.Core
 {
@@ -84,7 +83,7 @@ namespace Qooxdoo.WebDriver.UI.Mobile.Core
                 {
                     Thread.Sleep(750);
                 }
-                catch (InterruptedException)
+                catch (ThreadInterruptedException)
                 {
                 }
                 longtap.Up(center.X, center.Y);
@@ -100,7 +99,7 @@ namespace Qooxdoo.WebDriver.UI.Mobile.Core
                 {
                     Thread.Sleep(750);
                 }
-                catch (InterruptedException)
+                catch (ThreadInterruptedException)
                 {
                 }
                 mouse.MouseUp(coords);
