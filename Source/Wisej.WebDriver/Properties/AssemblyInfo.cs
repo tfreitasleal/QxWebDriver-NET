@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Qooxdoo Selenium WebDriver for .NET45")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("qooxdoo WebDriver for .NET45")]
+[assembly: AssemblyDescription("qooxdoo adapter for Selenium WebDriver")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Wisej")]
+[assembly: AssemblyCompany("Ice Tea Groip LLC")]
 [assembly: AssemblyProduct("QxWebDriver .NET45")]
-[assembly: AssemblyCopyright("Copyright © Wisej 2017")]
-[assembly: AssemblyTrademark("Wisej.QxWebDriver")]
+[assembly: AssemblyCopyright("Copyright © 2017 Ice Tea Groip LLC")]
+[assembly: AssemblyTrademark("Selenium.QxWebDriver")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
