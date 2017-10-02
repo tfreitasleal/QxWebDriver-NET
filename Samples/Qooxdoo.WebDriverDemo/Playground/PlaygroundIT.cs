@@ -339,7 +339,7 @@ namespace Qooxdoo.WebDriverDemo.Playground
         /// <summary>
         /// test to reload website after user script has been saved
         /// the saved sample should be found after reload </summary>
-        /// <exception cref="InterruptedException">  </exception>
+        /// <exception cref="ThreadInterruptedException">  </exception>
         //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void userSamplesReload() throws InterruptedException
         //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
@@ -388,7 +388,7 @@ namespace Qooxdoo.WebDriverDemo.Playground
 
         /// <summary>
         /// test to check URL after clicking 'API Viewer' button </summary>
-        /// <exception cref="InterruptedException">  </exception>
+        /// <exception cref="ThreadInterruptedException">  </exception>
         //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void apiViewerLink() throws InterruptedException
         //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:

@@ -17,7 +17,7 @@ namespace Qooxdoo.WebDriverDemo.WebsiteWidgetBrowser
             {
                 Thread.Sleep(1000);
             }
-            catch (InterruptedException)
+            catch (ThreadInterruptedException)
             {
             }
         }
