@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCompany("Ice Tea Groip LLC")]
 [assembly: AssemblyProduct("QxWebDriver .NET45")]
 [assembly: AssemblyCopyright("Copyright © 2017 Ice Tea Groip LLC")]
-[assembly: AssemblyTrademark("Selenium.QxWebDriver")]
+[assembly: AssemblyTrademark("Wisej.WebDriver")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
