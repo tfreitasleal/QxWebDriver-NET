@@ -21,7 +21,7 @@ using OpenQA.Selenium;
 
 namespace Wisej.WebDriver.UI.Form
 {
-    public class MenuButton : SelectBox, ISelectable
+    public class MenuButton : SelectBox
     {
         public MenuButton(IWebElement element, QxWebDriver driver) : base(element, driver)
         {
