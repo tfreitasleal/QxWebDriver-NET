@@ -19,6 +19,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using OpenQA.Selenium;
 
@@ -29,7 +30,7 @@ namespace Wisej.WebDriver.UI
         public DefaultWidgetFactory(QxWebDriver qxWebDriver)
         {
             Driver = qxWebDriver;
-            _packageName = GetType().Assembly.FullName;
+            _packageName = GetType().Namespace;
         }
 
         protected internal QxWebDriver Driver;
@@ -42,7 +43,10 @@ namespace Wisej.WebDriver.UI
         /// </summary>
         public virtual IList<string> GetWidgetInterfaces(IWebElement element)
         {
-            return (IList<string>) Driver.JsRunner.RunScript("getInterfaces", element);
+            //IList<object> resultList = (IList<object>) Driver.JsRunner.RunScript("getInterfaces", element);
+            //return resultList.Cast<string>().ToList();
+
+            return ((IList<object>) Driver.JsRunner.RunScript("getInterfaces", element)).Cast<string>().ToList();
         }
 
         /// <summary>
@@ -51,7 +55,10 @@ namespace Wisej.WebDriver.UI
         /// </summary>
         public virtual IList<string> GetWidgetInheritance(IWebElement element)
         {
-            return (IList<string>) Driver.JsRunner.RunScript("getInheritance", element);
+            //IList<object> resultList = (IList<object>) Driver.JsRunner.RunScript("getInheritance", element);
+            //return resultList.Cast<string>().ToList();
+
+            return ((IList<object>) Driver.JsRunner.RunScript("getInheritance", element)).Cast<string>().ToList();
         }
 
         /// <summary>
@@ -98,7 +105,7 @@ namespace Wisej.WebDriver.UI
                             try
                             {
                                 //widget = (IWidget) constr.newInstance(element, driver);
-                                widget = (IWidget) constr.Invoke(element, new object[] {Driver});
+                                widget = (IWidget) constr.Invoke(new object[] {element, Driver});
                                 _elements[element] = widget;
                                 //return widget;
                                 break;
@@ -121,8 +128,8 @@ namespace Wisej.WebDriver.UI
         {
             if (qxClassName.StartsWith("qx.ui.", StringComparison.Ordinal))
             {
-                var convertedClassName = ConvertClassName(qxClassName.Substring(5));
-                return _packageName + convertedClassName;
+                var convertedClassName = ConvertClassName(qxClassName.Substring(6));
+                return _packageName + "." + convertedClassName;
             }
 
             return null;
