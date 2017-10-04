@@ -125,7 +125,8 @@ namespace Wisej.WebDriver.Resources
 
         protected internal string ManipulateResource(string resource)
         {
-            Regex pattern = new Regex("function\\(\\)\\{(.*?)\\};$", RegexOptions.Compiled | RegexOptions.Multiline);
+            // Java and C# Regex are different...
+            Regex pattern = new Regex(@"function\(\)\s*\{\s*(.*)\s*\};$", RegexOptions.Compiled | RegexOptions.Multiline);
 
             if (pattern.IsMatch(resource))
             {
