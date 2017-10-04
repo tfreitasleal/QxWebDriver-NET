@@ -73,7 +73,7 @@ namespace Wisej.WebDriver
                 catch (WebDriverException e)
                 {
                 }
-                var isReady = (bool) result;
+                var isReady = result != null && (bool) result;
                 return isReady;
             };
         }
