@@ -18,7 +18,7 @@
 *************************************************************************/
 
 using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using Wisej.WebDriver.Resources;
@@ -27,16 +27,6 @@ namespace Wisej.WebDriver
 {
     public class By : OpenQA.Selenium.By
     {
-        public new virtual IWebElement FindElement(ISearchContext context)
-        {
-            return null;
-        }
-
-        public new virtual IList<IWebElement> FindElements(ISearchContext context)
-        {
-            return null;
-        }
-
         /// <summary>
         /// Searches for elements by traversing the qooxdoo application's widget
         /// hierarchy. See the <a href="TODO">Qxh locator manual page</a> for details.
@@ -88,7 +78,7 @@ namespace Wisej.WebDriver
                 OnlySeeable = onlySeeable;
             }
 
-            public override IList<IWebElement> FindElements(ISearchContext context)
+            public override ReadOnlyCollection<IWebElement> FindElements(ISearchContext context)
             {
                 //TODO: findByQxh only returns the first match
                 throw new Exception("ByQxh.FindElements is not yet implemented.");
@@ -129,8 +119,7 @@ namespace Wisej.WebDriver
                     {
                         try
                         {
-                            result = jsExecutor.ExecuteScript(script, Locator, OnlySeeable,
-                                (IWebElement) contextElement);
+                            result = jsExecutor.ExecuteScript(script, Locator, OnlySeeable, contextElement);
                         }
                         //todo: catch (com.opera.Core.systems.scope.exceptions.ScopeException)
                         catch (Exception)
@@ -159,7 +148,7 @@ namespace Wisej.WebDriver
                     else
                     {
                         string reason = "Error while processing selector " + Locator;
-                        throw new OpenQA.Selenium.WebDriverException(reason, e);
+                        throw new WebDriverException(reason, e);
                     }
                 }
             }
