@@ -47,6 +47,10 @@
       <HintPath>..\packages\Selenium.Support.3.6.0\lib\net45\WebDriver.Support.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Wisej.WebDriver, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Bin\Release\NET45\Wisej.WebDriver.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiViewerTests.cs" />
@@ -55,12 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Source\Wisej.WebDriver\Wisej.WebDriver.csproj">
-      <Project>{e6be1e5d-58c1-4ad7-b1cb-3f9831a24949}</Project>
-      <Name>Wisej.WebDriver</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\Dependencies\chromedriver.exe">
