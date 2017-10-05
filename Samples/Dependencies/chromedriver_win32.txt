@@ -1,0 +1,8 @@
+chromedriver 2.32
+
+File
+chromedriver_win32.zip
+
+URI
+https://sites.google.com/a/chromium.org/chromedriver/downloads
+http://chromedriver.storage.googleapis.com/index.html?path=2.32/
