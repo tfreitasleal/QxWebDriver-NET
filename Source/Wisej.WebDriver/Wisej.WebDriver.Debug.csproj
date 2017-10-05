@@ -115,6 +115,9 @@
     <EmbeddedResource Include="JsResources\setTreeNodeOpened.js" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\support\WebDriver.Support.csproj">
       <Project>{8f318ef7-df70-4942-9892-9f2f0d0b239c}</Project>
       <Name>WebDriver.Support</Name>
