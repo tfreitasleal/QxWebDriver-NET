@@ -163,7 +163,7 @@ namespace Wisej.WebDriver.UI
                 }
             }
             //catch (ClassNotFoundException)
-            catch (Exception)
+            catch (ReflectionTypeLoadException)
             {
                 //System.out.println("No class for " + widgetClassName);
             }
