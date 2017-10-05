@@ -10,16 +10,35 @@ QxWebDriver-NET is a port of [qxwebdriver-java](https://github.com/qooxdoo/qxweb
 
 The goal of this project is to provide an API that facilitates writing [WebDriver](http://seleniumhq.org/docs/03_webdriver.html)-based interaction tests for [qx.Desktop](http://manual.qooxdoo.org/current/pages/desktop.html) and [qx.Mobile](http://manual.qooxdoo.org/current/pages/mobile.html) applications by abstracting away the implementation details of qooxdoo widgets. Here's a quick example:
 
-    QxWebDriver driver = new QxWebDriver(new FirefoxDriver());
+    QxWebDriver driver = new QxWebDriver(new ChromeDriver());
     // Open the page and wait until the qooxdoo application is loaded
-    driver.Url = "http://demo.qooxdoo.org/current/apiviewer/index.html";
+    driver.Url = "http://www.qooxdoo.org/current/api/index.html";
 
-    // Find the 'content' button in the tool bar
-    By button = By.Qxh("apiviewer.Viewer/*/[@label=Content]");
-    IWidget contentButton = driver.FindWidget(button);
+    // Find the 'Search' button in the tool bar
+    // @label is the button text
+    By buttonByLabel = By.Qxh("apiviewer.Viewer/*/[@label=Search]");
+    IWidget buttonWidget = driver.FindWidget(buttonByLabel);
+
     // Click the button if it's not already selected
-    if (!contentButton.IsSelected()) {
-      contentButton.Click();
+    if (!buttonWidget.Selected)
+    {
+        buttonWidget.Click();
+    }
+
+    // Now click the 'Legend' button
+    buttonByLabel = By.Qxh("apiviewer.Viewer/*/[@label=Legend]");
+    buttonWidget = driver.FindWidget(buttonByLabel);
+    if (!buttonWidget.Selected)
+    {
+        buttonWidget.Click();
+    }
+
+    // Now click the 'Content' button
+    buttonByLabel = By.Qxh("apiviewer.Viewer/*/[@label=Content]");
+    buttonWidget = driver.FindWidget(buttonByLabel);
+    if (!buttonWidget.Selected)
+    {
+        buttonWidget.Click();
     }
 
     // Select the "data" item from the package tree
