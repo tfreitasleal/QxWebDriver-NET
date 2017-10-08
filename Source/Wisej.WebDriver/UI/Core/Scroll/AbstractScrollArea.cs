@@ -21,7 +21,7 @@ using System;
 using System.Drawing;
 using OpenQA.Selenium;
 
-namespace Wisej.WebDriver.UI.Core.Scroll
+namespace Wisej.Qooxdoo.WebDriver.UI.Core.Scroll
 {
     /// <summary>
     /// Represents a <a href="http://demo.qooxdoo.org/current/apiviewer/#qx.ui.core.Scroll.AbstractScrollArea">ScrollArea</a>
@@ -29,10 +29,20 @@ namespace Wisej.WebDriver.UI.Core.Scroll
     /// </summary>
     public class AbstractScrollArea : WidgetImpl, IScrollable
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AbstractScrollArea"/> class.
+        /// </summary>
+        /// <param name="element">The element.</param>
+        /// <param name="webDriver">The web driver.</param>
         public AbstractScrollArea(IWebElement element, QxWebDriver webDriver) : base(element, webDriver)
         {
         }
 
+        /// <summary>
+        /// Gets the Scrollbar widget.
+        /// </summary>
+        /// <param name="direction">The scrollbar direction.</param>
+        /// <returns>The scroll bar.</returns>
         protected internal virtual IWidget GetScrollbar(string direction)
         {
             string childControlId = "scrollbar-" + direction;
@@ -47,6 +57,11 @@ namespace Wisej.WebDriver.UI.Core.Scroll
             }
         }
 
+        /// <summary>
+        /// Scrolls the widget to a given position
+        /// </summary>
+        /// <param name="direction"> "x" or "y" for horizontal/vertical scrolling </param>
+        /// <param name="position"> Position (in pixels) to scroll to </param>
         public virtual void ScrollTo(string direction, int? position)
         {
             IWidget scrollBar = GetScrollbar(direction);
@@ -57,16 +72,26 @@ namespace Wisej.WebDriver.UI.Core.Scroll
             JsRunner.RunScript("scrollTo", scrollBar.ContentElement, position);
         }
 
+        /// <summary>
+        /// Returns the current scroll position of the widget
+        /// </summary>
+        /// <param name="direction"> "x" or "y" for horizontal/vertical position </param>
+        /// <returns>The scroll position in pixels.</returns>
         public virtual long? GetScrollPosition(string direction)
         {
             IWidget scrollBar = GetScrollbar(direction);
             if (scrollBar == null)
             {
-                return new long?(0);
+                return 0;
             }
             return GetScrollPosition(scrollBar);
         }
 
+        /// <summary>
+        /// Gets the scroll position.
+        /// </summary>
+        /// <param name="scrollBar">The scroll bar.</param>
+        /// <returns>The scroll position in pixels.</returns>
         protected internal virtual long? GetScrollPosition(IWidget scrollBar)
         {
             try
@@ -75,51 +100,79 @@ namespace Wisej.WebDriver.UI.Core.Scroll
                 return long.Parse(result);
             }
             //catch (com.opera.Core.systems.scope.exceptions.ScopeException)
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }
         }
 
+        /// <summary>
+        /// Gets the scroll step.
+        /// </summary>
+        /// <param name="scrollBar">The scroll bar.</param>
+        /// <returns>The scroll step in pixels.</returns>
         protected internal virtual long? GetScrollStep(IWidget scrollBar)
         {
             string result = scrollBar.GetPropertyValueAsJson("singleStep");
             return long.Parse(result);
         }
 
+        /// <summary>
+        /// Gets the scroll step.
+        /// </summary>
+        /// <param name="direction">The direction.</param>
+        /// <returns>The scroll step in pixels.</returns>
         public virtual long? GetScrollStep(string direction)
         {
             IWidget scrollBar = GetScrollbar(direction);
             if (scrollBar == null)
             {
-                return new long?(0);
+                return 0;
             }
             return GetScrollStep(scrollBar);
         }
 
+        /// <summary>
+        /// Returns the maximum scroll position of the widget
+        /// </summary>
+        /// <param name="direction"> "x" or "y" for horizontal/vertical maximum </param>
+        /// <returns>The maximum scroll position in pixels.</returns>
         public virtual long? GetMaximum(string direction)
         {
             IWidget scrollBar = GetScrollbar(direction);
             if (scrollBar == null)
             {
-                return new long?(0);
+                return 0;
             }
             return GetMaximum(scrollBar);
         }
 
+        /// <summary>
+        /// Returns the maximum scroll position of the widget
+        /// </summary>
+        /// <param name="scrollBar">The scroll bar.</param>
+        /// <returns>The maximum scroll position in pixels.</returns>
         protected internal virtual long? GetMaximum(IWidget scrollBar)
         {
             string result = scrollBar.GetPropertyValueAsJson("maximum");
             return long.Parse(result);
         }
 
+        /// <summary>
+        /// Scrolls the area in the given direction until the locator finds a child
+        /// widget. The locator will be executed in the scroll area's context, so
+        /// a relative locator should be used, e.g. <code>By.Qxh("*\/[@label=Foo]")</code>
+        /// </summary>
+        /// <param name="direction"> "x" or "y" for horizontal/vertical scrolling </param>
+        /// <param name="locator"> Child widget locator </param>
+        /// <returns>The matching child widget.</returns>
         public virtual IWidget ScrollToChild(string direction, OpenQA.Selenium.By locator)
         {
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(100);
             IWebElement target = null;
             try
             {
-                target = contentElement.FindElement(locator);
+                target = ContentElement.FindElement(locator);
             }
             catch (NoSuchElementException)
             {
@@ -138,7 +191,7 @@ namespace Wisej.WebDriver.UI.Core.Scroll
                 // Virtual list items are created on demand, so query the DOM again
                 try
                 {
-                    target = contentElement.FindElement(locator);
+                    target = ContentElement.FindElement(locator);
                 }
                 catch (NoSuchElementException)
                 {
@@ -165,12 +218,17 @@ namespace Wisej.WebDriver.UI.Core.Scroll
             return null;
         }
 
+        /// <summary>
+        /// Determines whether the child is visible.
+        /// </summary>
+        /// <param name="child">The child.</param>
+        /// <returns><value>true</value> if the child is visible; otherwise <value>false</value>.</returns>
         public virtual bool? IsChildInView(IWebElement child)
         {
-            Point paneLocation = contentElement.Location;
+            Point paneLocation = ContentElement.Location;
             int paneTop = paneLocation.Y;
             int paneLeft = paneLocation.X;
-            Size paneSize = contentElement.Size;
+            Size paneSize = ContentElement.Size;
             int paneHeight = paneSize.Height;
             int paneBottom = paneTop + paneHeight;
             int paneWidth = paneSize.Width;

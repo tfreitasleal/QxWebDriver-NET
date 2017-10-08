@@ -21,21 +21,24 @@ using System;
 using System.Collections.ObjectModel;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
-using Wisej.WebDriver.Resources;
+using Wisej.Qooxdoo.WebDriver.Resources;
 
-namespace Wisej.WebDriver
+namespace Wisej.Qooxdoo.WebDriver
 {
-    public class By : OpenQA.Selenium.By
+    /// <summary>
+    /// Provides a mechanism by which to find elements within a document.
+    /// </summary>
+    public partial class By : OpenQA.Selenium.By
     {
         /// <summary>
-        /// Searches for elements by traversing the qooxdoo application's widget
-        /// hierarchy. See the <a href="TODO">Qxh locator manual page</a> for details.
+        /// Searches for elements by traversing the qooxdoo application's widget  hierarchy.
+        /// See the <a href="TODO">Qxh locator manual page</a> for details.
         ///
         /// This strategy will ignore any widgets that are not currently visible, as
         /// determined by checking the qooxdoo property <a href="http://demo.qooxdoo.org/current/apiviewer/#qx.ui.Core.Widget~isSeeable!method_public">seeable</a>.
         /// </summary>
         /// <param name="locator"> Locator specification </param>
-        /// <returns> By.ByQxh </returns>
+        /// <returns>By.ByQxh.</returns>
         public static By Qxh(string locator)
         {
             if (ReferenceEquals(locator, null))
@@ -53,7 +56,7 @@ namespace Wisej.WebDriver
         /// <param name="locator"> Locator specification </param>
         /// <param name="onlySeeable"> <code>false</code> if invisible widgets should be
         /// traversed. Note that this can considerably increase execution time. </param>
-        /// <returns> configured ByQxh instance </returns>
+        /// <returns>configured ByQxh instance.</returns>
         public static By Qxh(string locator, bool? onlySeeable)
         {
             if (ReferenceEquals(locator, null))
@@ -65,19 +68,29 @@ namespace Wisej.WebDriver
 
         /// <summary>
         /// Mechanisms used to locate elements within a qooxdoo Desktop application.
-        ///
         /// </summary>
         public class ByQxh : By
         {
             internal readonly string Locator;
             internal bool? OnlySeeable;
 
+            /// <summary>
+            /// Searches for elements by traversing the qooxdoo application's widget  hierarchy.
+            /// </summary>
+            /// <param name="locator"></param>
+            /// <param name="onlySeeable"></param>
             public ByQxh(string locator, bool? onlySeeable)
             {
                 Locator = locator;
                 OnlySeeable = onlySeeable;
             }
 
+            /// <summary>
+            /// Finds all elements matching the criteria.
+            /// </summary>
+            /// <param name="context">An <see cref="ISearchContext"/> object to use to search for the elements.</param>
+            /// <returns>A <see cref="ReadOnlyCollection{T}"/> of all <see cref="IWebElement">WebElements</see>
+            /// matching the current criteria, or an empty list if nothing matches.</returns>
             public override ReadOnlyCollection<IWebElement> FindElements(ISearchContext context)
             {
                 //TODO: findByQxh only returns the first match
@@ -85,10 +98,10 @@ namespace Wisej.WebDriver
             }
 
             /// <summary>
-            /// Searches for elements by traversing the qooxdoo application's widget
-            /// hierarchy using the current ISearchContext as the root node.
-            /// See the <a href="TODO">Qxh locator manual page</a> for details.
+            /// Finds the first element matching the criteria.
             /// </summary>
+            /// <param name="context">An <see cref="ISearchContext"/> object to use to search for the elements.</param>
+            /// <returns>The first matching <see cref="IWebElement"/> on the current context.</returns>
             public override IWebElement FindElement(ISearchContext context)
             {
                 IJavaScriptExecutor jsExecutor;
@@ -153,6 +166,10 @@ namespace Wisej.WebDriver
                 }
             }
 
+            /// <summary>
+            /// Gets a string representation of the finder.
+            /// </summary>
+            /// <returns>The string displaying the finder content.</returns>
             public override string ToString()
             {
                 return "By.Qxh: " + Locator;

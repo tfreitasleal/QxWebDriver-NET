@@ -8,10 +8,17 @@ using JSONObject = org.json.simple.JSONObject;
 using JSONParser = org.json.simple.parser.JSONParser;
 using ParseException = org.json.simple.parser.ParseException;*/
 
-namespace Wisej.WebDriver.Log
+namespace Wisej.Qooxdoo.WebDriver.Log
 {
+    /// <summary>
+    /// Adds a JSon string to the log.
+    /// </summary>
     public class LogEntry
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LogEntry"/> class.
+        /// </summary>
+        /// <param name="json">The json string to add as a log entry.</param>
         public LogEntry(string json)
         {
             // Java converted code
@@ -57,11 +64,14 @@ namespace Wisej.WebDriver.Log
             }
         }
 
-        public string clazz;
-        public string level;
-        public IList<string> items = new List<string>();
-        public string time;
+        private string clazz;
+        private string level;
+        private IList<string> items = new List<string>();
+        private string time;
 
+        /// <summary>Returns a string that represents the current object.</summary>
+        /// <returns>A string that represents the current object.</returns>
+        /// <filterpriority>2</filterpriority>
         public override string ToString()
         {
             if (ReferenceEquals(clazz, null))

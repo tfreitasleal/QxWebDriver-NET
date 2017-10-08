@@ -19,10 +19,19 @@
 
 using OpenQA.Selenium;
 
-namespace Wisej.WebDriver.UI.Tree
+namespace Wisej.Qooxdoo.WebDriver.UI.Tree
 {
+    /// <summary>
+    /// Tree widget
+    /// </summary>
+    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.Form.List" />
     public class Tree : Form.List
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Tree"/> class.
+        /// </summary>
+        /// <param name="element">The element.</param>
+        /// <param name="webDriver">The web driver.</param>
         public Tree(IWebElement element, QxWebDriver webDriver) : base(element, webDriver)
         {
         }

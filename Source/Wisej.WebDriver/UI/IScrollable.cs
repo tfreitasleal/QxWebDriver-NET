@@ -17,8 +17,12 @@
 
 *************************************************************************/
 
-namespace Wisej.WebDriver.UI
+namespace Wisej.Qooxdoo.WebDriver.UI
 {
+    /// <summary>
+    /// Scrollable interface
+    /// </summary>
+    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.IWidget" />
     public interface IScrollable : IWidget
     {
         /// <summary>
@@ -35,21 +39,21 @@ namespace Wisej.WebDriver.UI
         /// </summary>
         /// <param name="direction"> "x" or "y" for horizontal/vertical scrolling </param>
         /// <param name="locator"> Child widget locator </param>
-        /// <returns> The matching child widget </returns>
+        /// <returns>The matching child widget.</returns>
         IWidget ScrollToChild(string direction, OpenQA.Selenium.By locator);
 
         /// <summary>
         /// Returns the maximum scroll position of the widget
         /// </summary>
         /// <param name="direction"> "x" or "y" for horizontal/vertical maximum </param>
-        /// <returns> maximum scroll position in pixels </returns>
+        /// <returns>The maximum scroll position in pixels.</returns>
         long? GetMaximum(string direction);
 
         /// <summary>
         /// Returns the current scroll position of the widget
         /// </summary>
         /// <param name="direction"> "x" or "y" for horizontal/vertical position </param>
-        /// <returns> scroll position in pixels </returns>
+        /// <returns>The scroll position in pixels.</returns>
         long? GetScrollPosition(string direction);
     }
 }

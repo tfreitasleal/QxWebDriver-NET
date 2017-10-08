@@ -24,35 +24,57 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Interactions.Internal;
 
-namespace Wisej.WebDriver.UI.Mobile.Core
+namespace Wisej.Qooxdoo.WebDriver.UI.Mobile.Core
 {
+    /// <summary>
+    /// Base mobile widget implementation
+    /// </summary>
+    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.Core.WidgetImpl" />
+    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.ITouchable" />
     public class WidgetImpl : UI.Core.WidgetImpl, ITouchable
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WidgetImpl"/> class.
+        /// </summary>
+        /// <param name="element">The element.</param>
+        /// <param name="webDriver">The web driver.</param>
         public WidgetImpl(IWebElement element, QxWebDriver webDriver) : base(element, webDriver)
         {
             // workaround for https://github.com/selendroid/selendroid/issues/337
-            contentElement = element;
+            ContentElement = element;
         }
 
+        /// <summary>
+        /// Determines if the widget is visible by querying the qooxdoo property
+        /// <a href="http://demo.qooxdoo.org/current/apiviewer/#qx.ui.core.IWidget~isSeeable!method_public">seeable</a>.
+        /// </summary>
         public override bool Displayed
         {
             get
             {
-                if (contentElement.Displayed)
+                if (ContentElement.Displayed)
                 {
                     string script = "return arguments[0].offsetWidth > 0 || arguments[0].offsetHeight > 0";
-                    return ((bool?) JsExecutor.ExecuteScript(script, contentElement)).Value;
+                    return ((bool?) JsExecutor.ExecuteScript(script, ContentElement)).Value;
                 }
 
                 return false;
             }
         }
 
+        /// <summary>
+        /// Performs a single tap on this widget.
+        /// </summary>
         public virtual void Tap()
         {
-            Tap(Driver.WebDriver, contentElement);
+            Tap(Driver.WebDriver, ContentElement);
         }
 
+        /// <summary>
+        /// Performs a single tap on the element of the specified driver.
+        /// </summary>
+        /// <param name="driver">The driver.</param>
+        /// <param name="element">The element.</param>
         public static void Tap(IWebDriver driver, IWebElement element)
         {
             if (driver is IHasTouchScreen)
@@ -66,11 +88,19 @@ namespace Wisej.WebDriver.UI.Mobile.Core
             }
         }
 
+        /// <summary>
+        /// Performs a long tap on this widget.
+        /// </summary>
         public virtual void Longtap()
         {
-            Longtap(Driver.WebDriver, contentElement);
+            Longtap(Driver.WebDriver, ContentElement);
         }
 
+        /// <summary>
+        /// Performs a long tap on the element of the specified driver.
+        /// </summary>
+        /// <param name="driver">The driver to use.</param>
+        /// <param name="element">The element to long tap.</param>
         public static void Longtap(IWebDriver driver, IWebElement element)
         {
             if (driver is IHasTouchScreen)
@@ -106,6 +136,11 @@ namespace Wisej.WebDriver.UI.Mobile.Core
             }
         }
 
+        /// <summary>
+        /// Gets the center of a given element.
+        /// </summary>
+        /// <param name="element">The element.</param>
+        /// <returns>The center of the element.</returns>
         protected internal static Point GetCenter(IWebElement element)
         {
             Size size = element.Size;
@@ -120,11 +155,25 @@ namespace Wisej.WebDriver.UI.Mobile.Core
             return point;
         }
 
+        /// <summary>
+        /// Tracks this widget by the given offsets
+        /// </summary>
+        /// <param name="x">Amount of pixels to move horizontally</param>
+        /// <param name="y">Amount of pixels to move vertically</param>
+        /// <param name="step">Generate a move event every (step) pixels</param>
         public virtual void Track(int x, int y, int step)
         {
-            Track(Driver.WebDriver, contentElement, x, y, step);
+            Track(Driver.WebDriver, ContentElement, x, y, step);
         }
 
+        /// <summary>
+        /// Tracks the element of the specified driver by the given offsets
+        /// </summary>
+        /// <param name="driver">The driver to use.</param>
+        /// <param name="element">The element to track.</param>
+        /// <param name="x">Amount of pixels to move horizontally</param>
+        /// <param name="y">Amount of pixels to move vertically</param>
+        /// <param name="step">Generate a move event every (step) pixels</param>
         public static void Track(IWebDriver driver, IWebElement element, int x, int y, int step)
         {
             if (driver is IHasTouchScreen)
@@ -208,6 +257,11 @@ namespace Wisej.WebDriver.UI.Mobile.Core
             }
         }
 
+        /// <summary>
+        /// Scrolls the widget to a given position
+        /// </summary>
+        /// <param name="x">The x position (in pixels) to scroll to </param>
+        /// <param name="y">The y position (in pixels) to scroll to </param>
         public virtual void ScrollTo(int x, int y)
         {
             string script = "qx.ui.mobile.core.Widget.getWidgetById(arguments[0].id).scrollTo(" + x + ", " + y + ")";

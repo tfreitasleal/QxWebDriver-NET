@@ -22,11 +22,17 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace Wisej.WebDriver.Resources
+namespace Wisej.Qooxdoo.WebDriver.Resources
 {
+    /// <summary>
+    /// Handles JavaScript embedded as resource.
+    /// </summary>
     public class JavaScript
     {
-        public static readonly JavaScript Instance = new JavaScript("INSTANCE", InnerEnum.Instance);
+        /// <summary>
+        /// The default instance
+        /// </summary>
+        public static readonly JavaScript Instance = new JavaScript("INSTANCE");
 
         private static readonly IList<JavaScript> ValueList = new List<JavaScript>();
 
@@ -35,27 +41,35 @@ namespace Wisej.WebDriver.Resources
             ValueList.Add(Instance);
         }
 
-        public enum InnerEnum
-        {
-            Instance
-        }
-
         private readonly string _nameValue;
         private readonly int _ordinalValue;
-        private readonly InnerEnum _innerEnumValue;
-        private static int _nextOrdinal = 0;
+        private static int _nextOrdinal;
 
-        private JavaScript(string name, InnerEnum innerEnum)
+        private JavaScript(string name)
         {
             _nameValue = name;
-            _ordinalValue = _nextOrdinal++;
-            _innerEnumValue = innerEnum;
+            _ordinalValue = System.Threading.Interlocked.Increment(ref _nextOrdinal);
         }
 
         internal Dictionary<string, string> Resources = new Dictionary<string, string>();
-        protected internal string Suffix = "-min";
+
+        /// <summary>
+        /// The JavaScript suffix
+        /// </summary>
+        /// <remarks>The suffix's default value is empty.</remarks>
+        protected internal string Suffix = "";
+        //protected internal string Suffix = "-min";
+
+        /// <summary>
+        /// The JavaScript file extension
+        /// </summary>
         protected internal string FileExtension = ".js";
 
+        /// <summary>
+        /// Gets the JavaScript content of the resource.
+        /// </summary>
+        /// <param name="resourceId">The resource identifier.</param>
+        /// <returns>The JavaScript content.</returns>
         public string GetValue(string resourceId)
         {
             if (!Resources.ContainsKey(resourceId))
@@ -67,6 +81,11 @@ namespace Wisej.WebDriver.Resources
             return Resources[resourceId];
         }
 
+        /// <summary>
+        /// Adds a JavaScript resource if it doesn't exist in the dictionary.
+        /// </summary>
+        /// <param name="resourceId">The resource identifier.</param>
+        /// <param name="resourcePath">The resource path.</param>
         public void AddResource(string resourceId, string resourcePath)
         {
             if (!Resources.ContainsKey(resourceId))
@@ -75,6 +94,11 @@ namespace Wisej.WebDriver.Resources
             }
         }
 
+        /// <summary>
+        /// Adds a JavaScript resource to the dictionary.
+        /// </summary>
+        /// <param name="resourceId">The resource identifier.</param>
+        /// <param name="resourcePath">The resource path.</param>
         protected internal void AddResourceFromPath(string resourceId, string resourcePath)
         {
             string resource = ReadResource(resourcePath);
@@ -82,11 +106,14 @@ namespace Wisej.WebDriver.Resources
             Resources[resourceId] = resource;
         }
 
+        /// <summary>
+        /// Gets the full path of a JavaScript resource.
+        /// </summary>
+        /// <param name="resourceId">The resource identifier.</param>
+        /// <returns>The full path of the resource.</returns>
         protected internal string GetResourcePath(string resourceId)
         {
-            //resourceId = GetBaseresourcePath() + resourceId + Suffix + FileExtension;
-            resourceId = GetBaseresourcePath() + resourceId + FileExtension;
-            return resourceId;
+            return GetBaseresourcePath() + resourceId + Suffix + FileExtension;
         }
 
         private string GetBaseresourcePath()
@@ -99,6 +126,12 @@ namespace Wisej.WebDriver.Resources
             return path;
         }
 
+        /// <summary>
+        /// Reads a JavaScript resource from the path.
+        /// </summary>
+        /// <param name="resourcePath">The resource path.</param>
+        /// <returns>The raw resource content.</returns>
+        /// <exception cref="System.Exception">Couldn't read resource file.</exception>
         protected internal string ReadResource(string resourcePath)
         {
             Stream @in = GetType().Assembly.GetManifestResourceStream(resourcePath);
@@ -123,10 +156,16 @@ namespace Wisej.WebDriver.Resources
             return text;
         }
 
+        /// <summary>
+        /// Manipulates the JavaScript resource to get just the useful javascript code.
+        /// </summary>
+        /// <param name="resource">The resource.</param>
+        /// <returns>The useful javascript code.</returns>
         protected internal string ManipulateResource(string resource)
         {
             // Java and C# Regex are different...
-            Regex pattern = new Regex(@"function\(\)\s*\{\s*(.*)\s*\};$", RegexOptions.Compiled | RegexOptions.Multiline);
+            Regex pattern = new Regex(@"function\(\)\s*\{\s*(.*)\s*\};$",
+                RegexOptions.Compiled | RegexOptions.Multiline);
 
             if (pattern.IsMatch(resource))
             {
@@ -144,26 +183,39 @@ namespace Wisej.WebDriver.Resources
             return resource;
         }
 
+        /// <summary>
+        /// The list of the <see cref="JavaScript"/> instances.
+        /// </summary>
+        /// <returns>a list of <see cref="JavaScript"/> instances.</returns>
         public static IList<JavaScript> Values()
         {
             return ValueList;
         }
 
-        public InnerEnum InnerEnumValue()
-        {
-            return _innerEnumValue;
-        }
-
+        /// <summary>
+        /// Gets the ordinal number of this instance.
+        /// </summary>
+        /// <returns>The ordinal number of this instance.</returns>
         public int Ordinal()
         {
             return _ordinalValue;
         }
 
+        /// <summary>
+        /// Gets the name of this instance.
+        /// </summary>
+        /// <returns>The name of this instance.</returns>
         public override string ToString()
         {
             return _nameValue;
         }
 
+        /// <summary>
+        /// The named <see cref="JavaScript"/> instance.
+        /// </summary>
+        /// <param name="name">The instance name.</param>
+        /// <returns>The named instance.</returns>
+        /// <exception cref="System.ArgumentException"></exception>
         public static JavaScript ValueOf(string name)
         {
             foreach (JavaScript enumInstance in Values())

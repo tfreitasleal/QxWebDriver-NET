@@ -1,10 +1,9 @@
-﻿namespace Wisej.WebDriver.UI.Mobile
+﻿namespace Wisej.Qooxdoo.WebDriver.UI.Mobile
 {
     /// <summary>
     /// This interface represents qx.Mobile widgets with selectable child items, e.g.
     /// qx.ui.mobile.list.List. For qx.Desktop widgets, please use
-    /// Wisej.WebDriver.UI.ISelectable instead.
-    ///
+    /// Wisej.Qooxdoo.WebDriver.UI.ISelectable instead.
     /// </summary>
     public interface ISelectable : IWidget
     {

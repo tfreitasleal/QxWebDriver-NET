@@ -20,9 +20,9 @@
 using System;
 using System.Collections.Generic;
 using OpenQA.Selenium;
-using Wisej.WebDriver.UI.Core.Scroll;
+using Wisej.Qooxdoo.WebDriver.UI.Core.Scroll;
 
-namespace Wisej.WebDriver.UI.Menu
+namespace Wisej.Qooxdoo.WebDriver.UI.Menu
 {
     /// <summary>
     /// Represents a <a href="http://demo.qooxdoo.org/current/apiviewer/#qx.ui.menu.Menu">Menu</a>
@@ -32,26 +32,46 @@ namespace Wisej.WebDriver.UI.Menu
     {
         //TODO: Nested menus
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Menu"/> class.
+        /// </summary>
+        /// <param name="element">The element.</param>
+        /// <param name="webDriver">The web driver.</param>
         public Menu(IWebElement element, QxWebDriver webDriver) : base(element, webDriver)
         {
         }
 
+        /// <summary>
+        /// Finds a selectable child widget by index and selects it
+        /// </summary>
+        /// <param name="index">The index of the item.</param>
         public virtual void SelectItem(int? index)
         {
             GetSelectableItem(index).Click();
         }
 
+        /// <summary>
+        /// Finds the first selectable child widget with a label matching the regular
+        /// expression and selects it
+        /// </summary>
+        /// <param name="regex">The regular expreesion to match.</param>
         public void SelectItem(string regex)
         {
             GetSelectableItem(regex).Click();
         }
 
+        /// <summary>
+        /// Finds a selectable child widget by index and returns it
+        /// </summary>
+        /// <param name="index">The index of the item.</param>
+        /// <returns>The found item.</returns>
         public IWidget GetSelectableItem(int? index)
         {
             bool? hasSlideBar = HasChildControl("slidebar");
             if (hasSlideBar.Value)
             {
-                Console.Error.WriteLine("Menu item selection by index is currently only supported for non-scrolling menus!");
+                Console.Error.WriteLine(
+                    "Menu item selection by index is currently only supported for non-scrolling menus!");
                 return null;
             }
 
@@ -59,6 +79,11 @@ namespace Wisej.WebDriver.UI.Menu
             return children[index.Value];
         }
 
+        /// <summary>
+        /// Finds the first selectable child widget with a matching label and returns it
+        /// </summary>
+        /// <param name="label">The label to search for.</param>
+        /// <returns>The matching item.</returns>
         public IWidget GetSelectableItem(string label)
         {
             By itemLocator = By.Qxh("*/[@label=" + label + "]");
@@ -72,6 +97,12 @@ namespace Wisej.WebDriver.UI.Menu
             return FindWidget(itemLocator);
         }
 
+        /// <summary>
+        /// Gets the scroll pane.
+        /// </summary>
+        /// <value>
+        /// The scroll pane.
+        /// </value>
         public virtual ScrollPane ScrollPane
         {
             get
@@ -81,24 +112,47 @@ namespace Wisej.WebDriver.UI.Menu
             }
         }
 
+        /// <summary>
+        /// Scrolls the widget to a given position
+        /// </summary>
+        /// <param name="direction"> "x" or "y" for horizontal/vertical scrolling </param>
+        /// <param name="position"> Position (in pixels) to scroll to </param>
         public void ScrollTo(string direction, int? position)
         {
             ScrollPane scrollPane = ScrollPane;
             scrollPane.ScrollTo(direction, position);
         }
 
+        /// <summary>
+        /// Scrolls the area in the given direction until the locator finds a child
+        /// widget. The locator will be executed in the scroll area's context, so
+        /// a relative locator should be used, e.g. <code>By.Qxh("*\/[@label=Foo]")</code>
+        /// </summary>
+        /// <param name="direction"> "x" or "y" for horizontal/vertical scrolling </param>
+        /// <param name="locator"> Child widget locator </param>
+        /// <returns>The matching child widget.</returns>
         public IWidget ScrollToChild(string direction, OpenQA.Selenium.By locator)
         {
             ScrollPane scrollPane = ScrollPane;
             return scrollPane.ScrollToChild(direction, locator);
         }
 
+        /// <summary>
+        /// Returns the maximum scroll position of the widget
+        /// </summary>
+        /// <param name="direction"> "x" or "y" for horizontal/vertical maximum </param>
+        /// <returns>The maximum scroll position in pixels.</returns>
         public long? GetMaximum(string direction)
         {
             ScrollPane scrollPane = ScrollPane;
             return scrollPane.GetMaximum(direction);
         }
 
+        /// <summary>
+        /// Returns the current scroll position of the widget
+        /// </summary>
+        /// <param name="direction"> "x" or "y" for horizontal/vertical position </param>
+        /// <returns>The scroll position in pixels.</returns>
         public long? GetScrollPosition(string direction)
         {
             ScrollPane scrollPane = ScrollPane;

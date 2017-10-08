@@ -19,26 +19,47 @@
 
 using OpenQA.Selenium;
 
-namespace Wisej.WebDriver.UI.Form
+namespace Wisej.Qooxdoo.WebDriver.UI.Form
 {
+    /// <summary>
+    /// MenuButton widget
+    /// </summary>
+    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.Form.SelectBox" />
     public class MenuButton : SelectBox
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MenuButton"/> class.
+        /// </summary>
+        /// <param name="element">The element.</param>
+        /// <param name="driver">The driver.</param>
         public MenuButton(IWebElement element, QxWebDriver driver) : base(element, driver)
         {
         }
 
+        /// <summary>
+        /// Gets or sets the list.
+        /// </summary>
+        /// <value>
+        /// The list.
+        /// </value>
         protected internal override ISelectable List
         {
             get
             {
-                if (list == null)
+                if (base.List == null)
                 {
-                    list = (ISelectable) GetWidgetFromProperty("menu");
+                    base.List = (ISelectable) GetWidgetFromProperty("menu");
                 }
-                return list;
+                return base.List;
             }
         }
 
+        /// <summary>
+        /// Gets the button.
+        /// </summary>
+        /// <value>
+        /// The button.
+        /// </value>
         protected internal override IWidget Button
         {
             get { return this; }

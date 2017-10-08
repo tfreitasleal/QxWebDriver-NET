@@ -7,8 +7,8 @@
     <ProjectGuid>{E6BE1E5D-58C1-4AD7-B1CB-3F9831A24949}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Wisej.WebDriver</RootNamespace>
-    <AssemblyName>Wisej.WebDriver</AssemblyName>
+    <RootNamespace>Wisej.Qooxdoo.WebDriver</RootNamespace>
+    <AssemblyName>Wisej.Qooxdoo.WebDriver</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -28,6 +28,8 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -39,14 +41,6 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="WebDriver, Version=3.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Selenium.WebDriver.3.6.0\lib\net45\WebDriver.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="WebDriver.Support, Version=3.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Selenium.Support.3.6.0\lib\net45\WebDriver.Support.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="By.cs" />
@@ -86,9 +80,7 @@
     <Compile Include="UI\Tree\VirtualTree.cs" />
     <Compile Include="UI\IWidget.cs" />
     <Compile Include="UI\IWidgetFactory.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <Compile Include="WebDriverHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="JsResources\getAllLogEvents.js" />
@@ -124,6 +116,19 @@
     <EmbeddedResource Include="JsResources\selectTableRow.js" />
     <EmbeddedResource Include="JsResources\setPropertyValue.js" />
     <EmbeddedResource Include="JsResources\setTreeNodeOpened.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\support\WebDriver.Support.csproj">
+      <Project>{8f318ef7-df70-4942-9892-9f2f0d0b239c}</Project>
+      <Name>WebDriver.Support</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\webdriver\WebDriver.csproj">
+      <Project>{6941aa74-a97a-48a5-bbfe-1970cce31e5c}</Project>
+      <Name>WebDriver</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

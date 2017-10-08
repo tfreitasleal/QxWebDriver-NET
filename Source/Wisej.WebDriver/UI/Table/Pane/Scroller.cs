@@ -20,48 +20,82 @@
 using System.Collections.Generic;
 using OpenQA.Selenium;
 
-namespace Wisej.WebDriver.UI.Table.Pane
+namespace Wisej.Qooxdoo.WebDriver.UI.Table.Pane
 {
+    /// <summary>
+    /// Scroller widget
+    /// </summary>
+    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.Core.Scroll.AbstractScrollArea" />
     public class Scroller : Core.Scroll.AbstractScrollArea
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Scroller"/> class.
+        /// </summary>
+        /// <param name="element">The element.</param>
+        /// <param name="webDriver">The web driver.</param>
         public Scroller(IWebElement element, QxWebDriver webDriver) : base(element, webDriver)
         {
         }
 
+        /// <summary>
+        /// Scrolls the widget to a given position
+        /// </summary>
+        /// <param name="direction"> "x" or "y" for horizontal/vertical scrolling </param>
+        /// <param name="position"> Position (in pixels) to scroll to </param>
         public override void ScrollTo(string direction, int? position)
         {
             string propertyName = "scroll" + direction.ToUpper();
-            JsRunner.RunScript("setPropertyValue", contentElement, propertyName, position);
+            JsRunner.RunScript("setPropertyValue", ContentElement, propertyName, position);
         }
 
+        /// <summary>
+        /// Returns the maximum scroll position of the widget
+        /// </summary>
+        /// <param name="direction"> "x" or "y" for horizontal/vertical maximum </param>
+        /// <returns>The maximum scroll position in pixels.</returns>
         public override long? GetMaximum(string direction)
         {
-            if (string.ReferenceEquals(direction, "y"))
+            if (ReferenceEquals(direction, "y"))
             {
-                return (long?) JsRunner.RunScript("getTableScrollerMaximum", contentElement);
+                return (long?) JsRunner.RunScript("getTableScrollerMaximum", ContentElement);
             }
 
             // TODO
-            return new long?(0);
+            return 0;
         }
 
+        /// <summary>
+        /// Returns the current scroll position of the widget
+        /// </summary>
+        /// <param name="direction"> "x" or "y" for horizontal/vertical position </param>
+        /// <returns>scroll position in pixels.</returns>
         public override long? GetScrollPosition(string direction)
         {
             string propertyName = "scroll" + direction.ToUpper();
-            return (long?) JsRunner.RunScript("getPropertyValue", contentElement, propertyName);
+            return (long?) JsRunner.RunScript("getPropertyValue", ContentElement, propertyName);
         }
 
+        /// <summary>
+        /// Gets the scroll step.
+        /// </summary>
+        /// <param name="direction">The direction.</param>
+        /// <returns>The scroll step.</returns>
         public override long? GetScrollStep(string direction)
         {
-            if (string.ReferenceEquals(direction, "y"))
+            if (ReferenceEquals(direction, "y"))
             {
-                return (long?) JsRunner.RunScript("getTableRowHeight", contentElement);
+                return (long?) JsRunner.RunScript("getTableRowHeight", ContentElement);
             }
 
             // TODO
-            return new long?(0);
+            return 0;
         }
 
+        /// <summary>
+        /// Gets the visible row.
+        /// </summary>
+        /// <param name="index">The index.</param>
+        /// <returns>The target row.</returns>
         public virtual IWebElement GetVisibleRow(int? index)
         {
             IWidget pane = GetChildControl("pane");
@@ -73,6 +107,11 @@ namespace Wisej.WebDriver.UI.Table.Pane
             return null;
         }
 
+        /// <summary>
+        /// Scrolls to row.
+        /// </summary>
+        /// <param name="rowIndex">Index of the row.</param>
+        /// <returns>The target row.</returns>
         public virtual IWebElement ScrollToRow(int? rowIndex)
         {
             long? firstVisibleRow = FirstVisibleRow;
@@ -96,7 +135,8 @@ namespace Wisej.WebDriver.UI.Table.Pane
                 ScrollTo(direction, to);
                 return ScrollToRow(rowIndex);
             }
-            else if (rowIndex.Value < lastVisibleRow && scrollPosition > 0)
+
+            if (rowIndex.Value < lastVisibleRow && scrollPosition > 0)
             {
                 int to = (int) (scrollPosition - singleStep);
                 ScrollTo(direction, to);
@@ -106,14 +146,26 @@ namespace Wisej.WebDriver.UI.Table.Pane
             return null;
         }
 
+        /// <summary>
+        /// Gets the first visible row.
+        /// </summary>
+        /// <value>
+        /// The first visible row.
+        /// </value>
         public virtual long? FirstVisibleRow
         {
-            get { return (long?) JsRunner.RunScript("getFirstVisibleTableRow", contentElement); }
+            get { return (long?) JsRunner.RunScript("getFirstVisibleTableRow", ContentElement); }
         }
 
+        /// <summary>
+        /// Gets the visible row count.
+        /// </summary>
+        /// <value>
+        /// The visible row count.
+        /// </value>
         public virtual long? VisibleRowCount
         {
-            get { return (long?) JsRunner.RunScript("getVisibleTableRowCount", contentElement); }
+            get { return (long?) JsRunner.RunScript("getVisibleTableRowCount", ContentElement); }
         }
     }
 }

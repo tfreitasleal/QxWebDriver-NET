@@ -20,9 +20,9 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using OpenQA.Selenium;
-using Wisej.WebDriver.UI.Core;
+using Wisej.Qooxdoo.WebDriver.UI.Core;
 
-namespace Wisej.WebDriver.UI.TabView
+namespace Wisej.Qooxdoo.WebDriver.UI.TabView
 {
     /// <summary>
     /// Represents a <a href="http://demo.qooxdoo.org/current/apiviewer/#qx.ui.tabview.TabView">TabView</a>
@@ -30,10 +30,22 @@ namespace Wisej.WebDriver.UI.TabView
     /// </summary>
     public class TabView : WidgetImpl, ISelectable
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TabView"/> class.
+        /// </summary>
+        /// <param name="element">The element.</param>
+        /// <param name="webDriver">The web driver.</param>
         public TabView(IWebElement element, QxWebDriver webDriver) : base(element, webDriver)
         {
         }
 
+        /// <summary>
+        /// Finds a selectable child widget by index and returns it
+        /// </summary>
+        /// <param name="index">The index of the item.</param>
+        /// <returns>
+        /// The found item.
+        ///.</returns>
         public IWidget GetSelectableItem(int? index)
         {
             IWidget bar = GetChildControl("bar");
@@ -41,11 +53,23 @@ namespace Wisej.WebDriver.UI.TabView
             return buttons[index.Value];
         }
 
+        /// <summary>
+        /// Finds a selectable child widget by index and selects it
+        /// </summary>
+        /// <param name="index">The index of the item.</param>
         public void SelectItem(int? index)
         {
             GetSelectableItem(index).Click();
         }
 
+        /// <summary>
+        /// Finds the first selectable child widget with a label matching the regular
+        /// expression and returns it
+        /// </summary>
+        /// <param name="regex">The regular expreesion to match.</param>
+        /// <returns>
+        /// The matching item.
+        ///.</returns>
         public IWidget GetSelectableItem(string regex)
         {
             IWidget bar = GetChildControl("bar");
@@ -68,6 +92,11 @@ namespace Wisej.WebDriver.UI.TabView
             return button;
         }
 
+        /// <summary>
+        /// Finds the first selectable child widget with a label matching the regular
+        /// expression and selects it
+        /// </summary>
+        /// <param name="regex">The regular expreesion to match.</param>
         public void SelectItem(string regex)
         {
             GetSelectableItem(regex).Click();

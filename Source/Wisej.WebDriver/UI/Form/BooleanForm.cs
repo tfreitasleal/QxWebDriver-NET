@@ -19,14 +19,24 @@
 
 using OpenQA.Selenium;
 
-namespace Wisej.WebDriver.UI.Form
+namespace Wisej.Qooxdoo.WebDriver.UI.Form
 {
+    /// <summary>
+    /// Boolena form widget
+    /// </summary>
+    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.Core.WidgetImpl" />
     public class BooleanForm : Core.WidgetImpl
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BooleanForm"/> class.
+        /// </summary>
+        /// <param name="element">The element.</param>
+        /// <param name="webDriver">The web driver.</param>
         public BooleanForm(IWebElement element, QxWebDriver webDriver) : base(element, webDriver)
         {
         }
 
+        /// <summary>Gets a value indicating whether or not this element is selected. </summary>
         public new virtual bool Selected
         {
             get { return ((bool?) GetPropertyValue("value")).Value; }

@@ -19,24 +19,39 @@
 
 using OpenQA.Selenium;
 
-namespace Wisej.WebDriver.UI.Form
+namespace Wisej.Qooxdoo.WebDriver.UI.Form
 {
+    /// <summary>
+    /// Virtual combobox widget
+    /// </summary>
+    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.Form.ComboBox" />
     public class VirtualComboBox : ComboBox
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VirtualComboBox"/> class.
+        /// </summary>
+        /// <param name="element">The element.</param>
+        /// <param name="webDriver">The web driver.</param>
         public VirtualComboBox(IWebElement element, QxWebDriver webDriver) : base(element, webDriver)
         {
         }
 
+        /// <summary>
+        /// Gets the list.
+        /// </summary>
+        /// <value>
+        /// The list.
+        /// </value>
         protected internal override ISelectable List
         {
             get
             {
-                if (list == null)
+                if (base.List == null)
                 {
                     IWidget dropdown = WaitForChildControl("dropdown", 3);
-                    list = (ISelectable) dropdown.GetChildControl("list");
+                    base.List = (ISelectable) dropdown.GetChildControl("list");
                 }
-                return list;
+                return base.List;
             }
         }
     }

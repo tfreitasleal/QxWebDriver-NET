@@ -17,22 +17,26 @@
 
 *************************************************************************/
 
-namespace Wisej.WebDriver.UI
+namespace Wisej.Qooxdoo.WebDriver.UI
 {
+    /// <summary>
+    /// Touchable interface
+    /// </summary>
+    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.IWidget" />
     public interface ITouchable : IWidget
     {
         /// <summary>
-        /// Performs a single tap on this widget
+        /// Performs a single tap on this widget.
         /// </summary>
         void Tap();
 
         /// <summary>
-        /// Performs a long tap on this widget
+        /// Performs a long tap on this widget.
         /// </summary>
         void Longtap();
 
         /// <summary>
-        /// Drags this widget by the given offsets </summary>
+        /// Tracks this widget by the given offsets </summary>
         /// <param name="x"> Amount of pixels to move horizontally </param>
         /// <param name="y"> Amount of pixels to move vertically </param>
         /// <param name="step"> Generate a move event every (step) pixels </param>

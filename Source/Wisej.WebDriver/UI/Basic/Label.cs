@@ -18,24 +18,34 @@
 *************************************************************************/
 
 using OpenQA.Selenium;
-using Wisej.WebDriver.UI.Core;
+using Wisej.Qooxdoo.WebDriver.UI.Core;
 
-namespace Wisej.WebDriver.UI.Basic
+namespace Wisej.Qooxdoo.WebDriver.UI.Basic
 {
+    /// <summary>
+    /// Label widget
+    /// </summary>
+    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.Core.WidgetImpl" />
     public class Label : WidgetImpl
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Label"/> class.
+        /// </summary>
+        /// <param name="element">The element.</param>
+        /// <param name="webDriver">The web driver.</param>
         public Label(IWebElement element, QxWebDriver webDriver) : base(element, webDriver)
         {
         }
 
         /// <summary>
-        /// Returns the string representation of a Label's value </summary>
-        /// <returns> label string </returns>
+        /// Gets the string representation of a Label's value </summary>
+        /// <returns>The label string.</returns>
         public virtual string Value
         {
             get
             {
-                return (string) ExecuteJavascript("return qx.ui.core.Widget.getWidgetByElement(arguments[0]).getValue().toString()");
+                return (string) ExecuteJavascript(
+                    "return qx.ui.core.Widget.getWidgetByElement(arguments[0]).getValue().toString()");
             }
         }
     }

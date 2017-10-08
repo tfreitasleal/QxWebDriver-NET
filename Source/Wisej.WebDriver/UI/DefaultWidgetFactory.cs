@@ -23,17 +23,29 @@ using System.Linq;
 using System.Reflection;
 using OpenQA.Selenium;
 
-namespace Wisej.WebDriver.UI
+namespace Wisej.Qooxdoo.WebDriver.UI
 {
+    /// <summary>
+    /// The default widget factory
+    /// </summary>
+    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.IWidgetFactory" />
     public class DefaultWidgetFactory : IWidgetFactory
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DefaultWidgetFactory"/> class.
+        /// </summary>
+        /// <param name="qxWebDriver">The wrapper QxWebDriver.</param>
         public DefaultWidgetFactory(QxWebDriver qxWebDriver)
         {
             Driver = qxWebDriver;
             _packageName = GetType().Namespace;
         }
 
+        /// <summary>
+        /// The driver
+        /// </summary>
         protected internal QxWebDriver Driver;
+
         private readonly string _packageName;
         private readonly Dictionary<IWebElement, IWidget> _elements = new Dictionary<IWebElement, IWidget>();
 
@@ -41,6 +53,8 @@ namespace Wisej.WebDriver.UI
         /// Returns a list of qooxdoo interfaces implemented by the widget containing
         /// the given element.
         /// </summary>
+        /// <param name="element">The element.</param>
+        /// <returns>.</returns>
         public virtual IList<string> GetWidgetInterfaces(IWebElement element)
         {
             //IList<object> resultList = (IList<object>) Driver.JsRunner.RunScript("getInterfaces", element);
@@ -50,9 +64,10 @@ namespace Wisej.WebDriver.UI
         }
 
         /// <summary>
-        /// Returns the inheritance hierarchy of the widget containing the given
-        /// element.
+        /// Returns the inheritance hierarchy of the widget containing the given element.
         /// </summary>
+        /// <param name="element">The element.</param>
+        /// <returns>.</returns>
         public virtual IList<string> GetWidgetInheritance(IWebElement element)
         {
             //IList<object> resultList = (IList<object>) Driver.JsRunner.RunScript("getInheritance", element);
@@ -62,11 +77,14 @@ namespace Wisej.WebDriver.UI
         }
 
         /// <summary>
-        /// Returns an instance of <seealso cref="IWidget"/> or one of its subclasses that
-        /// represents the qooxdoo widget containing the given element. </summary>
-        /// <param name="element"> A IWebElement representing a DOM element that is part of a
-        /// qooxdoo widget </param>
-        /// <returns> Widget object </returns>
+        /// Returns an instance of <seealso cref="IWidget" /> or one of its subclasses that
+        /// represents the qooxdoo widget containing the given element.
+        /// </summary>
+        /// <param name="element">A IWebElement representing a DOM element
+        /// that is part of a qooxdoo widget</param>
+        /// <returns>
+        /// The wWidget object
+        ///.</returns>
         public virtual IWidget GetWidgetForElement(IWebElement element)
         {
             if (_elements.ContainsKey(element))
@@ -112,7 +130,8 @@ namespace Wisej.WebDriver.UI
                             }
                             catch (Exception e)
                             {
-                                Console.Error.WriteLine("Could not instantiate '" + widgetClassName + "': " + e.Message);
+                                Console.Error.WriteLine("Could not instantiate '" + widgetClassName + "': " +
+                                                        e.Message);
                                 Console.WriteLine(e.ToString());
                                 Console.Write(e.StackTrace);
                             }
@@ -141,7 +160,8 @@ namespace Wisej.WebDriver.UI
             for (var index = 0; index < classNameParts.Length; index++)
             {
                 classNameParts[index] =
-                    char.ToUpper(classNameParts[index][0]) + classNameParts[index].Substring(1, classNameParts[index].Length - 1);
+                    char.ToUpper(classNameParts[index][0]) +
+                    classNameParts[index].Substring(1, classNameParts[index].Length - 1);
             }
             className = string.Join(".", classNameParts);
 

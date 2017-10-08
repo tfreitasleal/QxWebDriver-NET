@@ -18,9 +18,9 @@
 *************************************************************************/
 
 using OpenQA.Selenium;
-using Wisej.WebDriver.UI.Core;
+using Wisej.Qooxdoo.WebDriver.UI.Core;
 
-namespace Wisej.WebDriver.UI.Form
+namespace Wisej.Qooxdoo.WebDriver.UI.Form
 {
     /// <summary>
     /// Represents a <a href="http://demo.qooxdoo.org/current/apiviewer/#qx.ui.form.SelectBox">SelectBox</a>
@@ -28,57 +28,96 @@ namespace Wisej.WebDriver.UI.Form
     /// </summary>
     public class SelectBox : WidgetImpl, ISelectable
     {
-        protected internal IWidget button = null;
-        protected internal ISelectable list = null;
+        private IWidget _button;
+        private ISelectable _list;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SelectBox"/> class.
+        /// </summary>
+        /// <param name="element">The element.</param>
+        /// <param name="driver">The driver.</param>
         public SelectBox(IWebElement element, QxWebDriver driver) : base(element, driver)
         {
         }
 
+        /// <summary>
+        /// Finds a selectable child widget by index and returns it
+        /// </summary>
+        /// <param name="index">The index of the item.</param>
+        /// <returns>The found item.</returns>
         public virtual IWidget GetSelectableItem(int? index)
         {
             return List.GetSelectableItem(index);
         }
 
+        /// <summary>
+        /// Finds a selectable child widget by index and selects it
+        /// </summary>
+        /// <param name="index">The index of the item.</param>
         public virtual void SelectItem(int? index)
         {
             Button.Click();
             GetSelectableItem(index).Click();
         }
 
+        /// <summary>
+        /// Finds the first selectable child widget with a label matching the regular
+        /// expression and returns it
+        /// </summary>
+        /// <param name="regex">The regular expreesion to match.</param>
+        /// <returns>The found item.</returns>
         public virtual IWidget GetSelectableItem(string regex)
         {
             return List.GetSelectableItem(regex);
         }
 
+        /// <summary>
+        /// Finds the first selectable child widget with a label matching the regular
+        /// expression and selects it
+        /// </summary>
+        /// <param name="regex">The regular expreesion to match.</param>
         public virtual void SelectItem(string regex)
         {
             Button.Click();
             GetSelectableItem(regex).Click();
         }
 
+        /// <summary>
+        /// Gets the button.
+        /// </summary>
+        /// <value>
+        /// The button.
+        /// </value>
         protected internal virtual IWidget Button
         {
             get
             {
-                if (button == null)
+                if (_button == null)
                 {
-                    button = Driver.GetWidgetForElement(contentElement);
+                    _button = Driver.GetWidgetForElement(ContentElement);
                 }
-                return button;
+                return _button;
             }
+            protected set { _button = value; }
         }
 
+        /// <summary>
+        /// Gets the list.
+        /// </summary>
+        /// <value>
+        /// The list.
+        /// </value>
         protected internal virtual ISelectable List
         {
             get
             {
-                if (list == null)
+                if (_list == null)
                 {
-                    list = (ISelectable) WaitForChildControl("list", 3);
+                    _list = (ISelectable) WaitForChildControl("list", 3);
                 }
-                return list;
+                return _list;
             }
+            protected set { _list = value; }
         }
     }
 }

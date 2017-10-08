@@ -19,7 +19,7 @@
 
 using OpenQA.Selenium;
 
-namespace Wisej.WebDriver.UI.Form
+namespace Wisej.Qooxdoo.WebDriver.UI.Form
 {
     /// <summary>
     /// Represents a <a href="http://demo.qooxdoo.org/current/apiviewer/#qx.ui.form.ComboBox">ComboBox</a>
@@ -27,27 +27,37 @@ namespace Wisej.WebDriver.UI.Form
     /// </summary>
     public class ComboBox : SelectBox
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ComboBox"/> class.
+        /// </summary>
+        /// <param name="element">The element.</param>
+        /// <param name="webDriver">The web driver.</param>
         public ComboBox(IWebElement element, QxWebDriver webDriver) : base(element, webDriver)
         {
         }
 
+        /// <summary>
+        /// Gets the button.
+        /// </summary>
+        /// <value>
+        /// The button.
+        /// </value>
         protected internal override IWidget Button
         {
             get
             {
-                if (button == null)
+                if (base.Button == null)
                 {
-                    button = GetChildControl("button");
+                    base.Button = GetChildControl("button");
                 }
-                return button;
+                return base.Button;
             }
         }
 
-        /*public virtual void SendKeys(params CharSequence[] keysToSend)
-        {
-            GetChildControl("textfield").ContentElement.SendKeys(keysToSend);
-        }*/
 
+        /// <summary>
+        /// Clears the content of this element.
+        /// </summary>
         public new virtual void Clear()
         {
             GetChildControl("textfield").ContentElement.Clear();

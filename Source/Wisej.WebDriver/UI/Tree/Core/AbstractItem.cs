@@ -19,19 +19,37 @@
 
 using OpenQA.Selenium;
 
-namespace Wisej.WebDriver.UI.Tree.Core
+namespace Wisej.Qooxdoo.WebDriver.UI.Tree.Core
 {
+    /// <summary>
+    /// Tree item 
+    /// </summary>
+    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.Core.WidgetImpl" />
     public class AbstractItem : UI.Core.WidgetImpl
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AbstractItem"/> class.
+        /// </summary>
+        /// <param name="element">The element.</param>
+        /// <param name="webDriver">The web driver.</param>
         public AbstractItem(IWebElement element, QxWebDriver webDriver) : base(element, webDriver)
         {
         }
 
+        /// <summary>
+        /// Gets a value indicating whether this <see cref="AbstractItem"/> is open.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if open; otherwise, <c>false</c>.
+        /// </value>
         public virtual bool Open
         {
             get { return ((bool?) GetPropertyValue("open")).Value; }
         }
 
+        /// <summary>
+        /// Clicks the open close button.
+        /// </summary>
         public virtual void ClickOpenCloseButton()
         {
             IWidget button = GetChildControl("open");

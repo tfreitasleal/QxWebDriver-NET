@@ -19,7 +19,7 @@
 
 using OpenQA.Selenium;
 
-namespace Wisej.WebDriver.UI.Form
+namespace Wisej.Qooxdoo.WebDriver.UI.Form
 {
     /// <summary>
     /// Represents a <a href="http://demo.qooxdoo.org/current/apiviewer/#qx.ui.form.VirtualSelectBox">VirtualSelectBox</a>
@@ -27,20 +27,31 @@ namespace Wisej.WebDriver.UI.Form
     /// </summary>
     public class VirtualSelectBox : SelectBox
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VirtualSelectBox"/> class.
+        /// </summary>
+        /// <param name="element">The element.</param>
+        /// <param name="driver">The driver.</param>
         public VirtualSelectBox(IWebElement element, QxWebDriver driver) : base(element, driver)
         {
         }
 
+        /// <summary>
+        /// Gets the list.
+        /// </summary>
+        /// <value>
+        /// The list.
+        /// </value>
         protected internal override ISelectable List
         {
             get
             {
-                if (list == null)
+                if (base.List == null)
                 {
                     IWidget dropdown = WaitForChildControl("dropdown", 3);
-                    list = (ISelectable) dropdown.GetChildControl("list");
+                    base.List = (ISelectable) dropdown.GetChildControl("list");
                 }
-                return list;
+                return base.List;
             }
         }
     }

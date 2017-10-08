@@ -18,9 +18,9 @@
 *************************************************************************/
 
 using OpenQA.Selenium;
-using Wisej.WebDriver.UI.Core.Scroll;
+using Wisej.Qooxdoo.WebDriver.UI.Core.Scroll;
 
-namespace Wisej.WebDriver.UI.Form
+namespace Wisej.Qooxdoo.WebDriver.UI.Form
 {
     /// <summary>
     /// Represents a <a href="http://demo.qooxdoo.org/current/apiviewer/#qx.ui.form.List">List</a>
@@ -28,23 +28,42 @@ namespace Wisej.WebDriver.UI.Form
     /// </summary>
     public class List : AbstractScrollArea, ISelectable
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="List"/> class.
+        /// </summary>
+        /// <param name="element">The element.</param>
+        /// <param name="webDriver">The web driver.</param>
         public List(IWebElement element, QxWebDriver webDriver) : base(element, webDriver)
         {
         }
 
+        /// <summary>
+        /// Finds a selectable child widget by index and returns it
+        /// </summary>
+        /// <param name="index">The index of the item.</param>
+        /// <returns>The found item.</returns>
         public virtual IWidget GetSelectableItem(int? index)
         {
-            object result = JsRunner.RunScript("getItemFromSelectables", contentElement, index);
+            object result = JsRunner.RunScript("getItemFromSelectables", ContentElement, index);
             IWebElement element = (IWebElement) result;
             return Driver.GetWidgetForElement(element);
         }
 
+        /// <summary>
+        /// Finds a selectable child widget by index and selects it
+        /// </summary>
+        /// <param name="index">The index of the item.</param>
         public virtual void SelectItem(int? index)
         {
             //TODO: scroll
             GetSelectableItem(index).Click();
         }
 
+        /// <summary>
+        /// Finds the first selectable child widget with a matching label and returns it
+        /// </summary>
+        /// <param name="label">The label to match.</param>
+        /// <returns>The matching item.</returns>
         public virtual IWidget GetSelectableItem(string label)
         {
             ScrollTo("y", 0);
@@ -52,6 +71,11 @@ namespace Wisej.WebDriver.UI.Form
             return ScrollToChild("y", itemLocator);
         }
 
+        /// <summary>
+        /// Finds the first selectable child widget with a label matching the regular
+        /// expression and selects it
+        /// </summary>
+        /// <param name="regex">The regular expreesion to match.</param>
         public virtual void SelectItem(string regex)
         {
             IWidget item = GetSelectableItem(regex);

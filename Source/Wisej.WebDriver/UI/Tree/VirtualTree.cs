@@ -19,10 +19,19 @@
 
 using OpenQA.Selenium;
 
-namespace Wisej.WebDriver.UI.Tree
+namespace Wisej.Qooxdoo.WebDriver.UI.Tree
 {
+    /// <summary>
+    /// Virtual tree widget
+    /// </summary>
+    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.List.List" />
     public class VirtualTree : List.List
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VirtualTree"/> class.
+        /// </summary>
+        /// <param name="element">The element.</param>
+        /// <param name="webDriver">The web driver.</param>
         public VirtualTree(IWebElement element, QxWebDriver webDriver) : base(element, webDriver)
         {
         }

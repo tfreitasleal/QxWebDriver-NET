@@ -20,10 +20,13 @@
 using System;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
-using Wisej.WebDriver.UI;
+using Wisej.Qooxdoo.WebDriver.UI;
 
-namespace Wisej.WebDriver.Examples
+namespace Wisej.Qooxdoo.WebDriver.Examples
 {
+    /// <summary>
+    /// HelloWorld example of use
+    /// </summary>
     public class HelloWorld
     {
         /// <summary>

@@ -28,14 +28,30 @@ using JSONObject = org.json.simple.JSONObject;
 using JSONParser = org.json.simple.parser.JSONParser;
 using ParseException = org.json.simple.parser.ParseException;*/
 
-namespace Wisej.WebDriver.UI.Table
+namespace Wisej.Qooxdoo.WebDriver.UI.Table
 {
+    /// <summary>
+    /// Table widget
+    /// </summary>
+    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.Core.WidgetImpl" />
+    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.IScrollable" />
     public class Table : Core.WidgetImpl, IScrollable
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Table"/> class.
+        /// </summary>
+        /// <param name="element">The element.</param>
+        /// <param name="webDriver">The web driver.</param>
         public Table(IWebElement element, QxWebDriver webDriver) : base(element, webDriver)
         {
         }
 
+        /// <summary>
+        /// Gets the header labels.
+        /// </summary>
+        /// <value>
+        /// The header labels.
+        /// </value>
         public virtual IList<string> HeaderLabels
         {
             get
@@ -50,7 +66,8 @@ namespace Wisej.WebDriver.UI.Table
                     {
                         IWebElement child = itr.Current;
                         IWebElement label =
-                            child.FindElement(OpenQA.Selenium.By.XPath("div[not(contains(@style, 'background-image'))]"));
+                            child.FindElement(
+                                OpenQA.Selenium.By.XPath("div[not(contains(@style, 'background-image'))]"));
                         IWidget labelWidget = Driver.GetWidgetForElement(label);
                         labels.Add((string) labelWidget.GetPropertyValue("value"));
                         //labels.add(label.getText());
@@ -61,18 +78,30 @@ namespace Wisej.WebDriver.UI.Table
             }
         }
 
+        /// <summary>
+        /// Gets the header cells.
+        /// </summary>
+        /// <value>
+        /// The header cells.
+        /// </value>
         protected internal virtual IList<IWebElement> HeaderCells
         {
             get
             {
                 IWidget header = FindWidget(By.Qxh("*/qx.ui.table.pane.Header"));
                 IList<IWebElement> cells =
-                    header.ContentElement.FindElements(OpenQA.Selenium.By.XPath("div[starts-with(@class, 'qx-table-header-cell')]"));
+                    header.ContentElement.FindElements(
+                        OpenQA.Selenium.By.XPath("div[starts-with(@class, 'qx-table-header-cell')]"));
 
                 return cells;
             }
         }
 
+        /// <summary>
+        /// Gets the header cell.
+        /// </summary>
+        /// <param name="label">The label.</param>
+        /// <returns>The found header cell.</returns>
         public virtual IWidget GetHeaderCell(string label)
         {
             IList<IWebElement> children = HeaderCells;
@@ -94,6 +123,11 @@ namespace Wisej.WebDriver.UI.Table
             return widget;
         }
 
+        /// <summary>
+        /// Gets the header cell.
+        /// </summary>
+        /// <param name="index">The index.</param>
+        /// <returns>The found header cell.</returns>
         public virtual IWidget GetHeaderCell(int index)
         {
             IList<IWebElement> children = HeaderCells;
@@ -117,6 +151,12 @@ namespace Wisej.WebDriver.UI.Table
             return widget;
         }
 
+        /// <summary>
+        /// Gets the column menu button.
+        /// </summary>
+        /// <value>
+        /// The column menu button.
+        /// </value>
         public virtual IWidget ColumnMenuButton
         {
             get
@@ -128,36 +168,75 @@ namespace Wisej.WebDriver.UI.Table
             }
         }
 
+        /// <summary>
+        /// Gets the scroller.
+        /// </summary>
+        /// <value>
+        /// The scroller.
+        /// </value>
         public virtual Pane.Scroller Scroller
         {
             get { return (Pane.Scroller) FindWidget(By.Qxh("*/qx.ui.table.pane.Scroller")); }
         }
 
+        /// <summary>
+        /// Scrolls the widget to a given position
+        /// </summary>
+        /// <param name="direction"> "x" or "y" for horizontal/vertical scrolling </param>
+        /// <param name="position"> Position (in pixels) to scroll to </param>
         public void ScrollTo(string direction, int? position)
         {
             Scroller.ScrollTo(direction, position);
         }
 
+        /// <summary>
+        /// Scrolls the area in the given direction until the locator finds a child
+        /// widget. The locator will be executed in the scroll area's context, so
+        /// a relative locator should be used, e.g. <code>By.Qxh("*\/[@label=Foo]")</code>
+        /// </summary>
+        /// <param name="direction"> "x" or "y" for horizontal/vertical scrolling </param>
+        /// <param name="locator"> Child widget locator </param>
+        /// <returns>The matching child widget.</returns>
         public IWidget ScrollToChild(string direction, OpenQA.Selenium.By locator)
         {
             return Scroller.ScrollToChild(direction, locator);
         }
 
+        /// <summary>
+        /// Returns the maximum scroll position of the widget
+        /// </summary>
+        /// <param name="direction"> "x" or "y" for horizontal/vertical maximum </param>
+        /// <returns>The maximum scroll position in pixels.</returns>
         public long? GetMaximum(string direction)
         {
             return Scroller.GetMaximum(direction);
         }
 
+        /// <summary>
+        /// Returns the current scroll position of the widget
+        /// </summary>
+        /// <param name="direction"> "x" or "y" for horizontal/vertical position </param>
+        /// <returns>The scroll position in pixels.</returns>
         public long? GetScrollPosition(string direction)
         {
             return Scroller.GetScrollPosition(direction);
         }
 
+        /// <summary>
+        /// Scrolls to row.
+        /// </summary>
+        /// <param name="rowIndex">Index of the row.</param>
+        /// <returns>The target row.</returns>
         public virtual IWebElement ScrollToRow(int? rowIndex)
         {
             return Scroller.ScrollToRow(rowIndex);
         }
 
+        /// <summary>
+        /// Gets the cell by text.
+        /// </summary>
+        /// <param name="text">The text to search for..</param>
+        /// <returns>The found cell.</returns>
         public virtual IWebElement GetCellByText(string text)
         {
             string cellPath = "//div[contains(@class, 'qooxdoo-table-cell') and text()='" + text + "']";
@@ -170,12 +249,18 @@ namespace Wisej.WebDriver.UI.Table
         /// </summary>
         /// <param name="rowIdx"> Row index (from 0) </param>
         /// <param name="colIdx"> Column index (from 0) </param>
-        /// <returns> Text in cell </returns>
+        /// <returns>Text in cell.</returns>
         public virtual string GetCellText(long rowIdx, long colIdx)
         {
             return GetCellElement(rowIdx, colIdx).Text;
         }
 
+        /// <summary>
+        /// Gets the cell element.
+        /// </summary>
+        /// <param name="rowIdx">Index of the row.</param>
+        /// <param name="colIdx">Index of the col.</param>
+        /// <returns>The found cell.</returns>
         public virtual IWebElement GetCellElement(long rowIdx, long colIdx)
         {
             string cellPath;
@@ -209,13 +294,15 @@ namespace Wisej.WebDriver.UI.Table
                 else
                 {
                     cellPath = "./div[1]/div[2]/div[2]//div[contains(@class, 'qooxdoo-table-cell')]/" +
-                               "parent::div[count(preceding-sibling::div) = " + (rowIdx) + "]/" + "div[position() = " + (colIdx) + "]";
+                               "parent::div[count(preceding-sibling::div) = " + (rowIdx) + "]/" + "div[position() = " +
+                               (colIdx) + "]";
                 }
             }
             else
             {
                 cellPath = ".//div[contains(@class, 'qooxdoo-table-cell')]/" +
-                           "parent::div[count(preceding-sibling::div) = " + (rowIdx) + "]/" + "div[position() = " + (colIdx + 1) + "]";
+                           "parent::div[count(preceding-sibling::div) = " + (rowIdx) + "]/" + "div[position() = " +
+                           (colIdx + 1) + "]";
             }
             return FindElement(OpenQA.Selenium.By.XPath(cellPath));
         }
@@ -226,7 +313,7 @@ namespace Wisej.WebDriver.UI.Table
         /// </summary>
         /// <param name="colIdx"> Index of column (from 0) that should contain the text </param>
         /// <param name="text"> Text to search for </param>
-        /// <returns> The row index (from 0) or -1 if the text was not found </returns>
+        /// <returns>The row index (from 0) or -1 if the text was not found.</returns>
         public virtual long GetRowIndexForCellText(long colIdx, string text)
         {
             string cellPath;
@@ -257,7 +344,8 @@ namespace Wisej.WebDriver.UI.Table
                 }
                 else
                 {
-                    cellPath = "./div[1]/div[2]/div[2]//div[contains(@class, 'qooxdoo-table-cell') and position() = " + colIdx + "]";
+                    cellPath = "./div[1]/div[2]/div[2]//div[contains(@class, 'qooxdoo-table-cell') and position() = " +
+                               colIdx + "]";
                 }
             }
             else
@@ -283,7 +371,7 @@ namespace Wisej.WebDriver.UI.Table
         /// </summary>
         /// <param name="colIdx"> Index of column (from 0) that should contain the text </param>
         /// <param name="text"> Text to search for </param>
-        /// <returns> The a list of row indexes containing the text </returns>
+        /// <returns>The a list of row indexes containing the text.</returns>
         public virtual IList<long?> GetRowIndexesForCellText(long colIdx, string text)
         {
             string cellPath;
@@ -314,7 +402,8 @@ namespace Wisej.WebDriver.UI.Table
                 }
                 else
                 {
-                    cellPath = "./div[1]/div[2]/div[2]//div[contains(@class, 'qooxdoo-table-cell') and position() = " + colIdx + "]";
+                    cellPath = "./div[1]/div[2]/div[2]//div[contains(@class, 'qooxdoo-table-cell') and position() = " +
+                               colIdx + "]";
                 }
             }
             else
@@ -334,15 +423,20 @@ namespace Wisej.WebDriver.UI.Table
             return rowIdxs;
         }
 
+        /// <summary>
+        /// Gets the selected ranges.
+        /// </summary>
+        /// <value>
+        /// The selected ranges.
+        /// </value>
         public virtual IList<Dictionary<string, long?>> SelectedRanges
         {
             get
             {
-                string json = (string) JsRunner.RunScript("getTableSelectedRanges", contentElement);
+                string json = (string) JsRunner.RunScript("getTableSelectedRanges", ContentElement);
                 //JSONParser parser = new JSONParser();
                 IList<Dictionary<string, long?>> ranges = null;
 
-                object obj;
                 try
                 {
                     ranges = new List<Dictionary<string, long?>>();
@@ -364,7 +458,8 @@ namespace Wisej.WebDriver.UI.Table
                     }
 
                     // Java converted code
-                    /*JObject jObject = JObject.Parse(json);
+                    /*object obj;
+                    JObject jObject = JObject.Parse(json);
                     obj = parser.parse(json);
                     JSONArray array = (JSONArray) obj;
                     using (IEnumerator<JSONObject> itr = array.GetEnumerator())
@@ -391,6 +486,12 @@ namespace Wisej.WebDriver.UI.Table
             }
         }
 
+        /// <summary>
+        /// Gets the cell editor.
+        /// </summary>
+        /// <value>
+        /// The cell editor.
+        /// </value>
         public virtual IWidget CellEditor
         {
             get
@@ -407,11 +508,17 @@ namespace Wisej.WebDriver.UI.Table
             }
         }
 
+        /// <summary>
+        /// Gets the row count.
+        /// </summary>
+        /// <value>
+        /// The row count.
+        /// </value>
         public virtual long? RowCount
         {
             get
             {
-                long? result = (long?) JsRunner.RunScript("getRowCount", contentElement);
+                long? result = (long?) JsRunner.RunScript("getRowCount", ContentElement);
                 return result;
             }
         }
@@ -422,14 +529,20 @@ namespace Wisej.WebDriver.UI.Table
         /// <param name="rowIdx"> the index of the row to select </param>
         public virtual void SelectRow(long? rowIdx)
         {
-            JsRunner.RunScript("selectTableRow", contentElement, rowIdx);
+            JsRunner.RunScript("selectTableRow", ContentElement, rowIdx);
         }
 
+        /// <summary>
+        /// Gets the column count.
+        /// </summary>
+        /// <value>
+        /// The column count.
+        /// </value>
         public virtual long? ColumnCount
         {
             get
             {
-                long? result = (long?) JsRunner.RunScript("getColumnCount", contentElement);
+                long? result = (long?) JsRunner.RunScript("getColumnCount", ContentElement);
                 return result;
             }
         }
@@ -437,10 +550,11 @@ namespace Wisej.WebDriver.UI.Table
         /// <summary>
         /// Select the table row at position <code>rowIdx</code>.
         /// </summary>
-        /// <param name="rowIdx"> the index of the row to select </param>
+        /// <param name="rowIdx">the index of the row to select</param>
+        /// <param name="opened">The opened.</param>
         public virtual void SetNodeOpened(long? rowIdx, bool? opened)
         {
-            long? result = (long?) JsRunner.RunScript("setTreeNodeOpened", contentElement, rowIdx, opened);
+            long? result = (long?) JsRunner.RunScript("setTreeNodeOpened", ContentElement, rowIdx, opened);
         }
     }
 }
