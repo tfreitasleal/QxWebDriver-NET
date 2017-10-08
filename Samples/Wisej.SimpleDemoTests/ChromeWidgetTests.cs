@@ -1,6 +1,8 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Edge;
+using OpenQA.Selenium.Firefox;
 using Wisej.Qooxdoo.WebDriver;
 using Wisej.Qooxdoo.WebDriver.UI;
 using Wisej.Qooxdoo.WebDriver.UI.Basic;
@@ -18,6 +20,8 @@ namespace Wisej.SimpleDemoTests
         public void OpenMainPage()
         {
             _driver = new QxWebDriver(new ChromeDriver());
+            //_driver = new QxWebDriver(new EdgeDriver());
+            //_driver = new QxWebDriver(new FirefoxDriver());
             _driver.Url = "http://localhost:16461/";
         }
 

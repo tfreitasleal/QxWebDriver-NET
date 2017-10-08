@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
 using Wisej.Qooxdoo.WebDriver;
 using Wisej.Qooxdoo.WebDriver.UI;
@@ -14,6 +15,8 @@ namespace Wisej.SimpleDemoTests
         public void ChromeTest()
         {
             _driver = new QxWebDriver(new ChromeDriver());
+            //_driver = new QxWebDriver(new EdgeDriver());
+            //_driver = new QxWebDriver(new FirefoxDriver());
             DoTest();
         }
 
