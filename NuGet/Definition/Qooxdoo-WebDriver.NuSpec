@@ -24,24 +24,24 @@ WebDriver testing support for qooxdoo desktop and mobile applications.
     </dependencies>
   </metadata>
   <files>
-    <!-- .NET 4.0 Client -->
-    <!--<file src="..\..\Bin\Release\NET4\**\Csla.dll*" target="lib\net40" />
-    <file src="..\..\Bin\Release\NET4\**\Csla.pdb*" target="lib\net40" />
-    <file src="..\..\Bin\Release\NET4\**\Csla.resources.dll*" target="lib\net40" />
-    <file src="..\..\Bin\Release\NET4\**\Csla.resources.pdb*" target="lib\net40" />
-    <file src="..\..\Bin\Release\NET4\**\Csla.xml*" target="lib\net40" />-->
-    <!-- .NET 4.5 Client -->
-    <file src="..\..\Bin\Release\NET45\**\Wisej.WebDriver.dll*" target="lib\net45" />
-    <file src="..\..\Bin\Release\NET45\**\Wisej.WebDriver.pdb*" target="lib\net45" />
-    <!--<file src="..\..\Bin\Release\NET45\**\Csla.resources.dll*" target="lib\net45" />
-    <file src="..\..\Bin\Release\NET45\**\Csla.resources.pdb*" target="lib\net45" />
-    <file src="..\..\Bin\Release\NET45\**\Csla.xml*" target="lib\net45" />-->
-    <!-- .NET 4.6 Client -->
-    <!--<file src="..\..\Bin\Release\NET46\**\Csla.dll*" target="lib\net46" />
-    <file src="..\..\Bin\Release\NET46\**\Csla.pdb*" target="lib\net46" />
-    <file src="..\..\Bin\Release\NET46\**\Csla.resources.dll*" target="lib\net46" />
-    <file src="..\..\Bin\Release\NET46\**\Csla.resources.pdb*" target="lib\net46" />
-    <file src="..\..\Bin\Release\NET46\**\Csla.xml*" target="lib\net46" />-->
+    <!-- .NET 4.0 -->
+    <!--<file src="..\..\Bin\Release\NET4\**\Wisej.Qooxdoo.WebDriver.dll*" target="lib\net40" />
+    <file src="..\..\Bin\Release\NET4\**\Wisej.Qooxdoo.WebDriver.pdb*" target="lib\net40" />
+    <file src="..\..\Bin\Release\NET4\**\Wisej.Qooxdoo.WebDriver.resources.dll*" target="lib\net40" />
+    <file src="..\..\Bin\Release\NET4\**\Wisej.Qooxdoo.WebDriver.resources.pdb*" target="lib\net40" />
+    <file src="..\..\Bin\Release\NET4\**\Wisej.Qooxdoo.WebDriver.xml*" target="lib\net40" />-->
+    <!-- .NET 4.5 -->
+    <file src="..\..\Bin\Release\NET45\**\Wisej.Qooxdoo.WebDriver.dll*" target="lib\net45" />
+    <file src="..\..\Bin\Release\NET45\**\Wisej.Qooxdoo.WebDriver.pdb*" target="lib\net45" />
+    <!--<file src="..\..\Bin\Release\NET45\**\Wisej.Qooxdoo.WebDriver.resources.dll*" target="lib\net45" />
+    <file src="..\..\Bin\Release\NET45\**\Wisej.Qooxdoo.WebDriver.resources.pdb*" target="lib\net45" />-->
+    <file src="..\..\Bin\Release\NET45\**\Wisej.Qooxdoo.WebDriver.xml*" target="lib\net45" />
+    <!-- .NET 4.6 -->
+    <!--<file src="..\..\Bin\Release\NET46\**\Wisej.Qooxdoo.WebDriver.dll*" target="lib\net46" />
+    <file src="..\..\Bin\Release\NET46\**\Wisej.Qooxdoo.WebDriver.pdb*" target="lib\net46" />
+    <file src="..\..\Bin\Release\NET46\**\Wisej.Qooxdoo.WebDriver.resources.dll*" target="lib\net46" />
+    <file src="..\..\Bin\Release\NET46\**\Wisej.Qooxdoo.WebDriver.resources.pdb*" target="lib\net46" />
+    <file src="..\..\Bin\Release\NET46\**\Wisej.Qooxdoo.WebDriver.xml*" target="lib\net46" />-->
     <!-- Source Files for Symbol Server -->
     <file src="..\..\Source\**\*.cs" target="src" />
   </files>
