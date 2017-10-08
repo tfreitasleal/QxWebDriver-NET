@@ -1,6 +1,6 @@
 # QxWebDriver-NET
 
-The Sources and Samples build but need testing. An "how to" document is also needed.
+Version 1.0.0is available on [NuGet](https://www.nuget.org/packages/Qooxdoo-WebDriver/) as __Qooxdoo-WebDriver__. This release is NET 4.5 only.
 
 THIS FILE WAS ADAPTED FROM qxwebdriver-java AND IS A WORK IN PROGRESS.
 
