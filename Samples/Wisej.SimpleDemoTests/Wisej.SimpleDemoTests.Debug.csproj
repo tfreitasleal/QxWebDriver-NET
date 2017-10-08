@@ -68,7 +68,7 @@
       <Project>{6941aa74-a97a-48a5-bbfe-1970cce31e5c}</Project>
       <Name>WebDriver</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Source\Wisej.WebDriver\Wisej.Qooxdoo.WebDriver.Debug.csproj">
+    <ProjectReference Include="..\..\Source\Wisej.Qooxdoo.WebDriver\Wisej.Qooxdoo.WebDriver.Debug.csproj">
       <Project>{e6be1e5d-58c1-4ad7-b1cb-3f9831a24949}</Project>
       <Name>Wisej.Qooxdoo.WebDriver.Debug</Name>
     </ProjectReference>

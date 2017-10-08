@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wisej.Qooxdoo.WebDriverDemo", "Wisej.WebDriverDemo\Wisej.Qooxdoo.WebDriverDemo.csproj", "{1EE99BF3-5DB9-48C6-A6D0-36408CEC5A38}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDriverDemo", "WebDriverDemo\WebDriverDemo.csproj", "{1EE99BF3-5DB9-48C6-A6D0-36408CEC5A38}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
