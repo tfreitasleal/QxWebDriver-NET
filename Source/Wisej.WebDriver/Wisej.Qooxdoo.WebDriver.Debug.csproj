@@ -28,8 +28,6 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>
-    </DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -83,6 +81,9 @@
     <Compile Include="WebDriverHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="JsResources\getAllLogEvents.js" />
     <EmbeddedResource Include="JsResources\getCaughtErrors.js" />
     <EmbeddedResource Include="JsResources\getChildControl.js" />
@@ -116,9 +117,6 @@
     <EmbeddedResource Include="JsResources\selectTableRow.js" />
     <EmbeddedResource Include="JsResources\setPropertyValue.js" />
     <EmbeddedResource Include="JsResources\setTreeNodeOpened.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\support\WebDriver.Support.csproj">
