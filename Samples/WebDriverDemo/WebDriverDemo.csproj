@@ -52,8 +52,9 @@
       <HintPath>..\packages\Selenium.Support.3.6.0\lib\net45\WebDriver.Support.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Wisej.Qooxdoo.WebDriver">
-      <HintPath>..\..\Bin\Release\NET45\Wisej.Qooxdoo.WebDriver.dll</HintPath>
+    <Reference Include="Wisej.Qooxdoo.WebDriver, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Qooxdoo-WebDriver.1.0.0\lib\net45\Wisej.Qooxdoo.WebDriver.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
