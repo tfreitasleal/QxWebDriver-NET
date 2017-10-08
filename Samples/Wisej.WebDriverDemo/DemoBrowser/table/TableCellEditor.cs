@@ -1,11 +1,11 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
-using Wisej.WebDriver.UI;
-using Wisej.WebDriver.UI.Form;
-using By = Wisej.WebDriver.By;
+using Wisej.Qooxdoo.WebDriver.UI;
+using Wisej.Qooxdoo.WebDriver.UI.Form;
+using By = Wisej.Qooxdoo.WebDriver.By;
 
-namespace Wisej.WebDriverDemo.DemoBrowser.Table
+namespace Wisej.Qooxdoo.WebDriverDemo.DemoBrowser.Table
 {
     [TestFixture]
     public class TableCellEditor : IntegrationTest

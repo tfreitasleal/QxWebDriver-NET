@@ -1,9 +1,9 @@
 ﻿using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using Wisej.WebDriver.UI;
+using Wisej.Qooxdoo.WebDriver.UI;
 
-namespace Wisej.WebDriverDemo.MobileShowcase
+namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
 {
     [TestFixture]
     public class DataBinding : Mobileshowcase

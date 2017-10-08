@@ -1,9 +1,9 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using Wisej.WebDriver.UI;
-using By = Wisej.WebDriver.By;
+using Wisej.Qooxdoo.WebDriver.UI;
+using By = Wisej.Qooxdoo.WebDriver.By;
 
-namespace Wisej.WebDriverDemo.DesktopApiViewer
+namespace Wisej.Qooxdoo.WebDriverDemo.DesktopApiViewer
 {
     [TestFixture]
     public class ClassViewer : DesktopApiViewer

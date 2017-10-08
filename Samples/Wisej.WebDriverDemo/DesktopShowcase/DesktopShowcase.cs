@@ -4,9 +4,9 @@ using System.Collections.ObjectModel;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using By = Wisej.WebDriver.By;
+using By = Wisej.Qooxdoo.WebDriver.By;
 
-namespace Wisej.WebDriverDemo.DesktopShowcase
+namespace Wisej.Qooxdoo.WebDriverDemo.DesktopShowcase
 {
     public abstract class DesktopShowcase : IntegrationTest
     {

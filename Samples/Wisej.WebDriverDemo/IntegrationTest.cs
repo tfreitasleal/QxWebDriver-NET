@@ -2,10 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
-using LogEntry = Wisej.WebDriver.Log.LogEntry;
-using QxWebDriver = Wisej.WebDriver.QxWebDriver;
+using LogEntry = Wisej.Qooxdoo.WebDriver.Log.LogEntry;
+using QxWebDriver = Wisej.Qooxdoo.WebDriver.QxWebDriver;
 
-namespace Wisej.WebDriverDemo
+namespace Wisej.Qooxdoo.WebDriverDemo
 {
     public abstract class IntegrationTest
     {

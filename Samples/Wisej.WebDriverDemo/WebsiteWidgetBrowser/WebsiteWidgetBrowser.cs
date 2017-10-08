@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 
-namespace Wisej.WebDriverDemo.WebsiteWidgetBrowser
+namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteWidgetBrowser
 {
     public abstract class WebsiteWidgetBrowser : IntegrationTest
     {

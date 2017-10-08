@@ -1,8 +1,8 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using Wisej.WebDriver.UI;
+using Wisej.Qooxdoo.WebDriver.UI;
 
-namespace Wisej.WebDriverDemo.DesktopShowcase
+namespace Wisej.Qooxdoo.WebDriverDemo.DesktopShowcase
 {
     [TestFixture]
     public class Form : DesktopShowcase

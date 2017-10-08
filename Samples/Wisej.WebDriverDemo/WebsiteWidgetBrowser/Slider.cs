@@ -3,7 +3,7 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 
-namespace Wisej.WebDriverDemo.WebsiteWidgetBrowser
+namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteWidgetBrowser
 {
     [TestFixture]
     public class Slider : WebsiteWidgetBrowser

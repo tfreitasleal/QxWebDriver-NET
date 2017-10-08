@@ -7,7 +7,7 @@
 
 using System.Collections.Generic;
 
-namespace Wisej.WebDriverDemo
+namespace Wisej.Qooxdoo.WebDriverDemo
 {
     internal static class HashMapHelperClass
     {

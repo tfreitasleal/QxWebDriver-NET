@@ -7,8 +7,8 @@
     <ProjectGuid>{1EE99BF3-5DB9-48C6-A6D0-36408CEC5A38}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Wisej.WebDriverDemo</RootNamespace>
-    <AssemblyName>Wisej.WebDriverDemo</AssemblyName>
+    <RootNamespace>Wisej.Qooxdoo.WebDriverDemo</RootNamespace>
+    <AssemblyName>Wisej.Qooxdoo.WebDriverDemo</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -51,6 +51,9 @@
     <Reference Include="WebDriver.Support, Version=3.6.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Selenium.Support.3.6.0\lib\net45\WebDriver.Support.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Wisej.Qooxdoo.WebDriver">
+      <HintPath>..\..\Bin\Release\NET45\Wisej.Qooxdoo.WebDriver.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -119,10 +122,14 @@
     <EmbeddedResource Include="JsResources\getTestPackages.js" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Source\Wisej.WebDriver\Wisej.WebDriver.csproj">
-      <Project>{e6be1e5d-58c1-4ad7-b1cb-3f9831a24949}</Project>
-      <Name>Wisej.WebDriver</Name>
-    </ProjectReference>
+    <Content Include="..\Dependencies\chromedriver.exe">
+      <Link>chromedriver.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Dependencies\geckodriver.exe">
+      <Link>geckodriver.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

@@ -1,13 +1,13 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using Wisej.WebDriver.UI;
+using Wisej.Qooxdoo.WebDriver.UI;
 
-namespace Wisej.WebDriverDemo.DesktopShowcase
+namespace Wisej.Qooxdoo.WebDriverDemo.DesktopShowcase
 {
     [TestFixture]
     public class DataBinding : DesktopShowcase
     {
-        public Wisej.WebDriver.By demoLocator = Wisej.WebDriver.By.Qxh("qx.ui.container.Stack/qx.ui.container.Composite/qxc.application.datademo.Demo");
+        public Wisej.Qooxdoo.WebDriver.By demoLocator = Wisej.Qooxdoo.WebDriver.By.Qxh("qx.ui.container.Stack/qx.ui.container.Composite/qxc.application.datademo.Demo");
 
         //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Before public void setUp() throws Exception

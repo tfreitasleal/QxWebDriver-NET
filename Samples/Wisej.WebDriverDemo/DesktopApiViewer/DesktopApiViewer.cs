@@ -1,10 +1,10 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using By = Wisej.WebDriver.By;
-using IWidget = Wisej.WebDriver.UI.IWidget;
-using Table = Wisej.WebDriver.UI.Table.Table;
+using By = Wisej.Qooxdoo.WebDriver.By;
+using IWidget = Wisej.Qooxdoo.WebDriver.UI.IWidget;
+using Table = Wisej.Qooxdoo.WebDriver.UI.Table.Table;
 
-namespace Wisej.WebDriverDemo.DesktopApiViewer
+namespace Wisej.Qooxdoo.WebDriverDemo.DesktopApiViewer
 {
     public abstract class DesktopApiViewer : IntegrationTest
     {

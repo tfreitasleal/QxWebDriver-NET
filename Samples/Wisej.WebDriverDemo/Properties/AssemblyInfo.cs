@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Wisej.WebDriverDemo")]
+[assembly: AssemblyTitle("Wisej.Qooxdoo.WebDriverDemo")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Wisej")]
-[assembly: AssemblyProduct("Wisej.WebDriverDemo")]
+[assembly: AssemblyProduct("Wisej.Qooxdoo.WebDriverDemo")]
 [assembly: AssemblyCopyright("Copyright © Wisej 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

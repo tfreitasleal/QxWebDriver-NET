@@ -1,8 +1,8 @@
 ﻿using NUnit.Framework;
-using Wisej.WebDriver.UI;
-using By = Wisej.WebDriver.By;
+using Wisej.Qooxdoo.WebDriver.UI;
+using By = Wisej.Qooxdoo.WebDriver.By;
 
-namespace Wisej.WebDriverDemo.WidgetBrowser
+namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
 {
     [TestFixture]
     public class MiscIT : WidgetBrowser

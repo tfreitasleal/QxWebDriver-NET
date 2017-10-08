@@ -1,6 +1,6 @@
-﻿using Wisej.WebDriver.UI;
+﻿using Wisej.Qooxdoo.WebDriver.UI;
 
-namespace Wisej.WebDriverDemo.WidgetBrowser
+namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
 {
     public abstract class WidgetBrowser : IntegrationTest
     {

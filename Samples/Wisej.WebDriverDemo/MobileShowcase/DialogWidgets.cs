@@ -1,11 +1,11 @@
 ﻿using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using Wisej.WebDriver.UI;
-using Wisej.WebDriver.UI.Mobile.Core;
-using ISelectable = Wisej.WebDriver.UI.Mobile.ISelectable;
+using Wisej.Qooxdoo.WebDriver.UI;
+using Wisej.Qooxdoo.WebDriver.UI.Mobile.Core;
+using ISelectable = Wisej.Qooxdoo.WebDriver.UI.Mobile.ISelectable;
 
-namespace Wisej.WebDriverDemo.MobileShowcase
+namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
 {
     [TestFixture]
     public class DialogWidgets : Mobileshowcase

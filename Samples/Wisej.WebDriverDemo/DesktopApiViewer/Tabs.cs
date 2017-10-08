@@ -2,10 +2,10 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
-using Wisej.WebDriver.UI;
-using By = Wisej.WebDriver.By;
+using Wisej.Qooxdoo.WebDriver.UI;
+using By = Wisej.Qooxdoo.WebDriver.By;
 
-namespace Wisej.WebDriverDemo.DesktopApiViewer
+namespace Wisej.Qooxdoo.WebDriverDemo.DesktopApiViewer
 {
     [TestFixture]
     public class Tabs : DesktopApiViewer

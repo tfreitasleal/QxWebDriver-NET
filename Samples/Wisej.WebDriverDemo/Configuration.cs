@@ -3,11 +3,11 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Remote;
-using Wisej.WebDriver;
+using Wisej.Qooxdoo.WebDriver;
 
 //using SelendroidDriver = io.selendroid.SelendroidDriver;
 
-namespace Wisej.WebDriverDemo
+namespace Wisej.Qooxdoo.WebDriverDemo
 {
     public class Configuration
     {

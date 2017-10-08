@@ -1,11 +1,11 @@
 ﻿using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using Wisej.WebDriver.UI;
-using By = Wisej.WebDriver.By;
-using Scrollable = Wisej.WebDriver.UI.IScrollable;
+using Wisej.Qooxdoo.WebDriver.UI;
+using By = Wisej.Qooxdoo.WebDriver.By;
+using Scrollable = Wisej.Qooxdoo.WebDriver.UI.IScrollable;
 
-namespace Wisej.WebDriverDemo.DesktopTestRunner
+namespace Wisej.Qooxdoo.WebDriverDemo.DesktopTestRunner
 {
     [TestFixture]
     public class Runner : IntegrationTest

@@ -5,11 +5,11 @@ using System.Linq;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
-using Wisej.WebDriver.UI;
-using Wisej.WebDriver.UI.Table;
-using By = Wisej.WebDriver.By;
+using Wisej.Qooxdoo.WebDriver.UI;
+using Wisej.Qooxdoo.WebDriver.UI.Table;
+using By = Wisej.Qooxdoo.WebDriver.By;
 
-namespace Wisej.WebDriverDemo.WidgetBrowser
+namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
 {
     [TestFixture]
     public class TableIT : WidgetBrowser

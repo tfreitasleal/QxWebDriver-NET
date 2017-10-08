@@ -6,7 +6,7 @@ using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
 
-namespace Wisej.WebDriverDemo.WebsiteApiViewer
+namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteApiViewer
 {
     [TestFixture]
     public class WebsiteApiViewer : IntegrationTest

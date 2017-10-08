@@ -2,10 +2,10 @@
 using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using Wisej.WebDriver.UI;
-using Wisej.WebDriver.UI.Mobile.Core;
+using Wisej.Qooxdoo.WebDriver.UI;
+using Wisej.Qooxdoo.WebDriver.UI.Mobile.Core;
 
-namespace Wisej.WebDriverDemo.MobileShowcase
+namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
 {
     [TestFixture]
     public class Carousel : Mobileshowcase

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using WidgetImpl = Wisej.WebDriver.UI.Mobile.Core.WidgetImpl;
+using WidgetImpl = Wisej.Qooxdoo.WebDriver.UI.Mobile.Core.WidgetImpl;
 
-namespace Wisej.WebDriverDemo.MobileShowcase
+namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
 {
     [TestFixture]
     public class Events : Mobileshowcase

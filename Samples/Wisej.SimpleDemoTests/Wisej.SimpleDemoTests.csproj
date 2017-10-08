@@ -47,14 +47,15 @@
       <HintPath>..\packages\Selenium.Support.3.6.0\lib\net45\WebDriver.Support.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Wisej.WebDriver, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Wisej.Qooxdoo.WebDriver, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Bin\Release\NET45\Wisej.WebDriver.dll</HintPath>
+      <HintPath>..\..\Bin\Release\NET45\Wisej.Qooxdoo.WebDriver.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiViewerTests.cs" />
-    <Compile Include="ChromeTests.cs" />
+    <Compile Include="ChromeElementTests.cs" />
+    <Compile Include="ChromeWidgetTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

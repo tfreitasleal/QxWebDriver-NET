@@ -4,15 +4,15 @@ using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using Wisej.WebDriver.Resources;
-using By = Wisej.WebDriver.By;
+using Wisej.Qooxdoo.WebDriver.Resources;
+using By = Wisej.Qooxdoo.WebDriver.By;
 
 /*using JSONArray = org.json.simple.JSONArray;
 using JSONObject = org.json.simple.JSONObject;
 using JSONParser = org.json.simple.parser.JSONParser;
 using ParseException = org.json.simple.parser.ParseException;*/
 
-namespace Wisej.WebDriverDemo.DesktopUnitTests
+namespace Wisej.Qooxdoo.WebDriverDemo.DesktopUnitTests
 {
     [TestFixture]
     public class DesktopUnitTests : IntegrationTest

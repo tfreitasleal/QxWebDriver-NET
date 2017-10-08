@@ -5,14 +5,14 @@ using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using Wisej.WebDriver;
-using Wisej.WebDriver.UI;
-using Wisej.WebDriver.UI.Basic;
-using Wisej.WebDriver.UI.Tree;
-using By = Wisej.WebDriver.By;
-using List = Wisej.WebDriver.UI.Form.List;
+using Wisej.Qooxdoo.WebDriver;
+using Wisej.Qooxdoo.WebDriver.UI;
+using Wisej.Qooxdoo.WebDriver.UI.Basic;
+using Wisej.Qooxdoo.WebDriver.UI.Tree;
+using By = Wisej.Qooxdoo.WebDriver.By;
+using List = Wisej.Qooxdoo.WebDriver.UI.Form.List;
 
-namespace Wisej.WebDriverDemo.FeedReaderDesktop
+namespace Wisej.Qooxdoo.WebDriverDemo.FeedReaderDesktop
 {
     [TestFixture]
     public class FeedReader : IntegrationTest

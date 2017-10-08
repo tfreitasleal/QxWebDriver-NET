@@ -3,7 +3,7 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using By = OpenQA.Selenium.By;
 
-namespace Wisej.WebDriverDemo.WebsiteWidgetBrowser
+namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteWidgetBrowser
 {
     [TestFixture]
     public class Rating : WebsiteWidgetBrowser

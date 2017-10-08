@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-using Wisej.WebDriver;
-using Wisej.WebDriver.UI;
-using Wisej.WebDriver.UI.Tree.Core;
+using Wisej.Qooxdoo.WebDriver;
+using Wisej.Qooxdoo.WebDriver.UI;
+using Wisej.Qooxdoo.WebDriver.UI.Tree.Core;
 
-namespace Wisej.WebDriverDemo.WidgetBrowser
+namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
 {
     [TestFixture]
     public class TreeIT : WidgetBrowser

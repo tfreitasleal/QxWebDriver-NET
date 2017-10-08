@@ -1,8 +1,8 @@
 ﻿using NUnit.Framework;
-using Wisej.WebDriver;
-using Wisej.WebDriver.UI;
+using Wisej.Qooxdoo.WebDriver;
+using Wisej.Qooxdoo.WebDriver.UI;
 
-namespace Wisej.WebDriverDemo.WidgetBrowser
+namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
 {
     //JAVA TO C# CONVERTER TODO TASK: This Java 'import static' statement cannot be converted to C#:
     //    import static NUnit.Framework.Assert.False;

@@ -6,7 +6,7 @@
 //    Unix time is defined as the number of seconds that have elapsed since midnight UTC, 1 January 1970.
 //---------------------------------------------------------------------------------------------------------
 
-namespace Wisej.WebDriverDemo
+namespace Wisej.Qooxdoo.WebDriverDemo
 {
     internal static class DateTimeHelperClass
     {

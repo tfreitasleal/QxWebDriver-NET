@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using OpenQA.Selenium.Support.UI;
-using Wisej.WebDriver.Resources;
+using Wisej.Qooxdoo.WebDriver.Resources;
 
-namespace Wisej.WebDriverDemo.WebsiteUnitTests
+namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteUnitTests
 {
     [TestFixture]
     public class WebsiteUnitTests : DesktopUnitTests.DesktopUnitTests

@@ -1,9 +1,9 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using Wisej.WebDriver.UI;
-using By = Wisej.WebDriver.By;
+using Wisej.Qooxdoo.WebDriver.UI;
+using By = Wisej.Qooxdoo.WebDriver.By;
 
-namespace Wisej.WebDriverDemo.DesktopShowcase
+namespace Wisej.Qooxdoo.WebDriverDemo.DesktopShowcase
 {
     [TestFixture]
     public class VirtualList : DesktopShowcase

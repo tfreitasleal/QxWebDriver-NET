@@ -42,7 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiViewerTests.cs" />
-    <Compile Include="ChromeTests.cs" />
+    <Compile Include="ChromeElementTests.cs" />
+    <Compile Include="ChromeWidgetTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -67,9 +68,9 @@
       <Project>{6941aa74-a97a-48a5-bbfe-1970cce31e5c}</Project>
       <Name>WebDriver</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Source\Wisej.WebDriver\Wisej.WebDriver.Debug.csproj">
+    <ProjectReference Include="..\..\Source\Wisej.WebDriver\Wisej.Qooxdoo.WebDriver.Debug.csproj">
       <Project>{e6be1e5d-58c1-4ad7-b1cb-3f9831a24949}</Project>
-      <Name>Wisej.WebDriver.Debug</Name>
+      <Name>Wisej.Qooxdoo.WebDriver.Debug</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
