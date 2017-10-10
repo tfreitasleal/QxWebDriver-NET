@@ -111,6 +111,9 @@ namespace OpenQA.Selenium.Remote
 
             HttpResponseInfo responseInfo = this.MakeHttpRequest(requestInfo);
 
+            // TODO: set a break point here
+            // breakpoint here
+
             Response toReturn = this.CreateResponse(responseInfo);
             if (commandToExecute.Name == DriverCommand.NewSession && toReturn.IsSpecificationCompliant)
             {
