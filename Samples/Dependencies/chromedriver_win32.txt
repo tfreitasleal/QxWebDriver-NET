@@ -1,4 +1,4 @@
-chromedriver 2.32
+chromedriver 2.33
 
 File
 chromedriver_win32.zip
