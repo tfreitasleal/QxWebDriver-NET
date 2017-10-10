@@ -1,8 +1,8 @@
 # QxWebDriver-NET
 
-Version 1.0.0 is available on [NuGet](https://www.nuget.org/packages/Qooxdoo-WebDriver/) as __Qooxdoo-WebDriver__. This release is NET 4.5 only.
+Version 1.0.1 is available on [NuGet](https://www.nuget.org/packages/Qooxdoo-WebDriver/) as __Qooxdoo-WebDriver__. This release fixes a Firefox quirk and is NET 4.5 only.
 
-Firefox integration is broken. Use Chrome (or Edge) while we investigate and fix the Firefox issue.
+The SimpleDemo sample uses Chrome, Edge and Firefox..
 
 THIS FILE WAS ADAPTED FROM qxwebdriver-java AND IS A WORK IN PROGRESS.
 
