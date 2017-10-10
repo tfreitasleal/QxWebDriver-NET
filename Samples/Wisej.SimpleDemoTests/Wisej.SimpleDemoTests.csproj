@@ -54,7 +54,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Wisej.Qooxdoo.WebDriver, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Qooxdoo-WebDriver.1.0.0\lib\net45\Wisej.Qooxdoo.WebDriver.dll</HintPath>
+      <HintPath>..\packages\Qooxdoo-WebDriver.1.0.1\lib\net45\Wisej.Qooxdoo.WebDriver.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
