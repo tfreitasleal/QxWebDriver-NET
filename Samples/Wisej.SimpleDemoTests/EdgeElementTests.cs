@@ -1,7 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Edge;
 using Wisej.Qooxdoo.WebDriver;
 using By = Wisej.Qooxdoo.WebDriver.By;
 
@@ -9,14 +9,14 @@ namespace Wisej.SimpleDemoTests
 {
     [TestFixture]
     [Parallelizable(ParallelScope.None)]
-    public class ChromeElementTests
+    public class EdgeElementTests
     {
         private IWebDriver _driver;
 
         [OneTimeSetUp] // class SetUp?
         public void OpenMainPage()
         {
-            _driver = new ChromeDriver();
+            _driver = new EdgeDriver();
             _driver.Url = "http://localhost:16461/";
         }
 

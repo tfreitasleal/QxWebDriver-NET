@@ -15,17 +15,22 @@ namespace Wisej.SimpleDemoTests
         public void ChromeTest()
         {
             _driver = new QxWebDriver(new ChromeDriver());
-            //_driver = new QxWebDriver(new EdgeDriver());
-            //_driver = new QxWebDriver(new FirefoxDriver());
             DoTest();
         }
 
-        /*[Test]
+        [Test]
         public void FirefoxTest()
         {
             _driver = new QxWebDriver(new FirefoxDriver());
             DoTest();
-        }*/
+        }
+
+        [Test]
+        public void EdgeTest()
+        {
+            _driver = new QxWebDriver(new EdgeDriver());
+            DoTest();
+        }
 
         public void DoTest()
         {
