@@ -34,7 +34,36 @@ namespace Wisej.Qooxdoo.WebDriver.Resources
         public JavaScriptRunner(IJavaScriptExecutor jsExecutor)
         {
             Executor = jsExecutor;
-            Executor.ExecuteScript(Namespace + " = {};");
+            string script;
+
+            if (jsExecutor.GetType().Name != "FirefoxDriver")
+            {
+                script = Namespace + " = {};";
+            }
+            else
+            {
+                script =
+                    "var new_script = document.createElement('script');" +
+                    "new_script.type = 'text/javascript';" +
+                    "new_script.text = '" + Namespace + " = {};';" +
+                    "new_script.className = 'QxWorkAround';" +
+                    "document.getElementsByTagName('head')[0].appendChild(new_script);";
+            }
+
+            Executor.ExecuteScript(script);
+
+            /*// for all drivers, uses injection when simple method fails
+            var result = Executor.ExecuteScript("return " + Namespace + ";");
+            if (result != null)
+            {
+                script =
+                    "var new_script = document.createElement('script');" +
+                    "new_script.type = 'text/javascript';" +
+                    "new_script.text = '" + Namespace + " = {};';" +
+                    "new_script.className = 'QxWorkAround';" +
+                    "document.getElementsByTagName('head')[0].appendChild(new_script);";
+                Executor.ExecuteScript(script);
+            }*/
         }
 
         /// <summary>
