@@ -2,7 +2,7 @@
 
 Version 1.0.1 is available on [NuGet](https://www.nuget.org/packages/Qooxdoo-WebDriver/) as __Qooxdoo-WebDriver__. This release fixes a [Firefox "quirk"](https://github.com/mozilla/geckodriver/issues/1010) and is NET 4.5 only.
 
-The SimpleDemo sample uses Chrome, Edge and Firefox..
+The SimpleDemo sample uses Chrome, Edge and Firefox.
 
 THIS FILE WAS ADAPTED FROM qxwebdriver-java AND IS A WORK IN PROGRESS.
 
