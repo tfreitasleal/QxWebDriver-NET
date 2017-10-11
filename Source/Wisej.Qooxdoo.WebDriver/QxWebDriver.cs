@@ -185,9 +185,10 @@ namespace Wisej.Qooxdoo.WebDriver
         /// <returns>The first matching widget on the current page.</returns>
         /// <exception cref="NoSuchElementException"> If no matching widget was found before the timeout elapsed </exception>
         /// <seealso cref="By"/>
-        public virtual IWidget FindWidget(OpenQA.Selenium.By by, long timeoutInSeconds)
+        internal virtual IWidget FindWidget(OpenQA.Selenium.By by, long timeoutInSeconds)
         {
             WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(timeoutInSeconds));
+            wait.IgnoreExceptionTypes(typeof(InvalidOperationException));
             IWebElement element;
             try
             {
@@ -213,7 +214,7 @@ namespace Wisej.Qooxdoo.WebDriver
             if (_implictWait.HasValue)
                 return FindWidget(by, _implictWait.Value.Seconds);
 
-            return FindWidget(@by, _driver.Manage().Timeouts().ImplicitWait.Seconds);
+            return FindWidget(by, _driver.Manage().Timeouts().ImplicitWait.Seconds);
         }
 
         /// <summary>
@@ -295,7 +296,7 @@ namespace Wisej.Qooxdoo.WebDriver
         /// </summary>
         public virtual string GetTranslation(string @string)
         {
-            string js = string.Format("return qx.locale.Manager.getInstance().translate('{0}', []).toString();", 
+            string js = string.Format("return qx.locale.Manager.getInstance().translate('{0}', []).toString();",
                 @string);
             return (string) JsExecutor.ExecuteScript(js, @string);
         }
