@@ -4,7 +4,7 @@
     <id>Qooxdoo-WebDriver</id>
     <title>qooxdoo adapter for Selenium WebDriver</title>
     <tags>Selenium SeleniumHQ WebDriver qooxdoo widgets</tags>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <authors>Tiago Freitas Leal</authors>
     <licenseUrl>https://github.com/tfreitasleal/QxWebDriver-NET/blob/master/license.txt</licenseUrl>
     <projectUrl>https://github.com/tfreitasleal/QxWebDriver-NET</projectUrl>
