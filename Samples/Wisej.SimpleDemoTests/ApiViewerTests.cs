@@ -1,7 +1,7 @@
 ﻿using Wisej.Qooxdoo.WebDriver;
 using Wisej.Qooxdoo.WebDriver.UI;
 
-namespace Wisej.SimpleDemoTests
+namespace SimpleDemo.NUnit
 {
     public static class ApiViewerTests
     {

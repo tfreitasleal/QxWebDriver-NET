@@ -5,7 +5,7 @@ using Wisej.Qooxdoo.WebDriver.UI;
 using Wisej.Qooxdoo.WebDriver.UI.Basic;
 using By = Wisej.Qooxdoo.WebDriver.By;
 
-namespace Wisej.SimpleDemoTests
+namespace SimpleDemo.NUnit
 {
     public static class SecondRound
     {

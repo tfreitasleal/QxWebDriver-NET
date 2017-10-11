@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 
-namespace Wisej.SimpleDemoTests
+namespace SimpleDemo.NUnit
 {
     public enum TestUri
     {
