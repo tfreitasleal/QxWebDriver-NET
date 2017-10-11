@@ -1,72 +1,51 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Edge;
-using OpenQA.Selenium.Firefox;
-using Wisej.Qooxdoo.WebDriver;
+﻿using Wisej.Qooxdoo.WebDriver;
 using Wisej.Qooxdoo.WebDriver.UI;
 
 namespace Wisej.SimpleDemoTests
 {
-    public class ApiViewerTests
+    public static class ApiViewerTests
     {
-        private QxWebDriver _driver;
-
-        [Test]
-        public void ChromeTest()
+        public static void A01_ClickSearch(QxWebDriver driver)
         {
-            _driver = new QxWebDriver(new ChromeDriver());
-            DoTest();
-        }
-
-        [Test]
-        public void FirefoxTest()
-        {
-            _driver = new QxWebDriver(new FirefoxDriver());
-            DoTest();
-        }
-
-        [Test]
-        public void EdgeTest()
-        {
-            _driver = new QxWebDriver(new EdgeDriver());
-            DoTest();
-        }
-
-        public void DoTest()
-        {
-            // Open the page and wait until the qooxdoo application is loaded
-            _driver.Url = "http://www.qooxdoo.org/current/api/index.html";
-
             // Find the 'Search' button in the tool bar
             // @label is the button text
-            By buttonByLabel = By.Qxh("apiviewer.Viewer/*/[@label=Search]");
-            IWidget buttonWidget = _driver.FindWidget(buttonByLabel);
+            OpenQA.Selenium.By buttonByLabel = By.Qxh("apiviewer.Viewer/*/[@label=Search]");
+            IWidget buttonWidget = driver.FindWidget(buttonByLabel);
 
             // Click the button if it's not already selected
             if (!buttonWidget.Selected)
             {
                 buttonWidget.Click();
             }
+        }
 
+        public static void A02_ClickLegend(QxWebDriver driver)
+        {
             // Now click the 'Legend' button
-            buttonByLabel = By.Qxh("apiviewer.Viewer/*/[@label=Legend]");
-            buttonWidget = _driver.FindWidget(buttonByLabel);
+            OpenQA.Selenium.By buttonByLabel = By.Qxh("apiviewer.Viewer/*/[@label=Legend]");
+            IWidget buttonWidget = driver.FindWidget(buttonByLabel);
             if (!buttonWidget.Selected)
             {
                 buttonWidget.Click();
             }
+        }
 
+        public static void A03_ClickContent(QxWebDriver driver)
+        {
             // Now click the 'Content' button
-            buttonByLabel = By.Qxh("apiviewer.Viewer/*/[@label=Content]");
-            buttonWidget = _driver.FindWidget(buttonByLabel);
+            OpenQA.Selenium.By buttonByLabel = By.Qxh("apiviewer.Viewer/*/[@label=Content]");
+            IWidget buttonWidget = driver.FindWidget(buttonByLabel);
             if (!buttonWidget.Selected)
             {
                 buttonWidget.Click();
             }
+        }
 
+        public static void A04_ClickTreeItem(QxWebDriver driver)
+        {
             // Select the "data" item from the package tree
-            By tree = By.Qxh("apiviewer.Viewer/*/apiviewer.ui.PackageTree");
-            ISelectable packageTree = (ISelectable) _driver.FindWidget(tree);
+            OpenQA.Selenium.By tree = By.Qxh("apiviewer.Viewer/*/apiviewer.ui.PackageTree");
+            ISelectable packageTree = (ISelectable) driver.FindWidget(tree);
             packageTree.SelectItem("data");
         }
     }

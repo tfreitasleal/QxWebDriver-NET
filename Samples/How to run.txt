@@ -1,0 +1,6 @@
+1. Set Wisej.SimpleDemo as Startup Project.
+2. Build the solution so all NuGet packages are restored.
+3. Run it (CTRL F5) to start IIS Express.
+4. Open a test session and run all the tests.
+
+N.B. - Sometimes you must repeat the tests untill all is "green" (Firefox is the worst case).
