@@ -9,11 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleDemo.NUnit.Debug", "S
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{6F589476-C124-4170-A459-67BFFE1C0FF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wisej.Qooxdoo.WebDriver.Debug", "..\Source\Wisej.Qooxdoo.WebDriver\Wisej.Qooxdoo.WebDriver.Debug.csproj", "{E6BE1E5D-58C1-4AD7-B1CB-3F9831A24949}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wisej.Qooxdoo.WebDriver.Debug", "..\..\Source\Wisej.Qooxdoo.WebDriver\Wisej.Qooxdoo.WebDriver.Debug.csproj", "{E6BE1E5D-58C1-4AD7-B1CB-3F9831A24949}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDriver", "..\Source\webdriver\WebDriver.csproj", "{6941AA74-A97A-48A5-BBFE-1970CCE31E5C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDriver", "..\..\Source\webdriver\WebDriver.csproj", "{6941AA74-A97A-48A5-BBFE-1970CCE31E5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDriver.Support", "..\Source\support\WebDriver.Support.csproj", "{8F318EF7-DF70-4942-9892-9F2F0D0B239C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDriver.Support", "..\..\Source\support\WebDriver.Support.csproj", "{8F318EF7-DF70-4942-9892-9F2F0D0B239C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleDemo.MSTest.Debug", "SimpleDemo.MSTest\SimpleDemo.MSTest.Debug.csproj", "{12C6E79F-F2AE-4793-BD5F-91AAB08E99B5}"
 EndProject

@@ -52,7 +52,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Wisej.Qooxdoo.WebDriver, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\My WORK\- - - - IceTea Group\Samples\Wisej.SimpleDemo\packages\Qooxdoo-WebDriver.1.0.2\lib\net45\Wisej.Qooxdoo.WebDriver.dll</HintPath>
+      <HintPath>..\packages\Qooxdoo-WebDriver.1.0.2\lib\net45\Wisej.Qooxdoo.WebDriver.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
