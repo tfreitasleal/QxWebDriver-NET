@@ -4,3 +4,9 @@
 4. Open a test session and run all the tests.
 
 N.B. - Sometimes you must repeat the tests untill all is "green" (Firefox is the worst case).
+
+One word of advise. Sometimes the WebDrivers continue executing on the background and you must kill them.
+They show on the Task Manager by the names.
+- Microsoft Web Driver for Edge
+- chromedriver.exe for Chrome
+- geckodriver.exe for Firefox
