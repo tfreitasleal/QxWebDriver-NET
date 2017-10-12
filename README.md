@@ -1,14 +1,14 @@
 # QxWebDriver-NET
 
-Version 1.0.1 is available on [NuGet](https://www.nuget.org/packages/Qooxdoo-WebDriver/) as __Qooxdoo-WebDriver__. This release fixes a [Firefox "quirk"](https://github.com/mozilla/geckodriver/issues/1010) and is NET 4.5 only.
-
-The SimpleDemo sample uses Chrome, Edge and Firefox.
-
-THIS FILE WAS ADAPTED FROM qxwebdriver-java AND IS A WORK IN PROGRESS.
-
 WebDriver testing support for qooxdoo desktop and mobile applications.
 
+Version 1.0.1 is available on [NuGet](https://www.nuget.org/packages/Qooxdoo-WebDriver/) as __Qooxdoo-WebDriver__. This release fixes a [Firefox "quirk"](https://github.com/mozilla/geckodriver/issues/1010) and is NET 4.5 only.
+
+The SimpleDemo sample uses Chrome, Edge and Firefox. It includes test projects for NUnit and MSTest. It also includes an "How to run.txt" to make your life easier.
+
 QxWebDriver-NET is a port of [qxwebdriver-java](https://github.com/qooxdoo/qxwebdriver-java) to C#.
+
+THIS FILE WAS ADAPTED FROM qxwebdriver-java AND IS A WORK IN PROGRESS.
 
 The goal of this project is to provide an API that facilitates writing [WebDriver](http://seleniumhq.org/docs/03_webdriver.html)-based interaction tests for [qx.Desktop](http://manual.qooxdoo.org/current/pages/desktop.html) and [qx.Mobile](http://manual.qooxdoo.org/current/pages/mobile.html) applications by abstracting away the implementation details of qooxdoo widgets. Here's a quick example:
 
