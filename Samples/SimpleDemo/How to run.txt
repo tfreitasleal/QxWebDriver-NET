@@ -1,5 +1,5 @@
 If you don't want to run the Web Application project, jump to step 3.
-In this case you will be able to run only the first 4 tests that target a the qooxdoo API viewer.
+In this case you will be able to run only the first 4 tests that target the qooxdoo API viewer.
 
 1. Get Wisej at http://wisej.com
 2. Set Wisej.SimpleDemo as Startup Project.
