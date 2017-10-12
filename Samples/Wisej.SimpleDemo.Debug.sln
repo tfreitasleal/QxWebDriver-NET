@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDriver", "..\Source\webd
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDriver.Support", "..\Source\support\WebDriver.Support.csproj", "{8F318EF7-DF70-4942-9892-9F2F0D0B239C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleDemo.MSTest.Debug", "SimpleDemo.MSTest\SimpleDemo.MSTest.Debug.csproj", "{12C6E79F-F2AE-4793-BD5F-91AAB08E99B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{8F318EF7-DF70-4942-9892-9F2F0D0B239C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F318EF7-DF70-4942-9892-9F2F0D0B239C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F318EF7-DF70-4942-9892-9F2F0D0B239C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12C6E79F-F2AE-4793-BD5F-91AAB08E99B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12C6E79F-F2AE-4793-BD5F-91AAB08E99B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12C6E79F-F2AE-4793-BD5F-91AAB08E99B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12C6E79F-F2AE-4793-BD5F-91AAB08E99B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
