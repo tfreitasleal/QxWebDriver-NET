@@ -1,5 +1,7 @@
-﻿using Wisej.Qooxdoo.WebDriver;
+﻿using System.Threading;
+using Wisej.Qooxdoo.WebDriver;
 using Wisej.Qooxdoo.WebDriver.UI;
+using Wait = SimpleDemo.NUnit.Waiter;
 
 namespace SimpleDemo.NUnit
 {
@@ -47,6 +49,8 @@ namespace SimpleDemo.NUnit
             OpenQA.Selenium.By tree = By.Qxh("apiviewer.Viewer/*/apiviewer.ui.PackageTree");
             ISelectable packageTree = (ISelectable) driver.FindWidget(tree);
             packageTree.SelectItem("data");
+
+            Thread.Sleep(Wait.Duration);
         }
     }
 }

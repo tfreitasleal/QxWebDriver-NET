@@ -1,9 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Threading;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using Wisej.Qooxdoo.WebDriver;
 using Wisej.Qooxdoo.WebDriver.UI;
 using Wisej.Qooxdoo.WebDriver.UI.Basic;
 using By = Wisej.Qooxdoo.WebDriver.By;
+using Wait = SimpleDemo.MSTest.Waiter;
 
 namespace SimpleDemo.MSTest
 {
@@ -50,6 +52,8 @@ namespace SimpleDemo.MSTest
             Label label1 = (Label) labelElement;
             Assert.IsNotNull(label1);
             Assert.AreEqual("End of windows", label1.Value);
+
+            Thread.Sleep(Wait.Duration);
         }
     }
 }

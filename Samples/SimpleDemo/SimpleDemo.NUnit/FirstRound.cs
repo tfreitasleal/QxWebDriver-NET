@@ -1,9 +1,11 @@
-﻿using NUnit.Framework;
+﻿using System.Threading;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using Wisej.Qooxdoo.WebDriver;
 using Wisej.Qooxdoo.WebDriver.UI;
 using Wisej.Qooxdoo.WebDriver.UI.Basic;
 using By = Wisej.Qooxdoo.WebDriver.By;
+using Wait = SimpleDemo.NUnit.Waiter;
 
 namespace SimpleDemo.NUnit
 {
@@ -47,24 +49,32 @@ namespace SimpleDemo.NUnit
             Assert.IsNotNull(labelBy);
             IWebElement labelElement = driver.WaitForWidget(labelBy, 10);
             Assert.IsNotNull(labelElement);
-            Label label1 = (Label)labelElement;
+            Label label1 = (Label) labelElement;
             Assert.IsNotNull(label1);
             Assert.AreEqual("End of windows", label1.Value);
         }
 
         public static void F04_CloseWindows(QxWebDriver driver)
         {
+            Thread.Sleep(Wait.Duration);
+
             OpenQA.Selenium.By secondWindowsBy = By.Qxh(By.Namespace("SecondWindow"));
             IWidget secondWindow = driver.WaitForWidget(secondWindowsBy, 10);
             OpenQA.Selenium.By secondWindowCaptionBarBy = By.Qxh("qx.ui.container.Composite");
             IWidget secondWindowCaptionBar = secondWindow.FindWidget(secondWindowCaptionBarBy);
             secondWindowCaptionBar.Children[1].Click();
 
+
+            Thread.Sleep(Wait.Duration);
+
+
             OpenQA.Selenium.By firstWindowsBy = By.Qxh(By.Namespace("FirstWindow"));
             IWidget firstWindow = driver.WaitForWidget(firstWindowsBy, 10);
             OpenQA.Selenium.By firstWindowCaptionBarBy = By.Qxh("qx.ui.container.Composite");
             IWidget firstWindowCaptionBar = firstWindow.FindWidget(firstWindowCaptionBarBy);
             firstWindowCaptionBar.Children[1].Click();
+
+            Thread.Sleep(Wait.Duration);
         }
     }
 }
