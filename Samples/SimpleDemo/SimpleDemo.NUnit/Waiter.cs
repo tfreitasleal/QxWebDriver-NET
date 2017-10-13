@@ -3,7 +3,7 @@
     public static class Waiter
     {
 #if NOWAIT
-        public static int Duration = 500;
+        public static int Duration = 0;
 #elif RELEASE
         public static int Duration = 500;
 #else
