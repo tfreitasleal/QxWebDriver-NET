@@ -8,7 +8,12 @@ In this case you will be able to run only the first 4 tests that target the qoox
 5. Run it (CTRL F5) to start IIS Express.
 4. Open a test session and run all the tests.
 
-N.B. - Sometimes you must repeat the tests untill all is "green" (Firefox is the worst case).
+N. B. - Bare tests fail and humans can't see view transitions. So Thread.Sleep is used on key transitions
+        (before URL switching, before windows close and before test suite end).
+        A static Waiter class is used to set the wait duration according to conditional compiler directives:
+        - NOWAIT - 0 ms (tests might fail)
+        - RELEASE - 500 ms
+        - DEBUG - 2000 ms
 
 One word of advise. Sometimes the WebDrivers continue executing on the background and you must kill them on the Task Manager.
 They show on the Task Manager by the following names:

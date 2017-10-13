@@ -9,12 +9,6 @@ namespace SimpleDemo.MSTest
     [TestClass]
     public class Chrome
     {
-#if DEBUG
-
-#else
-        
-#endif
-
         private static IWebDriver _internalWebDriver;
 
         public static QxWebDriver Driver;

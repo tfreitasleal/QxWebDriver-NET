@@ -57,6 +57,7 @@ namespace SimpleDemo.MSTest
         public static void F04_CloseWindows(QxWebDriver driver)
         {
             Thread.Sleep(Wait.Duration);
+
             OpenQA.Selenium.By secondWindowsBy = By.Qxh(By.Namespace("SecondWindow"));
             IWidget secondWindow = driver.WaitForWidget(secondWindowsBy, 10);
             OpenQA.Selenium.By secondWindowCaptionBarBy = By.Qxh("qx.ui.container.Composite");
