@@ -51,6 +51,7 @@
     <Compile Include="HandleTestUri.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecondRound.cs" />
+    <Compile Include="Waiter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
