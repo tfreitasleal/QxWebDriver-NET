@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Threading;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
@@ -57,6 +58,7 @@ namespace SimpleDemo.NUnit
         public void A04_ClickTreeItem()
         {
             ApiViewerTests.A04_ClickTreeItem(Driver);
+            Thread.Sleep(2000);
         }
 
         [Test]

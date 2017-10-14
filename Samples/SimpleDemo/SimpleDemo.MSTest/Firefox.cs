@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Threading;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
@@ -56,6 +57,7 @@ namespace SimpleDemo.MSTest
         public void F_A04_ClickTreeItem()
         {
             ApiViewerTests.A04_ClickTreeItem(Driver);
+            Thread.Sleep(2000);
         }
 
         [TestMethod]

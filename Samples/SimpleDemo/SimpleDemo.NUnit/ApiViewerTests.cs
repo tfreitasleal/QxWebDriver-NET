@@ -49,8 +49,6 @@ namespace SimpleDemo.NUnit
             OpenQA.Selenium.By tree = By.Qxh("apiviewer.Viewer/*/apiviewer.ui.PackageTree");
             ISelectable packageTree = (ISelectable) driver.FindWidget(tree);
             packageTree.SelectItem("data");
-
-            Thread.Sleep(Wait.Duration);
         }
     }
 }
