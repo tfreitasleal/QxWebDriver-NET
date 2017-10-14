@@ -19,5 +19,5 @@
 ************************************************************************ */
 
 var isApplicationReady = function() {
-  return (qx && qx.core && qx.core.Init && !!qx.core.Init.getApplication());
+  return (typeof qx !== 'undefined' && typeof qx.core !== 'undefined' && typeof qx.core.Init !== 'undefined' && !!qx.core.Init.getApplication());
 };
