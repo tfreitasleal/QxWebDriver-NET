@@ -5,8 +5,6 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wisej.SimpleDemo", "Wisej.SimpleDemo\Wisej.SimpleDemo.csproj", "{BA22EE1E-C853-40B1-A5C1-ED2B10300AC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleDemo.MSTest", "SimpleDemo.MSTest\SimpleDemo.MSTest.csproj", "{12C6E79F-F2AE-4793-BD5F-91AAB08E99B5}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleDemo.NUnit", "SimpleDemo.NUnit\SimpleDemo.NUnit.csproj", "{8FAE68DB-7330-4C1E-8348-7EF057BD0C6F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "How to run", "How to run", "{6577A024-4E82-4834-AACD-6653C2D2B7E7}"
@@ -24,10 +22,6 @@ Global
 		{BA22EE1E-C853-40B1-A5C1-ED2B10300AC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA22EE1E-C853-40B1-A5C1-ED2B10300AC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA22EE1E-C853-40B1-A5C1-ED2B10300AC8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{12C6E79F-F2AE-4793-BD5F-91AAB08E99B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{12C6E79F-F2AE-4793-BD5F-91AAB08E99B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{12C6E79F-F2AE-4793-BD5F-91AAB08E99B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{12C6E79F-F2AE-4793-BD5F-91AAB08E99B5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8FAE68DB-7330-4C1E-8348-7EF057BD0C6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8FAE68DB-7330-4C1E-8348-7EF057BD0C6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FAE68DB-7330-4C1E-8348-7EF057BD0C6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
