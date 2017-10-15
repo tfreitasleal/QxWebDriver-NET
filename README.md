@@ -2,7 +2,7 @@
 
 WebDriver testing support for qooxdoo desktop and mobile applications.
 
-Version 1.0.1 is available on [NuGet](https://www.nuget.org/packages/Qooxdoo-WebDriver/) as __Qooxdoo-WebDriver__. This release fixes a [Firefox "quirk"](https://github.com/mozilla/geckodriver/issues/1010) and is NET 4.5 only.
+Version 1.0.3 is available on [NuGet](https://www.nuget.org/packages/Qooxdoo-WebDriver/) as __Qooxdoo-WebDriver__. This release fixes a minor issue with Firefox (it's using "strict" mode) and is NET 4.5 only.
 
 The SimpleDemo sample uses Chrome, Edge and Firefox. It includes test projects for NUnit and MSTest. It also includes an "How to run.txt" to make your life easier.
 
@@ -47,14 +47,6 @@ The goal of this project is to provide an API that facilitates writing [WebDrive
     By tree = By.Qxh("apiviewer.Viewer/*/apiviewer.ui.PackageTree");
     ISelectable packageTree = (ISelectable) driver.FindWidget(tree);
     packageTree.SelectItem("data");
-
-## See it in action (must fix this section)
-
-Clone the repo, then run
-
-    mvn verify
-
-This will run the included example tests against the [Widget Browser](http://demo.qooxdoo.org/current/widgetbrowser/) using Firefox, so you must have Firefox installed and a working internet connection.
 
 ## Widget Interfaces
 
