@@ -5,11 +5,10 @@ In this case you will be able to run only the first 4 tests that target the qoox
 2. Set Wisej.SimpleDemo as Startup Project.
 
 3. Build the solution so all NuGet packages are restored.
-5. Run it (CTRL F5) to start IIS Express.
+5. Run it (no, I don't mean debug but plain CTRL F5) to start IIS Express and leave it running.
 4. Open a test session and run all the tests.
 
-N. B. - Bare tests fail and humans can't see view transitions. So Thread.Sleep is used on key transitions
-        (before URL switching, before windows close and before test suite end).
+N. B. - Thread.Sleep is used so we can see view transitions.
         A static Waiter class is used to set the wait duration according to conditional compiler directives:
         - NOWAIT - 0 ms (tests might fail)
         - RELEASE - 500 ms
