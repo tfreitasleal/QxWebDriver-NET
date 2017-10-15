@@ -10,7 +10,7 @@ In this case you will be able to run only the first 4 tests that target the qoox
 
 N. B. - Thread.Sleep is used so we can see view transitions.
         A static Waiter class is used to set the wait duration according to conditional compiler directives:
-        - NOWAIT - 0 ms (tests might fail)
+        - NOWAIT - 0 ms
         - RELEASE - 500 ms
         - DEBUG - 2000 ms
 
