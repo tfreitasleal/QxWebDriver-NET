@@ -2,12 +2,10 @@
 {
     public static class Waiter
     {
-#if NOWAIT
-        public static int Duration = 0;
-#elif DEBUG
-        public static int Duration = 2000;
+#if DEBUG
+        public static int Duration = 1000;
 #else
-        public static int Duration = 500;
+        public static int Duration = 0;
 #endif
     }
 }

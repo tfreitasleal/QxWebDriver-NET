@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
@@ -9,7 +8,7 @@ namespace SimpleDemo.NUnit
 {
     [TestFixture]
     [Parallelizable(ParallelScope.None)]
-    public class Firefox
+    public class FirefoxWisej
     {
         private static IWebDriver _internalWebDriver;
 
@@ -20,6 +19,7 @@ namespace SimpleDemo.NUnit
         {
             _internalWebDriver = new FirefoxDriver();
             Driver = new QxWebDriver(_internalWebDriver);
+            Driver.Url = "http://localhost:16461/";
         }
 
         [OneTimeTearDown]
@@ -32,40 +32,9 @@ namespace SimpleDemo.NUnit
         }
 
         [Test]
-        [Order(2010)]
-        public void A01_ClickSearch()
-        {
-            HandleTestUri.SetUri(Driver, TestUri.ApiViewer);
-            ApiViewerTests.A01_ClickSearch(Driver);
-        }
-
-        [Test]
-        [Order(2020)]
-        public void A02_ClickLegend()
-        {
-            ApiViewerTests.A02_ClickLegend(Driver);
-        }
-
-        [Test]
-        [Order(2030)]
-        public void A03_ClickContent()
-        {
-            ApiViewerTests.A03_ClickContent(Driver);
-        }
-
-        [Test]
-        [Order(2040)]
-        public void A04_ClickTreeItem()
-        {
-            ApiViewerTests.A04_ClickTreeItem(Driver);
-            Thread.Sleep(2000);
-        }
-
-        [Test]
         [Order(2050)]
         public void F01_MainPage_openWindow_Click()
         {
-            HandleTestUri.SetUri(Driver, TestUri.Wisej);
             ExpectedConditions.TitleIs("Main Page");
             FirstRound.F01_MainPage_openWindow_Click(Driver);
         }
