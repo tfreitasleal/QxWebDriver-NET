@@ -34,7 +34,7 @@ namespace SimpleDemo.MSTest
         //[Order(2010)]
         public void F_A01_ClickSearch()
         {
-            HandleTestUri.SetUri(Driver, TestUri.ApiViewer);
+            Driver.Url = "http://www.qooxdoo.org/current/api/index.html";
             ApiViewerTests.A01_ClickSearch(Driver);
         }
 
@@ -57,14 +57,13 @@ namespace SimpleDemo.MSTest
         public void F_A04_ClickTreeItem()
         {
             ApiViewerTests.A04_ClickTreeItem(Driver);
-            Thread.Sleep(2000);
         }
 
         [TestMethod]
         //[Order(2050)]
         public void F_F01_MainPage_openWindow_Click()
         {
-            HandleTestUri.SetUri(Driver, TestUri.Wisej);
+            Driver.Url = "http://localhost:16461/";
             ExpectedConditions.TitleIs("Main Page");
             FirstRound.F01_MainPage_openWindow_Click(Driver);
         }
