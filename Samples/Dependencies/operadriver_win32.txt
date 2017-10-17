@@ -1,0 +1,8 @@
+operadriver 2.30 / Opera 48
+
+File
+operadriver_win32.zip
+
+URI
+https://github.com/operasoftware/operachromiumdriver/releases
+

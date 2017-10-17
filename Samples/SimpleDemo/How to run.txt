@@ -3,16 +3,18 @@ In this case you will be able to run only the first 4 tests that target the qoox
 
 1. Get Wisej at http://wisej.com
 2. Set Wisej.SimpleDemo as Startup Project.
-3. Build the solution so all NuGet packages are restored.
-4. Run it (no, I don't mean debug but plain CTRL F5) to start IIS Express and leave it running.
-5. Open a test session and run all the tests.
+3. Set _operaBinary to the correct Opera path+filename.
+4. Build the solution so all NuGet packages are restored.
+5. Run it (no, I don't mean debug but plain CTRL F5) to start IIS Express and leave it running.
+6. Open a test session and run all the tests.
 
 N. B. - Thread.Sleep is used so we can see view transitions, according to the Configuration:
         - Relase - 0 ms
-        - Debug - 1000 ms
+        - Debug - 2000 ms
 
 One word of advise. Sometimes the WebDrivers continue executing on the background and you must kill them on the Task Manager.
 They show on the Task Manager by the following names:
 - Microsoft Web Driver for Edge
 - chromedriver.exe for Chrome
 - geckodriver.exe for Firefox
+- operadriver.exe for Opera

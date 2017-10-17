@@ -76,6 +76,7 @@
     <Compile Include="Edge.cs" />
     <Compile Include="Firefox.cs" />
     <Compile Include="FirstRound.cs" />
+    <Compile Include="Opera.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecondRound.cs" />
     <Compile Include="Waiter.cs" />
@@ -87,6 +88,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\Dependencies\operadriver.exe">
+      <Link>operadriver.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Readme.txt" />
   </ItemGroup>
   <Choose>
