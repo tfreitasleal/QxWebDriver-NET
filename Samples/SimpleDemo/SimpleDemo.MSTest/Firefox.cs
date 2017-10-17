@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
@@ -15,7 +14,7 @@ namespace SimpleDemo.MSTest
         public static QxWebDriver Driver;
 
         [ClassInitialize]
-        public static void F_Setup(TestContext testContext)
+        public static void Setup(TestContext testContext)
         {
             _internalWebDriver = new FirefoxDriver();
             Driver = new QxWebDriver(_internalWebDriver);

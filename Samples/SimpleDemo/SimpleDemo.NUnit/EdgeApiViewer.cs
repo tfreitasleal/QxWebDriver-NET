@@ -17,6 +17,7 @@ namespace SimpleDemo.NUnit
         public void Setup()
         {
             _internalWebDriver = new EdgeDriver();
+            _internalWebDriver.Manage().Window.Maximize();
             Driver = new QxWebDriver(_internalWebDriver);
             Driver.Url = "http://www.qooxdoo.org/current/api/index.html";
         }

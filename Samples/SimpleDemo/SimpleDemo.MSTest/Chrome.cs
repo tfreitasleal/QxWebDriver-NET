@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
@@ -15,9 +14,10 @@ namespace SimpleDemo.MSTest
         public static QxWebDriver Driver;
 
         [ClassInitialize]
-        public static void C_Setup(TestContext testContext)
+        public static void Setup(TestContext testContext)
         {
             _internalWebDriver = new ChromeDriver();
+            _internalWebDriver.Manage().Window.Maximize();
             Driver = new QxWebDriver(_internalWebDriver);
         }
 

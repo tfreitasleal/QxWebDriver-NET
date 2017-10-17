@@ -1,7 +1,6 @@
 ﻿using System.Threading;
 using Wisej.Qooxdoo.WebDriver;
 using Wisej.Qooxdoo.WebDriver.UI;
-using Wait = SimpleDemo.MSTest.Waiter;
 
 namespace SimpleDemo.MSTest
 {
