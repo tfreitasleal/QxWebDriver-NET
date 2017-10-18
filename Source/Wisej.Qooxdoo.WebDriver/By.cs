@@ -21,7 +21,6 @@ using System;
 using System.Collections.ObjectModel;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
-using Wisej.Qooxdoo.WebDriver.Resources;
 
 namespace Wisej.Qooxdoo.WebDriver
 {
@@ -30,6 +29,36 @@ namespace Wisej.Qooxdoo.WebDriver
     /// </summary>
     public partial class By : OpenQA.Selenium.By
     {
+        /// <summary>
+        /// The QxWebDriver to use
+        /// </summary>
+        protected static QxWebDriver Driver;
+
+        /// <summary>
+        /// Sets the QxWebDriver to use.
+        /// </summary>
+        /// <param name="driver">The QxWebDriver.</param>
+        public static void SetQxWebDriver(QxWebDriver driver)
+        {
+            Driver = driver;
+        }
+
+        /// <summary>
+        /// Searches for elements by traversing the qooxdoo application's widget  hierarchy.
+        /// See the <a href="TODO">Qxh locator manual page</a> for details.
+        /// This strategy will ignore any widgets that are not currently visible, as
+        /// determined by checking the qooxdoo property <a href="http://demo.qooxdoo.org/current/apiviewer/#qx.ui.Core.Widget~isSeeable!method_public">seeable</a>.
+        /// </summary>
+        /// <param name="locator">Locator specification</param>
+        /// <param name="driver">The QxWebDriver to use.</param>
+        /// <returns>By.ByQxh.</returns>
+        public static By Qxh(string locator, QxWebDriver driver)
+        {
+            Driver = driver;
+
+            return Qxh(locator);
+        }
+
         /// <summary>
         /// Searches for elements by traversing the qooxdoo application's widget  hierarchy.
         /// See the <a href="TODO">Qxh locator manual page</a> for details.
@@ -53,6 +82,22 @@ namespace Wisej.Qooxdoo.WebDriver
         /// Searches for elements by traversing the qooxdoo application's widget
         /// hierarchy. See the <a href="TODO">Qxh locator manual page</a> for details.
         /// </summary>
+        /// <param name="locator">Locator specification</param>
+        /// <param name="onlySeeable"><code>false</code> if invisible widgets should be
+        /// traversed. Note that this can considerably increase execution time.</param>
+        /// <param name="driver">The QxWebDriver to use.</param>
+        /// <returns>configured ByQxh instance.</returns>
+        public static By Qxh(string locator, bool? onlySeeable, QxWebDriver driver)
+        {
+            Driver = driver;
+
+            return Qxh(locator, onlySeeable);
+        }
+
+        /// <summary>
+        /// Searches for elements by traversing the qooxdoo application's widget
+        /// hierarchy. See the <a href="TODO">Qxh locator manual page</a> for details.
+        /// </summary>
         /// <param name="locator"> Locator specification </param>
         /// <param name="onlySeeable"> <code>false</code> if invisible widgets should be
         /// traversed. Note that this can considerably increase execution time. </param>
@@ -63,6 +108,7 @@ namespace Wisej.Qooxdoo.WebDriver
             {
                 throw new ArgumentException("Can't find elements without a locator string.");
             }
+
             return new ByQxh(locator, onlySeeable);
         }
 
@@ -104,35 +150,32 @@ namespace Wisej.Qooxdoo.WebDriver
             /// <returns>The first matching <see cref="IWebElement"/> on the current context.</returns>
             public override IWebElement FindElement(ISearchContext context)
             {
-                IJavaScriptExecutor jsExecutor;
+                if (Driver == null)
+                {
+                    throw new Exception("QxWebDriver must be specified.");
+                }
 
                 RemoteWebElement contextElement = null;
 
                 if (context is RemoteWebElement)
                 {
                     contextElement = (RemoteWebElement) context;
-                    jsExecutor = (IJavaScriptExecutor) contextElement.WrappedDriver;
                 }
-                else
-                {
-                    jsExecutor = (IJavaScriptExecutor) context;
-                }
-
-                string script = JavaScript.Instance.GetValue("qxh");
 
                 try
                 {
                     object result;
+
                     if (contextElement == null)
                     {
                         // OperaDriver.ExecuteScript won't accept null as an argument
-                        result = jsExecutor.ExecuteScript(script, Locator, OnlySeeable);
+                        result = Driver.JsRunner.RunScript("qxh", Locator, OnlySeeable);
                     }
                     else
                     {
                         try
                         {
-                            result = jsExecutor.ExecuteScript(script, Locator, OnlySeeable, contextElement);
+                            result = Driver.JsRunner.RunScript("qxh", Locator, OnlySeeable, contextElement);
                         }
                         //todo: catch (com.opera.Core.systems.scope.exceptions.ScopeException)
                         catch (Exception)
