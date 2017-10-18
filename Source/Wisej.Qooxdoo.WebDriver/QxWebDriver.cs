@@ -63,6 +63,7 @@ namespace Wisej.Qooxdoo.WebDriver
             JsExecutor = (IJavaScriptExecutor) _driver;
             SetImplicitWait(4);
             _widgetFactory = new DefaultWidgetFactory(this);
+            By.SetQxWebDriver(this);
         }
 
         /// <summary>
@@ -76,6 +77,7 @@ namespace Wisej.Qooxdoo.WebDriver
             JsExecutor = (IJavaScriptExecutor) _driver;
             SetImplicitWait(implicitWaitSeconds);
             _widgetFactory = new DefaultWidgetFactory(this);
+            By.SetQxWebDriver(this);
         }
 
         /// <summary>
@@ -89,6 +91,7 @@ namespace Wisej.Qooxdoo.WebDriver
             JsExecutor = (IJavaScriptExecutor) _driver;
             SetImplicitWait(4);
             _widgetFactory = widgetFactory;
+            By.SetQxWebDriver(this);
         }
 
         /// <summary>
@@ -103,6 +106,7 @@ namespace Wisej.Qooxdoo.WebDriver
             JsExecutor = (IJavaScriptExecutor) _driver;
             SetImplicitWait(implicitWaitSeconds);
             _widgetFactory = widgetFactory;
+            By.SetQxWebDriver(this);
         }
 
         private void SetImplicitWait(int implicitWaitSeconds)
