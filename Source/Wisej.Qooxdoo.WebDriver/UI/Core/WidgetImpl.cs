@@ -312,7 +312,7 @@ namespace Wisej.Qooxdoo.WebDriver.UI.Core
         /// </summary>
         /// <param name="childControlId">The child control identifier.</param>
         /// <returns>
-        /// The matching child widget.
+        /// The matching child widget or <c>null</c> if the child control doesn't exist.
         ///.</returns>
         public virtual IWidget GetChildControl(string childControlId)
         {

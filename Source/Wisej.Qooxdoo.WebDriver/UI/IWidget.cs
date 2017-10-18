@@ -54,7 +54,7 @@ namespace Wisej.Qooxdoo.WebDriver.UI
         /// Returns a <seealso cref="IWidget" /> representing a child control of this widget.
         /// </summary>
         /// <param name="childControlId">The child control identifier.</param>
-        /// <returns>The matching child widget.</returns>
+        /// <returns> The matching child widget or <c>null</c> if the child control doesn't exist.</returns>
         IWidget GetChildControl(string childControlId);
 
         /// <summary>
