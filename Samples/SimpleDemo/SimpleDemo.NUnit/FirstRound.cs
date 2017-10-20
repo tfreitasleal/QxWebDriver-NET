@@ -60,19 +60,15 @@ namespace SimpleDemo.NUnit
 
             OpenQA.Selenium.By secondWindowsBy = By.Qxh(By.Namespace("SecondWindow"));
             IWidget secondWindow = driver.WaitForWidget(secondWindowsBy, 10);
-            OpenQA.Selenium.By secondWindowCaptionBarBy = By.Qxh("qx.ui.container.Composite");
-            IWidget secondWindowCaptionBar = secondWindow.FindWidget(secondWindowCaptionBarBy);
-            secondWindowCaptionBar.Children[1].Click();
-
+            IWidget secondWindowCloseButton = secondWindow.GetChildControl("close-button");
+            secondWindowCloseButton.Click();
 
             Thread.Sleep(Wait.Duration);
 
-
             OpenQA.Selenium.By firstWindowsBy = By.Qxh(By.Namespace("FirstWindow"));
             IWidget firstWindow = driver.WaitForWidget(firstWindowsBy, 10);
-            OpenQA.Selenium.By firstWindowCaptionBarBy = By.Qxh("qx.ui.container.Composite");
-            IWidget firstWindowCaptionBar = firstWindow.FindWidget(firstWindowCaptionBarBy);
-            firstWindowCaptionBar.Children[1].Click();
+            IWidget firstWindowCloseButton = firstWindow.GetChildControl("close-button");
+            firstWindowCloseButton.Click();
 
             Thread.Sleep(Wait.Duration);
         }
