@@ -18,7 +18,7 @@
 
 ************************************************************************ */
 
-var getAllLogEvents = function() {
+qxwebdriver.getAllLogEvents = function() {
   var ret = [];
   qxwebdriver.appender.getAllLogEvents().forEach(function(entry) {
     var jsonEntry = {

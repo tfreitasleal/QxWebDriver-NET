@@ -23,10 +23,20 @@ using OpenQA.Selenium;
 namespace Wisej.Qooxdoo.WebDriver.Resources
 {
     /// <summary>
-    /// Runs a Javascript scripts
+    /// Runs a Javascript script
     /// </summary>
     public class JavaScriptRunner
     {
+        /// <summary>
+        /// The Javascript executor
+        /// </summary>
+        protected internal IJavaScriptExecutor Executor;
+
+        internal static string Namespace = "qxwebdriver";
+
+#if !DEBUGJS
+        internal IList<string> CreatedFunctions = new List<string>();
+#endif
         /// <summary>
         /// Initializes a new instance of the <see cref="JavaScriptRunner"/> class.
         /// </summary>
@@ -34,6 +44,8 @@ namespace Wisej.Qooxdoo.WebDriver.Resources
         public JavaScriptRunner(IJavaScriptExecutor jsExecutor)
         {
             Executor = jsExecutor;
+
+#if !DEBUGJS
             string script;
 
             if (jsExecutor.GetType().Name != "FirefoxDriver")
@@ -64,16 +76,8 @@ namespace Wisej.Qooxdoo.WebDriver.Resources
                     "document.getElementsByTagName('head')[0].appendChild(new_script);";
                 Executor.ExecuteScript(script);
             }*/
+#endif
         }
-
-        /// <summary>
-        /// The Javascript executor
-        /// </summary>
-        protected internal IJavaScriptExecutor Executor;
-
-        internal static string Namespace = "qxwebdriver";
-
-        internal IList<string> CreatedFunctions = new List<string>();
 
         /// <summary>
         /// Runs the script.
@@ -83,17 +87,19 @@ namespace Wisej.Qooxdoo.WebDriver.Resources
         /// <returns>The value returned by the script.</returns>
         public virtual object RunScript(string scriptId, params object[] args)
         {
+#if !DEBUGJS
             if (!CreatedFunctions.Contains(scriptId))
             {
                 DefineFunction(scriptId);
             }
+#endif
 
             string fqFunctionName = Namespace + "." + scriptId;
             string call = "return " + fqFunctionName + ".apply(this, arguments);";
             return Executor.ExecuteScript(call, args);
         }
 
-
+#if !DEBUGJS
         /// <summary>
         /// Defines a Javascript function
         /// </summary>
@@ -106,5 +112,6 @@ namespace Wisej.Qooxdoo.WebDriver.Resources
             Executor.ExecuteScript(script);
             CreatedFunctions.Add(scriptId);
         }
+#endif
     }
 }

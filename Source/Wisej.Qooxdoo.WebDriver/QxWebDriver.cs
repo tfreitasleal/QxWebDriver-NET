@@ -131,6 +131,7 @@ namespace Wisej.Qooxdoo.WebDriver
             return driver =>
             {
                 object result = null;
+#if !DEBUGJS
                 string script = JavaScript.Instance.GetValue("isApplicationReady");
                 try
                 {
@@ -139,6 +140,15 @@ namespace Wisej.Qooxdoo.WebDriver
                 catch (WebDriverException)
                 {
                 }
+#else
+                try
+                {
+                    result = JsRunner.RunScript("isApplicationReady");
+                }
+                catch (WebDriverException)
+                {
+                }
+#endif
                 var isReady = result != null && (bool) result;
                 return isReady;
             };
@@ -366,8 +376,13 @@ namespace Wisej.Qooxdoo.WebDriver
             set
             {
                 _driver.Url = value;
+#if !DEBUGJS
                 WaitForQxApplication();
                 Init();
+#else
+                Init();
+                WaitForQxApplication();
+#endif
             }
         }
 
@@ -385,8 +400,10 @@ namespace Wisej.Qooxdoo.WebDriver
         public virtual void Init()
         {
             JsRunner = new JavaScriptRunner(JsExecutor);
+#if !DEBUGJS
             // make sure getWidgetByElement is defined so other scripts can use it
             JsRunner.DefineFunction("getWidgetByElement");
+#endif
         }
 
         /// <summary>
