@@ -36,15 +36,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiViewerTests.cs" />
     <Compile Include="ChromeWisej.cs" />
-    <Compile Include="ChromeApiViewer.cs" />
-    <Compile Include="EdgeApiViewer.cs" />
     <Compile Include="EdgeWisej.cs" />
     <Compile Include="FirefoxWisej.cs" />
-    <Compile Include="FirefoxApiViewer.cs" />
     <Compile Include="FirstRound.cs" />
-    <Compile Include="OperaApiViewer.cs" />
     <Compile Include="OperaWisej.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecondRound.cs" />

@@ -19,7 +19,11 @@ namespace SimpleDemo.NUnit
         {
             _internalWebDriver = new InternetExplorerDriver();
             Driver = new QxWebDriver(_internalWebDriver);
-            Driver.Url = "http://localhost:16461/";
+#if !DEBUGJS
+            Driver.Url = "http://localhost:16461/Default.html";
+#else
+            Driver.Url = "http://localhost:16461/Debug.html";
+#endif
         }
 
         [OneTimeTearDown]

@@ -29,6 +29,7 @@ namespace SimpleDemo.MSTest
             Driver.Dispose();
         }
 
+#if !DEBUGJS
         [TestMethod]
         //[Order(4010)]
         public void I_A01_ClickSearch()
@@ -57,12 +58,17 @@ namespace SimpleDemo.MSTest
         {
             ApiViewerTests.A04_ClickTreeItem(Driver);
         }
+#endif
 
         [TestMethod]
         //[Order(4050)]
         public void I_F01_MainPage_openWindow_Click()
         {
-            Driver.Url = "http://localhost:16461/";
+#if !DEBUGJS
+            Driver.Url = "http://localhost:16461/Default.html";
+#else
+            Driver.Url = "http://localhost:16461/Debug.html";
+#endif
             ExpectedConditions.TitleIs("Main Page");
             FirstRound.F01_MainPage_openWindow_Click(Driver);
         }

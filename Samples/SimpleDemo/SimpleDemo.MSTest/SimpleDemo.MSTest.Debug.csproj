@@ -47,7 +47,6 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="ApiViewerTests.cs" />
     <Compile Include="Chrome.cs" />
     <Compile Include="Edge.cs" />
     <Compile Include="Firefox.cs" />
@@ -58,7 +57,7 @@
     <Compile Include="Waiter.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Alphabetical.orderedtest">
+    <None Include="AlphabeticalDebug.orderedtest">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />

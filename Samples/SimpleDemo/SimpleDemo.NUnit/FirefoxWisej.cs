@@ -20,7 +20,7 @@ namespace SimpleDemo.NUnit
             _internalWebDriver = new FirefoxDriver();
             Driver = new QxWebDriver(_internalWebDriver);
 #if !DEBUGJS
-            Driver.Url = "http://localhost:16461/";
+            Driver.Url = "http://localhost:16461/Default.html";
 #else
             Driver.Url = "http://localhost:16461/Debug.html";
 #endif

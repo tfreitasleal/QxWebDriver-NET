@@ -25,7 +25,7 @@ namespace SimpleDemo.NUnit
             _internalWebDriver.Manage().Window.Maximize();
             Driver = new QxWebDriver(_internalWebDriver);
 #if !DEBUGJS
-            Driver.Url = "http://localhost:16461/";
+            Driver.Url = "http://localhost:16461/Default.html";
 #else
             Driver.Url = "http://localhost:16461/Debug.html";
 #endif

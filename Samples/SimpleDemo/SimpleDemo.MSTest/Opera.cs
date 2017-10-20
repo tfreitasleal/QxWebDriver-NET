@@ -34,6 +34,7 @@ namespace SimpleDemo.MSTest
             Driver.Dispose();
         }
 
+#if !DEBUGJS
         [TestMethod]
         //[Order(5010)]
         public void O_A01_ClickSearch()
@@ -62,13 +63,14 @@ namespace SimpleDemo.MSTest
         {
             ApiViewerTests.A04_ClickTreeItem(Driver);
         }
+#endif
 
         [TestMethod]
         //[Order(5050)]
         public void O_F01_MainPage_openWindow_Click()
         {
 #if !DEBUGJS
-            Driver.Url = "http://localhost:16461/";
+            Driver.Url = "http://localhost:16461/Default.html";
 #else
             Driver.Url = "http://localhost:16461/Debug.html";
 #endif
