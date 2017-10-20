@@ -18,7 +18,7 @@
 
 ************************************************************************ */
 
-var getScrollMax = function() {
+qxwebdriver.getScrollMax = function() {
   var widget = qxwebdriver.getWidgetByElement(arguments[0]);
   var methodName = "getScrollMax" + arguments[1].toUpperCase();
   return widget[methodName]();

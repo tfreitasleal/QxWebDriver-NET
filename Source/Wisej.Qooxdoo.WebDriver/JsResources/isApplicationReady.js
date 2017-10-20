@@ -18,6 +18,6 @@
 
 ************************************************************************ */
 
-var isApplicationReady = function() {
+qxwebdriver.isApplicationReady = function() {
   return (typeof qx !== 'undefined' && typeof qx.core !== 'undefined' && typeof qx.core.Init !== 'undefined' && !!qx.core.Init.getApplication());
 };

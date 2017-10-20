@@ -18,7 +18,7 @@
 
 ************************************************************************ */
 
-var registerLogAppender = function() {
+qxwebdriver.registerLogAppender = function() {
   qxwebdriver.appender = new qx.log.appender.RingBuffer(500);
   qx.log.Logger.register(qxwebdriver.appender);
 };

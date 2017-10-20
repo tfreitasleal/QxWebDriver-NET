@@ -18,7 +18,7 @@
 
 ************************************************************************ */
 
-var getElementsFromProperty = function() {
+qxwebdriver.getElementsFromProperty = function() {
   var getDomElement = function(widget) {
     if (widget.getContentElement && widget.getContentElement()) {
       var contentElement = widget.getContentElement();

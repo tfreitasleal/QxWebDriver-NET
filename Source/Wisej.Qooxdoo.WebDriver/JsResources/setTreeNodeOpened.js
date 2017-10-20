@@ -18,7 +18,7 @@
 
 ************************************************************************ */
 
-var setTreeNodeOpened = function() {
+qxwebdriver.setTreeNodeOpened = function() {
   var widget = qx.ui.core.Widget.getWidgetByElement(arguments[0]);
   var rowIdx = arguments[1];
   var opened = arguments[2];

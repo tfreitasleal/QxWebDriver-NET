@@ -18,7 +18,7 @@
 
 ************************************************************************ */
 
-var getTableScrollerMaximum = function() {
+qxwebdriver.getTableScrollerMaximum = function() {
   var scroller = qx.ui.core.Widget.getWidgetByElement(arguments[0]);
   var model = scroller.getTable().getTableModel();
   var rowCount = model.getRowCount();

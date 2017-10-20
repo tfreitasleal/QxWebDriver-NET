@@ -18,7 +18,7 @@
 
 ************************************************************************ */
 
-var getFirstVisibleTableRow = function() {
+qxwebdriver.getFirstVisibleTableRow = function() {
   var scroller = qx.ui.core.Widget.getWidgetByElement(arguments[0]);
   return scroller.getTablePane().getFirstVisibleRow();
 };

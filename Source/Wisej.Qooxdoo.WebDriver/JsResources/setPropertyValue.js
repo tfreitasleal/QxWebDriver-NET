@@ -18,7 +18,7 @@
 
 ************************************************************************ */
 
-var setPropertyValue = function() {
+qxwebdriver.setPropertyValue = function() {
   var widget = qx.ui.core.Widget.getWidgetByElement(arguments[0]);
   widget.set(arguments[1], arguments[2]);
 };

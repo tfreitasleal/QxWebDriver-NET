@@ -18,7 +18,7 @@
 
 ************************************************************************ */
 
-var getInheritance = function() {
+qxwebdriver.getInheritance = function() {
   var widget = qxwebdriver.getWidgetByElement(arguments[0]);
   var hierarchy = [];
   var clazz = widget.constructor;

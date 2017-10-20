@@ -18,7 +18,7 @@
 
 ************************************************************************ */
 
-var getLayoutParent = function() {
+qxwebdriver.getLayoutParent = function() {
   var widget = qx.ui.core.Widget.getWidgetByElement(arguments[0]);
   var contentElement = widget.getContentElement();
   if (contentElement.nodeType && contentElement.nodeType === 1) {

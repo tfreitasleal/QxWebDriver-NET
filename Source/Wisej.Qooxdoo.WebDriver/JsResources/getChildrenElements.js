@@ -18,7 +18,7 @@
 
 ************************************************************************ */
 
-var getChildrenElements = function() {
+qxwebdriver.getChildrenElements = function() {
   var childrenElements = [];
   var widget = qxwebdriver.getWidgetByElement(arguments[0]);
   widget.getChildren().forEach(function(child) {

@@ -18,7 +18,7 @@
 
 ************************************************************************ */
 
-var getTableRowHeight = function() {
+qxwebdriver.getTableRowHeight = function() {
   var scroller = qx.ui.core.Widget.getWidgetByElement(arguments[0]);
   return scroller.getTable().getRowHeight();
 };

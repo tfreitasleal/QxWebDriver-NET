@@ -18,7 +18,7 @@
 
 ************************************************************************ */
 
-var getObjectHash = function() {
+qxwebdriver.getObjectHash = function() {
   var widget = qxwebdriver.getWidgetByElement(arguments[0]);
   return widget.toHashCode();
 };

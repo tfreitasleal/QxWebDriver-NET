@@ -18,7 +18,7 @@
 
 ************************************************************************ */
 
-var selectTableRow = function() {
+qxwebdriver.selectTableRow = function() {
   var rowIdx = arguments[1];   
   var widget = qx.ui.core.Widget.getWidgetByElement(arguments[0]);
   widget.getSelectionModel().setSelectionInterval(rowIdx, rowIdx);

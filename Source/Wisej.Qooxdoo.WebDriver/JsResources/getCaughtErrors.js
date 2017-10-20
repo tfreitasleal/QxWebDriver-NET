@@ -18,7 +18,7 @@
 
 ************************************************************************ */
 
-var getCaughtErrors = function() {
+qxwebdriver.getCaughtErrors = function() {
   return qxwebdriver.globalErrors.map(function(ex) {
     var exString = "";
     if (typeof ex.getSourceException == "function") {

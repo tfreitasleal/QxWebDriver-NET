@@ -18,7 +18,7 @@
 
 ************************************************************************ */
 
-var hasChildControl = function() {
+qxwebdriver.hasChildControl = function() {
   var widget = qx.ui.core.Widget.getWidgetByElement(arguments[0]);
   return widget.hasChildControl(arguments[1]);
 };

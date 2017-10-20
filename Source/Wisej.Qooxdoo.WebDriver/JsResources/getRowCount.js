@@ -18,7 +18,7 @@
 
 ************************************************************************ */
 
-var getRowCount = function() {
+qxwebdriver.getRowCount = function() {
   var widget = qx.ui.core.Widget.getWidgetByElement(arguments[0]);
   var model = widget.getTableModel();
   return model.getRowCount();

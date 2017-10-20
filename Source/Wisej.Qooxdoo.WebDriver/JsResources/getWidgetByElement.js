@@ -18,7 +18,7 @@
 
 ************************************************************************ */
 
-var getWidgetByElement = function() {
+qxwebdriver.getWidgetByElement = function() {
   var widget = null;
   if (!qx.ui) {
     return widget;

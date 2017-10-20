@@ -18,7 +18,7 @@
 
 ************************************************************************ */
 
-var getPropertyValue = function() {
+qxwebdriver.getPropertyValue = function() {
   var widget = qxwebdriver.getWidgetByElement(arguments[0]);
   var result = widget.get(arguments[1]);
   if (qx.data && qx.data.Array && result instanceof qx.data.Array) {

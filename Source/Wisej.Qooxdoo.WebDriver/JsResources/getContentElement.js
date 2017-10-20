@@ -18,7 +18,7 @@
 
 ************************************************************************ */
 
-var getContentElement = function() {
+qxwebdriver.getContentElement = function() {
   var widget = qxwebdriver.getWidgetByElement(arguments[0]);
   var contentElement = widget.getContentElement();
   if (!contentElement) {

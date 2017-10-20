@@ -18,7 +18,7 @@
 
 ************************************************************************ */
 
-var getItemFromSelectables = function() {
+qxwebdriver.getItemFromSelectables = function() {
   var widget = qxwebdriver.getWidgetByElement(arguments[0]);
   var selectables = widget.getSelectables();
   for (var i=0; i<selectables.length; i++) {

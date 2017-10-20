@@ -18,7 +18,7 @@
 
 ************************************************************************ */
 
-var getVisibleTableRowCount = function() {
+qxwebdriver.getVisibleTableRowCount = function() {
   var scroller = qx.ui.core.Widget.getWidgetByElement(arguments[0]);
   return scroller.getTablePane().getVisibleRowCount();
 };

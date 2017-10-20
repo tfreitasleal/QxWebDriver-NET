@@ -18,7 +18,7 @@
 
 ************************************************************************ */
 
-var registerGlobalErrorHandler = function() {
+qxwebdriver.registerGlobalErrorHandler = function() {
   qxwebdriver.globalErrors = [];
   var errorHandler = function(ex) {
     qxwebdriver.globalErrors.push(ex);

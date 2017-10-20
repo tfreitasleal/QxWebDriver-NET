@@ -18,7 +18,7 @@
 
 ************************************************************************ */
 
-var getPropertyValueAsJson = function() {
+qxwebdriver.getPropertyValueAsJson = function() {
   var json = window.JSON || qx.lang.Json;
   var widget = qxwebdriver.getWidgetByElement(arguments[0]);
   var val = widget.get(arguments[1]);

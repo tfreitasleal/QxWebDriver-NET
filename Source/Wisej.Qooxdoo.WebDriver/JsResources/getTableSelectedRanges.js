@@ -18,7 +18,7 @@
 
 ************************************************************************ */
 
-var getTableSelectedRanges = function() {
+qxwebdriver.getTableSelectedRanges = function() {
   var json = window.JSON || qx.lang.Json;
   var table = qx.ui.core.Widget.getWidgetByElement(arguments[0]);
   var ranges = table.getSelectionModel().getSelectedRanges();

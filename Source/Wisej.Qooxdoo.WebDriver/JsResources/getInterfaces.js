@@ -18,7 +18,7 @@
 
 ************************************************************************ */
 
-var getInterfaces = function() {
+qxwebdriver.getInterfaces = function() {
   var widget = qxwebdriver.getWidgetByElement(arguments[0]);
   var iFaces = [];
   var clazz = widget.constructor;

@@ -18,7 +18,7 @@
 
 ************************************************************************ */
 
-var scrollTo = function() {
+qxwebdriver.scrollTo = function() {
   var methodName = "scrollTo";
   if (arguments[2]) {
     methodName += arguments[2].toUpperCase();
