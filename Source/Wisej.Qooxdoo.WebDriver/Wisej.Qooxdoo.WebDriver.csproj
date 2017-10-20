@@ -93,6 +93,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="JsResources\create_qxwebdriver.js" />
+    <EmbeddedResource Include="JsResources\findByQxh.js" />
     <EmbeddedResource Include="JsResources\getAllLogEvents.js" />
     <EmbeddedResource Include="JsResources\getCaughtErrors.js" />
     <EmbeddedResource Include="JsResources\getChildControl.js" />
@@ -119,7 +121,6 @@
     <EmbeddedResource Include="JsResources\getWidgetByElement.js" />
     <EmbeddedResource Include="JsResources\hasChildControl.js" />
     <EmbeddedResource Include="JsResources\isApplicationReady.js" />
-    <EmbeddedResource Include="JsResources\qxh.js" />
     <EmbeddedResource Include="JsResources\registerGlobalErrorHandler.js" />
     <EmbeddedResource Include="JsResources\registerLogAppender.js" />
     <EmbeddedResource Include="JsResources\scrollTo.js" />
