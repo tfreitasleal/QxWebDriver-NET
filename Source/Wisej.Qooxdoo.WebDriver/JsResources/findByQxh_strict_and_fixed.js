@@ -18,7 +18,7 @@
 
 ************************************************************************ */
 
-var findByQxh = function() {
+qxwebdriver.findByQxh = function() {
 return (function(args) {
 
   if (typeof window.console == "undefined") {
