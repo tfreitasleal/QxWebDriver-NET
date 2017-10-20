@@ -63,7 +63,11 @@ namespace SimpleDemo.MSTest
         //[Order(3050)]
         public void C_F01_MainPage_openWindow_Click()
         {
+#if !DEBUGJS
             Driver.Url = "http://localhost:16461/";
+#else
+            Driver.Url = "http://localhost:16461/Debug.html";
+#endif
             ExpectedConditions.TitleIs("Main Page");
             FirstRound.F01_MainPage_openWindow_Click(Driver);
         }

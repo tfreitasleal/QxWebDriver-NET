@@ -20,7 +20,11 @@ namespace SimpleDemo.NUnit
             _internalWebDriver = new ChromeDriver();
             _internalWebDriver.Manage().Window.Maximize();
             Driver = new QxWebDriver(_internalWebDriver);
+#if !DEBUGJS
             Driver.Url = "http://localhost:16461/";
+#else
+            Driver.Url = "http://localhost:16461/Debug.html";
+#endif
         }
 
         [OneTimeTearDown]
