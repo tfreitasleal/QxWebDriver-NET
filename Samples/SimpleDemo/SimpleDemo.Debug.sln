@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wisej.SimpleDemo", "Wisej.SimpleDemo\Wisej.SimpleDemo.csproj", "{BA22EE1E-C853-40B1-A5C1-ED2B10300AC8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wisej.SimpleDemo.Debug", "Wisej.SimpleDemo\Wisej.SimpleDemo.Debug.csproj", "{BA22EE1E-C853-40B1-A5C1-ED2B10300AC8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleDemo.NUnit.Debug", "SimpleDemo.NUnit\SimpleDemo.NUnit.Debug.csproj", "{8FAE68DB-7330-4C1E-8348-7EF057BD0C6F}"
 EndProject
@@ -11,42 +11,29 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wisej.Qooxdoo.WebDriver.Debug", "..\..\Source\Wisej.Qooxdoo.WebDriver\Wisej.Qooxdoo.WebDriver.Debug.csproj", "{E6BE1E5D-58C1-4AD7-B1CB-3F9831A24949}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDriver", "..\..\Source\webdriver\WebDriver.csproj", "{6941AA74-A97A-48A5-BBFE-1970CCE31E5C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDriver.Debug", "..\..\Source\webdriver\WebDriver.Debug.csproj", "{6941AA74-A97A-48A5-BBFE-1970CCE31E5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDriver.Support", "..\..\Source\support\WebDriver.Support.csproj", "{8F318EF7-DF70-4942-9892-9F2F0D0B239C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDriver.Support.Debug", "..\..\Source\support\WebDriver.Support.Debug.csproj", "{8F318EF7-DF70-4942-9892-9F2F0D0B239C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleDemo.MSTest.Debug", "SimpleDemo.MSTest\SimpleDemo.MSTest.Debug.csproj", "{12C6E79F-F2AE-4793-BD5F-91AAB08E99B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{BA22EE1E-C853-40B1-A5C1-ED2B10300AC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BA22EE1E-C853-40B1-A5C1-ED2B10300AC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BA22EE1E-C853-40B1-A5C1-ED2B10300AC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BA22EE1E-C853-40B1-A5C1-ED2B10300AC8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8FAE68DB-7330-4C1E-8348-7EF057BD0C6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8FAE68DB-7330-4C1E-8348-7EF057BD0C6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8FAE68DB-7330-4C1E-8348-7EF057BD0C6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8FAE68DB-7330-4C1E-8348-7EF057BD0C6F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E6BE1E5D-58C1-4AD7-B1CB-3F9831A24949}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E6BE1E5D-58C1-4AD7-B1CB-3F9831A24949}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E6BE1E5D-58C1-4AD7-B1CB-3F9831A24949}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E6BE1E5D-58C1-4AD7-B1CB-3F9831A24949}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6941AA74-A97A-48A5-BBFE-1970CCE31E5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6941AA74-A97A-48A5-BBFE-1970CCE31E5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6941AA74-A97A-48A5-BBFE-1970CCE31E5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6941AA74-A97A-48A5-BBFE-1970CCE31E5C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8F318EF7-DF70-4942-9892-9F2F0D0B239C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8F318EF7-DF70-4942-9892-9F2F0D0B239C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8F318EF7-DF70-4942-9892-9F2F0D0B239C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8F318EF7-DF70-4942-9892-9F2F0D0B239C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{12C6E79F-F2AE-4793-BD5F-91AAB08E99B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{12C6E79F-F2AE-4793-BD5F-91AAB08E99B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{12C6E79F-F2AE-4793-BD5F-91AAB08E99B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{12C6E79F-F2AE-4793-BD5F-91AAB08E99B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
