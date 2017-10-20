@@ -169,13 +169,13 @@ namespace Wisej.Qooxdoo.WebDriver
                     if (contextElement == null)
                     {
                         // OperaDriver.ExecuteScript won't accept null as an argument
-                        result = Driver.JsRunner.RunScript("qxh", Locator, OnlySeeable);
+                        result = Driver.JsRunner.RunScript("findByQxh", Locator, OnlySeeable);
                     }
                     else
                     {
                         try
                         {
-                            result = Driver.JsRunner.RunScript("qxh", Locator, OnlySeeable, contextElement);
+                            result = Driver.JsRunner.RunScript("findByQxh", Locator, OnlySeeable, contextElement);
                         }
                         //todo: catch (com.opera.Core.systems.scope.exceptions.ScopeException)
                         catch (Exception)
