@@ -68,10 +68,8 @@
     <None Include="Resources\getTableSelectedRanges.js" />
     <None Include="Resources\getVisibleTableRowCount.js" />
     <None Include="Resources\getWidgetByElement.js" />
-    <None Include="Resources\getWidgetByElement_strict.js" />
     <None Include="Resources\hasChildControl.js" />
     <None Include="Resources\isApplicationReady.js" />
-    <None Include="Resources\qxh_strict_and_fixed.js" />
     <None Include="Resources\registerGlobalErrorHandler.js" />
     <None Include="Resources\registerLogAppender.js" />
     <None Include="Resources\scrollTo.js" />
