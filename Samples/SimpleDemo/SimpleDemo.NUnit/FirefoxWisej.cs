@@ -36,54 +36,74 @@ namespace SimpleDemo.NUnit
         }
 
         [Test]
-        [Order(2050)]
-        public void F01_MainPage_openWindow_Click()
+        [Order(3050)]
+        public void F01_AskQuitNo()
         {
             ExpectedConditions.TitleIs("Main Page");
-            FirstRound.F01_MainPage_openWindow_Click(Driver);
+            FirstRound.F01_AskQuitNo(Driver);
         }
 
         [Test]
-        [Order(2060)]
-        public void F02_FirstWindow_openWindow_Click()
+        [Order(3060)]
+        public void F02_MainPage_openWindow_Click()
         {
-            FirstRound.F02_FirstWindow_openWindow_Click(Driver);
+            FirstRound.F02_MainPage_openWindow_Click(Driver);
         }
 
         [Test]
-        [Order(2070)]
-        public void F03_SecondWindow_openWindow_LabelContents()
+        [Order(3070)]
+        public void F03_FirstWindow_openWindow_Click()
         {
-            FirstRound.F03_SecondWindow_openWindow_LabelContents(Driver);
+            FirstRound.F03_FirstWindow_openWindow_Click(Driver);
         }
 
         [Test]
-        [Order(2080)]
-        public void F04_CloseWindows()
+        [Order(3080)]
+        public void F04_SecondWindow_openWindow_LabelContents()
         {
-            FirstRound.F04_CloseWindows(Driver);
+            FirstRound.F04_SecondWindow_openWindow_LabelContents(Driver);
         }
 
+        [Test]
+        [Order(3090)]
+        public void F05_CloseWindows()
+        {
+            FirstRound.F05_CloseWindows(Driver);
+        }
 
         [Test]
-        [Order(2100)]
+        [Order(3100)]
         public void S01_MainPage_openWindow_Click()
         {
             SecondRound.S01_MainPage_openWindow_Click(Driver);
         }
 
         [Test]
-        [Order(2110)]
+        [Order(3110)]
         public void S02_FirstWindow_openWindow_Click()
         {
             SecondRound.S02_FirstWindow_openWindow_Click(Driver);
         }
 
         [Test]
-        [Order(2120)]
+        [Order(3120)]
         public void S03_SecondWindow_openWindow_LabelContents()
         {
             SecondRound.S03_SecondWindow_openWindow_LabelContents(Driver);
+        }
+
+        [Test]
+        [Order(3130)]
+        public void S04_CloseWindows()
+        {
+            SecondRound.S04_CloseWindows(Driver);
+        }
+
+        [Test]
+        [Order(3140)]
+        public void S05_AskQuitYes()
+        {
+            SecondRound.S05_AskQuitYes(Driver);
         }
     }
 }

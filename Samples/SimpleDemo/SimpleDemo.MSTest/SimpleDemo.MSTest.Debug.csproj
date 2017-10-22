@@ -31,6 +31,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
+    <Reference Include="Wisej.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=17bef35e11b84171, processorArchitecture=MSIL" />
+    <Reference Include="Wisej.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=17bef35e11b84171, processorArchitecture=MSIL" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -54,6 +56,7 @@
     <Compile Include="Opera.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecondRound.cs" />
+    <Compile Include="Utils.cs" />
     <Compile Include="Waiter.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -31,7 +31,6 @@ namespace SimpleDemo.MSTest
 
 #if !DEBUGJS
         [TestMethod]
-        //[Order(2010)]
         public void F_A01_ClickSearch()
         {
             Driver.Url = "http://www.qooxdoo.org/current/api/index.html";
@@ -39,21 +38,18 @@ namespace SimpleDemo.MSTest
         }
 
         [TestMethod]
-        //[Order(2020)]
         public void F_A02_ClickLegend()
         {
             ApiViewerTests.A02_ClickLegend(Driver);
         }
 
         [TestMethod]
-        //[Order(2030)]
         public void F_A03_ClickContent()
         {
             ApiViewerTests.A03_ClickContent(Driver);
         }
 
         [TestMethod]
-        //[Order(2040)]
         public void F_A04_ClickTreeItem()
         {
             ApiViewerTests.A04_ClickTreeItem(Driver);
@@ -61,8 +57,7 @@ namespace SimpleDemo.MSTest
 #endif
 
         [TestMethod]
-        //[Order(2050)]
-        public void F_F01_MainPage_openWindow_Click()
+        public void F_F01_AskQuitNo()
         {
 #if !DEBUGJS
             Driver.Url = "http://localhost:16461/Default.html";
@@ -70,50 +65,61 @@ namespace SimpleDemo.MSTest
             Driver.Url = "http://localhost:16461/Debug.html";
 #endif
             ExpectedConditions.TitleIs("Main Page");
-            FirstRound.F01_MainPage_openWindow_Click(Driver);
+            FirstRound.F01_AskQuitNo(Driver);
         }
 
         [TestMethod]
-        //[Order(2060)]
-        public void F_F02_FirstWindow_openWindow_Click()
+        public void F_F02_MainPage_openWindow_Click()
         {
-            FirstRound.F02_FirstWindow_openWindow_Click(Driver);
+            FirstRound.F02_MainPage_openWindow_Click(Driver);
         }
 
         [TestMethod]
-        //[Order(2070)]
-        public void F_F03_SecondWindow_openWindow_LabelContents()
+        public void F_F03_FirstWindow_openWindow_Click()
         {
-            FirstRound.F03_SecondWindow_openWindow_LabelContents(Driver);
+            FirstRound.F03_FirstWindow_openWindow_Click(Driver);
         }
 
         [TestMethod]
-        //[Order(2080)]
-        public void F_F04_CloseWindows()
+        public void F_F04_SecondWindow_openWindow_LabelContents()
         {
-            FirstRound.F04_CloseWindows(Driver);
+            FirstRound.F04_SecondWindow_openWindow_LabelContents(Driver);
         }
 
+        [TestMethod]
+        public void F_F05_CloseWindows()
+        {
+            FirstRound.F05_CloseWindows(Driver);
+        }
 
         [TestMethod]
-        //[Order(2100)]
         public void F_S01_MainPage_openWindow_Click()
         {
             SecondRound.S01_MainPage_openWindow_Click(Driver);
         }
 
         [TestMethod]
-        //[Order(2110)]
         public void F_S02_FirstWindow_openWindow_Click()
         {
             SecondRound.S02_FirstWindow_openWindow_Click(Driver);
         }
 
         [TestMethod]
-        //[Order(2120)]
         public void F_S03_SecondWindow_openWindow_LabelContents()
         {
             SecondRound.S03_SecondWindow_openWindow_LabelContents(Driver);
+        }
+
+        [TestMethod]
+        public void F_S04_CloseWindows()
+        {
+            SecondRound.S04_CloseWindows(Driver);
+        }
+
+        [TestMethod]
+        public void F_S05_AskQuitYes()
+        {
+            SecondRound.S05_AskQuitYes(Driver);
         }
     }
 }

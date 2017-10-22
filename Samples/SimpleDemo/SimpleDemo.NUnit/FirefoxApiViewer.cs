@@ -31,28 +31,28 @@ namespace SimpleDemo.NUnit
         }
 
         [Test]
-        [Order(2010)]
+        [Order(3010)]
         public void A01_ClickSearch()
         {
             ApiViewerTests.A01_ClickSearch(Driver);
         }
 
         [Test]
-        [Order(2020)]
+        [Order(3020)]
         public void A02_ClickLegend()
         {
             ApiViewerTests.A02_ClickLegend(Driver);
         }
 
         [Test]
-        [Order(2030)]
+        [Order(3030)]
         public void A03_ClickContent()
         {
             ApiViewerTests.A03_ClickContent(Driver);
         }
 
         [Test]
-        [Order(2040)]
+        [Order(3040)]
         public void A04_ClickTreeItem()
         {
             ApiViewerTests.A04_ClickTreeItem(Driver);

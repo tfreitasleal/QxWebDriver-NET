@@ -5,7 +5,7 @@
 #if DEBUG
         public static int Duration = 2000;
 #else
-        public static int Duration = 0;
+        public static int Duration = 200;
 #endif
     }
 }
