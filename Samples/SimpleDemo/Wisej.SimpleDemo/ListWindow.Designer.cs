@@ -1,6 +1,6 @@
 ﻿namespace Wisej.SimpleDemo
 {
-    partial class FirstWindow
+    partial class ListWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -40,14 +40,14 @@
             this.openWindow.Text = "Open Second Window";
             this.openWindow.Click += new System.EventHandler(this.openWindow_Click);
             // 
-            // FirstWindow
+            // ListWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = Wisej.Web.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(612, 480);
             this.Controls.Add(this.openWindow);
-            this.Name = "FirstWindow";
-            this.Text = "First Window";
+            this.Name = "ListWindow";
+            this.Text = "List Window";
             this.ResumeLayout(false);
 
         }
