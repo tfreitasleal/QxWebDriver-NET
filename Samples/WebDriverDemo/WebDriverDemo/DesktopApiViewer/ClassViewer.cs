@@ -6,6 +6,7 @@ using By = Wisej.Qooxdoo.WebDriver.By;
 namespace Wisej.Qooxdoo.WebDriverDemo.DesktopApiViewer
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class ClassViewer : DesktopApiViewer
     {
         [OneTimeSetUp]
@@ -16,7 +17,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.DesktopApiViewer
             SelectClass(className);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Before public void setUpBeforeTest()
         [SetUp]
         public virtual void SetUpBeforeTest()
@@ -25,7 +25,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.DesktopApiViewer
             SelectClass(className);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void links()
         [Test]
         public virtual void Links()
@@ -47,7 +46,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.DesktopApiViewer
             Assert.Equals("#qx.ui.basic.Atom", hashAfter);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void toggleDetail()
         [Test]
         public virtual void ToggleDetail()

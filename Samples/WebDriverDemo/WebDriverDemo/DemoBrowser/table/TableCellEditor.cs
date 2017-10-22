@@ -8,6 +8,7 @@ using By = Wisej.Qooxdoo.WebDriver.By;
 namespace Wisej.Qooxdoo.WebDriverDemo.DemoBrowser.Table
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class TableCellEditor : IntegrationTest
     {
         [OneTimeSetUp]
@@ -32,7 +33,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.DemoBrowser.Table
             Driver.Close();
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void textField()
         [Test]
         public virtual void TextField()
@@ -58,7 +58,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.DemoBrowser.Table
             Assert.Equals(newText, userNameCell.Text);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void comboBox()
         [Test]
         public virtual void ComboBox()
@@ -89,7 +88,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.DemoBrowser.Table
             Assert.Equals(newText, roleCell.Text);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void checkBox()
         [Test]
         public virtual void CheckBox()

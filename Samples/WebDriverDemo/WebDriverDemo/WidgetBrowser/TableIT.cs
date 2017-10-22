@@ -12,6 +12,7 @@ using By = Wisej.Qooxdoo.WebDriver.By;
 namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class TableIT : WidgetBrowser
     {
         [OneTimeSetUp]
@@ -23,7 +24,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
 
         public Table Table;
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Before public void setUp()
         [SetUp]
         public virtual void SetUp()
@@ -59,7 +59,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
             }
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void ScrollToRow()
         [Test]
         public virtual void ScrollToRow()
@@ -79,7 +78,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
             Assert.Equals("3", firstCell.Text);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void GetCellByText()
         [Test]
         public virtual void GetCellByText()
@@ -106,9 +104,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
             Assert.Equals(32, (int) (long) range1["maxIndex"]);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void editCell() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void EditCell()
         {
@@ -149,7 +145,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
             Assert.Equals(newText, dateCell.Text);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void columnMenu()
         [Test]
         public virtual void ColumnMenu()
@@ -166,7 +161,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
             colMenuButton.SelectItem("A number");
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void sortByColumn()
         [Test]
         public virtual void SortByColumn()

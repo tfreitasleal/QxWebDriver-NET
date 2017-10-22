@@ -7,6 +7,7 @@ using By = OpenQA.Selenium.By;
 namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteWidgetBrowser
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class Calendar : WebsiteWidgetBrowser
     {
         protected internal string[] monthNamesDefault =
@@ -32,18 +33,14 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteWidgetBrowser
             month = date.Month;
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void calendarDefault() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void CalendarDefault()
         {
             TestCalendar("calendar-default");
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void calendarCustom() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void CalendarCustom()
         {

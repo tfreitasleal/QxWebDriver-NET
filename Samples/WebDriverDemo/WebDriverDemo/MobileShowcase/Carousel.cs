@@ -8,6 +8,7 @@ using Wisej.Qooxdoo.WebDriver.UI.Mobile.Core;
 namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class Carousel : Mobileshowcase
     {
         [OneTimeSetUp]
@@ -18,9 +19,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
             VerifyTitle("Carousel");
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void carousel() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public void TestCarousel()
         {

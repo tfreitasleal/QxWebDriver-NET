@@ -8,6 +8,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
     //    import static NUnit.Framework.Assert.False;
 
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class ToolbarMenuIT : WidgetBrowser
     {
         [OneTimeSetUp]
@@ -17,7 +18,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
             SelectTab("Toolbar.*");
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void menu()
         [Test]
         public virtual void Menu()
@@ -31,7 +31,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
             Assert.False(selectedBefore == selectedAfter);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void splitButton()
         [Test]
         public virtual void SplitButton()
@@ -43,7 +42,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
             splitMenu.SelectItem(0);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void menuButton()
         [Test]
         public virtual void MenuButton()

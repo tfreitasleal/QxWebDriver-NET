@@ -9,6 +9,7 @@ using By = Wisej.Qooxdoo.WebDriver.By;
 namespace Wisej.Qooxdoo.WebDriverDemo.DesktopApiViewer
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class Search : DesktopApiViewer
     {
         public virtual void SearchApi()

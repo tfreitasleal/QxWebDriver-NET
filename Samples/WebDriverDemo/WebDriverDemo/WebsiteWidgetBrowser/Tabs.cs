@@ -5,6 +5,7 @@ using OpenQA.Selenium;
 namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteWidgetBrowser
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class Tabs : WebsiteWidgetBrowser
     {
         [OneTimeSetUp]
@@ -29,9 +30,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteWidgetBrowser
             return null;
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void tabs() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void SetTabs()
         {

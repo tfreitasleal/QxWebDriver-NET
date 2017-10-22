@@ -7,6 +7,7 @@ using WidgetImpl = Wisej.Qooxdoo.WebDriver.UI.Mobile.Core.WidgetImpl;
 namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class FormElements : Mobileshowcase
     {
         [OneTimeSetUp]
@@ -17,7 +18,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
             VerifyTitle("Form");
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void textInput()
         [Test]
         public virtual void TextInput()
@@ -28,7 +28,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
             Assert.Equals("Affe", input.GetPropertyValue("value"));
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void checkBox()
         [Test]
         public virtual void CheckBox()
@@ -42,9 +41,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
             Assert.True((bool?) checkBox.GetPropertyValue("value"));
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void radioButton() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void RadioButton()
         {
@@ -58,9 +55,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
             Assert.True((bool?) radioButton.GetPropertyValue("value"));
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void selectBox() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void SelectBox()
         {
@@ -84,9 +79,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
             Assert.Equals("Twitter", selectBox.GetPropertyValue("value"));
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void slider() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void Slider()
         {

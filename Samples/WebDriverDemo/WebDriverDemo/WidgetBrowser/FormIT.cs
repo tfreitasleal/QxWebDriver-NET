@@ -8,6 +8,7 @@ using By = Wisej.Qooxdoo.WebDriver.By;
 namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class FormIT : WidgetBrowser
     {
         [OneTimeSetUp]
@@ -17,7 +18,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
             SelectTab("Form");
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void textField()
         [Test]
         public virtual void TextField()
@@ -30,7 +30,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
             Assert.Equals(text, value);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void passwordField()
         [Test]
         public virtual void PasswordField()
@@ -43,7 +42,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
             Assert.Equals(text, value);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void textArea()
         [Test]
         public virtual void TextArea()
@@ -63,7 +61,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
             Assert.True(pattern.IsMatch(value));
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void comboBox()
         [Test]
         public virtual void ComboBox()
@@ -85,9 +82,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
             Assert.Equals(text, value);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void virtualComboBox() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void VirtualComboBox()
         {
@@ -112,7 +107,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
             Assert.Equals(text, typedValue);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void dateField()
         [Test]
         public virtual void DateField()
@@ -134,7 +128,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
             Assert.True(pattern.IsMatch(value));
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void selectBox()
         [Test]
         public virtual void SelectBox()
@@ -149,7 +142,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
             Assert.Equals(item, selectedLabel);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void virtualSelectBox()
         [Test]
         public virtual void VirtualSelectBox()
@@ -163,7 +155,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
             Assert.Equals(item, selected);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void list()
         [Test]
         public virtual void List()
@@ -178,7 +169,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
             Assert.Equals(item, selectedLabel);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void radioButtonGroup()
         [Test]
         public virtual void RadioButtonGroup()
@@ -189,7 +179,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
             Assert.True(radioButton.Selected);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void buttons()
         [Test]
         public virtual void Buttons()

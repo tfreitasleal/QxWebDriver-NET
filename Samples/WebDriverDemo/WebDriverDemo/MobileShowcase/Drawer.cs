@@ -5,6 +5,7 @@ using Wisej.Qooxdoo.WebDriver.UI;
 namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class Drawer : Mobileshowcase
     {
         [OneTimeSetUp]
@@ -15,9 +16,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
             VerifyTitle("Drawer");
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void drawer() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public void TestDrawer()
         {

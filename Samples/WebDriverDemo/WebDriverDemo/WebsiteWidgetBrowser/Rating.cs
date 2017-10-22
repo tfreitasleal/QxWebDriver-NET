@@ -6,6 +6,7 @@ using By = OpenQA.Selenium.By;
 namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteWidgetBrowser
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class Rating : WebsiteWidgetBrowser
     {
         [OneTimeSetUp]
@@ -15,7 +16,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteWidgetBrowser
             SelectTab("Rating");
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void ratingDefault()
         [Test]
         public virtual void RatingDefault()
@@ -24,7 +24,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteWidgetBrowser
             TesteRating(rating);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void ratingLength()
         [Test]
         public virtual void RatingLength()
@@ -33,7 +32,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteWidgetBrowser
             TesteRating(rating);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void ratingNote()
         [Test]
         public virtual void RatingNote()
@@ -42,7 +40,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteWidgetBrowser
             TesteRating(rating);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void ratingHeart()
         [Test]
         public virtual void RatingHeart()

@@ -6,6 +6,7 @@ using By = Wisej.Qooxdoo.WebDriver.By;
 namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class ListIT : WidgetBrowser
     {
         [OneTimeSetUp]
@@ -15,7 +16,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
             SelectTab("List");
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void list()
         [Test]
         public virtual void List()
@@ -37,7 +37,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
             Assert.Equals(label1, selectedLabel);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void virtualList()
         [Test]
         public virtual void VirtualList()

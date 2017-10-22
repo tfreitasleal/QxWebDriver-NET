@@ -5,6 +5,7 @@ using By = Wisej.Qooxdoo.WebDriver.By;
 namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteWidgetBrowser
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class DatePicker : WebsiteWidgetBrowser
     {
         [OneTimeSetUp]
@@ -14,7 +15,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteWidgetBrowser
             SelectTab("Date Picker");
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void openClose()
         [Test]
         public virtual void OpenClose()

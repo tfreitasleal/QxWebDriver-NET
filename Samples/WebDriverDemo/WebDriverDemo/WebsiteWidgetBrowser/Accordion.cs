@@ -9,6 +9,7 @@ using By = Wisej.Qooxdoo.WebDriver.By;
 namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteWidgetBrowser
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class Accordion : WebsiteWidgetBrowser
     {
         [OneTimeSetUp]
@@ -34,9 +35,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteWidgetBrowser
             return null;
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void accordion() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void TestAccordion()
         {

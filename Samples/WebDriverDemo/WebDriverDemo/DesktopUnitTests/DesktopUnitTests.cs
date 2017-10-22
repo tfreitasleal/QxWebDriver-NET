@@ -15,6 +15,7 @@ using ParseException = org.json.simple.parser.ParseException;*/
 namespace Wisej.Qooxdoo.WebDriverDemo.DesktopUnitTests
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class DesktopUnitTests : IntegrationTest
     {
         public static string getTestSuiteState = "return qx.core.Init.getApplication().runner.getTestSuiteState();";
@@ -92,7 +93,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.DesktopUnitTests
             Console.WriteLine("Test packages: " + testPackages);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void unitTests()
         [Test]
         public virtual void UnitTests()

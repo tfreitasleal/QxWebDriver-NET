@@ -11,7 +11,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo
     {
         public static QxWebDriver Driver;
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Rule public OnFailed ruleExample = new OnFailed();
         //[Rule]
         public OnFailed ruleExample = new OnFailed();

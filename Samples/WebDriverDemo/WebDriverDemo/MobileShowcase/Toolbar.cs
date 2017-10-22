@@ -6,6 +6,7 @@ using Wisej.Qooxdoo.WebDriver.UI;
 namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class Toolbar : Mobileshowcase
     {
         [OneTimeSetUp]
@@ -16,7 +17,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
             VerifyTitle("Toolbar");
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void search()
         [Test]
         public virtual void Search()
@@ -30,7 +30,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
             Assert.False(popupButton.Displayed);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void back()
         [Test]
         public virtual void Back()
@@ -44,9 +43,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
             Assert.False(popupButton.Displayed);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void camera() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void Camera()
         {
@@ -61,7 +58,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
             Assert.False(popup.Displayed);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void delete()
         [Test]
         public virtual void Delete()

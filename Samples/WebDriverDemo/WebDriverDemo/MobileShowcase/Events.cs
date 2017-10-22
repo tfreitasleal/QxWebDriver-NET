@@ -8,6 +8,7 @@ using WidgetImpl = Wisej.Qooxdoo.WebDriver.UI.Mobile.Core.WidgetImpl;
 namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class Events : Mobileshowcase
     {
         protected internal static string GetEvents = "return [].map.call(qxWeb('.pointers .event'), function(el) { return el.innerHTML })";
@@ -22,18 +23,14 @@ namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
             VerifyTitle("Events");
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Before public void init() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [SetUp]
         public virtual void Init()
         {
             Thread.Sleep(250);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void swipe() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void Swipe()
         {
@@ -57,9 +54,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
             Assert.Equals("swipe", eventNames[3]);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void tap() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void Tap()
         {
@@ -77,9 +72,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
             Assert.Equals("tap", eventNames[2]);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void longtap() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void Longtap()
         {

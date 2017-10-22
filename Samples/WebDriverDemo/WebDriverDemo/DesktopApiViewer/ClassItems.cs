@@ -7,6 +7,7 @@ using By = Wisej.Qooxdoo.WebDriver.By;
 namespace Wisej.Qooxdoo.WebDriverDemo.DesktopApiViewer
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class ClassItems : DesktopApiViewer
     {
         [OneTimeSetUp]
@@ -110,7 +111,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.DesktopApiViewer
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void classItems()
         [Test]
         public virtual void ClassItemsTest()

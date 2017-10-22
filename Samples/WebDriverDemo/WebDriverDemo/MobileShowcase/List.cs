@@ -8,6 +8,7 @@ using ISelectable = Wisej.Qooxdoo.WebDriver.UI.Mobile.ISelectable;
 namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class List : Mobileshowcase
     {
         [OneTimeSetUp]
@@ -19,7 +20,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
             VerifyTitle(title);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void SelectItem()
         [Test]
         public virtual void SelectItem()
@@ -43,9 +43,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
             }
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void removeItem() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void RemoveItem()
         {

@@ -8,6 +8,7 @@ using By = Wisej.Qooxdoo.WebDriver.By;
 namespace Wisej.Qooxdoo.WebDriverDemo.DesktopApiViewer
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class Tabs : DesktopApiViewer
     {
         [OneTimeSetUp]
@@ -34,7 +35,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.DesktopApiViewer
             }
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void tabs()
         [Test]
         public virtual void TestTabs()

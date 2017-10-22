@@ -10,6 +10,7 @@ using By = Wisej.Qooxdoo.WebDriver.By;
 namespace Wisej.Qooxdoo.WebDriverDemo.Playground
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class PlaygroundIT : IntegrationTest
     {
         public static string qxVersion = null;
@@ -28,9 +29,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.Playground
         /// Check if syntax highlighting is displayed before tests starting
         /// and turned it on
         /// </summary>
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Before public void setUpBeforeTest() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [SetUp]
         public virtual void SetUpBeforeTest()
         {
@@ -84,9 +83,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.Playground
         /// it is correct, if the right play area exists
         /// and ace content text is not the same as before clicking a sample
         /// </summary>
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void loadSamples() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void LoadSamples()
         {
@@ -141,9 +138,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.Playground
         /// <summary>
         /// checks if the toggle button 'Syntax Highlighting' works correctly
         /// </summary>
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void toggleSyntaxHighlighting() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void ToggleSyntaxHighlighting()
         {
@@ -184,7 +179,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.Playground
          * test to Click 'Log' button, clear log content
          * and check if the content has been cleared
          */
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void checkLogClearButton()
         [Test]
         public virtual void CheckLogClearButton()
@@ -205,9 +199,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.Playground
         /// test to run code which has been changed without saving it
         ///
         /// </summary>
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void runningChangedCode() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void RunningChangedCode()
         {
@@ -238,7 +230,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.Playground
         /// test to check if saving an example works correctly
         /// the code has not been modified before
         /// </summary>
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void saveExample()
         [Test]
         public virtual void SaveExample()
@@ -254,7 +245,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.Playground
         /// <summary>
         /// test to check 'Saving As' button with modified code
         /// </summary>
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void saveExampleAs()
         [Test]
         public virtual void SaveExampleAs()
@@ -283,9 +273,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.Playground
         /// <summary>
         /// test to delete a saved user sample
         /// </summary>
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void deleteUserScript() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void DeleteUserScript()
         {
@@ -311,7 +299,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.Playground
         /// <summary>
         /// test to rename a saved user sample
         /// </summary>
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void renameSample()
         [Test]
         public virtual void RenameSample()
@@ -340,9 +327,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.Playground
         /// test to reload website after user script has been saved
         /// the saved sample should be found after reload </summary>
         /// <exception cref="ThreadInterruptedException">  </exception>
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void userSamplesReload() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void UserSamplesReload()
         {
@@ -364,7 +349,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.Playground
         /// test to check if an alert is displayed after discarding a modified code
         /// by switching to another sample
         /// </summary>
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void discardCode()
         [Test]
         public virtual void DiscardCode()
@@ -389,9 +373,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.Playground
         /// <summary>
         /// test to check URL after clicking 'API Viewer' button </summary>
         /// <exception cref="ThreadInterruptedException">  </exception>
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void apiViewerLink() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void ApiViewerLink()
         {
@@ -403,9 +385,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.Playground
         /// <summary>
         /// test to check URL after clicking 'Manual' button
         /// </summary>
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void manualLink() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void ManualLink()
         {
@@ -417,9 +397,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.Playground
         /// <summary>
         /// test to check URL after clicking 'Demo Browser' button
         /// </summary>
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void demoBrowserLink() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void DemoBrowserLink()
         {
@@ -431,9 +409,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.Playground
         /// <summary>
         /// test to check URL after clicking 'Shorten URL' button
         /// </summary>
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void shortenURLLink() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void ShortenUrlLink()
         {
@@ -445,9 +421,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.Playground
         /// <summary>
         /// test to check URL after clicking the 'CodePen' link in the 'Website'tab.
         /// </summary>
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void openCodePenLink() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void OpenCodePenLink()
         {
@@ -462,9 +436,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.Playground
         /// <summary>
         /// test to check URL after modified code is running
         /// </summary>
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void checkChangedCodeURL() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void CheckChangedCodeUrl()
         {
@@ -491,9 +463,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.Playground
         }
 
         // reload after every test
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @After public void tearDownAfterTest() throws Exception
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [TearDown]
         public virtual void TearDownAfterTest()
         {

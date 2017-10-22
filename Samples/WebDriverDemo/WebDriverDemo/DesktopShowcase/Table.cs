@@ -7,6 +7,7 @@ using By = Wisej.Qooxdoo.WebDriver.By;
 namespace Wisej.Qooxdoo.WebDriverDemo.DesktopShowcase
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class Table : DesktopShowcase
     {
         public By tableLocator =
@@ -15,9 +16,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.DesktopShowcase
         //JAVA TO C# CONVERTER NOTE: Fields cannot have the same name as methods:
         public WebDriver.UI.Table.Table fieldTable = null;
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Before public void setUp() throws Exception
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [SetUp]
         public virtual void SetUp()
         {
@@ -60,9 +59,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.DesktopShowcase
             new WebDriverWait(Driver, TimeSpan.FromSeconds(20)).Until(TableDataLoaded());
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void table() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void TestTable()
         {

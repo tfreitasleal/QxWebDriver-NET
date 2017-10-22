@@ -5,6 +5,7 @@ using By = Wisej.Qooxdoo.WebDriver.By;
 namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class MiscIT : WidgetBrowser
     {
         [OneTimeSetUp]
@@ -14,7 +15,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
             SelectTab("Misc");
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void dragDrop()
         [Test]
         public virtual void DragDrop()

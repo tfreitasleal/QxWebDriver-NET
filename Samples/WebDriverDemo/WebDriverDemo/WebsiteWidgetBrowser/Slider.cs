@@ -6,6 +6,7 @@ using OpenQA.Selenium.Interactions;
 namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteWidgetBrowser
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class Slider : WebsiteWidgetBrowser
     {
         [OneTimeSetUp]
@@ -22,9 +23,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteWidgetBrowser
             mouseAction.Perform();
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void slider() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void SliderTest()
         {

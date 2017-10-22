@@ -11,7 +11,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo
 {
     public class Configuration
     {
-        protected internal static DesiredCapabilities GetCapabilities(string browserName)
+        /*protected internal static DesiredCapabilities GetCapabilities(string browserName)
         {
             DesiredCapabilities capabilities = null;
 
@@ -35,7 +35,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo
             {
                 capabilities = DesiredCapabilities.Android();
             }
-            /*else if (browserName.Equals("ipad"))
+            else if (browserName.Equals("ipad"))
             {
                 capabilities = DesiredCapabilities.IPad()();
             }
@@ -49,13 +49,13 @@ namespace Wisej.Qooxdoo.WebDriverDemo
             }
             else
             {
-                capabilities = DesiredCapabilities.Firefox()();
-            }*/
+                capabilities = DesiredCapabilities.Firefox();
+            }
 
             return capabilities;
         }
 
-        /*protected internal static Platform GetPlatform(string platformName)
+        protected internal static Platform GetPlatform(string platformName)
         {
             Platform platform = null;
             if (platformName.Equals("linux"))
@@ -100,7 +100,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo
         {
             get
             {
-                IWebDriver webDriver;
+                /*IWebDriver webDriver;
                 string hubUrl = SystemProperties.GetProperty("org.qooxdoo.demo.huburl");
                 string browserName = SystemProperties.GetProperty("org.qooxdoo.demo.browsername", "firefox");
                 string browserVersion = SystemProperties.GetProperty("org.qooxdoo.demo.browserversion");
@@ -116,7 +116,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo
                     {
                         DesiredCapabilities caps = SelendroidCapabilities.android();
                         webDriver = new SelendroidDriver(caps);
-                    }*/
+                    }#1#
                     else
                     {
                         webDriver = new FirefoxDriver();
@@ -133,8 +133,8 @@ namespace Wisej.Qooxdoo.WebDriverDemo
                     browser.Platform = Platform.CurrentPlatform;
                     //browser.Platform = GetPlatform(platformName);
                     webDriver = new RemoteWebDriver(new Uri(hubUrl), browser);
-                }
-                return webDriver;
+                }*/
+                return new ChromeDriver();
             }
         }
 

@@ -6,6 +6,7 @@ using Wisej.Qooxdoo.WebDriver.UI;
 namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class DataBinding : Mobileshowcase
     {
         [OneTimeSetUp]
@@ -18,9 +19,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
             VerifyTitle("Data Binding");
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void slider() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void Slider()
         {
@@ -39,9 +38,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
             Assert.True(valueAfter > valueBefore);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void time() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void Time()
         {

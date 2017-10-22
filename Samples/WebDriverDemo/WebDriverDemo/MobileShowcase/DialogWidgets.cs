@@ -8,6 +8,7 @@ using ISelectable = Wisej.Qooxdoo.WebDriver.UI.Mobile.ISelectable;
 namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class DialogWidgets : Mobileshowcase
     {
         [OneTimeSetUp]
@@ -19,9 +20,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
             VerifyTitle(title);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void popup() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void Popup()
         {
@@ -39,9 +38,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
             Assert.False(closeButton.Displayed);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void menu() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void Menu()
         {
@@ -59,9 +56,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
             Assert.False(list.Displayed);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void busyIndicator() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void BusyIndicator()
         {
@@ -78,9 +73,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
             Assert.False(busyPopup.Displayed);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void anchorPopup() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void AnchorPopup()
         {
@@ -98,9 +91,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
             Assert.False(yesButton.Displayed);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void anchorMenu() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void AnchorMenu()
         {
@@ -126,9 +117,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
             }
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void picker() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void Picker()
         {

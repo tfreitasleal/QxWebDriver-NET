@@ -7,6 +7,7 @@ using Wisej.Qooxdoo.WebDriver.Resources;
 namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteUnitTests
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class WebsiteUnitTests : DesktopUnitTests.DesktopUnitTests
     {
         [OneTimeSetUp]

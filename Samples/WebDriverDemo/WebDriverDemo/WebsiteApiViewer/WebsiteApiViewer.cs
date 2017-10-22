@@ -9,6 +9,7 @@ using OpenQA.Selenium;
 namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteApiViewer
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class WebsiteApiViewer : IntegrationTest
     {
         public static IWebDriver webDriver;
@@ -28,7 +29,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteApiViewer
             Thread.Sleep(4000);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Before public void waitForList()
         [SetUp]
         public virtual void WaitForList()
@@ -39,7 +39,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteApiViewer
             webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void warning()
         [Test]
         public virtual void Warning()
@@ -51,9 +50,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteApiViewer
             }
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void syntaxHighlighting() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void SyntaxHighlighting()
         {
@@ -88,9 +85,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteApiViewer
             }
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void listNavigation() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void ListNavigation()
         {
@@ -142,9 +137,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteApiViewer
             Assert.Equals(0, catItem.Size.Height);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void listFilter() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void ListFilter()
         {
@@ -186,7 +179,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteApiViewer
             }
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void parameterLinks()
         [Test]
         public virtual void ParameterLinks()
@@ -203,9 +195,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteApiViewer
             }
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void returnTypeLinks() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void ReturnTypeLinks()
         {
@@ -242,9 +232,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteApiViewer
             Assert.True(returnLink2.GetAttribute("href").EndsWith("#Xhr"));
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void editSample() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void EditSample()
         {

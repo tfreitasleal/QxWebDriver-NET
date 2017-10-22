@@ -6,9 +6,9 @@ using Wisej.Qooxdoo.WebDriver.UI.Tree.Core;
 namespace Wisej.Qooxdoo.WebDriverDemo.DesktopApiViewer
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class Tree : DesktopApiViewer
     {
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void tree()
         [Test]
         public virtual void TestTree()

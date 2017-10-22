@@ -15,6 +15,7 @@ using List = Wisej.Qooxdoo.WebDriver.UI.Form.List;
 namespace Wisej.Qooxdoo.WebDriverDemo.FeedReaderDesktop
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class FeedReader : IntegrationTest
     {
         [OneTimeSetUp]
@@ -33,7 +34,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.FeedReaderDesktop
 
         public static string addFeedLoc = "feedreader.view.desktop.AddFeedWindow";
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Before public void waitUntilFeedsLoaded()
         [SetUp]
         public virtual void WaitUntilFeedsLoaded()
@@ -108,7 +108,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.FeedReaderDesktop
             };
         }*/
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void feedsLoaded()
         [Test]
         public virtual void FeedsLoaded()
@@ -179,9 +178,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.FeedReaderDesktop
             Assert.AreNotEqual(0, html.Length);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void changeLocale() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void ChangeLocale()
         {
@@ -224,9 +221,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.FeedReaderDesktop
             okButton.Click();
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void addFeed() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void AddFeed()
         {

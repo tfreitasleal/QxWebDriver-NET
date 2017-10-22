@@ -7,6 +7,7 @@ using Wisej.Qooxdoo.WebDriver.UI.Tree.Core;
 namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class TreeIT : WidgetBrowser
     {
         [OneTimeSetUp]
@@ -66,7 +67,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
             }
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void tree()
         [Test]
         public virtual void Tree()
@@ -74,7 +74,6 @@ namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
             TreeTestCommon("*/qx.ui.tree.Tree");
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void virtualTree()
         [Test]
         public virtual void VirtualTree()

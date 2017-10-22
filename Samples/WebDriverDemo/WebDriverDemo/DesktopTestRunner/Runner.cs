@@ -8,9 +8,9 @@ using Scrollable = Wisej.Qooxdoo.WebDriver.UI.IScrollable;
 namespace Wisej.Qooxdoo.WebDriverDemo.DesktopTestRunner
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.None)]
     public class Runner : IntegrationTest
     {
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void testAppLoads()
         [Test]
         public virtual void TestAppLoads()
@@ -19,9 +19,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.DesktopTestRunner
             Assert.True(treeItem.Text.Equals("qx"));
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void selectTests() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void SelectTests()
         {
@@ -57,9 +55,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.DesktopTestRunner
             Assert.True(testElementAttributes.Displayed);
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void runTests() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void RunTests()
         {
@@ -94,9 +90,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.DesktopTestRunner
             Assert.True(results3.Text.Equals("qx.test.bom.Basic:testElementAttributes"));
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void settingLogLevelWorks() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void SettingLogLevelWorks()
         {
@@ -133,9 +127,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.DesktopTestRunner
             Assert.True(logContent.Text.Equals(""));
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void reload() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void Reload()
         {
@@ -165,9 +157,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.DesktopTestRunner
             Assert.True(results.Text.Equals(""));
         }
 
-        //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @Test public void autoReload() throws InterruptedException
-        //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         [Test]
         public virtual void AutoReload()
         {
