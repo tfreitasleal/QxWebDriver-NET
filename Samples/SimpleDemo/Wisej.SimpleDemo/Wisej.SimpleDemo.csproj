@@ -56,11 +56,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ListWindow.cs">
+    <Compile Include="ButtonsWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListWindow.Designer.cs">
-      <DependentUpon>ListWindow.cs</DependentUpon>
+    <Compile Include="ButtonsWindow.Designer.cs">
+      <DependentUpon>ButtonsWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="MainPage.cs">
       <SubType>Form</SubType>
@@ -91,8 +91,8 @@
     <Reference Include="Wisej.Web" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ListWindow.resx">
-      <DependentUpon>ListWindow.cs</DependentUpon>
+    <EmbeddedResource Include="ButtonsWindow.resx">
+      <DependentUpon>ButtonsWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainPage.resx">
       <DependentUpon>MainPage.cs</DependentUpon>

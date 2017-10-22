@@ -38,7 +38,7 @@
             this.openWindow.Name = "openWindow";
             this.openWindow.Size = new System.Drawing.Size(180, 40);
             this.openWindow.TabIndex = 0;
-            this.openWindow.Text = "Open List Window";
+            this.openWindow.Text = "Open Buttons Window";
             this.openWindow.Click += new System.EventHandler(this.openWindow_Click);
             // 
             // sayGoodBye

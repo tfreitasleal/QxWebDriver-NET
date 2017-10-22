@@ -12,8 +12,8 @@ namespace Wisej.SimpleDemo
 
         private void openWindow_Click(object sender, EventArgs e)
         {
-            var listWindow = new ListWindow();
-            listWindow.ShowDialog();
+            var buttonsWindow = new ButtonsWindow();
+            buttonsWindow.ShowDialog();
         }
 
         private void sayGoodBye_Click(object sender, EventArgs e)

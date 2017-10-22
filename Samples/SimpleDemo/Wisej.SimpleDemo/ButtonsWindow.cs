@@ -3,9 +3,9 @@ using Wisej.Web;
 
 namespace Wisej.SimpleDemo
 {
-    public partial class ListWindow : Form
+    public partial class ButtonsWindow : Form
     {
-        public ListWindow()
+        public ButtonsWindow()
         {
             InitializeComponent();
         }

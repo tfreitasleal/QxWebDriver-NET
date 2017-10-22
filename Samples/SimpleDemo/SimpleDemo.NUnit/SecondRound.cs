@@ -23,13 +23,13 @@ namespace SimpleDemo.NUnit
                 openButton.Click();
             }
 
-            var widget = driver.WaitForWidget(OpenQA.Selenium.By.Name("ListWindow"), 10);
+            var widget = driver.WaitForWidget(OpenQA.Selenium.By.Name("ButtonsWindow"), 10);
             Assert.IsNotNull(widget);
         }
 
         public static void S02_FirstWindow_openWindow_Click(QxWebDriver driver)
         {
-            OpenQA.Selenium.By buttonBy = By.Qxh(By.Namespace("ListWindow.openWindow"));
+            OpenQA.Selenium.By buttonBy = By.Qxh(By.Namespace("ButtonsWindow.openWindow"));
             Assert.IsNotNull(buttonBy);
             IWidget openButton = driver.WaitForWidget(buttonBy, 10);
             Assert.IsNotNull(openButton);
@@ -67,9 +67,9 @@ namespace SimpleDemo.NUnit
 
             Thread.Sleep(Wait.Duration);
 
-            OpenQA.Selenium.By firstWindowsBy = By.Qxh(By.Namespace("ListWindow"));
-            IWidget listWindow = driver.WaitForWidget(firstWindowsBy, 10);
-            IWidget firstWindowCloseButton = listWindow.GetChildControl("close-button");
+            OpenQA.Selenium.By firstWindowsBy = By.Qxh(By.Namespace("ButtonsWindow"));
+            IWidget buttonsWindow = driver.WaitForWidget(firstWindowsBy, 10);
+            IWidget firstWindowCloseButton = buttonsWindow.GetChildControl("close-button");
             firstWindowCloseButton.Click();
 
             Thread.Sleep(Wait.Duration);
