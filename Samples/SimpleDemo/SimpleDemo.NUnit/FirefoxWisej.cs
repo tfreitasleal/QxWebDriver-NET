@@ -45,65 +45,65 @@ namespace SimpleDemo.NUnit
 
         [Test]
         [Order(3060)]
-        public void F02_MainPage_openWindow_Click()
+        public void F02_MainPage_customerEditor_Click()
         {
-            FirstRound.F02_MainPage_openWindow_Click(Driver);
+            FirstRound.F02_MainPage_customerEditor_Click(Driver);
         }
 
         [Test]
         [Order(3070)]
-        public void F03_FirstWindow_openWindow_Click()
+        public void F03_ButtonsWindow_customerEditor_Click()
         {
-            FirstRound.F03_FirstWindow_openWindow_Click(Driver);
+            FirstRound.F03_ButtonsWindow_customerEditor_Click(Driver);
         }
 
         [Test]
         [Order(3080)]
-        public void F04_SecondWindow_openWindow_LabelContents()
+        public void F04_CustomerEditor_customerEditor_LabelContents()
         {
-            FirstRound.F04_SecondWindow_openWindow_LabelContents(Driver);
+            FirstRound.F04_CustomerEditor_customerEditor_LabelContents(Driver);
         }
 
         [Test]
         [Order(3090)]
-        public void F05_CloseWindows()
+        public void F05_CloseWindow()
         {
-            FirstRound.F05_CloseWindows(Driver);
+            FirstRound.F05_CloseWindow(Driver);
         }
 
         [Test]
         [Order(3100)]
-        public void S01_MainPage_openWindow_Click()
+        public void F06_MainPage_customerEditor_Click()
         {
-            SecondRound.S01_MainPage_openWindow_Click(Driver);
+            FirstRound.F06_MainPage_customerEditor_Click(Driver);
         }
 
         [Test]
         [Order(3110)]
-        public void S02_FirstWindow_openWindow_Click()
+        public void F07_ButtonsWindow_customerEditor_Click()
         {
-            SecondRound.S02_FirstWindow_openWindow_Click(Driver);
+            FirstRound.F07_ButtonsWindow_customerEditor_Click(Driver);
         }
 
         [Test]
         [Order(3120)]
-        public void S03_SecondWindow_openWindow_LabelContents()
+        public void F08_CustomerEditor_customerEditor_LabelContents()
         {
-            SecondRound.S03_SecondWindow_openWindow_LabelContents(Driver);
+            FirstRound.F08_CustomerEditor_customerEditor_LabelContents(Driver);
         }
 
         [Test]
         [Order(3130)]
-        public void S04_CloseWindows()
+        public void F09_CloseWindow()
         {
-            SecondRound.S04_CloseWindows(Driver);
+            FirstRound.F09_CloseWindow(Driver);
         }
 
         [Test]
         [Order(3140)]
-        public void S05_AskQuitYes()
+        public void F10_AskQuitYes()
         {
-            SecondRound.S05_AskQuitYes(Driver);
+            FirstRound.F10_AskQuitYes(Driver);
         }
     }
 }

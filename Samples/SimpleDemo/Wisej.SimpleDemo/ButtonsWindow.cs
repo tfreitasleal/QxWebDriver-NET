@@ -10,10 +10,10 @@ namespace Wisej.SimpleDemo
             InitializeComponent();
         }
 
-        private void openWindow_Click(object sender, EventArgs e)
+        private void customerEditor_Click(object sender, EventArgs e)
         {
-            var secondWindow = new SecondWindow();
-            secondWindow.ShowDialog(this);
+            var customerEditor = new CustomerEditor();
+            customerEditor.ShowDialog(this);
         }
     }
 }

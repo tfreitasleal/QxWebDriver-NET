@@ -72,7 +72,6 @@
     <Compile Include="FirstRound.cs" />
     <Compile Include="Opera.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SecondRound.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="Waiter.cs" />
   </ItemGroup>

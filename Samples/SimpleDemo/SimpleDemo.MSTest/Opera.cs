@@ -74,57 +74,57 @@ namespace SimpleDemo.MSTest
         }
 
         [TestMethod]
-        public void O_F02_MainPage_openWindow_Click()
+        public void O_F02_MainPage_customerEditor_Click()
         {
-            FirstRound.F02_MainPage_openWindow_Click(Driver);
+            FirstRound.F02_MainPage_customerEditor_Click(Driver);
         }
 
         [TestMethod]
-        public void O_F03_FirstWindow_openWindow_Click()
+        public void O_F03_ButtonsWindow_customerEditor_Click()
         {
-            FirstRound.F03_FirstWindow_openWindow_Click(Driver);
+            FirstRound.F03_ButtonsWindow_customerEditor_Click(Driver);
         }
 
         [TestMethod]
-        public void O_F04_SecondWindow_openWindow_LabelContents()
+        public void O_F04_CustomerEditor_customerEditor_LabelContents()
         {
-            FirstRound.F04_SecondWindow_openWindow_LabelContents(Driver);
+            FirstRound.F04_CustomerEditor_customerEditor_LabelContents(Driver);
         }
 
         [TestMethod]
-        public void O_F05_CloseWindows()
+        public void O_F05_CloseWindow()
         {
-            FirstRound.F05_CloseWindows(Driver);
+            FirstRound.F05_CloseWindow(Driver);
         }
 
         [TestMethod]
-        public void O_S01_MainPage_openWindow_Click()
+        public void O_F06_MainPage_customerEditor_Click()
         {
-            SecondRound.S01_MainPage_openWindow_Click(Driver);
+            FirstRound.F06_MainPage_customerEditor_Click(Driver);
         }
 
         [TestMethod]
-        public void O_S02_FirstWindow_openWindow_Click()
+        public void O_F07_ButtonsWindow_customerEditor_Click()
         {
-            SecondRound.S02_FirstWindow_openWindow_Click(Driver);
+            FirstRound.F07_ButtonsWindow_customerEditor_Click(Driver);
         }
 
         [TestMethod]
-        public void O_S03_SecondWindow_openWindow_LabelContents()
+        public void O_F08_CustomerEditor_customerEditor_LabelContents()
         {
-            SecondRound.S03_SecondWindow_openWindow_LabelContents(Driver);
+            FirstRound.F08_CustomerEditor_customerEditor_LabelContents(Driver);
         }
 
         [TestMethod]
-        public void O_S04_CloseWindows()
+        public void O_F09_CloseWindow()
         {
-            SecondRound.S04_CloseWindows(Driver);
+            FirstRound.F09_CloseWindow(Driver);
         }
 
         [TestMethod]
-        public void O_S05_AskQuitYes()
+        public void O_F10_AskQuitYes()
         {
-            SecondRound.S05_AskQuitYes(Driver);
+            FirstRound.F10_AskQuitYes(Driver);
         }
     }
 }

@@ -73,7 +73,6 @@
     <Compile Include="OperaApiViewer.cs" />
     <Compile Include="OperaWisej.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SecondRound.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="Waiter.cs" />
   </ItemGroup>

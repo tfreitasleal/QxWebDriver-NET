@@ -10,7 +10,7 @@ namespace Wisej.SimpleDemo
             InitializeComponent();
         }
 
-        private void openWindow_Click(object sender, EventArgs e)
+        private void customerEditor_Click(object sender, EventArgs e)
         {
             var buttonsWindow = new ButtonsWindow();
             buttonsWindow.ShowDialog();

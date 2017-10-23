@@ -1,6 +1,6 @@
 ﻿namespace Wisej.SimpleDemo
 {
-    partial class SecondWindow
+    partial class CustomerEditor
     {
         /// <summary>
         /// Required designer variable.
@@ -41,14 +41,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "End of windows";
             // 
-            // SecondWindow
+            // CustomerEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = Wisej.Web.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(612, 480);
             this.Controls.Add(this.label1);
-            this.Name = "SecondWindow";
-            this.Text = "Second Window";
+            this.Name = "CustomerEditor";
+            this.Text = "Customer Editor";
             this.ResumeLayout(false);
             this.PerformLayout();
 
