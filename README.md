@@ -117,7 +117,7 @@ _FindWidget_ uses a _IWidgetFactory_ to determine which widget class to instanti
 
 ## Browser Support
 
-In theory, QxWebDriver should work with any WebDriver that implements _IJavascriptExecutor_. In practice, FirefoxDriver, ChromeDriver and IEDriver (with IE9) all work well. The current OperaDriver frequently throws exceptions when trying to execute JavaScript, rendering it basically useless for the purpose of testing qx applications.
+In theory, QxWebDriver should work with any WebDriver that implements _IJavascriptExecutor_. Drivers for Chrome, Firefox, Edge and Opera do work all right although the Edge driver only supports one running instance. The current Internet Explorer driver is said to work but in practice is too hard to get it working. The time better spent improving the library.
 
 ## Project Status
 
