@@ -235,7 +235,7 @@ namespace Wisej.Qooxdoo.WebDriver
         /// Find the first matching <see cref="IWidget"/> using the given method.
         /// </summary>
         /// <param name="by">The locating mechanism to use.</param>
-        /// <param name="timeoutInSeconds"> time to wait for the widget </param>
+        /// <param name="timeoutInSeconds">The time to wait for the widget </param>
         /// <returns>The first matching element on the current page.</returns>
         /// <exception cref="NoSuchElementException"> If no matching widget was found before the timeout elapsed </exception>
         /// <seealso cref="By"/>

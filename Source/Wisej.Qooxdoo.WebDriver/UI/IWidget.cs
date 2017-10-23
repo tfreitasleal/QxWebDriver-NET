@@ -132,6 +132,15 @@ namespace Wisej.Qooxdoo.WebDriver.UI
         IWidget FindWidget(OpenQA.Selenium.By by);
 
         /// <summary>
+        /// Finds a widget relative to the current one by traversing the qooxdoo
+        /// widget hierarchy.
+        /// </summary>
+        /// <param name="by">The locating mechanism to use.</param>
+        /// <param name="timeoutInSeconds">The time to wait for the widget </param>
+        /// <returns>The found widget.</returns>
+        IWidget WaitForWidget(OpenQA.Selenium.By by, long timeoutInSeconds);
+
+        /// <summary>
         /// Drag and drop this widget onto another widget
         /// </summary>
         /// <param name="target">The target.</param>
