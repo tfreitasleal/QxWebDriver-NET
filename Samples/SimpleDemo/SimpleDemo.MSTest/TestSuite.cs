@@ -1,13 +1,13 @@
 ﻿using System.Threading;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Wisej.Qooxdoo.WebDriver;
 using Wisej.Qooxdoo.WebDriver.UI;
 using By = Wisej.Qooxdoo.WebDriver.By;
-using Wait = SimpleDemo.NUnit.Waiter;
+using Wait = SimpleDemo.MSTest.Waiter;
 
-namespace SimpleDemo.NUnit
+namespace SimpleDemo.MSTest
 {
-    public static class FirstRound
+    public static class TestSuite
     {
         public static void F01_AskQuitNo(QxWebDriver driver)
         {

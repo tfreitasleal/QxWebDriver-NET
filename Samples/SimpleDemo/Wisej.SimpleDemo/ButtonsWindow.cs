@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using Wisej.Web;
 
 namespace Wisej.SimpleDemo
@@ -12,8 +13,13 @@ namespace Wisej.SimpleDemo
 
         private void customerEditor_Click(object sender, EventArgs e)
         {
-            var customerEditor = new CustomerEditor();
-            customerEditor.ShowDialog(this);
+            var customerEditorWindow = new CustomerEditor();
+            customerEditorWindow.ShowDialog(this);
+        }
+
+        private void supplierEditor_Click(object sender, EventArgs e)
+        {
+            AlertBox.Show("Supplier Editor isn't implemented", MessageBoxIcon.Error, true, ContentAlignment.BottomRight, 10000);
         }
     }
 }

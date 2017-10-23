@@ -68,9 +68,11 @@
             this.supplierEditor.Size = new System.Drawing.Size(180, 40);
             this.supplierEditor.TabIndex = 1;
             this.supplierEditor.Text = "2 - Supplier Editor";
+            this.supplierEditor.Click += new System.EventHandler(this.supplierEditor_Click);
             // 
             // productEditor
             // 
+            this.productEditor.Enabled = false;
             this.productEditor.Location = new System.Drawing.Point(20, 220);
             this.productEditor.Margin = new Wisej.Web.Padding(20, 20, 10, 25);
             this.productEditor.Name = "productEditor";
@@ -80,6 +82,7 @@
             // 
             // orderEditor
             // 
+            this.orderEditor.Enabled = false;
             this.orderEditor.Location = new System.Drawing.Point(20, 305);
             this.orderEditor.Margin = new Wisej.Web.Padding(20, 20, 10, 25);
             this.orderEditor.Name = "orderEditor";
@@ -89,6 +92,7 @@
             // 
             // invoiceEditor
             // 
+            this.invoiceEditor.Enabled = false;
             this.invoiceEditor.Location = new System.Drawing.Point(20, 390);
             this.invoiceEditor.Margin = new Wisej.Web.Padding(20, 20, 10, 25);
             this.invoiceEditor.Name = "invoiceEditor";

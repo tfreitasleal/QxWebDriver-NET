@@ -69,7 +69,7 @@
     <Compile Include="EdgeWisej.cs" />
     <Compile Include="FirefoxWisej.cs" />
     <Compile Include="FirefoxApiViewer.cs" />
-    <Compile Include="FirstRound.cs" />
+    <Compile Include="TestSuite.cs" />
     <Compile Include="OperaApiViewer.cs" />
     <Compile Include="OperaWisej.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

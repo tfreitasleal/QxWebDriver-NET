@@ -41,70 +41,70 @@ namespace SimpleDemo.NUnit
         public void F01_AskQuitNo()
         {
             ExpectedConditions.TitleIs("Main Page");
-            FirstRound.F01_AskQuitNo(Driver);
+            TestSuite.F01_AskQuitNo(Driver);
         }
 
         [Test]
         [Order(1060)]
         public void F02_MainPage_customerEditor_Click()
         {
-            FirstRound.F02_MainPage_customerEditor_Click(Driver);
+            TestSuite.F02_MainPage_customerEditor_Click(Driver);
         }
 
         [Test]
         [Order(1070)]
         public void F03_ButtonsWindow_customerEditor_Click()
         {
-            FirstRound.F03_ButtonsWindow_customerEditor_Click(Driver);
+            TestSuite.F03_ButtonsWindow_customerEditor_Click(Driver);
         }
 
         [Test]
         [Order(1080)]
         public void F04_CustomerEditor_customerEditor_LabelContents()
         {
-            FirstRound.F04_CustomerEditor_customerEditor_LabelContents(Driver);
+            TestSuite.F04_CustomerEditor_customerEditor_LabelContents(Driver);
         }
 
         [Test]
         [Order(1090)]
         public void F05_CloseWindow()
         {
-            FirstRound.F05_CloseWindow(Driver);
+            TestSuite.F05_CloseWindow(Driver);
         }
 
         [Test]
         [Order(1100)]
         public void F06_MainPage_customerEditor_Click()
         {
-            FirstRound.F06_MainPage_customerEditor_Click(Driver);
+            TestSuite.F06_MainPage_customerEditor_Click(Driver);
         }
 
         [Test]
         [Order(1110)]
         public void F07_ButtonsWindow_customerEditor_Click()
         {
-            FirstRound.F07_ButtonsWindow_customerEditor_Click(Driver);
+            TestSuite.F07_ButtonsWindow_customerEditor_Click(Driver);
         }
 
         [Test]
         [Order(1120)]
         public void F08_CustomerEditor_customerEditor_LabelContents()
         {
-            FirstRound.F08_CustomerEditor_customerEditor_LabelContents(Driver);
+            TestSuite.F08_CustomerEditor_customerEditor_LabelContents(Driver);
         }
 
         [Test]
         [Order(1130)]
         public void F09_CloseWindow()
         {
-            FirstRound.F09_CloseWindow(Driver);
+            TestSuite.F09_CloseWindow(Driver);
         }
 
         [Test]
         [Order(1140)]
         public void F10_AskQuitYes()
         {
-            FirstRound.F10_AskQuitYes(Driver);
+            TestSuite.F10_AskQuitYes(Driver);
         }
     }
 }
