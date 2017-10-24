@@ -9,4 +9,4 @@ To make the Javascript debugger stop:
 3) debug your tests until Visual Studio hits the breakpoint and pauses
 3) go to the browser and open the developer tools
 
-This feature is supported on Firefox and Edge but no on Chrome or Opera.
+This feature is supported on Firefox and Edge but not on Chrome or Opera.
