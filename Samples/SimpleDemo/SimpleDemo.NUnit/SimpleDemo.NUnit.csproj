@@ -69,11 +69,13 @@
     <Compile Include="EdgeWisej.cs" />
     <Compile Include="FirefoxWisej.cs" />
     <Compile Include="FirefoxApiViewer.cs" />
-    <Compile Include="TestSuite.cs" />
+    <Compile Include="WisejTests.cs" />
     <Compile Include="OperaApiViewer.cs" />
     <Compile Include="OperaWisej.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils.AlertBox.cs" />
     <Compile Include="Utils.cs" />
+    <Compile Include="Utils.Widget.cs" />
     <Compile Include="Waiter.cs" />
   </ItemGroup>
   <ItemGroup>

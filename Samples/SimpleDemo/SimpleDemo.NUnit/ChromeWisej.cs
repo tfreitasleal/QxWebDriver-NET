@@ -41,70 +41,70 @@ namespace SimpleDemo.NUnit
         public void W01_AskQuitNo()
         {
             ExpectedConditions.TitleIs("Main Page");
-            TestSuite.W01_AskQuitNo(Driver);
+            WisejTests.W01_AskQuitNo(Driver);
         }
 
         [Test]
         [Order(1060)]
         public void W02_MainPage_customerEditor_Click()
         {
-            TestSuite.W02_MainPage_customerEditor_Click(Driver);
+            WisejTests.W02_MainPage_customerEditor_Click(Driver);
         }
 
         [Test]
         [Order(1070)]
         public void W03_ButtonsWindow_customerEditor_Click()
         {
-            TestSuite.W03_ButtonsWindow_customerEditor_Click(Driver);
+            WisejTests.W03_ButtonsWindow_customerEditor_Click(Driver);
         }
 
         [Test]
         [Order(1080)]
         public void W04_CustomerEditor_customerEditor_LabelContents()
         {
-            TestSuite.W04_CustomerEditor_customerEditor_LabelContents(Driver);
+            WisejTests.W04_CustomerEditor_customerEditor_LabelContents(Driver);
         }
 
         [Test]
         [Order(1090)]
         public void W05_CloseWindow()
         {
-            TestSuite.W05_CloseWindow(Driver);
+            WisejTests.W05_CloseWindow(Driver);
         }
 
         [Test]
         [Order(1100)]
         public void W06_MainPage_customerEditor_Click()
         {
-            TestSuite.W06_MainPage_customerEditor_Click(Driver);
+            WisejTests.W06_MainPage_customerEditor_Click(Driver);
         }
 
         [Test]
         [Order(1110)]
         public void W07_ButtonsWindow_supplierEditor_Click()
         {
-            TestSuite.W07_ButtonsWindow_supplierEditor_Click(Driver);
+            WisejTests.W07_ButtonsWindow_supplierEditor_Click(Driver);
         }
 
         [Test]
         [Order(1120)]
         public void W08_CustomerEditor_customerEditor_LabelContents()
         {
-            TestSuite.W08_CustomerEditor_customerEditor_LabelContents(Driver);
+            WisejTests.W08_CustomerEditor_customerEditor_LabelContents(Driver);
         }
 
         [Test]
         [Order(1130)]
         public void W09_CloseWindow()
         {
-            TestSuite.W09_CloseWindow(Driver);
+            WisejTests.W09_CloseWindow(Driver);
         }
 
         [Test]
         [Order(1140)]
         public void W10_AskQuitYes()
         {
-            TestSuite.W10_AskQuitYes(Driver);
+            WisejTests.W10_AskQuitYes(Driver);
         }
     }
 }

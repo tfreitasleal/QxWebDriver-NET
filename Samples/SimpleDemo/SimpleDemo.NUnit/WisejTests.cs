@@ -7,7 +7,7 @@ using Wait = SimpleDemo.NUnit.Waiter;
 
 namespace SimpleDemo.NUnit
 {
-    public static class TestSuite
+    public static class WisejTests
     {
         public static void W01_AskQuitNo(QxWebDriver driver)
         {

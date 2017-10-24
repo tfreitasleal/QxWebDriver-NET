@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "How to run", "How to run", "{6577A024-4E82-4834-AACD-6653C2D2B7E7}"
 	ProjectSection(SolutionItems) = preProject
 		How to run.txt = How to run.txt
+		SimpleDemo.MSTest\Readme.txt = SimpleDemo.MSTest\Readme.txt
 	EndProjectSection
 EndProject
 Global

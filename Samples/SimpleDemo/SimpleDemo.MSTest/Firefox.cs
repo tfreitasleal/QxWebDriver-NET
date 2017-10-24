@@ -65,61 +65,61 @@ namespace SimpleDemo.MSTest
             Driver.Url = "http://localhost:16461/Debug.html";
 #endif
             ExpectedConditions.TitleIs("Main Page");
-            TestSuite.W01_AskQuitNo(Driver);
+            WisejTests.W01_AskQuitNo(Driver);
         }
 
         [TestMethod]
         public void F_W02_MainPage_customerEditor_Click()
         {
-            TestSuite.W02_MainPage_customerEditor_Click(Driver);
+            WisejTests.W02_MainPage_customerEditor_Click(Driver);
         }
 
         [TestMethod]
         public void F_W03_ButtonsWindow_customerEditor_Click()
         {
-            TestSuite.W03_ButtonsWindow_customerEditor_Click(Driver);
+            WisejTests.W03_ButtonsWindow_customerEditor_Click(Driver);
         }
 
         [TestMethod]
         public void F_W04_CustomerEditor_customerEditor_LabelContents()
         {
-            TestSuite.W04_CustomerEditor_customerEditor_LabelContents(Driver);
+            WisejTests.W04_CustomerEditor_customerEditor_LabelContents(Driver);
         }
 
         [TestMethod]
         public void F_W05_CloseWindow()
         {
-            TestSuite.W05_CloseWindow(Driver);
+            WisejTests.W05_CloseWindow(Driver);
         }
 
         [TestMethod]
         public void F_W06_MainPage_customerEditor_Click()
         {
-            TestSuite.W06_MainPage_customerEditor_Click(Driver);
+            WisejTests.W06_MainPage_customerEditor_Click(Driver);
         }
 
         [TestMethod]
         public void F_W07_ButtonsWindow_customerEditor_Click()
         {
-            TestSuite.W07_ButtonsWindow_supplierEditor_Click(Driver);
+            WisejTests.W07_ButtonsWindow_supplierEditor_Click(Driver);
         }
 
         [TestMethod]
         public void F_W08_CustomerEditor_customerEditor_LabelContents()
         {
-            TestSuite.W08_CustomerEditor_customerEditor_LabelContents(Driver);
+            WisejTests.W08_CustomerEditor_customerEditor_LabelContents(Driver);
         }
 
         [TestMethod]
         public void F_W09_CloseWindow()
         {
-            TestSuite.W09_CloseWindow(Driver);
+            WisejTests.W09_CloseWindow(Driver);
         }
 
         [TestMethod]
         public void F_W10_AskQuitYes()
         {
-            TestSuite.W10_AskQuitYes(Driver);
+            WisejTests.W10_AskQuitYes(Driver);
         }
     }
 }

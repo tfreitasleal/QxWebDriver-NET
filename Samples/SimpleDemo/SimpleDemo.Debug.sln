@@ -17,6 +17,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDriver.Support.Debug", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleDemo.MSTest.Debug", "SimpleDemo.MSTest\SimpleDemo.MSTest.Debug.csproj", "{12C6E79F-F2AE-4793-BD5F-91AAB08E99B5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "- Readme", "- Readme", "{DAFC4BFA-F8B0-4881-9B17-2ACAEF961C60}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Source\Wisej.Qooxdoo.WebDriver\Readme.txt = ..\..\Source\Wisej.Qooxdoo.WebDriver\Readme.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
