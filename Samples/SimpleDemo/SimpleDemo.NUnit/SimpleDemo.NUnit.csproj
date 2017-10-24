@@ -55,8 +55,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Wisej.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=17bef35e11b84171, processorArchitecture=MSIL" />
-    <Reference Include="Wisej.Qooxdoo.WebDriver, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Qooxdoo-WebDriver.1.0.5\lib\net45\Wisej.Qooxdoo.WebDriver.dll</HintPath>
+    <Reference Include="Wisej.Qooxdoo.WebDriver, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Qooxdoo-WebDriver.1.0.6\lib\net45\Wisej.Qooxdoo.WebDriver.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Wisej.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=17bef35e11b84171, processorArchitecture=MSIL" />
