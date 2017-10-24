@@ -254,10 +254,8 @@ namespace Wisej.Qooxdoo.WebDriver.UI.Core
         /// Returns the child control if successful.
         /// </summary>
         /// <param name="childControlId">The child control identifier.</param>
-        /// <param name="timeoutInSeconds">in seconds</param>
-        /// <returns>
-        /// The child control widget
-        ///.</returns>
+        /// <param name="timeoutInSeconds">The time to wait for the child control in seconds.</param>
+        /// <returns>The matching child widget.</returns>
         public IWidget WaitForChildControl(String childControlId, int? timeoutInSeconds)
         {
             WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(timeoutInSeconds.GetValueOrDefault(5)));
@@ -524,13 +522,17 @@ namespace Wisej.Qooxdoo.WebDriver.UI.Core
         /// <exception cref="T:OpenQA.Selenium.NoSuchElementException">If no element matches the criteria.</exception>
         public virtual IWebElement FindElement(OpenQA.Selenium.By by)
         {
-            long implictWait;
-            if (Driver.ImplictWait.HasValue)
-                implictWait = Driver.ImplictWait.Value.Seconds;
-            else
-                implictWait = Driver.Manage().Timeouts().ImplicitWait.Seconds;
+            long implictWait = GetImplicitWait();
 
             return FindElement(by, implictWait);
+        }
+
+        private long GetImplicitWait()
+        {
+            if (Driver.ImplictWait.HasValue)
+                return Driver.ImplictWait.Value.Seconds;
+
+            return Driver.Manage().Timeouts().ImplicitWait.Seconds;
         }
 
         private IWebElement FindElement(OpenQA.Selenium.By by, long timeoutInSeconds)
@@ -556,8 +558,8 @@ namespace Wisej.Qooxdoo.WebDriver.UI.Core
         /// widget hierarchy.
         /// </summary>
         /// <param name="by">The locating mechanism to use.</param>
-        /// <param name="timeoutInSeconds">The time to wait for the widget </param>
-        /// <returns>The found widget.</returns>
+        /// <param name="timeoutInSeconds">The time to wait for the widget in seconds.</param>
+        /// <returns>The matching widget.</returns>
         public virtual IWidget WaitForWidget(OpenQA.Selenium.By by, long timeoutInSeconds)
         {
             IWebElement element = FindElement(by, timeoutInSeconds);

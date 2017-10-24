@@ -62,7 +62,7 @@ namespace Wisej.Qooxdoo.WebDriver.UI
         /// Returns the child control if successful.
         /// </summary>
         /// <param name="childControlId">The child control identifier.</param>
-        /// <param name="timeoutInSeconds">the timeout in seconds</param>
+        /// <param name="timeoutInSeconds">The time to wait for the child control in seconds.</param>
         /// <returns>The matching child widget.</returns>
         IWidget WaitForChildControl(string childControlId, int? timeoutInSeconds);
 
@@ -136,8 +136,8 @@ namespace Wisej.Qooxdoo.WebDriver.UI
         /// widget hierarchy.
         /// </summary>
         /// <param name="by">The locating mechanism to use.</param>
-        /// <param name="timeoutInSeconds">The time to wait for the widget </param>
-        /// <returns>The found widget.</returns>
+        /// <param name="timeoutInSeconds">The time to wait for the widget in seconds.</param>
+        /// <returns>The matching widget.</returns>
         IWidget WaitForWidget(OpenQA.Selenium.By by, long timeoutInSeconds);
 
         /// <summary>
