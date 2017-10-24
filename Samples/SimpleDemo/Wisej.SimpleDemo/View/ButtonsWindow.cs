@@ -2,7 +2,7 @@
 using System.Drawing;
 using Wisej.Web;
 
-namespace Wisej.SimpleDemo
+namespace Wisej.SimpleDemo.View
 {
     public partial class ButtonsWindow : Form
     {

@@ -1,4 +1,4 @@
-﻿namespace Wisej.SimpleDemo
+﻿namespace Wisej.SimpleDemo.View
 {
     partial class MainPage
     {
