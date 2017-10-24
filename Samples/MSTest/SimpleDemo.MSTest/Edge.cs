@@ -61,9 +61,9 @@ namespace SimpleDemo.MSTest
         public void E_W01_AskQuitNo()
         {
 #if !DEBUGJS
-            Driver.Url = "http://localhost:16461/Default.html";
+            Driver.Url = "http://localhost:7185/Default.html";
 #else
-            Driver.Url = "http://localhost:16461/Debug.html";
+            Driver.Url = "http://localhost:7185/Debug.html";
 #endif
             ExpectedConditions.TitleIs("Main Page");
             WisejTests.W01_AskQuitNo(Driver);

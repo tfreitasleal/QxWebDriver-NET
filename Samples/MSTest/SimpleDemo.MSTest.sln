@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wisej.SimpleDemo.MSTest", "Wisej.SimpleDemo.MSTest\Wisej.SimpleDemo.MSTest.csproj", "{86CCE7FF-A65C-4219-80BA-8AD8C2CFD0BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleDemo.MSTest", "SimpleDemo.MSTest\SimpleDemo.MSTest.csproj", "{12C6E79F-F2AE-4793-BD5F-91AAB08E99B5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{86CCE7FF-A65C-4219-80BA-8AD8C2CFD0BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86CCE7FF-A65C-4219-80BA-8AD8C2CFD0BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86CCE7FF-A65C-4219-80BA-8AD8C2CFD0BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86CCE7FF-A65C-4219-80BA-8AD8C2CFD0BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12C6E79F-F2AE-4793-BD5F-91AAB08E99B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12C6E79F-F2AE-4793-BD5F-91AAB08E99B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12C6E79F-F2AE-4793-BD5F-91AAB08E99B5}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{12C6E79F-F2AE-4793-BD5F-91AAB08E99B5}.Release|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
