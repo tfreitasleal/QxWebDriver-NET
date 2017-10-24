@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.customerEditor = new Wisej.Web.Button();
+            this.buttonsWindow = new Wisej.Web.Button();
             this.sayGoodBye = new Wisej.Web.Button();
             this.SuspendLayout();
             // 
-            // customerEditor
+            // buttonsWindow
             // 
-            this.customerEditor.Location = new System.Drawing.Point(35, 30);
-            this.customerEditor.Name = "customerEditor";
-            this.customerEditor.Size = new System.Drawing.Size(180, 40);
-            this.customerEditor.TabIndex = 0;
-            this.customerEditor.Text = "Open Buttons Window";
-            this.customerEditor.Click += new System.EventHandler(this.customerEditor_Click);
+            this.buttonsWindow.Location = new System.Drawing.Point(35, 30);
+            this.buttonsWindow.Name = "buttonsWindow";
+            this.buttonsWindow.Size = new System.Drawing.Size(180, 40);
+            this.buttonsWindow.TabIndex = 0;
+            this.buttonsWindow.Text = "Open Buttons Window";
+            this.buttonsWindow.Click += new System.EventHandler(this.buttonsWindow_Click);
             // 
             // sayGoodBye
             // 
@@ -55,7 +55,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = Wisej.Web.AutoScaleMode.Font;
             this.Controls.Add(this.sayGoodBye);
-            this.Controls.Add(this.customerEditor);
+            this.Controls.Add(this.buttonsWindow);
             this.Name = "MainPage";
             this.Size = new System.Drawing.Size(1024, 548);
             this.Text = "Main Page";
@@ -65,7 +65,7 @@
 
         #endregion
 
-        private Web.Button customerEditor;
+        private Web.Button buttonsWindow;
         private Web.Button sayGoodBye;
     }
 }

@@ -38,73 +38,73 @@ namespace SimpleDemo.NUnit
 
         [Test]
         [Order(1050)]
-        public void F01_AskQuitNo()
+        public void W01_AskQuitNo()
         {
             ExpectedConditions.TitleIs("Main Page");
-            TestSuite.F01_AskQuitNo(Driver);
+            TestSuite.W01_AskQuitNo(Driver);
         }
 
         [Test]
         [Order(1060)]
-        public void F02_MainPage_customerEditor_Click()
+        public void W02_MainPage_customerEditor_Click()
         {
-            TestSuite.F02_MainPage_customerEditor_Click(Driver);
+            TestSuite.W02_MainPage_customerEditor_Click(Driver);
         }
 
         [Test]
         [Order(1070)]
-        public void F03_ButtonsWindow_customerEditor_Click()
+        public void W03_ButtonsWindow_customerEditor_Click()
         {
-            TestSuite.F03_ButtonsWindow_customerEditor_Click(Driver);
+            TestSuite.W03_ButtonsWindow_customerEditor_Click(Driver);
         }
 
         [Test]
         [Order(1080)]
-        public void F04_CustomerEditor_customerEditor_LabelContents()
+        public void W04_CustomerEditor_customerEditor_LabelContents()
         {
-            TestSuite.F04_CustomerEditor_customerEditor_LabelContents(Driver);
+            TestSuite.W04_CustomerEditor_customerEditor_LabelContents(Driver);
         }
 
         [Test]
         [Order(1090)]
-        public void F05_CloseWindow()
+        public void W05_CloseWindow()
         {
-            TestSuite.F05_CloseWindow(Driver);
+            TestSuite.W05_CloseWindow(Driver);
         }
 
         [Test]
         [Order(1100)]
-        public void F06_MainPage_customerEditor_Click()
+        public void W06_MainPage_customerEditor_Click()
         {
-            TestSuite.F06_MainPage_customerEditor_Click(Driver);
+            TestSuite.W06_MainPage_customerEditor_Click(Driver);
         }
 
         [Test]
         [Order(1110)]
-        public void F07_ButtonsWindow_customerEditor_Click()
+        public void W07_ButtonsWindow_supplierEditor_Click()
         {
-            TestSuite.F07_ButtonsWindow_customerEditor_Click(Driver);
+            TestSuite.W07_ButtonsWindow_supplierEditor_Click(Driver);
         }
 
         [Test]
         [Order(1120)]
-        public void F08_CustomerEditor_customerEditor_LabelContents()
+        public void W08_CustomerEditor_customerEditor_LabelContents()
         {
-            TestSuite.F08_CustomerEditor_customerEditor_LabelContents(Driver);
+            TestSuite.W08_CustomerEditor_customerEditor_LabelContents(Driver);
         }
 
         [Test]
         [Order(1130)]
-        public void F09_CloseWindow()
+        public void W09_CloseWindow()
         {
-            TestSuite.F09_CloseWindow(Driver);
+            TestSuite.W09_CloseWindow(Driver);
         }
 
         [Test]
         [Order(1140)]
-        public void F10_AskQuitYes()
+        public void W10_AskQuitYes()
         {
-            TestSuite.F10_AskQuitYes(Driver);
+            TestSuite.W10_AskQuitYes(Driver);
         }
     }
 }

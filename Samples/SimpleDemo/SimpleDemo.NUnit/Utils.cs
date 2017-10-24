@@ -2,11 +2,12 @@
 using Wisej.Qooxdoo.WebDriver;
 using Wisej.Qooxdoo.WebDriver.UI;
 using Wisej.Web;
+using By = Wisej.Qooxdoo.WebDriver.By;
 using Label = Wisej.Qooxdoo.WebDriver.UI.Basic.Label;
 
 namespace SimpleDemo.NUnit
 {
-    public static class Utils
+    public static partial class Utils
     {
         #region MessageBox
 
@@ -31,7 +32,7 @@ namespace SimpleDemo.NUnit
             }
 
             Assert.IsNotNull(button, string.Format("MessageBox Button {0} not found.", result.ToString()));
-            Assert.True(button.Enabled, string.Format("MessageBox  {0} isn't enabled.", result.ToString()));
+            Assert.IsTrue(button.Enabled, string.Format("MessageBox  {0} isn't enabled.", result.ToString()));
             button.Click();
         }
 
@@ -44,18 +45,29 @@ namespace SimpleDemo.NUnit
 
         public static IWidget ButtonGet(this QxWebDriver driver, string buttonPath, long timeoutInSeconds = 5)
         {
-            return driver.WidgetGet(buttonPath, "Button");
+            return driver.WidgetGet(buttonPath, "Button", timeoutInSeconds);
+        }
+
+        public static IWidget ButtonGet(this IWidget rootWidget, string buttonPath, long timeoutInSeconds = 5)
+        {
+            return rootWidget.WidgetGet(buttonPath, "Button", timeoutInSeconds);
         }
 
         public static void ButtonClick(this QxWebDriver driver, string buttonPath, long timeoutInSeconds = 5)
         {
             var button = ButtonGet(driver, buttonPath, timeoutInSeconds);
-            Assert.True(button.Enabled, string.Format("Button {0} isn't enabled.", buttonPath));
+            Assert.IsTrue(button.Enabled, string.Format("Button {0} isn't enabled.", buttonPath));
+            button.Click();
+        }
+
+        public static void ButtonClick(this IWidget rootWidget, string buttonPath, long timeoutInSeconds = 5)
+        {
+            var button = ButtonGet(rootWidget, buttonPath, timeoutInSeconds);
+            Assert.IsTrue(button.Enabled, string.Format("Button {0} isn't enabled.", buttonPath));
             button.Click();
         }
 
         // TODO: ButtonAssertContent
-        // TODO: ButtonAssertNotEnabled
 
         #endregion
 
@@ -63,7 +75,7 @@ namespace SimpleDemo.NUnit
 
         public static IWidget WindowGet(this QxWebDriver driver, string windowName, long timeoutInSeconds = 5)
         {
-            return driver.WidgetGet(windowName, "Window");
+            return driver.WidgetGet(windowName, "Window", timeoutInSeconds);
         }
 
         public static void WindowClose(this QxWebDriver driver, string windowName, long timeoutInSeconds = 5)
@@ -95,21 +107,8 @@ namespace SimpleDemo.NUnit
             var name = window.GetPropertyValue("name");
             IWidget button = window.GetChildControl(actionTag);
             Assert.IsNotNull(button, string.Format("Window {0} button for {1} not found.", name, actionTag));
-            Assert.True(button.Enabled, string.Format("Window {0} button for {1} isn't enabled.", name, actionTag));
+            Assert.IsTrue(button.Enabled, string.Format("Window {0} button for {1} isn't enabled.", name, actionTag));
             button.Click();
-        }
-
-        #endregion
-
-        #region Widget
-
-        public static IWidget WidgetGet(this QxWebDriver driver, string widgetPath, string widgetType,
-            long timeoutInSeconds = 5)
-        {
-            OpenQA.Selenium.By widgetBy = QxhByString(By.Namespace(widgetPath));
-            IWidget widget = driver.WaitForWidget(widgetBy, timeoutInSeconds);
-            Assert.IsNotNull(widget, string.Format("{0} {1} not found.", widgetType, widgetPath));
-            return widget;
         }
 
         #endregion
@@ -118,23 +117,52 @@ namespace SimpleDemo.NUnit
 
         public static IWidget LabelGet(this QxWebDriver driver, string labelPath, long timeoutInSeconds = 5)
         {
-            return driver.WidgetGet(labelPath, "Label");
+            return driver.WidgetGet(labelPath, "Label", timeoutInSeconds);
+        }
+
+        public static IWidget LabelGet(this IWidget rootWidget, string labelPath, long timeoutInSeconds = 5)
+        {
+            return rootWidget.WidgetGet(labelPath, "Label", timeoutInSeconds);
         }
 
         public static void LabelAssertValue(this QxWebDriver driver, string labelPath, string value,
             long timeoutInSeconds = 5)
         {
-            var labelWidget = driver.LabelGet(labelPath);
+            var labelWidget = driver.LabelGet(labelPath, timeoutInSeconds);
+            LabelAssertValueCore(labelWidget, labelPath, value);
+            ;
+        }
+
+        public static void LabelAssertValue(this IWidget rootWidget, string labelPath, string value,
+            long timeoutInSeconds = 5)
+        {
+            var labelWidget = rootWidget.LabelGet(labelPath, timeoutInSeconds);
+            LabelAssertValueCore(labelWidget, labelPath, value);
+        }
+
+        private static void LabelAssertValueCore(this IWidget labelWidget, string labelPath, string value)
+        {
             Label label = (Label) labelWidget;
             Assert.IsNotNull(label, string.Format("Could not cast {0} to Label.", labelPath));
 
             var labelValue = label.Value;
-            Assert.AreEqual(value, labelValue, string.Format("Expected {0} and found {1}.", value, labelValue));
+            Assert.AreEqual(value, labelValue, string.Format("Expected {0} and actual is {1}.", value, labelValue));
         }
 
         public static string LabelGetValue(this QxWebDriver driver, string labelPath, long timeoutInSeconds = 5)
         {
-            var labelWidget = driver.LabelGet(labelPath);
+            var labelWidget = driver.LabelGet(labelPath, timeoutInSeconds);
+            return LabelGetValueCore(labelWidget, labelPath);
+        }
+
+        public static string LabelGetValue(this IWidget rootWidget, string labelPath, long timeoutInSeconds = 5)
+        {
+            var labelWidget = rootWidget.LabelGet(labelPath, timeoutInSeconds);
+            return LabelGetValueCore(labelWidget, labelPath);
+        }
+
+        public static string LabelGetValueCore(this IWidget labelWidget, string labelPath)
+        {
             Label label = (Label) labelWidget;
             Assert.IsNotNull(label, string.Format("Could not cast {0} to Label.", labelPath));
             return label.Value;

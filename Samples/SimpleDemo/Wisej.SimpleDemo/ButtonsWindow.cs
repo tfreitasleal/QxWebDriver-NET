@@ -19,7 +19,9 @@ namespace Wisej.SimpleDemo
 
         private void supplierEditor_Click(object sender, EventArgs e)
         {
-            AlertBox.Show("Supplier Editor isn't implemented", MessageBoxIcon.Error, true, ContentAlignment.BottomRight, 10000);
+            AlertBox.Show("Supplier Editor must be implemented", MessageBoxIcon.Error, true, ContentAlignment.BottomRight, 120000);
+            AlertBox.Show("Supplier Editor should be implemented", MessageBoxIcon.Warning, true, ContentAlignment.BottomRight, 120000);
+            AlertBox.Show("Supplier Editor will be implemented", MessageBoxIcon.Information, true, ContentAlignment.BottomRight, 120000);
         }
     }
 }
