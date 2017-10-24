@@ -13,6 +13,7 @@ Logs
 *.Layout
 *.suo
 *.user
+*.csproj.DotSettings
 *.sln.docstates
 *.sln.DotSettings
 *.sln.DotSettings.user
