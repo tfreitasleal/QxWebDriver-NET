@@ -35,7 +35,7 @@ namespace Wisej.Qooxdoo.WebDriver
     {
         private readonly IWebDriver _driver;
         private readonly IWidgetFactory _widgetFactory;
-        private TimeSpan? _implictWait;
+        internal TimeSpan? ImplictWait;
 
         /// <summary>
         /// Gets the javascritp executor.
@@ -118,7 +118,7 @@ namespace Wisej.Qooxdoo.WebDriver
             }
             catch (Exception)
             {
-                _implictWait = TimeSpan.FromSeconds(implicitWaitSeconds);
+                ImplictWait = TimeSpan.FromSeconds(implicitWaitSeconds);
             }
         }
 
@@ -225,10 +225,13 @@ namespace Wisej.Qooxdoo.WebDriver
         /// <seealso cref="By"/>
         public virtual IWidget FindWidget(OpenQA.Selenium.By by)
         {
-            if (_implictWait.HasValue)
-                return FindWidget(by, _implictWait.Value.Seconds);
+            long implictWait;
+            if (ImplictWait.HasValue)
+                implictWait = ImplictWait.Value.Seconds;
+            else
+                implictWait = Manage().Timeouts().ImplicitWait.Seconds;
 
-            return FindWidget(by, _driver.Manage().Timeouts().ImplicitWait.Seconds);
+            return FindWidget(by, implictWait);
         }
 
         /// <summary>

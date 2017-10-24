@@ -524,7 +524,18 @@ namespace Wisej.Qooxdoo.WebDriver.UI.Core
         /// <exception cref="T:OpenQA.Selenium.NoSuchElementException">If no element matches the criteria.</exception>
         public virtual IWebElement FindElement(OpenQA.Selenium.By by)
         {
-            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(5));
+            long implictWait;
+            if (Driver.ImplictWait.HasValue)
+                implictWait = Driver.ImplictWait.Value.Seconds;
+            else
+                implictWait = Driver.Manage().Timeouts().ImplicitWait.Seconds;
+
+            return FindElement(by, implictWait);
+        }
+
+        private IWebElement FindElement(OpenQA.Selenium.By by, long timeoutInSeconds)
+        {
+            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(timeoutInSeconds));
             return wait.Until(IsRendered(_contentElement, by));
         }
 
@@ -536,7 +547,8 @@ namespace Wisej.Qooxdoo.WebDriver.UI.Core
         /// <returns>The found widget.</returns>
         public virtual IWidget FindWidget(OpenQA.Selenium.By by)
         {
-            return Driver.FindWidget(by);
+            IWebElement element = FindElement(by);
+            return Driver.GetWidgetForElement(element);
         }
 
         /// <summary>
@@ -548,7 +560,8 @@ namespace Wisej.Qooxdoo.WebDriver.UI.Core
         /// <returns>The found widget.</returns>
         public virtual IWidget WaitForWidget(OpenQA.Selenium.By by, long timeoutInSeconds)
         {
-            return Driver.WaitForWidget(by, timeoutInSeconds);
+            IWebElement element = FindElement(by, timeoutInSeconds);
+            return Driver.GetWidgetForElement(element);
         }
 
         /// <summary>Returns a string that represents the current object.</summary>
