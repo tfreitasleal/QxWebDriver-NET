@@ -5,7 +5,7 @@ using Wisej.Web;
 using By = Wisej.Qooxdoo.WebDriver.By;
 using Label = Wisej.Qooxdoo.WebDriver.UI.Basic.Label;
 
-namespace SimpleDemo.NUnit
+namespace SimpleDemo.Tests
 {
     public static partial class Utils
     {

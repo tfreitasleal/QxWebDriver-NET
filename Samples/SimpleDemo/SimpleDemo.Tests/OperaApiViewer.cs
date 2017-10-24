@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Opera;
 using Wisej.Qooxdoo.WebDriver;
 
-namespace SimpleDemo.NUnit
+namespace SimpleDemo.Tests
 {
     [TestFixture]
     [Parallelizable(ParallelScope.None)]

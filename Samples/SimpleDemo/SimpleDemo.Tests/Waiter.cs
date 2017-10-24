@@ -1,4 +1,4 @@
-﻿namespace SimpleDemo.NUnit
+﻿namespace SimpleDemo.Tests
 {
     public static class Waiter
     {

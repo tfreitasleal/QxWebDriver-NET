@@ -1,9 +1,9 @@
 ﻿using System.Threading;
 using Wisej.Qooxdoo.WebDriver;
 using Wisej.Qooxdoo.WebDriver.UI;
-using Wait = SimpleDemo.NUnit.Waiter;
+using Wait = SimpleDemo.Tests.Waiter;
 
-namespace SimpleDemo.NUnit
+namespace SimpleDemo.Tests
 {
     public static class ApiViewerTests
     {

@@ -6,7 +6,7 @@ using Wisej.Qooxdoo.WebDriver;
 using Wisej.Qooxdoo.WebDriver.UI;
 using Wisej.Web;
 
-namespace SimpleDemo.NUnit
+namespace SimpleDemo.Tests
 {
     public static partial class Utils
     {
