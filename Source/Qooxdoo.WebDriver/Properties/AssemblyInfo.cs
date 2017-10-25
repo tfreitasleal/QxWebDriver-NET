@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("qooxdoo WebDriver for .NET45")]
 [assembly: AssemblyDescription("qooxdoo adapter for Selenium WebDriver")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Ice Tea Groip LLC")]
+[assembly: AssemblyCompany("Ice Tea Group LLC")]
 [assembly: AssemblyProduct("QxWebDriver .NET45")]
 [assembly: AssemblyCopyright("Copyright © 2017 Ice Tea Groip LLC")]
 [assembly: AssemblyTrademark("Qooxdoo.WebDriver")]
@@ -18,9 +18,6 @@ using System.Runtime.InteropServices;
 // to COM components.  If you need to access a type in this assembly from
 // COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
-
-// The following GUID is for the ID of the typelib if this project is exposed to COM
-//[assembly: Guid("e6be1e5d-58c1-4ad7-b1cb-3f9831a24949")]
 
 // Version information for an assembly consists of the following four values:
 //
