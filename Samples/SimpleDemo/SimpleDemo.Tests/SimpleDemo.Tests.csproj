@@ -44,6 +44,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="WebDriver, Version=3.6.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -54,21 +55,22 @@
       <HintPath>..\packages\Selenium.Support.3.6.0\lib\net45\WebDriver.Support.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Wisej.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=17bef35e11b84171, processorArchitecture=MSIL" />
-    <Reference Include="Wisej.Qooxdoo.WebDriver, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Qooxdoo-WebDriver.1.0.6\lib\net45\Wisej.Qooxdoo.WebDriver.dll</HintPath>
+    <Reference Include="Qooxdoo.WebDriver, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Qooxdoo-WebDriver.1.0.6\lib\net45\Qooxdoo.WebDriver.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Wisej.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=17bef35e11b84171, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiViewerTests.cs" />
     <Compile Include="ChromeWisej.cs" />
     <Compile Include="ChromeApiViewer.cs" />
+    <Compile Include="DialogResult.cs" />
     <Compile Include="EdgeApiViewer.cs" />
     <Compile Include="EdgeWisej.cs" />
     <Compile Include="FirefoxWisej.cs" />
     <Compile Include="FirefoxApiViewer.cs" />
+    <Compile Include="Cache.cs" />
+    <Compile Include="MessageBoxIcon.cs" />
     <Compile Include="WisejTests.cs" />
     <Compile Include="OperaApiViewer.cs" />
     <Compile Include="OperaWisej.cs" />

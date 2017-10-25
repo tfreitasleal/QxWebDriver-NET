@@ -2,7 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Support.UI;
-using Wisej.Qooxdoo.WebDriver;
+using Qooxdoo.WebDriver;
 
 namespace SimpleDemo.Tests
 {
@@ -20,6 +20,7 @@ namespace SimpleDemo.Tests
             _internalWebDriver = new EdgeDriver();
             _internalWebDriver.Manage().Window.Maximize();
             Driver = new QxWebDriver(_internalWebDriver);
+            Cache.Clear();
 #if !DEBUGJS
             Driver.Url = "http://localhost:16461/Default.html";
 #else

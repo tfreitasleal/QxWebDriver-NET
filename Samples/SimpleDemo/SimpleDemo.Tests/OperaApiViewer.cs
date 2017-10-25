@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Opera;
-using Wisej.Qooxdoo.WebDriver;
+using Qooxdoo.WebDriver;
 
 namespace SimpleDemo.Tests
 {

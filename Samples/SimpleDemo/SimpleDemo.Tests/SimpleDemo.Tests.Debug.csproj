@@ -32,15 +32,17 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
-    <Reference Include="Wisej.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=17bef35e11b84171, processorArchitecture=MSIL" />
-    <Reference Include="Wisej.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=17bef35e11b84171, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChromeWisej.cs" />
+    <Compile Include="DialogResult.cs" />
     <Compile Include="EdgeWisej.cs" />
     <Compile Include="FirefoxWisej.cs" />
+    <Compile Include="Cache.cs" />
+    <Compile Include="MessageBoxIcon.cs" />
     <Compile Include="WisejTests.cs" />
     <Compile Include="OperaWisej.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -61,9 +63,9 @@
       <Project>{6941aa74-a97a-48a5-bbfe-1970cce31e5c}</Project>
       <Name>WebDriver.Debug</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Source\Wisej.Qooxdoo.WebDriver\Wisej.Qooxdoo.WebDriver.Debug.csproj">
+    <ProjectReference Include="..\..\..\Source\Qooxdoo.WebDriver\Qooxdoo.WebDriver.Debug.csproj">
       <Project>{e6be1e5d-58c1-4ad7-b1cb-3f9831a24949}</Project>
-      <Name>Wisej.Qooxdoo.WebDriver.Debug</Name>
+      <Name>Qooxdoo.WebDriver.Debug</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

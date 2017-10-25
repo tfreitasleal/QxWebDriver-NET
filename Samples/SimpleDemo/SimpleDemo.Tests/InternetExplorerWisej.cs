@@ -2,7 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Support.UI;
-using Wisej.Qooxdoo.WebDriver;
+using Qooxdoo.WebDriver;
 
 namespace SimpleDemo.Tests
 {

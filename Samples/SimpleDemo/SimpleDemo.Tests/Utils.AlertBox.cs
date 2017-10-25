@@ -2,9 +2,8 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using Wisej.Qooxdoo.WebDriver;
-using Wisej.Qooxdoo.WebDriver.UI;
-using Wisej.Web;
+using Qooxdoo.WebDriver;
+using Qooxdoo.WebDriver.UI;
 
 namespace SimpleDemo.Tests
 {

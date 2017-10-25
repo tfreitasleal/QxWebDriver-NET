@@ -1,9 +1,8 @@
 ﻿using NUnit.Framework;
-using Wisej.Qooxdoo.WebDriver;
-using Wisej.Qooxdoo.WebDriver.UI;
-using Wisej.Web;
-using By = Wisej.Qooxdoo.WebDriver.By;
-using Label = Wisej.Qooxdoo.WebDriver.UI.Basic.Label;
+using Qooxdoo.WebDriver;
+using Qooxdoo.WebDriver.UI;
+using By = Qooxdoo.WebDriver.By;
+using Label = Qooxdoo.WebDriver.UI.Basic.Label;
 
 namespace SimpleDemo.Tests
 {
@@ -84,9 +83,19 @@ namespace SimpleDemo.Tests
             window.ButtonAction("close-button");
         }
 
+        public static void WindowClose(this IWidget window, long timeoutInSeconds = 5)
+        {
+            window.ButtonAction("close-button");
+        }
+
         public static void WindowMaximize(this QxWebDriver driver, string windowName, long timeoutInSeconds = 5)
         {
             var window = WindowGet(driver, windowName, timeoutInSeconds);
+            window.ButtonAction("maximize-button");
+        }
+
+        public static void WindowMaximize(this IWidget window, long timeoutInSeconds = 5)
+        {
             window.ButtonAction("maximize-button");
         }
 
@@ -96,9 +105,19 @@ namespace SimpleDemo.Tests
             window.ButtonAction("minimize-button");
         }
 
+        public static void WindowMinimize(this IWidget window, long timeoutInSeconds = 5)
+        {
+            window.ButtonAction("minimize-button");
+        }
+
         public static void WindowRestore(this QxWebDriver driver, string windowName, long timeoutInSeconds = 5)
         {
             var window = WindowGet(driver, windowName, timeoutInSeconds);
+            window.ButtonAction("restore-button");
+        }
+
+        public static void WindowRestore(this IWidget window, long timeoutInSeconds = 5)
+        {
             window.ButtonAction("restore-button");
         }
 
