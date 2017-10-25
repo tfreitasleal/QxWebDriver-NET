@@ -8,7 +8,7 @@ using JSONObject = org.json.simple.JSONObject;
 using JSONParser = org.json.simple.parser.JSONParser;
 using ParseException = org.json.simple.parser.ParseException;*/
 
-namespace Wisej.Qooxdoo.WebDriver.Log
+namespace Qooxdoo.WebDriver.Log
 {
     /// <summary>
     /// Adds a JSon string to the log.

@@ -18,13 +18,14 @@
 *************************************************************************/
 
 using OpenQA.Selenium;
+using Qooxdoo.WebDriver.UI.Core;
 
-namespace Wisej.Qooxdoo.WebDriver.UI.Tree.Core
+namespace Qooxdoo.WebDriver.UI.Tree.Core
 {
     /// <summary>
     /// Tree item 
     /// </summary>
-    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.Core.WidgetImpl" />
+    /// <seealso cref="WidgetImpl" />
     public class AbstractItem : UI.Core.WidgetImpl
     {
         /// <summary>

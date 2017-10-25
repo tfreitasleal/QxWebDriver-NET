@@ -20,7 +20,7 @@
 using System.Collections.Generic;
 using OpenQA.Selenium;
 
-namespace Wisej.Qooxdoo.WebDriver.UI
+namespace Qooxdoo.WebDriver.UI
 {
     /// <summary>
     /// Represents a qx.Desktop widget. <seealso cref="OpenQA.Selenium.IWebElement"/>

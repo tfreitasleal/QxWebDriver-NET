@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using Wisej.Qooxdoo.WebDriver.UI;
+using Qooxdoo.WebDriver.UI;
 
 namespace Wisej.Qooxdoo.WebDriverDemo.DesktopShowcase
 {
@@ -8,7 +8,7 @@ namespace Wisej.Qooxdoo.WebDriverDemo.DesktopShowcase
     [Parallelizable(ParallelScope.None)]
     public class DataBinding : DesktopShowcase
     {
-        public Wisej.Qooxdoo.WebDriver.By demoLocator = Wisej.Qooxdoo.WebDriver.By.Qxh("qx.ui.container.Stack/qx.ui.container.Composite/qxc.application.datademo.Demo");
+        public Qooxdoo.WebDriver.By demoLocator = Qooxdoo.WebDriver.By.Qxh("qx.ui.container.Stack/qx.ui.container.Composite/qxc.application.datademo.Demo");
 
         //ORIGINAL LINE: @Before public void setUp() throws Exception
         [SetUp]

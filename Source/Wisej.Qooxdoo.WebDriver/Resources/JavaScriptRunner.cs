@@ -20,7 +20,7 @@
 using System.Collections.Generic;
 using OpenQA.Selenium;
 
-namespace Wisej.Qooxdoo.WebDriver.Resources
+namespace Qooxdoo.WebDriver.Resources
 {
     /// <summary>
     /// Runs a Javascript script

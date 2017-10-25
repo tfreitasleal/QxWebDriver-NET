@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Wisej.Qooxdoo.WebDriver;
-using Wisej.Qooxdoo.WebDriver.UI;
+using Qooxdoo.WebDriver;
+using Qooxdoo.WebDriver.UI;
 using Wisej.Web;
 using Wait = SimpleDemo.MSTest.Waiter;
 

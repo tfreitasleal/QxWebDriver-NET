@@ -1,14 +1,15 @@
 ﻿using OpenQA.Selenium;
-using WidgetImpl = Wisej.Qooxdoo.WebDriver.UI.Mobile.Core.WidgetImpl;
+using Qooxdoo.WebDriver.UI.Mobile.Core;
+using WidgetImpl = Qooxdoo.WebDriver.UI.Mobile.Core.WidgetImpl;
 
-namespace Wisej.Qooxdoo.WebDriver.UI.Mobile.List
+namespace Qooxdoo.WebDriver.UI.Mobile.List
 {
     /// <summary>
     /// Mobile list widget
     /// </summary>
-    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.Mobile.Core.WidgetImpl" />
-    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.Mobile.ISelectable" />
-    public class List : WidgetImpl, ISelectable
+    /// <seealso cref="WidgetImpl" />
+    /// <seealso cref="ISelectable" />
+    public class List : Core.WidgetImpl, ISelectable
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="List"/> class.

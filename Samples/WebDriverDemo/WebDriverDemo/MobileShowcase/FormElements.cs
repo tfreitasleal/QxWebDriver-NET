@@ -1,8 +1,8 @@
 ﻿using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using Wisej.Qooxdoo.WebDriver.UI;
-using WidgetImpl = Wisej.Qooxdoo.WebDriver.UI.Mobile.Core.WidgetImpl;
+using Qooxdoo.WebDriver.UI;
+using WidgetImpl = Qooxdoo.WebDriver.UI.Mobile.Core.WidgetImpl;
 
 namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
 {

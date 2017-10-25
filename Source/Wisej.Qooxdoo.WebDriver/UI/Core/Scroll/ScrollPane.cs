@@ -19,12 +19,12 @@
 
 using OpenQA.Selenium;
 
-namespace Wisej.Qooxdoo.WebDriver.UI.Core.Scroll
+namespace Qooxdoo.WebDriver.UI.Core.Scroll
 {
     /// <summary>
     /// ScrollPane widget
     /// </summary>
-    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.Core.Scroll.AbstractScrollArea" />
+    /// <seealso cref="AbstractScrollArea" />
     public class ScrollPane : AbstractScrollArea
     {
         /// <summary>

@@ -20,9 +20,9 @@
 using System;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
-using Wisej.Qooxdoo.WebDriver.UI;
+using Qooxdoo.WebDriver.UI;
 
-namespace Wisej.Qooxdoo.WebDriver.Examples
+namespace Qooxdoo.WebDriver.Examples
 {
     /// <summary>
     /// HelloWorld example of use

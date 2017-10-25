@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using Wisej.Qooxdoo.WebDriver.UI;
+using Qooxdoo.WebDriver.UI;
 
 namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
 {

@@ -1,9 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Wisej.Qooxdoo.WebDriver;
-using Wisej.Qooxdoo.WebDriver.UI;
+using Qooxdoo.WebDriver;
+using Qooxdoo.WebDriver.UI;
 using Wisej.Web;
-using By = Wisej.Qooxdoo.WebDriver.By;
-using Label = Wisej.Qooxdoo.WebDriver.UI.Basic.Label;
+using By = Qooxdoo.WebDriver.By;
+using Label = Qooxdoo.WebDriver.UI.Basic.Label;
 
 namespace SimpleDemo.MSTest
 {

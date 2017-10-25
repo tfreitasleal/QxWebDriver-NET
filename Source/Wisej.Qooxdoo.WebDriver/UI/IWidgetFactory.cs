@@ -19,7 +19,7 @@
 
 using OpenQA.Selenium;
 
-namespace Wisej.Qooxdoo.WebDriver.UI
+namespace Qooxdoo.WebDriver.UI
 {
     /// <summary>
     /// Widget factory interface

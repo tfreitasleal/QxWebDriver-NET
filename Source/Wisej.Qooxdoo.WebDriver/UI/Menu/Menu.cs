@@ -20,9 +20,9 @@
 using System;
 using System.Collections.Generic;
 using OpenQA.Selenium;
-using Wisej.Qooxdoo.WebDriver.UI.Core.Scroll;
+using Qooxdoo.WebDriver.UI.Core.Scroll;
 
-namespace Wisej.Qooxdoo.WebDriver.UI.Menu
+namespace Qooxdoo.WebDriver.UI.Menu
 {
     /// <summary>
     /// Represents a <a href="http://demo.qooxdoo.org/current/apiviewer/#qx.ui.menu.Menu">Menu</a>

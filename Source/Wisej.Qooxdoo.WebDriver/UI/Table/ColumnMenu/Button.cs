@@ -1,11 +1,12 @@
 ﻿using OpenQA.Selenium;
+using Qooxdoo.WebDriver.UI.Form;
 
-namespace Wisej.Qooxdoo.WebDriver.UI.Table.ColumnMenu
+namespace Qooxdoo.WebDriver.UI.Table.ColumnMenu
 {
     /// <summary>
     /// Button widget
     /// </summary>
-    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.Form.MenuButton" />
+    /// <seealso cref="MenuButton" />
     public class Button : Form.MenuButton
     {
         /// <summary>

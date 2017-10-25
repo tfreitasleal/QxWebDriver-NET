@@ -1,9 +1,9 @@
 ﻿using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using Wisej.Qooxdoo.WebDriver.UI;
-using Wisej.Qooxdoo.WebDriver.UI.Mobile.Core;
-using ISelectable = Wisej.Qooxdoo.WebDriver.UI.Mobile.ISelectable;
+using Qooxdoo.WebDriver.UI;
+using Qooxdoo.WebDriver.UI.Mobile.Core;
+using ISelectable = Qooxdoo.WebDriver.UI.Mobile.ISelectable;
 
 namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
 {

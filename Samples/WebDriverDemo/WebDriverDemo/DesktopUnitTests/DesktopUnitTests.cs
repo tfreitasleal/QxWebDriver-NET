@@ -4,8 +4,8 @@ using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using Wisej.Qooxdoo.WebDriver.Resources;
-using By = Wisej.Qooxdoo.WebDriver.By;
+using Qooxdoo.WebDriver.Resources;
+using By = Qooxdoo.WebDriver.By;
 
 /*using JSONArray = org.json.simple.JSONArray;
 using JSONObject = org.json.simple.JSONObject;

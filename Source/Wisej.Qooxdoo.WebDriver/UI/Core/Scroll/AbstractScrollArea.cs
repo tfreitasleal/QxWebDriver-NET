@@ -21,7 +21,7 @@ using System;
 using System.Drawing;
 using OpenQA.Selenium;
 
-namespace Wisej.Qooxdoo.WebDriver.UI.Core.Scroll
+namespace Qooxdoo.WebDriver.UI.Core.Scroll
 {
     /// <summary>
     /// Represents a <a href="http://demo.qooxdoo.org/current/apiviewer/#qx.ui.core.Scroll.AbstractScrollArea">ScrollArea</a>

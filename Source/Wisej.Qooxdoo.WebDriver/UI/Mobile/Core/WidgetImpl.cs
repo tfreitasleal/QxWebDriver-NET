@@ -23,14 +23,15 @@ using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Interactions.Internal;
+using Qooxdoo.WebDriver.UI.Core;
 
-namespace Wisej.Qooxdoo.WebDriver.UI.Mobile.Core
+namespace Qooxdoo.WebDriver.UI.Mobile.Core
 {
     /// <summary>
     /// Base mobile widget implementation
     /// </summary>
-    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.Core.WidgetImpl" />
-    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.ITouchable" />
+    /// <seealso cref="UI.Core.WidgetImpl" />
+    /// <seealso cref="ITouchable" />
     public class WidgetImpl : UI.Core.WidgetImpl, ITouchable
     {
         /// <summary>

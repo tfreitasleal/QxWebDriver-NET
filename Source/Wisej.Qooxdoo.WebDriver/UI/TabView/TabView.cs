@@ -20,9 +20,9 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using OpenQA.Selenium;
-using Wisej.Qooxdoo.WebDriver.UI.Core;
+using Qooxdoo.WebDriver.UI.Core;
 
-namespace Wisej.Qooxdoo.WebDriver.UI.TabView
+namespace Qooxdoo.WebDriver.UI.TabView
 {
     /// <summary>
     /// Represents a <a href="http://demo.qooxdoo.org/current/apiviewer/#qx.ui.tabview.TabView">TabView</a>

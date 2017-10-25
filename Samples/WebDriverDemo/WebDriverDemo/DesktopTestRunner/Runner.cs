@@ -1,9 +1,9 @@
 ﻿using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using Wisej.Qooxdoo.WebDriver.UI;
-using By = Wisej.Qooxdoo.WebDriver.By;
-using Scrollable = Wisej.Qooxdoo.WebDriver.UI.IScrollable;
+using Qooxdoo.WebDriver.UI;
+using By = Qooxdoo.WebDriver.By;
+using Scrollable = Qooxdoo.WebDriver.UI.IScrollable;
 
 namespace Wisej.Qooxdoo.WebDriverDemo.DesktopTestRunner
 {

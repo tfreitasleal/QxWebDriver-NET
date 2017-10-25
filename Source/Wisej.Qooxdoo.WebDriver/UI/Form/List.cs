@@ -18,9 +18,9 @@
 *************************************************************************/
 
 using OpenQA.Selenium;
-using Wisej.Qooxdoo.WebDriver.UI.Core.Scroll;
+using Qooxdoo.WebDriver.UI.Core.Scroll;
 
-namespace Wisej.Qooxdoo.WebDriver.UI.Form
+namespace Qooxdoo.WebDriver.UI.Form
 {
     /// <summary>
     /// Represents a <a href="http://demo.qooxdoo.org/current/apiviewer/#qx.ui.form.List">List</a>

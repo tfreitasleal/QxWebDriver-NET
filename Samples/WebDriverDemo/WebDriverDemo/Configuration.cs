@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Remote;
-using Wisej.Qooxdoo.WebDriver;
+using Qooxdoo.WebDriver;
 
 //using SelendroidDriver = io.selendroid.SelendroidDriver;
 

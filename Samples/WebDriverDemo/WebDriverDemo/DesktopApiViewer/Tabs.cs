@@ -2,8 +2,8 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
-using Wisej.Qooxdoo.WebDriver.UI;
-using By = Wisej.Qooxdoo.WebDriver.By;
+using Qooxdoo.WebDriver.UI;
+using By = Qooxdoo.WebDriver.By;
 
 namespace Wisej.Qooxdoo.WebDriverDemo.DesktopApiViewer
 {

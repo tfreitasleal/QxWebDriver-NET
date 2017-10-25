@@ -1,11 +1,12 @@
 ﻿using OpenQA.Selenium;
+using Qooxdoo.WebDriver.UI.Mobile.Core;
 
-namespace Wisej.Qooxdoo.WebDriver.UI.Mobile.Form
+namespace Qooxdoo.WebDriver.UI.Mobile.Form
 {
     /// <summary>
     /// Mobile sloder widget
     /// </summary>
-    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.Mobile.Core.WidgetImpl" />
+    /// <seealso cref="WidgetImpl" />
     public class Slider : Core.WidgetImpl
     {
         /// <summary>

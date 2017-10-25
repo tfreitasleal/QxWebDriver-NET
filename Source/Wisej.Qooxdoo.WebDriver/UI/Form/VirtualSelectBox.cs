@@ -19,7 +19,7 @@
 
 using OpenQA.Selenium;
 
-namespace Wisej.Qooxdoo.WebDriver.UI.Form
+namespace Qooxdoo.WebDriver.UI.Form
 {
     /// <summary>
     /// Represents a <a href="http://demo.qooxdoo.org/current/apiviewer/#qx.ui.form.VirtualSelectBox">VirtualSelectBox</a>

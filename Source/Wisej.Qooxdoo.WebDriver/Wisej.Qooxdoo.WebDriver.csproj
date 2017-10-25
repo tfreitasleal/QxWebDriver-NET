@@ -7,8 +7,8 @@
     <ProjectGuid>{E6BE1E5D-58C1-4AD7-B1CB-3F9831A24949}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Wisej.Qooxdoo.WebDriver</RootNamespace>
-    <AssemblyName>Wisej.Qooxdoo.WebDriver</AssemblyName>
+    <RootNamespace>Qooxdoo.WebDriver</RootNamespace>
+    <AssemblyName>Qooxdoo.WebDriver</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -28,7 +28,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\Bin\Release\NET45\Wisej.Qooxdoo.WebDriver.xml</DocumentationFile>
+    <DocumentationFile>..\..\Bin\Release\NET45\Qooxdoo.WebDriver.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">

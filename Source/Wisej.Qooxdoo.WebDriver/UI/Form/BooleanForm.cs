@@ -18,13 +18,14 @@
 *************************************************************************/
 
 using OpenQA.Selenium;
+using Qooxdoo.WebDriver.UI.Core;
 
-namespace Wisej.Qooxdoo.WebDriver.UI.Form
+namespace Qooxdoo.WebDriver.UI.Form
 {
     /// <summary>
     /// Boolena form widget
     /// </summary>
-    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.Core.WidgetImpl" />
+    /// <seealso cref="WidgetImpl" />
     public class BooleanForm : Core.WidgetImpl
     {
         /// <summary>

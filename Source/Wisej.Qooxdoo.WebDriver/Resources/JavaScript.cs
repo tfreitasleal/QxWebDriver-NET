@@ -22,7 +22,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace Wisej.Qooxdoo.WebDriver.Resources
+namespace Qooxdoo.WebDriver.Resources
 {
     /// <summary>
     /// Handles JavaScript embedded as resource.

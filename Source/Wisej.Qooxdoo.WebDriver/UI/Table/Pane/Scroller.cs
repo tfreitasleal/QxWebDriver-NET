@@ -19,13 +19,14 @@
 
 using System.Collections.Generic;
 using OpenQA.Selenium;
+using Qooxdoo.WebDriver.UI.Core.Scroll;
 
-namespace Wisej.Qooxdoo.WebDriver.UI.Table.Pane
+namespace Qooxdoo.WebDriver.UI.Table.Pane
 {
     /// <summary>
     /// Scroller widget
     /// </summary>
-    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.Core.Scroll.AbstractScrollArea" />
+    /// <seealso cref="AbstractScrollArea" />
     public class Scroller : Core.Scroll.AbstractScrollArea
     {
         /// <summary>

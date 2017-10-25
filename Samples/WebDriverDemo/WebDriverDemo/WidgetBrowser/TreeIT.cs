@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-using Wisej.Qooxdoo.WebDriver;
-using Wisej.Qooxdoo.WebDriver.UI;
-using Wisej.Qooxdoo.WebDriver.UI.Tree.Core;
+using Qooxdoo.WebDriver;
+using Qooxdoo.WebDriver.UI;
+using Qooxdoo.WebDriver.UI.Tree.Core;
 
 namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
 {

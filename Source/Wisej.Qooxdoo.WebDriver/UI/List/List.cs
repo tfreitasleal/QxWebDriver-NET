@@ -20,7 +20,7 @@
 using System;
 using OpenQA.Selenium;
 
-namespace Wisej.Qooxdoo.WebDriver.UI.List
+namespace Qooxdoo.WebDriver.UI.List
 {
     /// <summary>
     /// Represents a <a href="http://demo.qooxdoo.org/current/apiviewer/#qx.ui.list.List">List</a>

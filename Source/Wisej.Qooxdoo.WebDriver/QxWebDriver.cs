@@ -22,10 +22,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using Wisej.Qooxdoo.WebDriver.Resources;
-using Wisej.Qooxdoo.WebDriver.UI;
+using Qooxdoo.WebDriver.Resources;
+using Qooxdoo.WebDriver.UI;
 
-namespace Wisej.Qooxdoo.WebDriver
+namespace Qooxdoo.WebDriver
 {
     /// <summary>
     /// A Decorator that wraps a <see cref="IWebDriver"/> object,  adding qooxdoo-specific features.

@@ -18,14 +18,14 @@
 *************************************************************************/
 
 using OpenQA.Selenium;
-using Wisej.Qooxdoo.WebDriver.UI.Core;
+using Qooxdoo.WebDriver.UI.Core;
 
-namespace Wisej.Qooxdoo.WebDriver.UI.Basic
+namespace Qooxdoo.WebDriver.UI.Basic
 {
     /// <summary>
     /// Label widget
     /// </summary>
-    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.Core.WidgetImpl" />
+    /// <seealso cref="WidgetImpl" />
     public class Label : WidgetImpl
     {
         /// <summary>

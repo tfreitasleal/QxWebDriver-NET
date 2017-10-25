@@ -17,12 +17,12 @@
 
 *************************************************************************/
 
-namespace Wisej.Qooxdoo.WebDriver.UI
+namespace Qooxdoo.WebDriver.UI
 {
     /// <summary>
     /// Represents a widget that allows the user to select one or more out of
     /// several items that are displayed as widgets. Only works with qx.Desktop widgets,
-    /// for qx.Mobile please use Wisej.Qooxdoo.WebDriver.UI.Mobile.ISelectable instead.
+    /// for qx.Mobile please use Qooxdoo.WebDriver.UI.Mobile.ISelectable instead.
     /// </summary>
     public interface ISelectable : IWidget
     {

@@ -5,12 +5,12 @@ using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using Wisej.Qooxdoo.WebDriver;
-using Wisej.Qooxdoo.WebDriver.UI;
-using Wisej.Qooxdoo.WebDriver.UI.Basic;
-using Wisej.Qooxdoo.WebDriver.UI.Tree;
-using By = Wisej.Qooxdoo.WebDriver.By;
-using List = Wisej.Qooxdoo.WebDriver.UI.Form.List;
+using Qooxdoo.WebDriver;
+using Qooxdoo.WebDriver.UI;
+using Qooxdoo.WebDriver.UI.Basic;
+using Qooxdoo.WebDriver.UI.Tree;
+using By = Qooxdoo.WebDriver.By;
+using List = Qooxdoo.WebDriver.UI.Form.List;
 
 namespace Wisej.Qooxdoo.WebDriverDemo.FeedReaderDesktop
 {

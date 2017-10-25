@@ -1,6 +1,6 @@
 ﻿using System.Threading;
-using Wisej.Qooxdoo.WebDriver;
-using Wisej.Qooxdoo.WebDriver.UI;
+using Qooxdoo.WebDriver;
+using Qooxdoo.WebDriver.UI;
 
 namespace SimpleDemo.MSTest
 {

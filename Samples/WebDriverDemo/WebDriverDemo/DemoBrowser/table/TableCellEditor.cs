@@ -1,9 +1,9 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
-using Wisej.Qooxdoo.WebDriver.UI;
-using Wisej.Qooxdoo.WebDriver.UI.Form;
-using By = Wisej.Qooxdoo.WebDriver.By;
+using Qooxdoo.WebDriver.UI;
+using Qooxdoo.WebDriver.UI.Form;
+using By = Qooxdoo.WebDriver.By;
 
 namespace Wisej.Qooxdoo.WebDriverDemo.DemoBrowser.Table
 {

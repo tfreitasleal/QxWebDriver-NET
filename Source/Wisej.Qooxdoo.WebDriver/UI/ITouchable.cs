@@ -17,12 +17,12 @@
 
 *************************************************************************/
 
-namespace Wisej.Qooxdoo.WebDriver.UI
+namespace Qooxdoo.WebDriver.UI
 {
     /// <summary>
     /// Touchable interface
     /// </summary>
-    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.IWidget" />
+    /// <seealso cref="IWidget" />
     public interface ITouchable : IWidget
     {
         /// <summary>

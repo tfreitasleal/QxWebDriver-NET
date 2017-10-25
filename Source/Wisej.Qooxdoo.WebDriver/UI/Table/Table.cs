@@ -22,19 +22,20 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using OpenQA.Selenium;
+using Qooxdoo.WebDriver.UI.Core;
 
 /*using JSONArray = org.json.simple.JSONArray;
 using JSONObject = org.json.simple.JSONObject;
 using JSONParser = org.json.simple.parser.JSONParser;
 using ParseException = org.json.simple.parser.ParseException;*/
 
-namespace Wisej.Qooxdoo.WebDriver.UI.Table
+namespace Qooxdoo.WebDriver.UI.Table
 {
     /// <summary>
     /// Table widget
     /// </summary>
-    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.Core.WidgetImpl" />
-    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.IScrollable" />
+    /// <seealso cref="WidgetImpl" />
+    /// <seealso cref="IScrollable" />
     public class Table : Core.WidgetImpl, IScrollable
     {
         /// <summary>

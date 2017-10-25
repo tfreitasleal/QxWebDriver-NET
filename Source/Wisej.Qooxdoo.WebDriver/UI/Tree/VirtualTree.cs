@@ -18,13 +18,14 @@
 *************************************************************************/
 
 using OpenQA.Selenium;
+using Qooxdoo.WebDriver.UI.List;
 
-namespace Wisej.Qooxdoo.WebDriver.UI.Tree
+namespace Qooxdoo.WebDriver.UI.Tree
 {
     /// <summary>
     /// Virtual tree widget
     /// </summary>
-    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.List.List" />
+    /// <seealso cref="List" />
     public class VirtualTree : List.List
     {
         /// <summary>

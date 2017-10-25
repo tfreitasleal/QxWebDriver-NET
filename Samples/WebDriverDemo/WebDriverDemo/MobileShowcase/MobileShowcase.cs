@@ -4,9 +4,9 @@ using System.Threading;
 //using SelendroidLauncher = io.selendroid.standalone.SelendroidLauncher;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using Wisej.Qooxdoo.WebDriver;
-using Wisej.Qooxdoo.WebDriver.UI;
-using ISelectable = Wisej.Qooxdoo.WebDriver.UI.Mobile.ISelectable;
+using Qooxdoo.WebDriver;
+using Qooxdoo.WebDriver.UI;
+using ISelectable = Qooxdoo.WebDriver.UI.Mobile.ISelectable;
 
 namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
 {

@@ -26,14 +26,14 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Interactions.Internal;
 using OpenQA.Selenium.Support.UI;
-using Wisej.Qooxdoo.WebDriver.Resources;
+using Qooxdoo.WebDriver.Resources;
 
-namespace Wisej.Qooxdoo.WebDriver.UI.Core
+namespace Qooxdoo.WebDriver.UI.Core
 {
     /// <summary>
     /// Base widget implementation
     /// </summary>
-    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.IWidget" />
+    /// <seealso cref="IWidget" />
     public class WidgetImpl : IWidget
     {
         private string _qxHash;

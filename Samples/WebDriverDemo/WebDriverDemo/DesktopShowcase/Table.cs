@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using By = Wisej.Qooxdoo.WebDriver.By;
+using By = Qooxdoo.WebDriver.By;
 
 namespace Wisej.Qooxdoo.WebDriverDemo.DesktopShowcase
 {

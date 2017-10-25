@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Wisej.Qooxdoo.WebDriver
+namespace Qooxdoo.WebDriver
 {
     public partial class By
     {

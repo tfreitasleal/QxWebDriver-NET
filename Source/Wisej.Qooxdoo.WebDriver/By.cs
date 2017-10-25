@@ -22,7 +22,7 @@ using System.Collections.ObjectModel;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 
-namespace Wisej.Qooxdoo.WebDriver
+namespace Qooxdoo.WebDriver
 {
     /// <summary>
     /// Provides a mechanism by which to find elements within a document.

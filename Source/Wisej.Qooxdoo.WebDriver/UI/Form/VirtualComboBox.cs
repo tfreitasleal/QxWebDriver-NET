@@ -19,12 +19,12 @@
 
 using OpenQA.Selenium;
 
-namespace Wisej.Qooxdoo.WebDriver.UI.Form
+namespace Qooxdoo.WebDriver.UI.Form
 {
     /// <summary>
     /// Virtual combobox widget
     /// </summary>
-    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.Form.ComboBox" />
+    /// <seealso cref="ComboBox" />
     public class VirtualComboBox : ComboBox
     {
         /// <summary>

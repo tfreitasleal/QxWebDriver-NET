@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using WidgetImpl = Wisej.Qooxdoo.WebDriver.UI.Mobile.Core.WidgetImpl;
+using WidgetImpl = Qooxdoo.WebDriver.UI.Mobile.Core.WidgetImpl;
 
 namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
 {

@@ -18,13 +18,14 @@
 *************************************************************************/
 
 using OpenQA.Selenium;
+using Qooxdoo.WebDriver.UI.Form;
 
-namespace Wisej.Qooxdoo.WebDriver.UI.Tree
+namespace Qooxdoo.WebDriver.UI.Tree
 {
     /// <summary>
     /// Tree widget
     /// </summary>
-    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.Form.List" />
+    /// <seealso cref="List" />
     public class Tree : Form.List
     {
         /// <summary>

@@ -2,8 +2,8 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using Wisej.Qooxdoo.WebDriver;
-using Wisej.Qooxdoo.WebDriver.UI;
+using Qooxdoo.WebDriver;
+using Qooxdoo.WebDriver.UI;
 using Wisej.Web;
 
 namespace SimpleDemo.MSTest

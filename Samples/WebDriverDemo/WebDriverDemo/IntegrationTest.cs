@@ -2,8 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
-using LogEntry = Wisej.Qooxdoo.WebDriver.Log.LogEntry;
-using QxWebDriver = Wisej.Qooxdoo.WebDriver.QxWebDriver;
+using LogEntry = Qooxdoo.WebDriver.Log.LogEntry;
+using QxWebDriver = Qooxdoo.WebDriver.QxWebDriver;
 
 namespace Wisej.Qooxdoo.WebDriverDemo
 {

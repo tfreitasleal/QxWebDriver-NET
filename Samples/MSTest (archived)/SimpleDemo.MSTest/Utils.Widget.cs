@@ -1,8 +1,8 @@
 ﻿using System.Drawing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Wisej.Qooxdoo.WebDriver;
-using Wisej.Qooxdoo.WebDriver.UI;
-using By = Wisej.Qooxdoo.WebDriver.By;
+using Qooxdoo.WebDriver;
+using Qooxdoo.WebDriver.UI;
+using By = Qooxdoo.WebDriver.By;
 
 namespace SimpleDemo.MSTest
 {

@@ -19,12 +19,12 @@
 
 using OpenQA.Selenium;
 
-namespace Wisej.Qooxdoo.WebDriver.UI.Form
+namespace Qooxdoo.WebDriver.UI.Form
 {
     /// <summary>
     /// MenuButton widget
     /// </summary>
-    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.Form.SelectBox" />
+    /// <seealso cref="SelectBox" />
     public class MenuButton : SelectBox
     {
         /// <summary>

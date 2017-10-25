@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using By = Wisej.Qooxdoo.WebDriver.By;
+using By = Qooxdoo.WebDriver.By;
 
 namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteWidgetBrowser
 {

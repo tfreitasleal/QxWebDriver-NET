@@ -17,12 +17,12 @@
 
 *************************************************************************/
 
-namespace Wisej.Qooxdoo.WebDriver.UI
+namespace Qooxdoo.WebDriver.UI
 {
     /// <summary>
     /// Scrollable interface
     /// </summary>
-    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.IWidget" />
+    /// <seealso cref="IWidget" />
     public interface IScrollable : IWidget
     {
         /// <summary>

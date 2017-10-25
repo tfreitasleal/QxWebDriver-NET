@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
-using Wisej.Qooxdoo.WebDriver;
-using Wisej.Qooxdoo.WebDriver.UI;
+using Qooxdoo.WebDriver;
+using Qooxdoo.WebDriver.UI;
 
 namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
 {

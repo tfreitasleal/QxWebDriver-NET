@@ -23,12 +23,12 @@ using System.Linq;
 using System.Reflection;
 using OpenQA.Selenium;
 
-namespace Wisej.Qooxdoo.WebDriver.UI
+namespace Qooxdoo.WebDriver.UI
 {
     /// <summary>
     /// The default widget factory
     /// </summary>
-    /// <seealso cref="Wisej.Qooxdoo.WebDriver.UI.IWidgetFactory" />
+    /// <seealso cref="IWidgetFactory" />
     public class DefaultWidgetFactory : IWidgetFactory
     {
         /// <summary>

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using OpenQA.Selenium.Support.UI;
-using Wisej.Qooxdoo.WebDriver.Resources;
+using Qooxdoo.WebDriver.Resources;
 
 namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteUnitTests
 {
