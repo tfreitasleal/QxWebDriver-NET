@@ -29,8 +29,6 @@ namespace SimpleDemo.Tests
         [OneTimeTearDown]
         public void TearDown()
         {
-            _internalWebDriver.Quit();
-            _internalWebDriver.Dispose();
             Driver.Quit();
             Driver.Dispose();
         }
