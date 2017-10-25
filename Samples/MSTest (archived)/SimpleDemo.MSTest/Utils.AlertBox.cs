@@ -4,7 +4,6 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using Qooxdoo.WebDriver;
 using Qooxdoo.WebDriver.UI;
-using Wisej.Web;
 
 namespace SimpleDemo.MSTest
 {

@@ -1,7 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Qooxdoo.WebDriver;
 using Qooxdoo.WebDriver.UI;
-using Wisej.Web;
 using By = Qooxdoo.WebDriver.By;
 using Label = Qooxdoo.WebDriver.UI.Basic.Label;
 
