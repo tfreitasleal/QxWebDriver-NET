@@ -2,7 +2,7 @@
 
 WebDriver testing support for qooxdoo desktop and mobile applications.
 
-Version 1.0.7 is available on [NuGet](https://www.nuget.org/packages/Qooxdoo-WebDriver/) as __Qooxdoo-WebDriver__. This release is NET 4.5 only.
+Version 1.0.8 is available on [NuGet](https://www.nuget.org/packages/Qooxdoo-WebDriver/) as __Qooxdoo-WebDriver__. This release is NET 4.5 only.
 
 The SimpleDemo sample uses Chrome, Edge, Firefox and Opera (Internet Explorer isn't planned). It includes test projects for NUnit and MSTest. It also includes an "How to run.txt" to make your life easier.
 

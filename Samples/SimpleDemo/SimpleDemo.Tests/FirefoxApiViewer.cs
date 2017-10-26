@@ -1,6 +1,4 @@
 ﻿using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
 using Qooxdoo.WebDriver;
 
 namespace SimpleDemo.Tests
@@ -9,15 +7,14 @@ namespace SimpleDemo.Tests
     [Parallelizable(ParallelScope.None)]
     public class FirefoxApiViewer
     {
-        private static IWebDriver _internalWebDriver;
-
         public static QxWebDriver Driver;
 
         [OneTimeSetUp]
         public void Setup()
         {
-            _internalWebDriver = new FirefoxDriver();
-            Driver = new QxWebDriver(_internalWebDriver);
+            Driver = new QxWebDriver(Browser.Firefox);
+            Driver.Manage().Window.Maximize();
+            ApiViewerTests.Driver = Driver;
             Driver.Url = "http://www.qooxdoo.org/current/api/index.html";
         }
 
@@ -32,28 +29,28 @@ namespace SimpleDemo.Tests
         [Order(3010)]
         public void A01_ClickSearch()
         {
-            ApiViewerTests.A01_ClickSearch(Driver);
+            ApiViewerTests.A01_ClickSearch();
         }
 
         [Test]
         [Order(3020)]
         public void A02_ClickLegend()
         {
-            ApiViewerTests.A02_ClickLegend(Driver);
+            ApiViewerTests.A02_ClickLegend();
         }
 
         [Test]
         [Order(3030)]
         public void A03_ClickContent()
         {
-            ApiViewerTests.A03_ClickContent(Driver);
+            ApiViewerTests.A03_ClickContent();
         }
 
         [Test]
         [Order(3040)]
         public void A04_ClickTreeItem()
         {
-            ApiViewerTests.A04_ClickTreeItem(Driver);
+            ApiViewerTests.A04_ClickTreeItem();
         }
     }
 }

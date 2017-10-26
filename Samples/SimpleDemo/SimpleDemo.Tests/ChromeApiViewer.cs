@@ -1,6 +1,4 @@
 ﻿using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using Qooxdoo.WebDriver;
 
 namespace SimpleDemo.Tests
@@ -9,16 +7,14 @@ namespace SimpleDemo.Tests
     [Parallelizable(ParallelScope.None)]
     public class ChromeApiViewer
     {
-        private static IWebDriver _internalWebDriver;
-
         public static QxWebDriver Driver;
 
         [OneTimeSetUp]
         public void Setup()
         {
-            _internalWebDriver = new ChromeDriver();
-            _internalWebDriver.Manage().Window.Maximize();
-            Driver = new QxWebDriver(_internalWebDriver);
+            Driver = new QxWebDriver(Browser.Chrome);
+            Driver.Manage().Window.Maximize();
+            ApiViewerTests.Driver = Driver;
             Driver.Url = "http://www.qooxdoo.org/current/api/index.html";
         }
 
@@ -33,28 +29,28 @@ namespace SimpleDemo.Tests
         [Order(1010)]
         public void A01_ClickSearch()
         {
-            ApiViewerTests.A01_ClickSearch(Driver);
+            ApiViewerTests.A01_ClickSearch();
         }
 
         [Test]
         [Order(1020)]
         public void A02_ClickLegend()
         {
-            ApiViewerTests.A02_ClickLegend(Driver);
+            ApiViewerTests.A02_ClickLegend();
         }
 
         [Test]
         [Order(1030)]
         public void A03_ClickContent()
         {
-            ApiViewerTests.A03_ClickContent(Driver);
+            ApiViewerTests.A03_ClickContent();
         }
 
         [Test]
         [Order(1040)]
         public void A04_ClickTreeItem()
         {
-            ApiViewerTests.A04_ClickTreeItem(Driver);
+            ApiViewerTests.A04_ClickTreeItem();
         }
     }
 }

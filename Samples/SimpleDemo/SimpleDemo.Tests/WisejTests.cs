@@ -8,19 +8,21 @@ namespace SimpleDemo.Tests
 {
     public static class WisejTests
     {
-        public static void W01_AskQuitNo(QxWebDriver driver)
+        public static QxWebDriver Driver;
+
+        public static void W01_AskQuitNo()
         {
             // get MainPage
-            IWidget mainPage = driver.WidgetGet("MainPage", "Page", 10);
+            IWidget mainPage = Driver.WidgetGet("MainPage", "Page", 10);
             // cache MainPage
             Cache.SetWidget("MainPage", mainPage);
 
             // click sayGoodBye on MainPage
             mainPage.ButtonClick("sayGoodBye", 10);
-            driver.MessageBoxClick(DialogResult.No);
+            Driver.MessageBoxClick(DialogResult.No);
         }
 
-        public static void W02_MainPage_customerEditor_Click(QxWebDriver driver)
+        public static void W02_MainPage_customerEditor_Click()
         {
             // get MainPage from cache
             IWidget mainPage = Cache.GetWidget("MainPage");
@@ -28,12 +30,12 @@ namespace SimpleDemo.Tests
             mainPage.ButtonClick("buttonsWindow");
 
             // check ButtonsWindow exists
-            IWidget buttonsWindow = driver.WidgetGet("ButtonsWindow", "Window", 10);
+            IWidget buttonsWindow = Driver.WidgetGet("ButtonsWindow", "Window", 10);
             // cache buttonsWindow
             Cache.SetWidget("ButtonsWindow", buttonsWindow);
         }
 
-        public static void W03_ButtonsWindow_customerEditor_Click(QxWebDriver driver)
+        public static void W03_ButtonsWindow_customerEditor_Click()
         {
             // get ButtonsWindow from cache
             IWidget buttonsWindow = Cache.GetWidget("ButtonsWindow");
@@ -43,18 +45,18 @@ namespace SimpleDemo.Tests
             buttonsPanel.ButtonClick("customerEditor");
 
             // check CustomerEditor exists
-            IWidget customerEditor = driver.WidgetGet("CustomerEditor", "Window", 10);
+            IWidget customerEditor = Driver.WidgetGet("CustomerEditor", "Window", 10);
             // cache buttonsWindow
             Cache.SetWidget("CustomerEditor", customerEditor);
         }
 
-        public static void W04_CustomerEditor_customerEditor_LabelContents(QxWebDriver driver)
+        public static void W04_CustomerEditor_customerEditor_LabelContents()
         {
             // get CustomerEditor from cache
             IWidget customerEditor = Cache.GetWidget("CustomerEditor");
         }
 
-        public static void W05_CloseWindow(QxWebDriver driver)
+        public static void W05_CloseWindow()
         {
             // give enough time so YOU can see the open window
             Thread.Sleep(Wait.Duration);
@@ -75,36 +77,36 @@ namespace SimpleDemo.Tests
             Thread.Sleep(Wait.Duration);
         }
 
-        public static void W06_MainPage_customerEditor_Click(QxWebDriver driver)
+        public static void W06_MainPage_customerEditor_Click()
         {
             // no cache here
 
-            driver.ButtonClick("MainPage.buttonsWindow");
+            Driver.ButtonClick("MainPage.buttonsWindow");
 
-            var widget = driver.WaitForWidget(OpenQA.Selenium.By.Name("ButtonsWindow"), 10);
+            var widget = Driver.WaitForWidget(OpenQA.Selenium.By.Name("ButtonsWindow"), 10);
             Assert.IsNotNull(widget);
         }
 
-        public static void W07_ButtonsWindow_supplierEditor_Click(QxWebDriver driver)
+        public static void W07_ButtonsWindow_supplierEditor_Click()
         {
             // no cache here
 
             // click supplierEditor on buttonsPanel (LayoutPanel) of ButtonsWindow
-            driver.ButtonClick("ButtonsWindow.buttonsPanel.supplierEditor");
+            Driver.ButtonClick("ButtonsWindow.buttonsPanel.supplierEditor");
 
-            driver.AlertBoxClose(MessageBoxIcon.Error, "Supplier Editor must be implemented");
-            driver.AlertBoxClose("Supplier Editor should be implemented");
-            driver.AlertBoxClose(MessageBoxIcon.Information);
+            Driver.AlertBoxClose(MessageBoxIcon.Error, "Supplier Editor must be implemented");
+            Driver.AlertBoxClose("Supplier Editor should be implemented");
+            Driver.AlertBoxClose(MessageBoxIcon.Information);
         }
 
-        public static void W08_CustomerEditor_customerEditor_LabelContents(QxWebDriver driver)
+        public static void W08_CustomerEditor_customerEditor_LabelContents()
         {
             // no cache here
 
             //driver.LabelAssertValue("CustomerEditor.label1", "End of windows");
         }
 
-        public static void W09_CloseWindow(QxWebDriver driver)
+        public static void W09_CloseWindow()
         {
             // no cache here
 
@@ -116,18 +118,18 @@ namespace SimpleDemo.Tests
             // give enough time so YOU can follow the windows closing
             Thread.Sleep(Wait.Duration);
 
-            driver.WindowClose("ButtonsWindow");
+            Driver.WindowClose("ButtonsWindow");
 
             // give enough time so YOU can see all windows are closed
             Thread.Sleep(Wait.Duration);
         }
 
-        public static void W10_AskQuitYes(QxWebDriver driver)
+        public static void W10_AskQuitYes()
         {
             // no cache here
 
-            driver.ButtonClick("MainPage.sayGoodBye");
-            driver.MessageBoxClick(DialogResult.Yes);
+            Driver.ButtonClick("MainPage.sayGoodBye");
+            Driver.MessageBoxClick(DialogResult.Yes);
 
             // give enough time so YOU can see the root Page before the browser shows an empty screen
             Thread.Sleep(Wait.Duration * 2);

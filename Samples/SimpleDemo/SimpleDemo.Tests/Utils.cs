@@ -149,7 +149,6 @@ namespace SimpleDemo.Tests
         {
             var labelWidget = driver.LabelGet(labelPath, timeoutInSeconds);
             LabelAssertValueCore(labelWidget, labelPath, value);
-            ;
         }
 
         public static void LabelAssertValue(this IWidget rootWidget, string labelPath, string value,

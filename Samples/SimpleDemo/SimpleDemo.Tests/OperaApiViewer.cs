@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using OpenQA.Selenium;
 using OpenQA.Selenium.Opera;
 using Qooxdoo.WebDriver;
 
@@ -9,9 +8,7 @@ namespace SimpleDemo.Tests
     [Parallelizable(ParallelScope.None)]
     public class OperaApiViewer
     {
-        private static string _operaBinary = @"C:\Program Files (x86)\Opera\48.0.2685.39\opera.exe";
-
-        private static IWebDriver _internalWebDriver;
+        private const string OperaBinary = @"C:\Program Files (x86)\Opera\48.0.2685.39\opera.exe";
 
         public static QxWebDriver Driver;
 
@@ -19,10 +16,10 @@ namespace SimpleDemo.Tests
         public void Setup()
         {
             var options = new OperaOptions();
-            options.BinaryLocation = _operaBinary;
-            _internalWebDriver = new OperaDriver(options);
-            _internalWebDriver.Manage().Window.Maximize();
-            Driver = new QxWebDriver(_internalWebDriver);
+            options.BinaryLocation = OperaBinary;
+            Driver = new QxWebDriver(new OperaDriver(options));
+            Driver.Manage().Window.Maximize();
+            ApiViewerTests.Driver = Driver;
             Driver.Url = "http://www.qooxdoo.org/current/api/index.html";
         }
 
@@ -37,28 +34,28 @@ namespace SimpleDemo.Tests
         [Order(5010)]
         public void A01_ClickSearch()
         {
-            ApiViewerTests.A01_ClickSearch(Driver);
+            ApiViewerTests.A01_ClickSearch();
         }
 
         [Test]
         [Order(5020)]
         public void A02_ClickLegend()
         {
-            ApiViewerTests.A02_ClickLegend(Driver);
+            ApiViewerTests.A02_ClickLegend();
         }
 
         [Test]
         [Order(5030)]
         public void A03_ClickContent()
         {
-            ApiViewerTests.A03_ClickContent(Driver);
+            ApiViewerTests.A03_ClickContent();
         }
 
         [Test]
         [Order(5040)]
         public void A04_ClickTreeItem()
         {
-            ApiViewerTests.A04_ClickTreeItem(Driver);
+            ApiViewerTests.A04_ClickTreeItem();
         }
     }
 }
