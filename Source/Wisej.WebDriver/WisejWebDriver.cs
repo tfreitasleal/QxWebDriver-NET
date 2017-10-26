@@ -1,59 +1,90 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
+using Qooxdoo.WebDriver;
+using Qooxdoo.WebDriver.UI;
 
 namespace Wisej.WebDriver
 {
-    public class WisejWebDriver : IWebDriver
+    public class WisejWebDriver : QxWebDriver
     {
-        public IWebElement FindElement(By @by)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WisejWebDriver"/> class.
+        /// </summary>
+        /// <param name="browser">The browser of the webdriver to wrap.</param>
+        public WisejWebDriver(Browser browser)
+            : base(browser)
         {
-            throw new NotImplementedException();
         }
 
-        public ReadOnlyCollection<IWebElement> FindElements(By @by)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WisejWebDriver" /> class.
+        /// </summary>
+        /// <param name="browser">The browser of the webdriver to wrap.</param>
+        /// <param name="implicitWaitSeconds">The implicit wait duration in seconds.</param>
+        public WisejWebDriver(Browser browser, int implicitWaitSeconds)
+            : base(browser, implicitWaitSeconds)
         {
-            throw new NotImplementedException();
         }
 
-        public void Dispose()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WisejWebDriver"/> class.
+        /// </summary>
+        /// <param name="browser">The browser of the webdriver to wrap.</param>
+        /// <param name="widgetFactory">The widget factory to use.</param>
+        public WisejWebDriver(Browser browser, IWidgetFactory widgetFactory)
+            : base(browser, widgetFactory)
         {
-            throw new NotImplementedException();
         }
 
-        public void Close()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WisejWebDriver" /> class.
+        /// </summary>
+        /// <param name="browser">The browser of the webdriver to wrap.</param>
+        /// <param name="widgetFactory">The widget factory to use.</param>
+        /// <param name="implicitWaitSeconds">The implicit wait duration in seconds.</param>
+        public WisejWebDriver(Browser browser, IWidgetFactory widgetFactory, int implicitWaitSeconds)
+            : base(browser, widgetFactory, implicitWaitSeconds)
         {
-            throw new NotImplementedException();
         }
 
-        public void Quit()
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WisejWebDriver"/> class.
+        /// </summary>
+        /// <param name="webdriver">The webdriver to wrap.</param>
+        public WisejWebDriver(IWebDriver webdriver)
+            : base(webdriver)
         {
-            throw new NotImplementedException();
         }
 
-        public IOptions Manage()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WisejWebDriver" /> class.
+        /// </summary>
+        /// <param name="webdriver">The webdriver to wrap.</param>
+        /// <param name="implicitWaitSeconds">The implicit wait duration in seconds.</param>
+        public WisejWebDriver(IWebDriver webdriver, int implicitWaitSeconds)
+            : base(webdriver, implicitWaitSeconds)
         {
-            throw new NotImplementedException();
         }
 
-        public INavigation Navigate()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WisejWebDriver"/> class.
+        /// </summary>
+        /// <param name="webdriver">The webdriver to wrap.</param>
+        /// <param name="widgetFactory">The widget factory to use.</param>
+        public WisejWebDriver(IWebDriver webdriver, IWidgetFactory widgetFactory)
+            : base(webdriver, widgetFactory)
         {
-            throw new NotImplementedException();
         }
 
-        public ITargetLocator SwitchTo()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WisejWebDriver" /> class.
+        /// </summary>
+        /// <param name="webdriver">The webdriver to wrap.</param>
+        /// <param name="widgetFactory">The widget factory to use.</param>
+        /// <param name="implicitWaitSeconds">The implicit wait duration in seconds.</param>
+        public WisejWebDriver(IWebDriver webdriver, IWidgetFactory widgetFactory, int implicitWaitSeconds)
+            : base(webdriver, widgetFactory, implicitWaitSeconds)
         {
-            throw new NotImplementedException();
         }
-
-        public string Url { get; set; }
-        public string Title { get; }
-        public string PageSource { get; }
-        public string CurrentWindowHandle { get; }
-        public ReadOnlyCollection<string> WindowHandles { get; }
     }
 }

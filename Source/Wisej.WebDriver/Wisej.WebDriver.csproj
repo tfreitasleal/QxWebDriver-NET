@@ -38,8 +38,8 @@
       <HintPath>..\packages\NUnit.3.8.1\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Qooxdoo.WebDriver, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Qooxdoo-WebDriver.1.0.7\lib\net45\Qooxdoo.WebDriver.dll</HintPath>
+    <Reference Include="Qooxdoo.WebDriver, Version=1.0.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Qooxdoo-WebDriver.1.0.8\lib\net45\Qooxdoo.WebDriver.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -68,6 +68,7 @@
     <Compile Include="Utils.AlertBox.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="Utils.Widget.cs" />
+    <Compile Include="WisejTestBase.cs" />
     <Compile Include="WisejWebDriver.cs" />
   </ItemGroup>
   <ItemGroup>
