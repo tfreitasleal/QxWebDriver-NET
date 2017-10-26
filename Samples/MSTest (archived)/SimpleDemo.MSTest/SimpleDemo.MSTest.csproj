@@ -33,8 +33,8 @@
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Qooxdoo.WebDriver, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Qooxdoo-WebDriver.1.0.7\lib\net45\Qooxdoo.WebDriver.dll</HintPath>
+    <Reference Include="Qooxdoo.WebDriver, Version=1.0.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Qooxdoo-WebDriver.1.0.8\lib\net45\Qooxdoo.WebDriver.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
