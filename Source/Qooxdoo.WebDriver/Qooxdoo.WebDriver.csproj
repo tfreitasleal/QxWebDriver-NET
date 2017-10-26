@@ -86,6 +86,7 @@
     <Compile Include="UI\Tree\VirtualTree.cs" />
     <Compile Include="UI\IWidget.cs" />
     <Compile Include="UI\IWidgetFactory.cs" />
+    <Compile Include="Browser.cs" />
     <Compile Include="WebDriverHelpers.cs" />
   </ItemGroup>
   <ItemGroup>

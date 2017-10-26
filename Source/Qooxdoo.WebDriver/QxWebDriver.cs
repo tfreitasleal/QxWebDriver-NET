@@ -131,11 +131,6 @@ namespace Qooxdoo.WebDriver
         public QxWebDriver(IWebDriver webdriver)
         {
             ConstructorCore(webdriver, new DefaultWidgetFactory(this), 4);
-            /*_driver = webdriver;
-            JsExecutor = (IJavaScriptExecutor) _driver;
-            SetImplicitWait(4);
-            _widgetFactory = new DefaultWidgetFactory(this);
-            By.SetQxWebDriver(this);*/
         }
 
         /// <summary>
@@ -146,11 +141,6 @@ namespace Qooxdoo.WebDriver
         public QxWebDriver(IWebDriver webdriver, int implicitWaitSeconds)
         {
             ConstructorCore(webdriver, new DefaultWidgetFactory(this), implicitWaitSeconds);
-            /*_driver = webdriver;
-            JsExecutor = (IJavaScriptExecutor) _driver;
-            SetImplicitWait(implicitWaitSeconds);
-            _widgetFactory = new DefaultWidgetFactory(this);
-            By.SetQxWebDriver(this);*/
         }
 
         /// <summary>
@@ -161,11 +151,6 @@ namespace Qooxdoo.WebDriver
         public QxWebDriver(IWebDriver webdriver, IWidgetFactory widgetFactory)
         {
             ConstructorCore(webdriver, widgetFactory, 4);
-            /*_driver = webdriver;
-            JsExecutor = (IJavaScriptExecutor) _driver;
-            SetImplicitWait(4);
-            _widgetFactory = widgetFactory;
-            By.SetQxWebDriver(this);*/
         }
 
         /// <summary>
@@ -177,11 +162,6 @@ namespace Qooxdoo.WebDriver
         public QxWebDriver(IWebDriver webdriver, IWidgetFactory widgetFactory, int implicitWaitSeconds)
         {
             ConstructorCore(webdriver, widgetFactory, implicitWaitSeconds);
-            /*_driver = webdriver;
-            JsExecutor = (IJavaScriptExecutor) _driver;
-            SetImplicitWait(implicitWaitSeconds);
-            _widgetFactory = widgetFactory;
-            By.SetQxWebDriver(this);*/
         }
 
         private void ConstructorCore(IWebDriver webdriver, IWidgetFactory widgetFactory, int implicitWaitSeconds)
