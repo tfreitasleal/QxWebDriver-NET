@@ -21,6 +21,13 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Edge;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.IE;
+using OpenQA.Selenium.Opera;
+using OpenQA.Selenium.PhantomJS;
+using OpenQA.Selenium.Safari;
 using OpenQA.Selenium.Support.UI;
 using Qooxdoo.WebDriver.Resources;
 using Qooxdoo.WebDriver.UI;
@@ -33,8 +40,10 @@ namespace Qooxdoo.WebDriver
     /// </summary>
     public class QxWebDriver : IWebDriver, IJavaScriptExecutor
     {
-        private readonly IWebDriver _driver;
-        private readonly IWidgetFactory _widgetFactory;
+        #region Fields & Properties
+
+        private IWebDriver _driver;
+        private IWidgetFactory _widgetFactory;
         internal TimeSpan? ImplictWait;
 
         /// <summary>
@@ -43,7 +52,7 @@ namespace Qooxdoo.WebDriver
         /// <value>
         /// The javascritp executor.
         /// </value>
-        public IJavaScriptExecutor JsExecutor { get; }
+        public IJavaScriptExecutor JsExecutor { get; private set; }
 
         /// <summary>
         /// Gets the javascritp runner.
@@ -53,17 +62,80 @@ namespace Qooxdoo.WebDriver
         /// </value>
         public JavaScriptRunner JsRunner { get; private set; }
 
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="QxWebDriver"/> class.
+        /// </summary>
+        /// <param name="browser">The browser of the webdriver to wrap.</param>
+        public QxWebDriver(Browser browser)
+        {
+            var webdriver = GetWrappedDriver(browser);
+            ConstructorCore(webdriver, new DefaultWidgetFactory(this), 4);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="QxWebDriver" /> class.
+        /// </summary>
+        /// <param name="browser">The browser of the webdriver to wrap.</param>
+        /// <param name="implicitWaitSeconds">The implicit wait duration in seconds.</param>
+        public QxWebDriver(Browser browser, int implicitWaitSeconds)
+        {
+            var webdriver = GetWrappedDriver(browser);
+            ConstructorCore(webdriver, new DefaultWidgetFactory(this), implicitWaitSeconds);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="QxWebDriver"/> class.
+        /// </summary>
+        /// <param name="browser">The browser of the webdriver to wrap.</param>
+        /// <param name="widgetFactory">The widget factory to use.</param>
+        public QxWebDriver(Browser browser, IWidgetFactory widgetFactory)
+        {
+            var webdriver = GetWrappedDriver(browser);
+            ConstructorCore(webdriver, widgetFactory, 4);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="QxWebDriver" /> class.
+        /// </summary>
+        /// <param name="browser">The browser of the webdriver to wrap.</param>
+        /// <param name="widgetFactory">The widget factory to use.</param>
+        /// <param name="implicitWaitSeconds">The implicit wait duration in seconds.</param>
+        public QxWebDriver(Browser browser, IWidgetFactory widgetFactory, int implicitWaitSeconds)
+        {
+            var webdriver = GetWrappedDriver(browser);
+            ConstructorCore(webdriver, widgetFactory, implicitWaitSeconds);
+        }
+
+        private IWebDriver GetWrappedDriver(Browser browser)
+        {
+            switch (browser)
+            {
+                case Browser.Chrome: return new ChromeDriver();
+                case Browser.Edge: return new EdgeDriver();
+                case Browser.Firefox: return new FirefoxDriver();
+                case Browser.IE: return new InternetExplorerDriver();
+                case Browser.Opera: return new OperaDriver();
+                case Browser.PhantomJS: return new PhantomJSDriver();
+                default: return new SafariDriver();
+            }
+        }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="QxWebDriver"/> class.
         /// </summary>
         /// <param name="webdriver">The webdriver to wrap.</param>
         public QxWebDriver(IWebDriver webdriver)
         {
-            _driver = webdriver;
+            ConstructorCore(webdriver, new DefaultWidgetFactory(this), 4);
+            /*_driver = webdriver;
             JsExecutor = (IJavaScriptExecutor) _driver;
             SetImplicitWait(4);
             _widgetFactory = new DefaultWidgetFactory(this);
-            By.SetQxWebDriver(this);
+            By.SetQxWebDriver(this);*/
         }
 
         /// <summary>
@@ -73,11 +145,12 @@ namespace Qooxdoo.WebDriver
         /// <param name="implicitWaitSeconds">The implicit wait duration in seconds.</param>
         public QxWebDriver(IWebDriver webdriver, int implicitWaitSeconds)
         {
-            _driver = webdriver;
+            ConstructorCore(webdriver, new DefaultWidgetFactory(this), implicitWaitSeconds);
+            /*_driver = webdriver;
             JsExecutor = (IJavaScriptExecutor) _driver;
             SetImplicitWait(implicitWaitSeconds);
             _widgetFactory = new DefaultWidgetFactory(this);
-            By.SetQxWebDriver(this);
+            By.SetQxWebDriver(this);*/
         }
 
         /// <summary>
@@ -87,11 +160,12 @@ namespace Qooxdoo.WebDriver
         /// <param name="widgetFactory">The widget factory to use.</param>
         public QxWebDriver(IWebDriver webdriver, IWidgetFactory widgetFactory)
         {
-            _driver = webdriver;
+            ConstructorCore(webdriver, widgetFactory, 4);
+            /*_driver = webdriver;
             JsExecutor = (IJavaScriptExecutor) _driver;
             SetImplicitWait(4);
             _widgetFactory = widgetFactory;
-            By.SetQxWebDriver(this);
+            By.SetQxWebDriver(this);*/
         }
 
         /// <summary>
@@ -101,6 +175,16 @@ namespace Qooxdoo.WebDriver
         /// <param name="widgetFactory">The widget factory to use.</param>
         /// <param name="implicitWaitSeconds">The implicit wait duration in seconds.</param>
         public QxWebDriver(IWebDriver webdriver, IWidgetFactory widgetFactory, int implicitWaitSeconds)
+        {
+            ConstructorCore(webdriver, widgetFactory, implicitWaitSeconds);
+            /*_driver = webdriver;
+            JsExecutor = (IJavaScriptExecutor) _driver;
+            SetImplicitWait(implicitWaitSeconds);
+            _widgetFactory = widgetFactory;
+            By.SetQxWebDriver(this);*/
+        }
+
+        private void ConstructorCore(IWebDriver webdriver, IWidgetFactory widgetFactory, int implicitWaitSeconds)
         {
             _driver = webdriver;
             JsExecutor = (IJavaScriptExecutor) _driver;
@@ -121,6 +205,8 @@ namespace Qooxdoo.WebDriver
                 ImplictWait = TimeSpan.FromSeconds(implicitWaitSeconds);
             }
         }
+
+        #endregion
 
         /// <summary>
         /// A condition that waits until the qooxdoo application in the browser is
