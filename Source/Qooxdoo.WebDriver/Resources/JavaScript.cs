@@ -157,10 +157,10 @@ namespace Qooxdoo.WebDriver.Resources
         }
 
         /// <summary>
-        /// Manipulates the JavaScript resource to get just the useful javascript code.
+        /// Manipulates the JavaScript resource to get just the useful Javascript code.
         /// </summary>
         /// <param name="resource">The resource.</param>
-        /// <returns>The useful javascript code.</returns>
+        /// <returns>The useful Javascript code.</returns>
         protected internal string ManipulateResource(string resource)
         {
             // Java and C# Regex are different...

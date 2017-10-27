@@ -23,7 +23,7 @@ using Qooxdoo.WebDriver.UI.Core;
 namespace Qooxdoo.WebDriver.UI.Tree.Core
 {
     /// <summary>
-    /// Tree item 
+    /// Tree item
     /// </summary>
     /// <seealso cref="WidgetImpl" />
     public class AbstractItem : UI.Core.WidgetImpl

@@ -47,18 +47,18 @@ namespace Qooxdoo.WebDriver
         internal TimeSpan? ImplictWait;
 
         /// <summary>
-        /// Gets the javascritp executor.
+        /// Gets the Javascript executor.
         /// </summary>
         /// <value>
-        /// The javascritp executor.
+        /// The Javascript executor.
         /// </value>
         public IJavaScriptExecutor JsExecutor { get; private set; }
 
         /// <summary>
-        /// Gets the javascritp runner.
+        /// Gets the Javascript runner.
         /// </summary>
         /// <value>
-        /// The javascritp runner.
+        /// The Javascript runner.
         /// </value>
         public JavaScriptRunner JsRunner { get; private set; }
 
@@ -282,7 +282,7 @@ namespace Qooxdoo.WebDriver
         }
 
         /// <summary>
-        /// Find the first matching <see cref="IWidget"/> using the given method. Retry for up to <see cref="ITimeouts.ImplicitWait"/> seconds 
+        /// Find the first matching <see cref="IWidget"/> using the given method. Retry for up to <see cref="ITimeouts.ImplicitWait"/> seconds
         /// before throwing.
         /// </summary>
         /// <param name="by">The locating mechanism to use.</param>
@@ -610,7 +610,6 @@ namespace Qooxdoo.WebDriver
         }
 
         /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
-        /// <filterpriority>2</filterpriority>
         public void Dispose()
         {
             _driver?.Dispose();
