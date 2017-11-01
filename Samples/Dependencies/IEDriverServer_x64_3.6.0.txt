@@ -1,0 +1,8 @@
+IEDriverServer 3.6.0 / Internet Explorer 11
+
+File
+IEDriverServer_x64_3.6.0.zip
+
+URI
+https://selenium-release.storage.googleapis.com/3.6/IEDriverServer_x64_3.6.0.zip
+
