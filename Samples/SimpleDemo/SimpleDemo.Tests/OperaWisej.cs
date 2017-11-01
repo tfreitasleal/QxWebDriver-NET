@@ -9,7 +9,7 @@ namespace SimpleDemo.Tests
     [Parallelizable(ParallelScope.None)]
     public class OperaWisej
     {
-        private const string OperaBinary = @"C:\Program Files (x86)\Opera\48.0.2685.39\opera.exe";
+        private const string OperaBinary = @"C:\Program Files (x86)\Opera\48.0.2685.52\opera.exe";
 
         public static QxWebDriver Driver;
 
