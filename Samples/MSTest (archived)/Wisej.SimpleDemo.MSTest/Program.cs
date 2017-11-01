@@ -1,4 +1,5 @@
-﻿using Wisej.Web;
+﻿using Wisej.SimpleDemo.View;
+using Wisej.Web;
 
 namespace Wisej.SimpleDemo
 {

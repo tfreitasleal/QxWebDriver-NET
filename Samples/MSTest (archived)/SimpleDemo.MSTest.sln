@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wisej.SimpleDemo.MSTest", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleDemo.MSTest", "SimpleDemo.MSTest\SimpleDemo.MSTest.csproj", "{12C6E79F-F2AE-4793-BD5F-91AAB08E99B5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "How to run", "How to run", "{D77D67C4-7563-455E-971B-A07CF99FD4DF}"
+	ProjectSection(SolutionItems) = preProject
+		How to run.txt = How to run.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

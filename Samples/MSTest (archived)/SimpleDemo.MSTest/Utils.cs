@@ -4,7 +4,7 @@ using Qooxdoo.WebDriver.UI;
 using By = Qooxdoo.WebDriver.By;
 using Label = Qooxdoo.WebDriver.UI.Basic.Label;
 
-namespace SimpleDemo.MSTest
+namespace SimpleDemo.Tests
 {
     public static partial class Utils
     {
@@ -83,9 +83,19 @@ namespace SimpleDemo.MSTest
             window.ButtonAction("close-button");
         }
 
+        public static void WindowClose(this IWidget window, long timeoutInSeconds = 5)
+        {
+            window.ButtonAction("close-button");
+        }
+
         public static void WindowMaximize(this QxWebDriver driver, string windowName, long timeoutInSeconds = 5)
         {
             var window = WindowGet(driver, windowName, timeoutInSeconds);
+            window.ButtonAction("maximize-button");
+        }
+
+        public static void WindowMaximize(this IWidget window, long timeoutInSeconds = 5)
+        {
             window.ButtonAction("maximize-button");
         }
 
@@ -95,9 +105,19 @@ namespace SimpleDemo.MSTest
             window.ButtonAction("minimize-button");
         }
 
+        public static void WindowMinimize(this IWidget window, long timeoutInSeconds = 5)
+        {
+            window.ButtonAction("minimize-button");
+        }
+
         public static void WindowRestore(this QxWebDriver driver, string windowName, long timeoutInSeconds = 5)
         {
             var window = WindowGet(driver, windowName, timeoutInSeconds);
+            window.ButtonAction("restore-button");
+        }
+
+        public static void WindowRestore(this IWidget window, long timeoutInSeconds = 5)
+        {
             window.ButtonAction("restore-button");
         }
 
@@ -129,7 +149,6 @@ namespace SimpleDemo.MSTest
         {
             var labelWidget = driver.LabelGet(labelPath, timeoutInSeconds);
             LabelAssertValueCore(labelWidget, labelPath, value);
-            ;
         }
 
         public static void LabelAssertValue(this IWidget rootWidget, string labelPath, string value,

@@ -5,7 +5,7 @@ using OpenQA.Selenium.Support.UI;
 using Qooxdoo.WebDriver;
 using Qooxdoo.WebDriver.UI;
 
-namespace SimpleDemo.MSTest
+namespace SimpleDemo.Tests
 {
     public static partial class Utils
     {

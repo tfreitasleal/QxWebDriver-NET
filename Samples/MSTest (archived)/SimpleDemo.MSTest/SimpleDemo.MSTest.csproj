@@ -6,8 +6,8 @@
     <ProjectGuid>{12C6E79F-F2AE-4793-BD5F-91AAB08E99B5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SimpleDemo.MSTest</RootNamespace>
-    <AssemblyName>SimpleDemo.MSTest</AssemblyName>
+    <RootNamespace>SimpleDemo.Tests</RootNamespace>
+    <AssemblyName>SimpleDemo.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -28,6 +28,14 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -38,7 +46,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
     <Reference Include="WebDriver, Version=3.6.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Selenium.WebDriver.3.6.0\lib\net45\WebDriver.dll</HintPath>
       <Private>True</Private>
@@ -64,13 +76,18 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ApiViewerTests.cs" />
-    <Compile Include="Chrome.cs" />
+    <Compile Include="ChromeWisej.cs" />
+    <Compile Include="ChromeApiViewer.cs" />
     <Compile Include="DialogResult.cs" />
-    <Compile Include="Edge.cs" />
-    <Compile Include="Firefox.cs" />
+    <Compile Include="EdgeApiViewer.cs" />
+    <Compile Include="EdgeWisej.cs" />
+    <Compile Include="FirefoxWisej.cs" />
+    <Compile Include="FirefoxApiViewer.cs" />
+    <Compile Include="Cache.cs" />
     <Compile Include="MessageBoxIcon.cs" />
     <Compile Include="WisejTests.cs" />
-    <Compile Include="Opera.cs" />
+    <Compile Include="OperaApiViewer.cs" />
+    <Compile Include="OperaWisej.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils.AlertBox.cs" />
     <Compile Include="Utils.cs" />
@@ -78,9 +95,6 @@
     <Compile Include="Waiter.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Alphabetical.orderedtest">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -88,7 +102,6 @@
       <Link>operadriver.exe</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Readme.txt" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

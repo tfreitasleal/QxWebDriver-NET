@@ -2,7 +2,7 @@ If you don't want to run the Web Application project, do only steps 3 and 5.
 In this case you will be able to run only the first 4 tests that target the qooxdoo API viewer.
 
 1. Get Wisej at http://wisej.com
-2. Set Wisej.SimpleDemo as Startup Project.
+2. Set Wisej.SimpleDemo.MSTest as Startup Project.
 3. Set _operaBinary to the correct Opera path+filename.
 4. Build the solution so all NuGet packages are restored.
 5. Run it (no, I don't mean debug but plain CTRL F5) to start IIS Express and leave it running.

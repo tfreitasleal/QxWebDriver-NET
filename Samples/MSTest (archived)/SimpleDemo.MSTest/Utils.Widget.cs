@@ -4,7 +4,7 @@ using Qooxdoo.WebDriver;
 using Qooxdoo.WebDriver.UI;
 using By = Qooxdoo.WebDriver.By;
 
-namespace SimpleDemo.MSTest
+namespace SimpleDemo.Tests
 {
     public static partial class Utils
     {
