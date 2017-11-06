@@ -122,7 +122,7 @@ namespace Qooxdoo.WebDriver.Resources
 
             var path = GetType().Namespace;
             path = path.Substring(0, path.LastIndexOf('.'));
-            path += ".JsResources.";
+            path += ".JavaScript.";
             return path;
         }
 
