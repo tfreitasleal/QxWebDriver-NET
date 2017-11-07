@@ -169,7 +169,7 @@ return (function(args) {
         }
       }
 
-      /* check TreeFolder items: Only neccessary for qooxdoo versions < 0.8.3 */
+      /* check TreeFolder items: Only necessary for qooxdoo versions < 0.8.3 */
       else {
         if (node.getItems) {
           console.log("getQxNodeDescendants: using getItems() to retrieve descendants");
