@@ -8,8 +8,8 @@
     <ProjectGuid>{1EE99BF3-5DB9-48C6-A6D0-36408CEC5A38}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Wisej.Qooxdoo.WebDriverDemo</RootNamespace>
-    <AssemblyName>Wisej.Qooxdoo.WebDriverDemo</AssemblyName>
+    <RootNamespace>Qooxdoo.WebDriverDemo</RootNamespace>
+    <AssemblyName>Qooxdoo.WebDriverDemo</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -124,6 +124,9 @@
   <ItemGroup>
     <EmbeddedResource Include="JsResources\getTestClasses.js" />
     <EmbeddedResource Include="JsResources\getTestPackages.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

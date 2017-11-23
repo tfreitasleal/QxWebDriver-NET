@@ -4,7 +4,7 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using By = OpenQA.Selenium.By;
 
-namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteWidgetBrowser
+namespace Qooxdoo.WebDriverDemo.WebsiteWidgetBrowser
 {
     [TestFixture]
     [Parallelizable(ParallelScope.None)]

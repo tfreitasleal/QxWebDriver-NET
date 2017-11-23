@@ -8,7 +8,7 @@ using Qooxdoo.WebDriver;
 using Qooxdoo.WebDriver.UI;
 using ISelectable = Qooxdoo.WebDriver.UI.Mobile.ISelectable;
 
-namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
+namespace Qooxdoo.WebDriverDemo.MobileShowcase
 {
     public abstract class Mobileshowcase : IntegrationTest
     {

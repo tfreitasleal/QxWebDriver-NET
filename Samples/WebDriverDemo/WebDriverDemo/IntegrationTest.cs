@@ -5,7 +5,7 @@ using NUnit.Framework;
 using LogEntry = Qooxdoo.WebDriver.Log.LogEntry;
 using QxWebDriver = Qooxdoo.WebDriver.QxWebDriver;
 
-namespace Wisej.Qooxdoo.WebDriverDemo
+namespace Qooxdoo.WebDriverDemo
 {
     public abstract class IntegrationTest
     {

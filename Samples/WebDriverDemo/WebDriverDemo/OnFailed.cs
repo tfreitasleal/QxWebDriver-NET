@@ -7,7 +7,7 @@ using TakesScreenshot = OpenQA.Selenium.Screenshot;
 /*using TestWatcher = NUnit.Framework.Rules.TestWatcher;
 using Description = NUnit.Framework.Runner.Description;*/
 
-namespace Wisej.Qooxdoo.WebDriverDemo
+namespace Qooxdoo.WebDriverDemo
 {
     public class OnFailed : ITestListener
     {

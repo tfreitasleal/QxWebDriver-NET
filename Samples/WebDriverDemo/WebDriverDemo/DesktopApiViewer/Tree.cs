@@ -3,7 +3,7 @@ using Qooxdoo.WebDriver;
 using Qooxdoo.WebDriver.UI;
 using Qooxdoo.WebDriver.UI.Tree.Core;
 
-namespace Wisej.Qooxdoo.WebDriverDemo.DesktopApiViewer
+namespace Qooxdoo.WebDriverDemo.DesktopApiViewer
 {
     [TestFixture]
     [Parallelizable(ParallelScope.None)]

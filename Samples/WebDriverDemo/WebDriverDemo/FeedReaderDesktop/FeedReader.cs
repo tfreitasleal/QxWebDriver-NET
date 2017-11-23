@@ -12,7 +12,7 @@ using Qooxdoo.WebDriver.UI.Tree;
 using By = Qooxdoo.WebDriver.By;
 using List = Qooxdoo.WebDriver.UI.Form.List;
 
-namespace Wisej.Qooxdoo.WebDriverDemo.FeedReaderDesktop
+namespace Qooxdoo.WebDriverDemo.FeedReaderDesktop
 {
     [TestFixture]
     [Parallelizable(ParallelScope.None)]

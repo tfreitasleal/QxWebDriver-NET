@@ -4,7 +4,7 @@ using By = Qooxdoo.WebDriver.By;
 using IWidget = Qooxdoo.WebDriver.UI.IWidget;
 using Table = Qooxdoo.WebDriver.UI.Table.Table;
 
-namespace Wisej.Qooxdoo.WebDriverDemo.DesktopApiViewer
+namespace Qooxdoo.WebDriverDemo.DesktopApiViewer
 {
     public abstract class DesktopApiViewer : IntegrationTest
     {

@@ -5,7 +5,7 @@ using Qooxdoo.WebDriver.UI;
 using Qooxdoo.WebDriver.UI.Mobile.Core;
 using ISelectable = Qooxdoo.WebDriver.UI.Mobile.ISelectable;
 
-namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
+namespace Qooxdoo.WebDriverDemo.MobileShowcase
 {
     [TestFixture]
     [Parallelizable(ParallelScope.None)]

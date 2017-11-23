@@ -12,7 +12,7 @@ using JSONObject = org.json.simple.JSONObject;
 using JSONParser = org.json.simple.parser.JSONParser;
 using ParseException = org.json.simple.parser.ParseException;*/
 
-namespace Wisej.Qooxdoo.WebDriverDemo.DesktopUnitTests
+namespace Qooxdoo.WebDriverDemo.DesktopUnitTests
 {
     [TestFixture]
     [Parallelizable(ParallelScope.None)]

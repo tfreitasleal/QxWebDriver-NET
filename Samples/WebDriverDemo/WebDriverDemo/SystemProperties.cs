@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 
-namespace Wisej.Qooxdoo.WebDriverDemo
+namespace Qooxdoo.WebDriverDemo
 {
     public static class SystemProperties
     {

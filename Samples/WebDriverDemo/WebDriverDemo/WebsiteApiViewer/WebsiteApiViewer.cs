@@ -6,7 +6,7 @@ using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
 
-namespace Wisej.Qooxdoo.WebDriverDemo.WebsiteApiViewer
+namespace Qooxdoo.WebDriverDemo.WebsiteApiViewer
 {
     [TestFixture]
     [Parallelizable(ParallelScope.None)]

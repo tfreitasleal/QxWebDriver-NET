@@ -11,9 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qooxdoo.WebDriver.Debug", "..\..\Source\Qooxdoo.WebDriver\Qooxdoo.WebDriver.Debug.csproj", "{E6BE1E5D-58C1-4AD7-B1CB-3F9831A24949}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDriver.Debug", "..\..\Source\webdriver\WebDriver.Debug.csproj", "{6941AA74-A97A-48A5-BBFE-1970CCE31E5C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDriver.Debug", "..\..\Selenium\webdriver\WebDriver.Debug.csproj", "{6941AA74-A97A-48A5-BBFE-1970CCE31E5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDriver.Support.Debug", "..\..\Source\support\WebDriver.Support.Debug.csproj", "{8F318EF7-DF70-4942-9892-9F2F0D0B239C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDriver.Support.Debug", "..\..\Selenium\support\WebDriver.Support.Debug.csproj", "{8F318EF7-DF70-4942-9892-9F2F0D0B239C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "- Readme", "- Readme", "{DAFC4BFA-F8B0-4881-9B17-2ACAEF961C60}"
 	ProjectSection(SolutionItems) = preProject

@@ -5,7 +5,7 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using WidgetImpl = Qooxdoo.WebDriver.UI.Mobile.Core.WidgetImpl;
 
-namespace Wisej.Qooxdoo.WebDriverDemo.MobileShowcase
+namespace Qooxdoo.WebDriverDemo.MobileShowcase
 {
     [TestFixture]
     [Parallelizable(ParallelScope.None)]

@@ -5,7 +5,7 @@
 //    This class is used to convert some aspects of the Java String class.
 //-------------------------------------------------------------------------------------------
 
-namespace Wisej.Qooxdoo.WebDriverDemo
+namespace Qooxdoo.WebDriverDemo
 {
     internal static class StringHelperClass
     {

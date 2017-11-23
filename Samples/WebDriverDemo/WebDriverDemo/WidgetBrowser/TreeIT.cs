@@ -4,7 +4,7 @@ using Qooxdoo.WebDriver;
 using Qooxdoo.WebDriver.UI;
 using Qooxdoo.WebDriver.UI.Tree.Core;
 
-namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
+namespace Qooxdoo.WebDriverDemo.WidgetBrowser
 {
     [TestFixture]
     [Parallelizable(ParallelScope.None)]

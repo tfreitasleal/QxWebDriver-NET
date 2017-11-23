@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using By = Qooxdoo.WebDriver.By;
 
-namespace Wisej.Qooxdoo.WebDriverDemo.DesktopShowcase
+namespace Qooxdoo.WebDriverDemo.DesktopShowcase
 {
     [TestFixture]
     [Parallelizable(ParallelScope.None)]

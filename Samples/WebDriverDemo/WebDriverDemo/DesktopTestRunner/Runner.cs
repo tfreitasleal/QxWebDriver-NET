@@ -5,7 +5,7 @@ using Qooxdoo.WebDriver.UI;
 using By = Qooxdoo.WebDriver.By;
 using Scrollable = Qooxdoo.WebDriver.UI.IScrollable;
 
-namespace Wisej.Qooxdoo.WebDriverDemo.DesktopTestRunner
+namespace Qooxdoo.WebDriverDemo.DesktopTestRunner
 {
     [TestFixture]
     [Parallelizable(ParallelScope.None)]

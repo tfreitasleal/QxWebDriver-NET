@@ -5,7 +5,7 @@ using Qooxdoo.WebDriver.UI;
 using Qooxdoo.WebDriver.UI.Form;
 using By = Qooxdoo.WebDriver.By;
 
-namespace Wisej.Qooxdoo.WebDriverDemo.DemoBrowser.Table
+namespace Qooxdoo.WebDriverDemo.DemoBrowser.Table
 {
     [TestFixture]
     [Parallelizable(ParallelScope.None)]

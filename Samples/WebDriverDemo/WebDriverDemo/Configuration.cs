@@ -7,7 +7,7 @@ using Qooxdoo.WebDriver;
 
 //using SelendroidDriver = io.selendroid.SelendroidDriver;
 
-namespace Wisej.Qooxdoo.WebDriverDemo
+namespace Qooxdoo.WebDriverDemo
 {
     public class Configuration
     {

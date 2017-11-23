@@ -2,7 +2,7 @@
 using Qooxdoo.WebDriver.UI;
 using By = Qooxdoo.WebDriver.By;
 
-namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
+namespace Qooxdoo.WebDriverDemo.WidgetBrowser
 {
     [TestFixture]
     [Parallelizable(ParallelScope.None)]

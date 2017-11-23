@@ -2,7 +2,7 @@
 using Qooxdoo.WebDriver;
 using Qooxdoo.WebDriver.UI;
 
-namespace Wisej.Qooxdoo.WebDriverDemo.WidgetBrowser
+namespace Qooxdoo.WebDriverDemo.WidgetBrowser
 {
     //JAVA TO C# CONVERTER TODO TASK: This Java 'import static' statement cannot be converted to C#:
     //    import static NUnit.Framework.Assert.False;
