@@ -1,6 +1,6 @@
 # QxWebDriver-NET
 
-WebDriver testing support for qooxdoo desktop and mobile applications.
+WebDriver test automation support for qooxdoo desktop and mobile applications.
 
 Version 1.0.8 is available on [NuGet](https://www.nuget.org/packages/Qooxdoo-WebDriver/) as __Qooxdoo-WebDriver__. This release is NET 4.5 only.
 
