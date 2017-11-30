@@ -2,13 +2,19 @@
 
 WebDriver test automation support for qooxdoo desktop and mobile applications.
 
-Version 1.0.8 is available on [NuGet](https://www.nuget.org/packages/Qooxdoo-WebDriver/) as __Qooxdoo-WebDriver__. This release is NET 4.5 only.
+Version 1.0.8 is available on [NuGet](http://www.nuget.org/packages/Qooxdoo-WebDriver/) as __Qooxdoo-WebDriver__. This release is NET 4.5 only.
 
 The SimpleDemo sample uses Chrome, Edge, Firefox and Opera (Internet Explorer isn't planned). It includes test projects for NUnit and MSTest. It also includes an "How to run.txt" to make your life easier.
 
-QxWebDriver-NET is a port of [qxwebdriver-java](https://github.com/qooxdoo/qxwebdriver-java) to C#.
+QxWebDriver-NET is a port of [qxwebdriver-java](http://github.com/qooxdoo/qxwebdriver-java) to C#.
 
-THIS FILE WAS ADAPTED FROM qxwebdriver-java AND IS A WORK IN PROGRESS.
+This file was adapted from qxwebdriver-java.
+
+## Project Status
+
+QxWebDriver-NET is still experimental, just like qxwebdriver-java. The API is subject to change without notice, not all of qooxdoo's built-in widgets are supported and there is much still to be optimized. Don't let that stop you from playing with it, giving us feedback on the [issues tab](http://github.com/tfreitasleal/QxWebDriver-NET/issues) and sending pull requests. Thanks!
+
+## Project Goal
 
 The goal of this project is to provide an API that facilitates writing [WebDriver](http://seleniumhq.org/docs/03_webdriver.html)-based interaction tests for [qx.Desktop](http://manual.qooxdoo.org/current/pages/desktop.html) and [qx.Mobile](http://manual.qooxdoo.org/current/pages/mobile.html) applications by abstracting away the implementation details of qooxdoo widgets. Here's a quick example:
 
@@ -58,7 +64,7 @@ Similar to _IWebElement.FindElement_, _IWidget.FindWidget_ will restrict the sea
 
 ### Examples
 
-The best way to learn about the various widget interfaces is to check out the sample integration tests in [Samples](https://github.com/tfreitasleal/QxWebDriver-NET/tree/master/Samples).
+The best way to learn about the various widget interfaces is to check out the sample integration tests in [Samples](http://github.com/tfreitasleal/QxWebDriver-NET/tree/master/Samples).
 
 ## Locating Widget Elements
 
@@ -108,22 +114,10 @@ Inline applications extending [qx.application.Inline](http://demo.qooxdoo.org/cu
     // ...and get a IWidget for it
     IWidget button = (IWidget) driver.GetWidgetForElement(buttonEl);
 
-## Getting Started  (must fix this section)
-The [Getting Started](https://github.com/qooxdoo/qxwebdriver-java/wiki/Getting-Started) tutorial explains how to set up and run QxWebDriver tests using Maven and Firefox.
-
 ## Extending QxWebDriver
 
 _FindWidget_ uses a _IWidgetFactory_ to determine which widget class to instantiate. An alternative class implementing _IWidgetFactory_ and probably extending _DefaultWidgetFactory_ can be passed to the _QxWebDriver_ constructor to support custom widgets.
 
 ## Browser Support
 
-In theory, QxWebDriver should work with any WebDriver that implements _IJavascriptExecutor_. Drivers for Chrome, Firefox, Edge and Opera do work all right although the Edge driver only supports one running instance. The current Internet Explorer driver is said to work but in practice is too hard to get it working. The time better spent improving the library.
-
-## Project Status
-
-QxWebDriver-NET is still experimental, just like qxwebdriver-java. The API is subject to change without notice, not all of qooxdoo's built-in widgets are supported and there is much still to be optimized. Don't let that stop you from playing with it, giving us feedback on the [issues tab](https://github.com/tfreitasleal/QxWebDriver-NET/issues) and sending pull requests. Thanks!
-
-### Still To Come
-
-* Better support for _qx.ui.table.Table_
-* Additional support for qx.Mobile widgets, e.g. _qx.ui.mobile.dialog.Picker_
+In theory, QxWebDriver should work with any WebDriver that implements _IJavascriptExecutor_. Drivers for Chrome, Firefox, Edge and Opera do work all right although the Edge driver only supports one running instance. The current Internet Explorer driver is said to work but in practice is too hard to get it working.
