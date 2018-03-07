@@ -12,7 +12,7 @@ This file was adapted from qxwebdriver-java.
 
 ## Project Status
 
-QxWebDriver-NET is experimental, just like qxwebdriver-java. The API is subject to change without notice, not all of qooxdoo's built-in widgets are supported and there is much still to be optimized. Don't let that stop you from playing with it, giving us feedback on the [issues tab](http://github.com/tfreitasleal/QxWebDriver-NET/issues) and sending pull requests. Thanks!
+This project was instrumental for starting [Wisej-Selenium](https://github.com/iceteagroup/wisej-selenium). QxWebDriver-NET is in maintenance.
 
 ## Project Goal
 
