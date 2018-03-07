@@ -37,7 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\Samples\SimpleDemo\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\Dependencies\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -52,6 +52,7 @@
     <Compile Include="Chrome\ChromeDriver.cs" />
     <Compile Include="Chrome\ChromeDriverService.cs" />
     <Compile Include="Chrome\ChromeMobileEmulationDeviceSettings.cs" />
+    <Compile Include="Chrome\ChromeNetworkConditions.cs" />
     <Compile Include="Chrome\ChromeOptions.cs" />
     <Compile Include="Chrome\ChromePerformanceLoggingPreferences.cs" />
     <Compile Include="Chrome\ChromeWebElement.cs" />
@@ -64,6 +65,8 @@
     <Compile Include="Edge\EdgeDriverService.cs" />
     <Compile Include="Edge\EdgeOptions.cs" />
     <Compile Include="Edge\EdgeWebElement.cs" />
+    <Compile Include="ElementNotInteractableException.cs" />
+    <Compile Include="ElementNotSelectableException.cs" />
     <Compile Include="ElementNotVisibleException.cs" />
     <Compile Include="Firefox\FirefoxBinary.cs" />
     <Compile Include="Firefox\FirefoxDriver.cs" />

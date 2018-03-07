@@ -28,7 +28,7 @@ namespace OpenQA.Selenium.Remote
     /// <summary>
     /// Provides a way of executing Commands over HTTP
     /// </summary>
-    internal class HttpCommandExecutor : ICommandExecutor
+    public class HttpCommandExecutor : ICommandExecutor
     {
         private const string JsonMimeType = "application/json";
         private const string PngMimeType = "image/png";
@@ -111,9 +111,6 @@ namespace OpenQA.Selenium.Remote
 
             HttpResponseInfo responseInfo = this.MakeHttpRequest(requestInfo);
 
-            // TODO: set a break point here
-            // breakpoint here
-
             Response toReturn = this.CreateResponse(responseInfo);
             if (commandToExecute.Name == DriverCommand.NewSession && toReturn.IsSpecificationCompliant)
             {
@@ -156,6 +153,7 @@ namespace OpenQA.Selenium.Remote
             request.Timeout = (int)this.serverResponseTimeout.TotalMilliseconds;
             request.Accept = RequestAcceptHeader;
             request.KeepAlive = this.enableKeepAlive;
+            request.Proxy = null;
             request.ServicePoint.ConnectionLimit = 2000;
             if (request.Method == CommandInfo.PostCommand)
             {
@@ -165,6 +163,10 @@ namespace OpenQA.Selenium.Remote
                 Stream requestStream = request.GetRequestStream();
                 requestStream.Write(data, 0, data.Length);
                 requestStream.Close();
+            }
+            else if (request.Method == CommandInfo.GetCommand)
+            {
+                request.Headers.Add("Cache-Control", "no-cache");
             }
 
             HttpResponseInfo responseInfo = new HttpResponseInfo();

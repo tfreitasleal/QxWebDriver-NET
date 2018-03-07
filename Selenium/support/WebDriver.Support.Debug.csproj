@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8F318EF7-DF70-4942-9892-9F2F0D0B239C}</ProjectGuid>
+    <ProjectGuid>{2F02C86B-A7ED-474C-89F3-76B12B885800}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OpenQA.Selenium.Support</RootNamespace>
@@ -69,9 +69,9 @@
     <Compile Include="UI\UnexpectedTagNameException.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\webdriver\WebDriver.Debug.csproj">
+    <ProjectReference Include="..\webdriver\WebDriver.csproj">
       <Project>{6941aa74-a97a-48a5-bbfe-1970cce31e5c}</Project>
-      <Name>WebDriver.Debug</Name>
+      <Name>WebDriver</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
