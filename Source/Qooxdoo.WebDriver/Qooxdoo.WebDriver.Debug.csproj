@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E6BE1E5D-58C1-4AD7-B1CB-3F9831A24949}</ProjectGuid>
+    <ProjectGuid>{3EC5C3B0-E2A6-4C32-BF9D-805285002D9D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Qooxdoo.WebDriver</RootNamespace>
@@ -23,7 +23,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\Samples\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\Dependencies\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -111,13 +111,13 @@
     <EmbeddedResource Include="JavaScript\setTreeNodeOpened.js" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Selenium\support\WebDriver.Support.Debug.csproj">
+    <ProjectReference Include="..\..\Selenium\support\WebDriver.Support.csproj">
       <Project>{8f318ef7-df70-4942-9892-9f2f0d0b239c}</Project>
-      <Name>WebDriver.Support.Debug</Name>
+      <Name>WebDriver.Support</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Selenium\webdriver\WebDriver.Debug.csproj">
+    <ProjectReference Include="..\..\Selenium\webdriver\WebDriver.csproj">
       <Project>{6941aa74-a97a-48a5-bbfe-1970cce31e5c}</Project>
-      <Name>WebDriver.Debug</Name>
+      <Name>WebDriver</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
