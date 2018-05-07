@@ -4,7 +4,7 @@ QxWebDriver-NET
 
 WebDriver test automation support for qooxdoo desktop and mobile applications.
 
-Version 1.0.8 is available on [NuGet](http://www.nuget.org/packages/Qooxdoo-WebDriver/) as __Qooxdoo-WebDriver__. This release is NET 4.5 only.
+Version 1.0.8 is available on [NuGet](http://www.nuget.org/packages/Qooxdoo-WebDriver/) as __Qooxdoo-WebDriver__. This is the last release and is NET 4.5 only.
 
 The SimpleDemo sample uses Chrome, Edge, Firefox and Opera (Internet Explorer isn't planned). It includes test projects for NUnit and MSTest. It also includes an "How to run.txt" to make your life easier.
 
@@ -14,9 +14,11 @@ This file was adapted from qxwebdriver-java.
 
 ## Project Status
 
-This project was instrumental for starting [Wisej-Selenium](https://github.com/iceteagroup/wisej-selenium). QxWebDriver-NET is no longer supported.
+This project was instrumental for starting [Wisej-Selenium](https://github.com/iceteagroup/wisej-selenium).
 
-I would be happy to donate the project.
+QxWebDriver-NET is no longer supported. The project was archived (read only) to prevent user interaction (issues, etc). You can still fork it.
+
+I would be happy to unarchive and donate it to someone that can take care of it.
 
 ## Project Goal
 
