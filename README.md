@@ -14,7 +14,9 @@ This file was adapted from qxwebdriver-java.
 
 ## Project Status
 
-This project was instrumental for starting [Wisej-Selenium](https://github.com/iceteagroup/wisej-selenium). QxWebDriver-NET is in maintenance.
+This project was instrumental for starting [Wisej-Selenium](https://github.com/iceteagroup/wisej-selenium). QxWebDriver-NET is no longer supported.
+
+I would be happy to donate the project.
 
 ## Project Goal
 
