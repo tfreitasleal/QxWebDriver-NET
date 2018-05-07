@@ -1,4 +1,6 @@
-# QxWebDriver-NET
+QxWebDriver-NET
+====
+[![NuGet](https://img.shields.io/nuget/v/Qooxdoo-WebDriver.svg)](https://www.nuget.org/packages/Qooxdoo-WebDriver)
 
 WebDriver test automation support for qooxdoo desktop and mobile applications.
 
